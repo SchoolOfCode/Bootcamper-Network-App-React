@@ -12,14 +12,34 @@ export default function Home({ navigation }) {
           style={{ width: 20, height: 20, marginLeft: 280, marginTop: 5 }}
         />
       </View>
-      <Text style={styles.div}>Events</Text>
-      <View style={styles.div2}>
-        <Text style={{ textAlign: "center" }}>Tweets</Text>
+      <View style={styles.div}>
+        <Text style={{ fontWeight: "bold", fontSize: 20, textAlign: "center" }}>
+          Latest Events
+        </Text>
         <Image
-          source={twitter}
-          style={{ height: 200, width: 200, marginLeft: 50 }}
+          source={require("./images/brumJs.png")}
+          style={{
+            flex: 1,
+            width: null,
+            height: null,
+            resizeMode: "contain",
+            margin: 10,
+          }}
         />
       </View>
+      <View style={styles.div2}>
+        <Text style={{ fontWeight: "bold", fontSize: 20, textAlign: "center" }}>
+          Tweets
+        </Text>
+        <Image
+          source={twitter}
+          style={{ height: 200, width: 280, marginLeft: 15 }}
+        />
+      </View>
+      {/* <Button
+        title="Go to profile"
+        onPress={() => navigation.navigate("Profile")}
+      /> */}
     </View>
   );
 }
