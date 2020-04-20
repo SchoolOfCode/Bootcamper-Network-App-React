@@ -1,3 +1,7 @@
+body {
+  background-color: #64a4c6;
+}
+
 .dash {
   text-align: center;
 }
@@ -23,4 +27,25 @@
   width: 330px;
   height: 95px;
   object-fit: fill;
+  border-radius: inherit;
+}
+
+.searchBar {
+  position: relative;
+  width: 320px;
+  height: 30px;
+  left: 8px;
+  border-radius: 15px;
+  background-color: #e5e5e5;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: -45px;
+  display: inline-block;
+}
+
+.icon {
+  position: absolute;
+  width: 30px;
+  margin-left: 10px;
+  margin-top: 5px;
 }
