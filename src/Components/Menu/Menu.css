@@ -2,7 +2,7 @@
   width: 150px;
   height: 210px;
   background: #46728a;
-  border: 3px solid #ffffff;
+  border: 3px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 15px;
   font-weight: bold;
@@ -18,4 +18,9 @@
 .menu > ul {
   list-style-type: none;
   padding-left: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #e5e5e5;
 }
