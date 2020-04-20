@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 export default function Meetup(){
 
-  const [state, setState] = useState(null)
+  const [state, setState] = useState()
 
 var myHeaders = new Headers();
 myHeaders.append('Access-Control-Allow-Origin', 'https://api.meetup.com/find/topics?query=tech&only=id,name')
@@ -17,7 +17,7 @@ const loadData = async () => {
 const response = await fetch("https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/topics?query=tech&only=id,name", myInit)
 const data = await response.json()
 console.log(`did you get a response?`)
-setState(data)
+setState(data[0].name)
    } catch (error) {
   if (error === "AbortError") {
     console.log(`error caught`);
