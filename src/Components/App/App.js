@@ -4,6 +4,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import "./App.css";
 import Menu from "../Menu/Menu";
 import NavBar from "../NavBar/NavBar";
+import Profile from "../Profile/Profile";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
         <Route path="/dash">
           <Dashboard />
         </Route>
-        <Route path="/menu">
-          <Menu />
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </Router>
