@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Events = () => {
+
+const Events = ( {data} ) => {
     return (
         <div>
-            
+  
+{console.log(`this shoule be the data: ${data}`)} 
         </div>
     )
 }

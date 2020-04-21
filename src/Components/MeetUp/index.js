@@ -29,6 +29,8 @@ const response = await fetch("https://cors-anywhere.herokuapp.com/https://api.me
 //make the li in the map to put everything in 
 
 const data = await response.json()
+
+
 console.log(data)
 setState(data) 
 
@@ -45,7 +47,11 @@ loadData();
 
 return (
   <div>
-<Events/>
+{state.map(item => (
+  <li key={item.id}>
+    Event: {item.name}
+  </li>
+))}
   </div>
 )
 }
