@@ -20,15 +20,13 @@ const dummyData = {
   company: "Google",
   timeInRole: "8 Years",
   salary: "£50,000",
-  prevRoles: {
-    1: "QA Engineer - The Economist",
-    2: "Higher Education Stuff",
-  },
+  prevRoles: ["QA Engineer - The Economist", "Higher Education Stuff"],
 };
 
 function Profile() {
   const [sliderValue, setSliderValue] = useState(3);
   const [option, setOption] = useState("");
+
   return (
     <>
       <div className="info">
@@ -82,10 +80,10 @@ function Profile() {
       </div>
       <div className="profileContainer">
         <ul>
-          <li>
-            <span style={{ fontWeight: "bold" }}>Previous Roles: </span>
-          </li>
-          <li>{dummyData.prevRoles[1]}</li>
+          <span style={{ fontWeight: "bold" }}>Previous Roles: </span>
+          {dummyData.prevRoles.map((item) => {
+            return <li> {item}</li>;
+          })}
         </ul>
       </div>
       <TeamData
