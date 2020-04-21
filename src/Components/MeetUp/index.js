@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from "react";
 
-
-
 export default function Meetup(){
 
-  const [state, setState] = useState()
+  const [state, setState] = useState([])
 
 
 var myHeaders = new Headers();
@@ -21,9 +19,6 @@ const response = await fetch("https://cors-anywhere.herokuapp.com/https://api.me
 
 
 const data = await response.json()
-
-
-console.log(data)
 setState(data) 
 
    } catch (error) {
@@ -38,12 +33,14 @@ loadData();
 }, [])
 
 return (
-  <div>
-{state.map(item => (
-  <li key={item.id}>
-    Event: {item.name}
+  <ul>
+{state.map(item => {
+  return (
+  <li>
+   {item.name}
   </li>
-))}
-  </div>
+)
+})}
+</ul>
 )
 }
