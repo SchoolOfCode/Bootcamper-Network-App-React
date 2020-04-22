@@ -5,6 +5,7 @@ import "./App.css";
 import Menu from "../Menu/Menu";
 import NavBar from "../NavBar/NavBar";
 import Profile from "../Profile/Profile";
+import CompaniesPage from "../CompaniesPage/CompaniesPage";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/companies">
+          <CompaniesPage />
         </Route>
       </Switch>
     </Router>
