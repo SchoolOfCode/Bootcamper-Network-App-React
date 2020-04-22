@@ -1,0 +1,59 @@
+:root {
+  --main-color: #e5e5e5;
+}
+.header {
+  color: var(--main-color);
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.header > h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.bigContainer {
+  margin: 0 auto;
+  text-align: center;
+  width: 95vw;
+  height: 70vh;
+  border-radius: 15px;
+  background-color: var(--main-color);
+  padding: 1px;
+}
+
+.companyContainer {
+  display: inline-block;
+  text-align: left;
+  width: 350px;
+  height: 100px;
+  background: #46728a;
+  border-radius: 15px;
+  margin: 0 auto;
+  border: 3px solid var(--main-color);
+  color: var(--main-color);
+}
+
+.companyContainer > h3 {
+  margin-block-start: 4px;
+  /* display: inline-block; */
+  margin-left: 110px;
+}
+.companyContainer > p {
+  display: inline-block;
+  max-width: 200px;
+  margin-left: 110px;
+  margin-top: -10px;
+}
+
+.companyLogo {
+  display: inline-block;
+  width: 90px;
+  height: 50px;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  margin-left: 20px;
+  margin-top: 25px;
+  border-radius: 5px;
+}
