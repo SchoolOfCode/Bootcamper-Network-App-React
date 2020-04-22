@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./Profile.css";
 import TeamData from "./TeamData";
-
-const twitter = require("../../images/twitter-logo.png");
-const linkedin = require("../../images/linkedin.png");
-const github = require("../../images/github.png");
-const profilePic = require("../../images/jodie.jpg");
+import twitterLogo from "../../images/twitter-logo.png";
+import linkedinLogo from "../../images/linkedin.png";
+import githubLogo from "../../images/github.png";
+import profilePic from "../../images/jodie.jpg";
 
 const dummyData = {
   name: "Jodie Neville",
@@ -24,6 +23,20 @@ const dummyData = {
 };
 
 function Profile() {
+  const {
+    name,
+    region,
+    cohort,
+    about,
+    twitter,
+    linkedin,
+    github,
+    title,
+    company,
+    timeInRole,
+    salary,
+    prevRoles,
+  } = dummyData;
   const [sliderValue, setSliderValue] = useState(3);
   const [option, setOption] = useState("");
 
@@ -31,57 +44,57 @@ function Profile() {
     <>
       <div className="info">
         <img src={profilePic} alt="Profile Pic" className="profilePic" />
-        <h2> {dummyData.name} </h2>
+        <h2> {name} </h2>
         <img
-          src={twitter}
+          src={twitterLogo}
           alt="twitter logo"
           className="icons"
-          onClick={() => window.location.assign(dummyData.twitter)}
+          onClick={() => window.location.assign(twitter)}
         />
         <img
-          src={linkedin}
+          src={linkedinLogo}
           alt="linkedin logo"
           className="icons"
-          onClick={() => window.location.assign(dummyData.linkedin)}
+          onClick={() => window.location.assign(linkedin)}
         />
         <img
-          src={github}
+          src={githubLogo}
           alt="github logo"
           className="icons"
-          onClick={() => window.location.assign(dummyData.github)}
+          onClick={() => window.location.assign(github)}
         />
       </div>
       <div className="profileContainer">
         <ul>
           <li>
-            <span style={{ fontWeight: "bold" }}>Region: </span>
-            {dummyData.region}
+            <span>Region: </span>
+            {region}
           </li>
           <li>
-            <span style={{ fontWeight: "bold" }}>Cohort: </span>
-            {dummyData.cohort}
+            <span>Cohort: </span>
+            {cohort}
           </li>
           <li>
-            <span style={{ fontWeight: "bold" }}>About Me: </span>
-            {dummyData.about}
+            <span>About Me: </span>
+            {about}
           </li>
         </ul>
       </div>
       <div className="profileContainer">
         <ul>
           <li>
-            <span style={{ fontWeight: "bold" }}>Current Role: </span>
+            <span>Current Role: </span>
           </li>
-          <li>{dummyData.title}</li>
-          <li>{dummyData.company}</li>
-          <li>{dummyData.timeInRole}</li>
-          <li>{dummyData.salary}</li>
+          <li>{title}</li>
+          <li>{company}</li>
+          <li>{timeInRole}</li>
+          <li>{salary}</li>
         </ul>
       </div>
       <div className="profileContainer">
         <ul>
-          <span style={{ fontWeight: "bold" }}>Previous Roles: </span>
-          {dummyData.prevRoles.map((item) => {
+          <span>Previous Roles: </span>
+          {prevRoles.map((item) => {
             return <li> {item}</li>;
           })}
         </ul>
