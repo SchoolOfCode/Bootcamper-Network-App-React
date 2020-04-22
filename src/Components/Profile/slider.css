@@ -1,3 +1,7 @@
+:root {
+  --bg: #46728a;
+}
+
 .slidecontainer {
   width: 90%;
   margin: 0 auto;
@@ -25,7 +29,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #46728a;
+  background: var(--bg);
   cursor: pointer;
 }
 
@@ -33,7 +37,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #46728a;
+  background: var(--bg);
   cursor: pointer;
 }
 
@@ -44,7 +48,7 @@ select {
 }
 
 .save {
-  background: #46728a;
+  background: var(--bg);
   border-radius: 10px;
   margin-top: 10px;
   padding: 5px;
