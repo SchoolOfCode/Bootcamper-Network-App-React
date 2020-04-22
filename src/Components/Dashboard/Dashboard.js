@@ -2,8 +2,8 @@ import React from "react";
 import "./Dashboard.css";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
-const brumJS = require("../../images/brumJs.png");
-const searchIcon = require("../../images/searchIcon.png");
+import brumJS from "../../images/brumJs.png";
+import searchIcon from "../../images/searchIcon.png";
 
 function Dashboard() {
   return (

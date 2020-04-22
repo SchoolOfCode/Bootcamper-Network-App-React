@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./NavBar.css";
 import Menu from "../Menu/Menu";
 import { Link } from "react-router-dom";
-const logo = require("../../images/thisone.png");
-const burgerMenu = require("../../images/burgerMenu.svg");
+import logo from "../../images/thisone.png";
+import burgerMenu from "../../images/burgerMenu.svg";
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
