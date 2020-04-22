@@ -1,9 +1,12 @@
 import React from "react";
 import "./CompaniesPage.css";
+import { Link } from "react-router-dom";
+
+// THIS ONE IS ALL THE COMPANIES
 
 const dummyData = [
   {
-    CompanyID: 1,
+    company_id: 1,
     company_name: "Talis",
     Description: "Supplies education software and solutions",
     Logo: "talis.jpg",
@@ -14,7 +17,7 @@ const dummyData = [
     LinkedIn: "www.linkedin.com/talis",
   },
   {
-    CompanyID: 2,
+    company_id: 2,
     company_name: "Mcdonalds HQ",
     Description: "Giving the nation tasty burgers",
     Logo: "dons.jpg",
@@ -25,7 +28,7 @@ const dummyData = [
     LinkedIn: "www.linkedin.com/mcdonalds",
   },
   {
-    CompanyID: 3,
+    company_id: 3,
     company_name: "Purple Bricks",
     Description: "Sorting out top gafs",
     Logo: "purplebricks.png",
@@ -50,15 +53,17 @@ function CompaniesPage() {
       <div className="bigContainer">
         {dummyData.map((item) => {
           return (
-            <div className="companyContainer">
-              <img
-                src={require(`../../images/${item.Logo}`)}
-                alt="company logo"
-                className="companyLogo"
-              />
-              <h3> {item.company_name} </h3>
-              <p> {item.Address}</p>
-            </div>
+            <Link to={`/company/${item.company_id}`}>
+              <div className="companyContainer">
+                <img
+                  src={require(`../../images/${item.Logo}`)}
+                  alt="company logo"
+                  className="companyLogo"
+                />
+                <h3> {item.company_name} </h3>
+                <p> {item.Address}</p>
+              </div>
+            </Link>
           );
         })}
       </div>

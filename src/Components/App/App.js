@@ -6,6 +6,7 @@ import Menu from "../Menu/Menu";
 import NavBar from "../NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
+import CompanyPage from "../CompaniesPage/CompanyPage";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path="/companies">
           <CompaniesPage />
+        </Route>
+        <Route path="/company/:company_id">
+          <CompanyPage />
         </Route>
       </Switch>
     </Router>
