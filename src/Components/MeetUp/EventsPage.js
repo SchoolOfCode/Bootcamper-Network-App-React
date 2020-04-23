@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../CompaniesPage/CompaniesPage.css";
-import Meetup from "./index";
 
 function EventsPage({ name }) {
   const [isClicked, setIsClicked] = useState(false);
