@@ -6,13 +6,13 @@ import NavBar from "../NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
 import CompanyPage from "../CompaniesPage/CompanyPage";
-import Meetup from '../MeetUp'
+import Meetup from "../MeetUp";
 
 function App() {
   return (
     <Router>
       <NavBar />
-      <Meetup/>
+
       <Switch>
         <Route path="/dash">
           <Dashboard />

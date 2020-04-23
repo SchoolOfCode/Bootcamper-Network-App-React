@@ -18,7 +18,9 @@ function NavBar() {
         alt="menu"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       />
-      {isMenuOpen && <Menu />}
+      {isMenuOpen && (
+        <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      )}
       <hr />
     </div>
   );
