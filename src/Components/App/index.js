@@ -6,13 +6,13 @@ import NavBar from "../NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
 import CompanyPage from "../CompaniesPage/CompanyPage";
+import EventsPage from "../MeetUp/EventsPage";
 import Meetup from "../MeetUp";
 
 function App() {
   return (
     <Router>
       <NavBar />
-
       <Switch>
         <Route path="/dash">
           <Dashboard />
@@ -25,6 +25,9 @@ function App() {
         </Route>
         <Route path="/company/:company_id">
           <CompanyPage />
+        </Route>
+        <Route path="/events">
+          <Meetup />
         </Route>
       </Switch>
     </Router>
