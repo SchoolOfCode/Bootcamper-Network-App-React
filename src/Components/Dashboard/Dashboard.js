@@ -21,7 +21,7 @@ function Dashboard({ state }) {
           Text about the event goes here. This section is scrollable if there is
           enough text.
         </div> */}
-        <EventsPage name={state[0].name} />
+        <EventsPage name={state[0]?.name || "Loading..."} />
       </div>
       <div className="container">
         <br />
