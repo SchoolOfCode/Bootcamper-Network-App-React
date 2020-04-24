@@ -4,7 +4,7 @@ import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 // import brumJS from "../../images/brumJs.png";
 import EventsPage from "../MeetUp/EventsPage";
-import SearchBar from "../SeachBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 
 function Dashboard({ state }) {
   return (
