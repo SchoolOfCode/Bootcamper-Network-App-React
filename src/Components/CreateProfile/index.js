@@ -34,7 +34,7 @@ function ProfileInputs() {
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column" }}>
       <label>First Name:<input type="text" placeholder="First Name" name="first_name" value={formState.first_name} onChange={handleChange}/></label>
-
+<p>Jodie is here</p>
 
       </form>
     </div>
