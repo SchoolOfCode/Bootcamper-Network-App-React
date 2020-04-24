@@ -35,14 +35,13 @@
 
 .searchBar {
   position: relative;
-  width: 320px;
+  width: 250px;
   height: 30px;
-  left: 8px;
   border-radius: 15px;
   background-color: var(--main-bg-color);
   text-align: center;
   margin-bottom: 10px;
-  margin-left: -45px;
+  margin-left: 20px;
   display: inline-block;
 }
 
@@ -51,4 +50,16 @@
   width: 30px;
   margin-left: 10px;
   margin-top: 5px;
+}
+
+.searchOptions {
+  width: 80px;
+  position: absolute;
+  left: 10px;
+  top: 102px;
+  z-index: 10;
+  height: 38px;
+  border-radius: 15px;
+  background-color: var(--main-bg-color);
+  text-align: center;
 }

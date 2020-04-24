@@ -3,17 +3,13 @@ import "./Dashboard.css";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 // import brumJS from "../../images/brumJs.png";
-import searchIcon from "../../images/searchIcon.png";
 import EventsPage from "../MeetUp/EventsPage";
+import SearchBar from "../SeachBar/SearchBar";
 
 function Dashboard({ state }) {
   return (
     <div className="dash">
-      <div>
-        {/* make this into a search component later when its not MVP */}
-        <input placeholder="search" className="searchBar" />
-        <img src={searchIcon} className="icon" alt="search icon" />
-      </div>
+      <SearchBar />
       <div className="container">
         <h2> Latest Events </h2>
         {/* <img src={brumJS} className="eventImg" alt="brumJS Logo" />
