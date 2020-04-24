@@ -2,10 +2,11 @@ import React from "react";
 import "./Dashboard.css";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
-import brumJS from "../../images/brumJs.png";
+// import brumJS from "../../images/brumJs.png";
 import searchIcon from "../../images/searchIcon.png";
+import EventsPage from "../MeetUp/EventsPage";
 
-function Dashboard() {
+function Dashboard({ state }) {
   return (
     <div className="dash">
       <div>
@@ -15,11 +16,12 @@ function Dashboard() {
       </div>
       <div className="container">
         <h2> Latest Events </h2>
-        <img src={brumJS} className="eventImg" alt="brumJS Logo" />
+        {/* <img src={brumJS} className="eventImg" alt="brumJS Logo" />
         <div>
           Text about the event goes here. This section is scrollable if there is
           enough text.
-        </div>
+        </div> */}
+        <EventsPage name={state[0]?.name || "Loading..."} />
       </div>
       <div className="container">
         <br />

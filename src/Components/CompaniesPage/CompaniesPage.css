@@ -20,6 +20,7 @@
   border-radius: 15px;
   background-color: var(--main-color);
   padding: 1px;
+  overflow-y: scroll;
 }
 
 .companyContainer {
