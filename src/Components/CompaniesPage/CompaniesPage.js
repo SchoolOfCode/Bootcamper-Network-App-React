@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./CompaniesPage.css";
 import Company from "./Company";
+import { URL } from "../../config";
 
 // THIS ONE IS ALL THE COMPANIES
 
@@ -9,15 +10,12 @@ function CompaniesPage() {
   const [companyData, setCompanyData] = useState([]);
   useEffect(() => {
     async function getCompanies() {
-      const res = await fetch(
-        `http://bootcampcommunityapp-dev.eu-west-1.elasticbeanstalk.com/companies`,
-        {
-          mode: "cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
+      const res = await fetch(`${URL}/companies`, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
       const data = await res.json();
       console.log(data.payload);
       setCompanyData(data.payload);

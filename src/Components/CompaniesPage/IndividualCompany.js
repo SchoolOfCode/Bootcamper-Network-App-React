@@ -4,25 +4,24 @@ import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import websiteLogo from "../../images/web.svg";
 
+import { URL } from "../../config";
+
 import { useParams } from "react-router-dom";
 import "./CompaniesPage.css";
 
 // THIS IS INDIVIDUAL COMPANIES AFTER CLICKING ON THE COMPANY PAGES
-
+console.log("url ", URL);
 function IndividualCompany() {
   const [individualCompanyData, setIndividualCompanyData] = useState([]);
   const { companyid } = useParams();
   useEffect(() => {
     async function getIndividualCompany() {
-      const res = await fetch(
-        `http://bootcampcommunityapp-dev.eu-west-1.elasticbeanstalk.com/companies/${companyid}`,
-        {
-          mode: "cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
+      const res = await fetch(`${URL}/companies/${companyid}`, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
       const data = await res.json();
       console.log(data.payload);
       setIndividualCompanyData(data.payload[0]);
