@@ -1,5 +1,5 @@
 import React from "react";
-import "./CompaniesPage.css";
+import css from "./CompaniesPage.module.css";
 import { Link } from "react-router-dom";
 
 // THIS ONE IS ALL THE COMPANIES
@@ -43,22 +43,22 @@ const dummyData = [
 function CompaniesPage() {
   return (
     <>
-      <div className="header">
+      <div className={css.header}>
         <h2> Companies </h2>
         <small>
           Our bootcampers have gone on to work at these tech companies. Click
           the company to find out more.{" "}
         </small>
       </div>
-      <div className="bigContainer">
+      <div className={css.bigContainer}>
         {dummyData.map((item) => {
           return (
             <Link to={`/company/${item.company_id}`}>
-              <div className="companyContainer">
+              <div className={css.companyContainer}>
                 <img
                   src={require(`../../images/${item.Logo}`)}
                   alt="company logo"
-                  className="companyLogo"
+                  className={css.companyLogo}
                 />
                 <h3> {item.company_name} </h3>
                 <p> {item.Address}</p>

@@ -1,14 +1,14 @@
 import React from "react";
-import "./Meetup.css";
+import css from "./Meetup.module.css";
 import EventsPage from "./EventsPage";
 
 export default function Meetup({ state }) {
   return (
     <>
-      <div className="header">
+      <div className={css.header}>
         <h2> Events </h2>
       </div>
-      <div className="bigContainer">
+      <div className={css.bigContainer}>
         {state.map((item) => {
           return (
             <>

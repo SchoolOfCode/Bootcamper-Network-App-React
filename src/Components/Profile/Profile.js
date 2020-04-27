@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Profile.css";
+import css from "./Profile.module.css";
 import TeamData from "./TeamData";
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
@@ -42,29 +42,29 @@ function Profile() {
 
   return (
     <>
-      <div className="info">
-        <img src={profilePic} alt="Profile Pic" className="profilePic" />
+      <div className={css.info}>
+        <img src={profilePic} alt="Profile Pic" className={css.profilePic} />
         <h2> {name} </h2>
         <img
           src={twitterLogo}
           alt="twitter logo"
-          className="icons"
+          className={css.icons}
           onClick={() => window.location.assign(twitter)}
         />
         <img
           src={linkedinLogo}
           alt="linkedin logo"
-          className="icons"
+          className={css.icons}
           onClick={() => window.location.assign(linkedin)}
         />
         <img
           src={githubLogo}
           alt="github logo"
-          className="icons"
+          className={css.icons}
           onClick={() => window.location.assign(github)}
         />
       </div>
-      <div className="profileContainer">
+      <div className={css.profileContainer}>
         <ul>
           <li>
             <span>Region: </span>
@@ -80,7 +80,7 @@ function Profile() {
           </li>
         </ul>
       </div>
-      <div className="profileContainer">
+      <div className={css.profileContainer}>
         <ul>
           <li>
             <span>Current Role: </span>
@@ -91,7 +91,7 @@ function Profile() {
           <li>{salary}</li>
         </ul>
       </div>
-      <div className="profileContainer">
+      <div className={css.profileContainer}>
         <ul>
           <span>Previous Roles: </span>
           {prevRoles.map((item) => {

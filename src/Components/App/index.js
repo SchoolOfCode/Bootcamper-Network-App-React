@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "../Dashboard/Dashboard";
-import "./App.css";
+import css from "./App.module.css";
 import NavBar from "../NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
@@ -21,6 +21,7 @@ function App() {
     headers: myHeaders,
     mode: "cors",
     cache: "default",
+   
   };
 
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
         );
 
         const data = await response.json();
+        console.log(data)
         setState(data);
       } catch (error) {
         if (error === "AbortError") {
