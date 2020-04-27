@@ -21,37 +21,37 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "first_name":
-      return { first_name: action.payload };
+      return { ...state, first_name: action.payload };
     case "surname":
-      return { surname: action.payload };
+      return { ...state, surname: action.payload };
     case "profile":
-      return { profile: action.payload };
+      return { ...state, profile: action.payload };
     case "job_title":
-      return { job_title: action.payload };
+      return { ...state, job_title: action.payload };
     case "company_id":
-      return { company_id: action.payload };
+      return { ...state, company_id: action.payload };
     case "salary":
-      return { salary: action.payload };
+      return { ...state, salary: action.payload };
     case "start_date":
-      return { start_date: action.payload };
+      return { ...state, start_date: action.payload };
     case "previous_roles":
-      return { previous_roles: action.payload };
+      return { ...state, previous_roles: action.payload };
     case "cohort_num":
-      return { cohort_num: action.payload };
+      return { ...state, cohort_num: action.payload };
     case "region":
-      return { region: action.payload };
+      return { ...state, region: action.payload };
     case "job_satisfaction":
-      return { job_satisfaction: action.payload };
+      return { ...state, job_satisfaction: action.payload };
     case "new_job":
-      return { new_job: action.payload };
+      return { ...state, new_job: action.payload };
     case "twitter":
-      return { twitter: action.payload };
+      return { ...state, twitter: action.payload };
     case "github":
-      return { github: action.payload };
+      return { ...state, github: action.payload };
     case "portfolio":
-      return { portfolio: action.payload };
+      return { ...state, portfolio: action.payload };
     case "linkedin":
-      return { linkedin: action.payload };
+      return { ...state, linkedin: action.payload };
     default:
       throw new Error();
   }
