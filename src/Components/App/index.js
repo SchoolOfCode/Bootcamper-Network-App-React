@@ -7,6 +7,7 @@ import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
 import CompanyPage from "../CompaniesPage/CompanyPage";
 import Meetup from "../MeetUp/index";
+import ProfileInputs from "../CreateProfile";
 
 function App() {
   const [state, setState] = useState([]);
@@ -64,6 +65,9 @@ function App() {
         </Route>
         <Route path="/events">
           <Meetup state={state} />
+        </Route>
+        <Route path="/profileEdit">
+          <ProfileInputs />
         </Route>
       </Switch>
     </Router>
