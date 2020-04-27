@@ -11,19 +11,21 @@ firebase.initializeApp({
   appId: process.env.REACT_APP_APP_ID,
 });
 
-firebase.analytics();
+// firebase.analytics();
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
 export function signInWithPopup() {
   firebase
     .auth()
-    .signInWithPopup(provider)
+    .signInWithRedirect(provider)
+    .getRedirectResult()
     .then(function (result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
+      console.log(`Login has worked. Access token ${token}. User info ${user}`);
     })
     .catch(function (error) {
       var errorCode = error.code;
@@ -32,6 +34,9 @@ export function signInWithPopup() {
       var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
+      console.log(
+        `The sign in didn't work. Error code ${errorCode}. Error email ${email}. Error message ${errorMessage}. Error credential ${credential}`
+      );
     });
 }
 
