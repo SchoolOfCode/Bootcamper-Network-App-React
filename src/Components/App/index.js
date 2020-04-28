@@ -39,12 +39,7 @@ function App() {
         );
 
         const data = await response.json();
-<<<<<<< HEAD
-        console.log(data)
-        setState(data);
-=======
         setMeetupState(data);
->>>>>>> dev
       } catch (error) {
         if (error === "AbortError") {
           console.log(`error caught`);

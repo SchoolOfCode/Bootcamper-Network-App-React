@@ -32,23 +32,7 @@ function CompaniesPage() {
           the company to find out more.
         </small>
       </div>
-<<<<<<< HEAD
       <div className={css.bigContainer}>
-        {dummyData.map((item) => {
-          return (
-            <Link to={`/company/${item.company_id}`}>
-              <div className={css.companyContainer}>
-                <img
-                  src={require(`../../images/${item.Logo}`)}
-                  alt="company logo"
-                  className={css.companyLogo}
-                />
-                <h3> {item.company_name} </h3>
-                <p> {item.Address}</p>
-              </div>
-            </Link>
-=======
-      <div className="bigContainer">
         {companyData.map((item) => {
           return (
             <Company
@@ -58,7 +42,6 @@ function CompaniesPage() {
               company_name={item.company_name}
               address={item.address}
             />
->>>>>>> dev
           );
         })}
       </div>
