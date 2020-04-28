@@ -1,5 +1,6 @@
 import React from "react";
 import "./Menu.css";
+import { logout } from "../firebase";
 
 import { Link } from "react-router-dom";
 
@@ -28,7 +29,7 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
         <Link to="/settings" className="link" onClick={handleClick}>
           <li>Settings</li>
         </Link>
-        <Link to="/logout" className="link" onClick={handleClick}>
+        <Link to="/signin" className="link" onClick={logout}>
           <li>Logout</li>
         </Link>
       </ul>
