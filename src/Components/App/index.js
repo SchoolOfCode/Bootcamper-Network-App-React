@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { onAuthStateChanged } from "../firebase";
 import Dashboard from "../Dashboard/Dashboard";
 import css from "./App.module.css";
 import NavBar from "../NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
-import CompanyPage from "../CompaniesPage/CompanyPage";
 import Meetup from "../MeetUp/index";
 import ProfileInputs from "../CreateProfile";
+import IndividualCompany from "../CompaniesPage/IndividualCompany";
+import SignIn from "../SignIn";
 
 function App() {
   const [state, setState] = useState([]);
+  const [user, setUser] = useState({ loggedIn: false });
+  const [meetupState, setMeetupState] = useState([]);
+
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -34,8 +39,12 @@ function App() {
         );
 
         const data = await response.json();
+<<<<<<< HEAD
         console.log(data)
         setState(data);
+=======
+        setMeetupState(data);
+>>>>>>> dev
       } catch (error) {
         if (error === "AbortError") {
           console.log(`error caught`);
@@ -47,31 +56,54 @@ function App() {
     loadData();
   }, []);
 
-  return (
-    <Router>
-      <NavBar />
-      <Switch>
-        <Route path="/dash">
-          <Dashboard state={state} />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/companies">
-          <CompaniesPage />
-        </Route>
-        <Route path="/company/:company_id">
-          <CompanyPage />
-        </Route>
-        <Route path="/events">
-          <Meetup state={state} />
-        </Route>
-        <Route path="/profileEdit">
-          <ProfileInputs />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  useEffect(() => {
+    onAuthStateChanged((user) => {
+      if (user) {
+        setUser({ loggedIn: true, user });
+      } else {
+        setUser({ loggedIn: false, user: null });
+      }
+    });
+  }, [user]);
+
+  if (!user.loggedIn) {
+    return (
+      <div>
+        <SignIn />
+      </div>
+    );
+  }
+  if (user.loggedIn) {
+    return (
+      <Router>
+        {user.loggedIn && <NavBar />}
+        <Switch>
+          <Route path="/dash">
+            <Dashboard state={meetupState} />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/companies">
+            <CompaniesPage />
+          </Route>
+          <Route path="/company/:company_id">
+            <IndividualCompany />
+          </Route>
+          <Route path="/events">
+            <Meetup state={meetupState} />
+          </Route>
+          <Route path="/profileEdit">
+            <ProfileInputs />
+          </Route>
+          <Route path="/signin">
+            <SignIn />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
+
 }
 
 export default App;

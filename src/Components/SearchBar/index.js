@@ -3,7 +3,7 @@ import searchIcon from "../../images/searchIcon.png";
 import css from "../Dashboard/Dashboard.module.css"
 
 function SearchBar() {
-  const [searchOption, setSearchOption] = useState("");
+  const [searchOption, setSearchOption] = useState("Bootcamper");
 
   function optionChange(e) {
     setSearchOption(e.target.value);
