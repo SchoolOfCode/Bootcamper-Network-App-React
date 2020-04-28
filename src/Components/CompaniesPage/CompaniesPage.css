@@ -16,10 +16,10 @@
   margin: 0 auto;
   text-align: center;
   width: 95vw;
-  height: 70vh;
+  height: auto;
   border-radius: 15px;
   background-color: var(--main-color);
-  padding: 1px;
+  padding: 3px;
   overflow-y: scroll;
 }
 
@@ -37,7 +37,10 @@
 
 .companyContainer > h3 {
   margin-block-start: 4px;
-  /* display: inline-block; */
+  margin-left: 110px;
+}
+.companyContainer > h2 {
+  margin-block-start: 30px;
   margin-left: 110px;
 }
 .companyContainer > p {
@@ -57,4 +60,25 @@
   margin-left: 20px;
   margin-top: 25px;
   border-radius: 5px;
+}
+
+.extraData {
+  display: inline-block;
+  text-align: left;
+  width: 350px;
+  height: auto;
+  background: #46728a;
+  border-radius: 15px;
+  margin: 0 auto;
+  border: 3px solid var(--main-color);
+  color: var(--main-color);
+}
+
+.extraData > p,
+h3 {
+  margin-left: 10px;
+}
+.iconWrapper {
+  text-align: center;
+  margin-top: 25px;
 }
