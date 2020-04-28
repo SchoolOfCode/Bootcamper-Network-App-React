@@ -44,8 +44,8 @@ function Profile() {
     job_satisfaction,
     new_job,
   } = profileData;
-  const [sliderValue, setSliderValue] = useState(3);
-  const [option, setOption] = useState("");
+  const [sliderValue, setSliderValue] = useState(job_satisfaction);
+  const [option, setOption] = useState(new_job);
 
   return (
     <>
