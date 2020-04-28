@@ -16,7 +16,6 @@ function App() {
   const [user, setUser] = useState({ loggedIn: false });
   const [meetupState, setMeetupState] = useState([]);
 
-
   var myHeaders = new Headers();
   myHeaders.append(
     "Access-Control-Allow-Origin",
@@ -27,7 +26,6 @@ function App() {
     headers: myHeaders,
     mode: "cors",
     cache: "default",
-   
   };
 
   useEffect(() => {
@@ -82,7 +80,7 @@ function App() {
           <Route path="/companies">
             <CompaniesPage />
           </Route>
-          <Route path="/company/:company_id">
+          <Route path="/company/:companyid">
             <IndividualCompany />
           </Route>
           <Route path="/events">
@@ -98,7 +96,6 @@ function App() {
       </Router>
     );
   }
-
 }
 
 export default App;

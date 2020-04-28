@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./CompaniesPage.module.css";
 
 import { Link } from "react-router-dom";
 
@@ -7,8 +8,8 @@ import { Link } from "react-router-dom";
 function Company({ logo, company_name, address, company_id }) {
   return (
     <Link to={`/company/${company_id}`}>
-      <div className="companyContainer">
-        <img src={logo} alt="company logo" className="companyLogo" />
+      <div className={css.companyContainer}>
+        <img src={logo} alt="company logo" className={css.companyLogo} />
         <h3> {company_name} </h3>
         <p> {address}</p>
       </div>
