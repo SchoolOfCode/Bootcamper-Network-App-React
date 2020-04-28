@@ -74,7 +74,7 @@ function App() {
           <Route path="/dash">
             <Dashboard state={meetupState} />
           </Route>
-          <Route path="/profile">
+          <Route path="/profile/:firstname">
             <Profile />
           </Route>
           <Route path="/companies">
