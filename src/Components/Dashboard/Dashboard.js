@@ -1,5 +1,5 @@
 import React from "react";
-import "./Dashboard.css";
+import css from "./Dashboard.module.css";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 // import brumJS from "../../images/brumJs.png";
@@ -8,9 +8,9 @@ import SearchBar from "../SearchBar";
 
 function Dashboard({ state }) {
   return (
-    <div className="dash">
+    <div className={css.dash}>
       <SearchBar />
-      <div className="container">
+      <div className={css.container}>
         <h2> Latest Events </h2>
         {/* <img src={brumJS} className="eventImg" alt="brumJS Logo" />
         <div>
@@ -19,7 +19,7 @@ function Dashboard({ state }) {
         </div> */}
         <EventsPage name={state[0]?.name || "Loading..."} />
       </div>
-      <div className="container">
+      <div className={css.container}>
         <br />
         <TwitterTimelineEmbed
           sourceType="profile"

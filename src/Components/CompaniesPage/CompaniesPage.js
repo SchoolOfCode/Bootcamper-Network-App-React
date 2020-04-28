@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import css from "./CompaniesPage.module.css";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import "./CompaniesPage.css";
 import Company from "./Company";
 import { URL } from "../../config";
 
@@ -24,14 +25,14 @@ function CompaniesPage() {
   }, []);
   return (
     <>
-      <div className="header">
+      <div className={css.header}>
         <h2> Companies </h2>
         <small>
           Our bootcampers have gone on to work at these tech companies. Click
           the company to find out more.
         </small>
       </div>
-      <div className="bigContainer">
+      <div className={css.bigContainer}>
         {companyData.map((item) => {
           return (
             <Company

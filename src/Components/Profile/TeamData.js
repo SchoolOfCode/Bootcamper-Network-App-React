@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./slider.css";
+import css from "./slider.module.css";
 
 function TeamData({ sliderValue, setSliderValue, option, setOption }) {
   function handleSliderChange(e) {
@@ -10,7 +10,7 @@ function TeamData({ sliderValue, setSliderValue, option, setOption }) {
     setOption(e.target.value);
   }
   return (
-    <div className="profileContainer">
+    <div className={css.profileContainer}>
       <ul>
         <li>
           <span style={{ fontWeight: "bold" }}>Feedback for the team </span>
@@ -28,13 +28,13 @@ function TeamData({ sliderValue, setSliderValue, option, setOption }) {
           </span>
         </li>
 
-        <div class="slidecontainer">
+        <div class={css.slidecontainer}>
           <input
             type="range"
             min="1"
             max="5"
             value={sliderValue}
-            class="slider"
+            class={css.slider}
             id="myRange"
             onChange={handleSliderChange}
           />
@@ -49,7 +49,7 @@ function TeamData({ sliderValue, setSliderValue, option, setOption }) {
           <option value="No">No</option>
           <option value="Yes">Yes</option>
         </select>
-        <button className="save">Save Changes</button>
+        <button className={css.save}>Save Changes</button>
       </ul>
     </div>
   );

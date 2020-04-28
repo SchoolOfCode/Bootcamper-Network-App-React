@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../CompaniesPage/CompaniesPage.css";
+import css from "./Meetup.module.css";
 
 function EventsPage({ name }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -8,7 +8,7 @@ function EventsPage({ name }) {
   }
   return (
     <>
-      <div className="eachEvent">
+      <div className={css.eachEvent}>
         <p>{name}</p>
         <button
           style={
