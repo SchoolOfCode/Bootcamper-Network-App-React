@@ -5,12 +5,12 @@ import "./App.css";
 import NavBar from "../NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
-import CompanyPage from "../CompaniesPage/CompanyPage";
 import Meetup from "../MeetUp/index";
 import ProfileInputs from "../CreateProfile";
+import IndividualCompany from "../CompaniesPage/IndividualCompany";
 
 function App() {
-  const [state, setState] = useState([]);
+  const [meetupState, setMeetupState] = useState([]);
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -33,7 +33,7 @@ function App() {
         );
 
         const data = await response.json();
-        setState(data);
+        setMeetupState(data);
       } catch (error) {
         if (error === "AbortError") {
           console.log(`error caught`);
@@ -50,7 +50,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/dash">
-          <Dashboard state={state} />
+          <Dashboard state={meetupState} />
         </Route>
         <Route path="/profile">
           <Profile />
@@ -58,11 +58,11 @@ function App() {
         <Route path="/companies">
           <CompaniesPage />
         </Route>
-        <Route path="/company/:company_id">
-          <CompanyPage />
+        <Route path="/company/:companyid">
+          <IndividualCompany />
         </Route>
         <Route path="/events">
-          <Meetup state={state} />
+          <Meetup state={meetupState} />
         </Route>
         <Route path="/profileEdit">
           <ProfileInputs />

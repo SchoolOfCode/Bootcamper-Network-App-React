@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import searchIcon from "../../images/searchIcon.png";
 
 function SearchBar() {
-  const [searchOption, setSearchOption] = useState("");
+  const [searchOption, setSearchOption] = useState("Bootcamper");
 
   function optionChange(e) {
     setSearchOption(e.target.value);
