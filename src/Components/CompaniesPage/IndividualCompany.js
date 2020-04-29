@@ -7,7 +7,6 @@ import websiteLogo from "../../images/web.svg";
 import { URL } from "../../config";
 
 import { useParams } from "react-router-dom";
-import "./CompaniesPage.css";
 
 // THIS IS INDIVIDUAL COMPANIES AFTER CLICKING ON THE COMPANY PAGES
 console.log("url ", URL);
