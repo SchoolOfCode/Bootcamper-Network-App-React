@@ -6,7 +6,7 @@ import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import jodiePic from "../../images/jodie.jpg";
 import mellPic from "../../images/mell.jpg";
-import defaultPic from "../../images/default.jpg";
+import defaultPic from "../../images/default.png";
 import webLogo from "../../images/web.svg";
 
 import { useParams } from "react-router-dom";
