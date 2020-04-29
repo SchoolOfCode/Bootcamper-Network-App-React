@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import css from "./slider.module.css";
+import profCss from "./Profile.module.css";
 
 function TeamData({ sliderValue, setSliderValue, option, setOption }) {
   function handleSliderChange(e) {
@@ -10,7 +11,7 @@ function TeamData({ sliderValue, setSliderValue, option, setOption }) {
     setOption(e.target.value);
   }
   return (
-    <div className={css.profileContainer}>
+    <div className={profCss.profileContainer}>
       <ul>
         <li>
           <span style={{ fontWeight: "bold" }}>Feedback for the team </span>

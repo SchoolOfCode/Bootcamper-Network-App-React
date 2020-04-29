@@ -12,10 +12,8 @@ import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 
 function App() {
-  const [state, setState] = useState([]);
   const [user, setUser] = useState({ loggedIn: false });
   const [meetupState, setMeetupState] = useState([]);
-
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -27,7 +25,6 @@ function App() {
     headers: myHeaders,
     mode: "cors",
     cache: "default",
-   
   };
 
   useEffect(() => {
@@ -76,13 +73,13 @@ function App() {
           <Route path="/dash">
             <Dashboard state={meetupState} />
           </Route>
-          <Route path="/profile">
+          <Route path="/profile/:firstname">
             <Profile />
           </Route>
           <Route path="/companies">
             <CompaniesPage />
           </Route>
-          <Route path="/company/:company_id">
+          <Route path="/company/:companyid">
             <IndividualCompany />
           </Route>
           <Route path="/events">
@@ -98,7 +95,6 @@ function App() {
       </Router>
     );
   }
-
 }
 
 export default App;

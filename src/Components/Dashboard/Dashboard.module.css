@@ -20,10 +20,11 @@
   display: inline-block;
   padding-bottom: 10px;
 }
-.container > h2 {
+.header {
   margin-block-start: 0;
   text-align: left;
   margin-left: 10px;
+  text-decoration: none;
 }
 
 .eventImg {

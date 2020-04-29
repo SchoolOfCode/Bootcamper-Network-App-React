@@ -5,7 +5,7 @@
 
 .menu {
   width: 150px;
-  height: 210px;
+  height: auto;
   background: var(--bg);
   border: 3px solid var(--main-color);
   box-sizing: border-box;
@@ -20,7 +20,7 @@
   position: absolute;
 }
 
-.menu > ul {
+.ul {
   list-style-type: none;
   padding-left: 0;
 }
@@ -28,4 +28,8 @@
 .link {
   text-decoration: none;
   color: var(--main-color);
+}
+
+.link > li {
+  padding-bottom: 8px;
 }

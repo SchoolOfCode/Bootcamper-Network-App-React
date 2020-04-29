@@ -17,6 +17,7 @@
   text-align: center;
   width: 95vw;
   height: auto;
+  max-height: 75vh;
   border-radius: 15px;
   background-color: var(--main-color);
   padding: 3px;
@@ -81,4 +82,12 @@ h3 {
 .iconWrapper {
   text-align: center;
   margin-top: 25px;
+}
+
+.icons {
+  width: 30px;
+  margin-top: -15px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
 }
