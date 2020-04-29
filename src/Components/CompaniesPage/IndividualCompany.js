@@ -3,11 +3,10 @@ import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import websiteLogo from "../../images/web.svg";
-
 import { URL } from "../../config";
+import css from "./CompaniesPage.module.css";
 
 import { useParams } from "react-router-dom";
-import "./CompaniesPage.css";
 
 // THIS IS INDIVIDUAL COMPANIES AFTER CLICKING ON THE COMPANY PAGES
 console.log("url ", URL);
@@ -23,7 +22,7 @@ function IndividualCompany() {
         },
       });
       const data = await res.json();
-      console.log(data.payload);
+      console.log(data.payload[0]);
       setIndividualCompanyData(data.payload[0]);
     }
     getIndividualCompany();
@@ -39,29 +38,29 @@ function IndividualCompany() {
     linkedin,
   } = individualCompanyData;
   return (
-    <div className="bigContainer">
-      <div className="companyContainer">
-        <img src={logo} alt="company logo" className="companyLogo" />
+    <div className={css.bigContainer}>
+      <div className={css.companyContainer}>
+        <img src={logo} alt="company logo" className={css.companyLogo} />
         <h2> {company_name} </h2>
       </div>
-      <div className="extraData">
-        <div className="iconWrapper">
+      <div className={css.extraData}>
+        <div className={css.iconWrapper}>
           <img
             src={twitterLogo}
             alt="twitter logo"
-            className="icons"
+            className={css.icons}
             onClick={() => window.location.assign(twitter)}
           />
           <img
             src={linkedinLogo}
             alt="linkedin logo"
-            className="icons"
+            className={css.icons}
             onClick={() => window.location.assign(linkedin)}
           />
           <img
             src={websiteLogo}
             alt="website logo"
-            className="icons"
+            className={css.icons}
             onClick={() => window.location.assign(website)}
           />
         </div>
@@ -73,7 +72,7 @@ function IndividualCompany() {
           {address}, {postcode}
         </p>
       </div>
-      <div className="extraData">
+      <div className={css.extraData}>
         <h3> Bootcampers Who Work Here:</h3>
         <p> insert some examples here</p>
       </div>
