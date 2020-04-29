@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from "react";
+import { URL } from "../../config";
 
 const initialState = {
   company_name: "",
@@ -10,24 +11,25 @@ const initialState = {
   twitter: "",
   linkedIn: "",
 };
+
 function reducer(state, action) {
   switch (action.type) {
     case "company_name":
-      return { ...state, first_name: action.payload };
+      return { ...state, company_name: action.payload };
     case "description":
-      return { ...state, surname: action.payload };
+      return { ...state, description: action.payload };
     case "logo":
-      return { ...state, profile: action.payload };
+      return { ...state, logo: action.payload };
     case "address":
-      return { ...state, job_title: action.payload };
+      return { ...state, address: action.payload };
     case "postcode":
-      return { ...state, company_id: action.payload };
+      return { ...state, postcode: action.payload };
     case "website":
-      return { ...state, salary: action.payload };
+      return { ...state, website: action.payload };
     case "twitter":
-      return { ...state, start_date: action.payload };
+      return { ...state, twitter: action.payload };
     case "linkedIn":
-      return { ...state, previous_roles: action.payload };
+      return { ...state, linkedIn: action.payload };
     default:
       throw new Error();
   }
@@ -36,14 +38,21 @@ function reducer(state, action) {
 function CompanyInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  function handleSubmit() {
-    //fetch
-  }
-
+  function handleClick(e, company_name, description, logo, address, postcode, website, twitter, linkedIn ) {
+    e.preventDefault();
+    fetch(`${URL}/companies`, {
+      method: "POST",
+      body: JSON.stringify({ company_name, description, logo, address, postcode, website, twitter, linkedIn}),
+      headers: {
+        "Content-Type": "application/json"
+      }
+  },
+  console.log(`checking fetch`, description)
+  )}
+  console.log(`this should be the company name`, state.company_name)
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column" }}
       >
         <label>
@@ -60,6 +69,7 @@ function CompanyInputs() {
               });
             }}
           />
+          
         </label>
         <label>
           Description:
@@ -70,7 +80,7 @@ function CompanyInputs() {
             value={state.description}
             onChange={(event) => {
               dispatch({
-                type: "surname",
+                type: "description",
                 payload: event.target.value,
               });
             }}
@@ -165,11 +175,10 @@ function CompanyInputs() {
               });
             }}
           />
+           <button onClick={e=>handleClick(e, ...state )}>Save</button>
         </label>
       </form>
-      <button onClick={handleSubmit}>Save</button>
     </div>
-  );
+  )
 }
-
 export default CompanyInputs;
