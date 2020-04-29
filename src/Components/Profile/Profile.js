@@ -4,7 +4,9 @@ import TeamData from "./TeamData";
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
-import profilePic from "../../images/jodie.jpg";
+import jodiePic from "../../images/jodie.jpg";
+import mellPic from "../../images/mell.jpg";
+import defaultPic from "../../images/default.jpg";
 import webLogo from "../../images/web.svg";
 
 import { useParams } from "react-router-dom";
@@ -50,7 +52,20 @@ function Profile() {
   return (
     <>
       <div className={css.info}>
-        <img src={profilePic} alt="Profile Pic" className={css.profilePic} />
+        <img
+          src={(() => {
+            switch (firstname) {
+              case "jodie":
+                return jodiePic;
+              case "mell":
+                return mellPic;
+              default:
+                return defaultPic;
+            }
+          })()}
+          alt="Profile Pic"
+          className={css.profilePic}
+        />
         <h2>
           {first_name} {surname}
         </h2>
