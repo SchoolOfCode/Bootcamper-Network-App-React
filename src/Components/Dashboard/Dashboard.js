@@ -23,7 +23,7 @@ function Dashboard({ state }) {
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="BootcamperBot"
-          options={{ height: 260, width: 320 }}
+          options={{ height: "45vh", width: "90vw" }}
         />
       </div>
     </div>
