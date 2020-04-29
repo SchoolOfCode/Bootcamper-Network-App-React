@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import searchIcon from "../../images/searchIcon.png";
-import css from "../Dashboard/Dashboard.module.css"
+import css from "../Dashboard/Dashboard.module.css";
 
 function SearchBar() {
   const [searchOption, setSearchOption] = useState("Bootcamper");
@@ -21,7 +21,7 @@ function SearchBar() {
         <input placeholder="search" className={css.searchBar} />
         <img src={searchIcon} className={css.icon} alt="search icon" />
       </div>
-      <p>{searchOption}</p>
+      {/* <p>{searchOption}</p> */}
     </div>
   );
 }

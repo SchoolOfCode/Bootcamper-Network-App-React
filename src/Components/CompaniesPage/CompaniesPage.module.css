@@ -17,6 +17,7 @@
   text-align: center;
   width: 95vw;
   height: auto;
+  max-height: 75vh;
   border-radius: 15px;
   background-color: var(--main-color);
   padding: 3px;

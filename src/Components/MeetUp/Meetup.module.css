@@ -6,7 +6,8 @@
   display: inline-block;
   text-align: left;
   width: 340px;
-  height: 90px;
+  height: auto;
+  padding-bottom: 10px;
   background: #46728a;
   border-radius: 15px;
   border: 3px solid var(--main-color);
@@ -20,4 +21,10 @@
   background: #64a4c6;
   border-radius: 15px;
   color: var(--main-color);
+}
+
+.header {
+  margin-block-start: -10px;
+  margin-block-end: -10px;
+  margin-left: 10px;
 }
