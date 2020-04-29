@@ -10,7 +10,7 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
   }
   return (
     <div className={css.menu}>
-      <ul>
+      <ul className={css.ul}>
         <Link to="/profile/mell" className={css.link} onClick={handleClick}>
           <li>My Profile</li>
         </Link>
@@ -29,7 +29,7 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
         <Link to="/settings" className={css.link} onClick={handleClick}>
           <li>Settings</li>
         </Link>
-        <Link to="/signin" className={css.link} onClick={logout}>
+        <Link to="/signin" className={css.link} onClick={handleClick}>
           <li>Logout</li>
         </Link>
       </ul>
