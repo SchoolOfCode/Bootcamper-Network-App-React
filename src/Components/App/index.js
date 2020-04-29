@@ -8,6 +8,7 @@ import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
 import Meetup from "../MeetUp/index";
 import ProfileInputs from "../CreateProfile";
+import CompanyInputs from "../CreateCompanies"
 import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 
@@ -87,6 +88,9 @@ function App() {
           </Route>
           <Route path="/profileEdit">
             <ProfileInputs />
+          </Route>
+          <Route path="/companyEdit">
+            <CompanyInputs />
           </Route>
           <Route path="/signin">
             <SignIn />

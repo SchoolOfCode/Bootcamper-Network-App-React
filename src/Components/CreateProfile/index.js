@@ -311,6 +311,7 @@ function ProfileInputs() {
           />
         </label>
       </form>
+      <button onClick={handleSubmit}>Save</button>
     </div>
   );
 }
