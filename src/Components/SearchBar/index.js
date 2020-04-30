@@ -99,7 +99,10 @@ function SearchBar() {
             searchResults.map((item) => {
               return (
                 <Link to={`/company/${item.company_name}`} className={css.link}>
-                  <CompanySearch name={item.company_name} />
+                  <CompanySearch
+                    name={item.company_name}
+                    address={item.address}
+                  />
                 </Link>
               );
             })}
