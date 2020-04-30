@@ -25,7 +25,6 @@ function App() {
         },
       });
       const data = await res.json();
-      console.log(data.events);
       setMeetupState(data.events);
     }
     getEvents();
