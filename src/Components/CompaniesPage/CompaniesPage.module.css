@@ -18,7 +18,7 @@
   width: 95vw;
   height: auto;
   max-height: 75vh;
-  border-radius: 15px;
+  border-radius: 1em;
   background-color: var(--main-color);
   padding: 3px;
   overflow-y: scroll;
@@ -27,7 +27,7 @@
 .companyContainer {
   display: inline-block;
   text-align: left;
-  width: 350px;
+  width: 90vw;
   height: 100px;
   background: #46728a;
   border-radius: 15px;
@@ -38,27 +38,28 @@
 
 .companyContainer > h3 {
   margin-block-start: 4px;
-  margin-left: 110px;
+  margin-left: 35%;
 }
 .companyContainer > h2 {
   margin-block-start: 30px;
-  margin-left: 110px;
+  margin-left: 35%;
+  display: inline-block;
 }
 .companyContainer > p {
   display: inline-block;
-  max-width: 200px;
-  margin-left: 110px;
+  max-width: 60%;
+  margin-left: 35%;
   margin-top: -10px;
 }
 
 .companyLogo {
   display: inline-block;
-  width: 90px;
+  width: 25%;
   height: 50px;
   object-fit: cover;
   position: absolute;
   left: 0;
-  margin-left: 20px;
+  margin-left: 8vw;
   margin-top: 25px;
   border-radius: 5px;
 }
@@ -66,7 +67,7 @@
 .extraData {
   display: inline-block;
   text-align: left;
-  width: 350px;
+  width: 90vw;
   height: auto;
   background: #46728a;
   border-radius: 15px;

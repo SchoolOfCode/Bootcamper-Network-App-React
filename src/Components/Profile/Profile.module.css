@@ -1,13 +1,12 @@
 .profileContainer {
   position: relative;
-  width: 350px;
+  width: 95vw;
   height: auto;
   padding-bottom: 1px;
-  left: 8px;
   border-radius: 15px;
   background-color: #e5e5e5;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin: 0 auto;
 }
 
 .profileContainer > ul {
