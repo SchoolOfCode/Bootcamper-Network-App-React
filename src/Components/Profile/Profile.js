@@ -34,7 +34,7 @@ function Profile() {
     surname,
     region,
     cohort_num,
-    profile,
+    aboutme,
     twitter,
     linkedin,
     github,
@@ -106,7 +106,7 @@ function Profile() {
           </li>
           <li>
             <span>About Me: </span>
-            {profile}
+            {aboutme}
           </li>
         </ul>
       </div>
