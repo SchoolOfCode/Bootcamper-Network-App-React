@@ -226,7 +226,12 @@ function ProfileInputs() {
           />
         </label>
         {console.log(`hi`)}
-        <PreviousRoles onChange={console.log} />
+        <PreviousRoles onChange={(values) => {
+              dispatch({
+                type: "previous_roles",
+                payload: values,
+              });
+            }} />
         <label>
           Cohort Number:
           <input
