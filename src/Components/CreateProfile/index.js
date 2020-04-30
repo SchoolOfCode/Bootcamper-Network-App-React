@@ -1,7 +1,8 @@
 import React, { useState, useReducer } from "react";
 import { URL } from "../../config";
-import css from "../CreateProfile/createprof.module.css"
-import { Link } from "react-router-dom"
+import css from "../CreateProfile/createprof.module.css";
+import { Link } from "react-router-dom";
+import PreviousRoles from "./previousRoles.js";
 
 const initialState = {
   first_name: "",
@@ -11,7 +12,7 @@ const initialState = {
   company_id: 0,
   salary: "",
   start_date: "",
-  previous_roles: [""],
+  previous_roles: [],
   cohort_num: 0,
   region: "",
   job_satisfaction: "",
@@ -62,25 +63,56 @@ function reducer(state, action) {
 
 function ProfileInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  
-    function handleClick(e) {
-      const {first_name, surname, aboutme, job_title, company_id, salary, start_date, previous_roles, cohort_num, region, job_satisfaction, new_job, twitter, github, portfolio, linkedIn } = state;
-      e.preventDefault();
-      fetch(`http://localhost:5000/bootcampers`, {
-        method: "POST",
-        body: JSON.stringify({ first_name, surname, aboutme, job_title, company_id, salary, start_date, previous_roles, cohort_num, region, job_satisfaction, new_job, twitter, github, portfolio, linkedIn }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-    },
-    
-    )}
+
+  function handleClick(e) {
+    const {
+      first_name,
+      surname,
+      aboutme,
+      job_title,
+      company_id,
+      salary,
+      start_date,
+      previous_roles,
+      cohort_num,
+      region,
+      job_satisfaction,
+      new_job,
+      twitter,
+      github,
+      portfolio,
+      linkedIn,
+    } = state;
+    e.preventDefault();
+    fetch(`http://localhost:5000/bootcampers`, {
+      method: "POST",
+      body: JSON.stringify({
+        first_name,
+        surname,
+        aboutme,
+        job_title,
+        company_id,
+        salary,
+        start_date,
+        previous_roles,
+        cohort_num,
+        region,
+        job_satisfaction,
+        new_job,
+        twitter,
+        github,
+        portfolio,
+        linkedIn,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
   return (
     <div>
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-      >
+      <form style={{ display: "flex", flexDirection: "column" }}>
         <label>
           First Name:
           <input
@@ -143,7 +175,10 @@ function ProfileInputs() {
         </label>
         <label>
           Companies:
-          <p className={css.linktext}>If your company doesn't already exist, add it <Link to="/companyEdit">here</Link></p>   
+          <p className={css.linktext}>
+            If your company doesn't already exist, add it{" "}
+            <Link to="/companyEdit">here</Link>
+          </p>
           <input
             type="text"
             placeholder="Companies"
@@ -187,21 +222,7 @@ function ProfileInputs() {
             }}
           />
         </label>
-       <label>
-          Previous Roles:
-          <input
-            type="text"
-            placeholder="Previous Roles"
-            name="previous_roles[]"
-            value={[state.previous_roles]}
-            onChange={(event) => {
-              dispatch({
-                type: "previous_roles",
-                payload: event.target.value,
-              });
-            }}
-          />
-        </label> 
+        <PreviousRoles onChange={console.log} />
         <label>
           Cohort Number:
           <input
