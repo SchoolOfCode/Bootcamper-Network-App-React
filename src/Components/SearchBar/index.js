@@ -16,7 +16,7 @@ function SearchBar() {
         return `bootcampers?name=${searchTerm}`;
 
       case "company":
-        return `companies/${searchTerm}`;
+        return `companies?companyname${searchTerm}`;
     }
   }
 
