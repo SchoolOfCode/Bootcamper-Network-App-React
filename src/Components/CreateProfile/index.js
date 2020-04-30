@@ -1,4 +1,7 @@
 import React, { useState, useReducer } from "react";
+import { URL } from "../../config";
+import css from "../CreateProfile/createprof.module.css"
+import { Link } from "react-router-dom"
 
 const initialState = {
   first_name: "",
@@ -59,15 +62,22 @@ function reducer(state, action) {
 
 function ProfileInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  function handleSubmit() {
-    //fetch
-  }
+  
+    function handleClick(e, state) {
+      const {first_name, surname, aboutme, job_title, company_id, salary, start_date, previous_roles, cohort_num, region, job_satisfaction, new_job, twitter, github, portfolio, linkedIn } = state;
+      e.preventDefault();
+      fetch(`${URL}/bootcampers`, {
+        method: "POST",
+        body: JSON.stringify({ first_name, surname, aboutme, job_title, company_id, salary, start_date, previous_roles, cohort_num, region, job_satisfaction, new_job, twitter, github, portfolio, linkedIn }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+    },
+    )}
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column" }}
       >
         <label>
@@ -101,15 +111,15 @@ function ProfileInputs() {
           />
         </label>
         <label>
-          Profile:
+          About Me:
           <input
             type="text"
-            placeholder="Profile"
-            name="profile"
-            value={state.profile}
+            placeholder="About Me"
+            name="aboutme"
+            value={state.aboutme}
             onChange={(event) => {
               dispatch({
-                type: "profile",
+                type: "aboutme",
                 payload: event.target.value,
               });
             }}
@@ -132,6 +142,7 @@ function ProfileInputs() {
         </label>
         <label>
           Companies:
+          <p className={css.linktext}>If your company doesn't already exist, add it <Link to="/companyEdit">here</Link></p>   
           <input
             type="text"
             placeholder="Companies"
@@ -311,7 +322,7 @@ function ProfileInputs() {
           />
         </label>
       </form>
-      <button onClick={handleSubmit}>Save</button>
+      <button onClick={e=>handleClick(e, state )}>Save</button>
     </div>
   );
 }

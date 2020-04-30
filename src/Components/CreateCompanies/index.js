@@ -38,7 +38,8 @@ function reducer(state, action) {
 function CompanyInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  function handleClick(e, company_name, description, logo, address, postcode, website, twitter, linkedIn ) {
+  function handleClick(e, state) {
+    const {company_name, description, logo, address, postcode, website, twitter, linkedIn} = state;
     e.preventDefault();
     fetch(`${URL}/companies`, {
       method: "POST",
@@ -175,7 +176,7 @@ function CompanyInputs() {
               });
             }}
           />
-           <button onClick={e=>handleClick(e, ...state )}>Save</button>
+           <button onClick={e=>handleClick(e, state )}>Save</button>
         </label>
       </form>
     </div>
