@@ -61,7 +61,7 @@ function App() {
           <Route path="/companies">
             <CompaniesPage />
           </Route>
-          <Route path="/company/:companyid">
+          <Route path="/company/:companyname">
             <IndividualCompany />
           </Route>
           <Route path="/events">

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function Company({ logo, company_name, address, company_id }) {
   return (
-    <Link to={`/company/${company_id}`}>
+    <Link to={`/company/${company_name}`}>
       <div className={css.companyContainer}>
         <img src={logo} alt="company logo" className={css.companyLogo} />
         <h3> {company_name} </h3>

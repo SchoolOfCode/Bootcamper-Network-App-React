@@ -64,3 +64,19 @@
   background-color: var(--main-bg-color);
   text-align: center;
 }
+
+.searchWrapper {
+  position: absolute;
+  left: 5%;
+  top: 138px;
+  width: 90%;
+  height: auto;
+  background-color: #c0bdbd;
+  border-radius: 15px;
+  z-index: 10;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}

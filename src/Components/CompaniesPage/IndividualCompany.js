@@ -12,10 +12,10 @@ import { useParams } from "react-router-dom";
 console.log("url ", URL);
 function IndividualCompany() {
   const [individualCompanyData, setIndividualCompanyData] = useState([]);
-  const { companyid } = useParams();
+  const { companyname } = useParams();
   useEffect(() => {
     async function getIndividualCompany() {
-      const res = await fetch(`${URL}/companies/${companyid}`, {
+      const res = await fetch(`${URL}/companies?companyname=${companyname}`, {
         mode: "cors",
         headers: {
           "Access-Control-Allow-Origin": "*",

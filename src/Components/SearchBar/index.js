@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import searchIcon from "../../images/searchIcon.png";
 import css from "../Dashboard/Dashboard.module.css";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { URL } from "../../config";
+import BootcamperSearch from "./BootcamperSearch";
+import CompanySearch from "./CompanySearch";
+import RoleAndRegionSearch from "./RoleandRegionSearch";
 
 function SearchBar() {
   const [searchOption, setSearchOption] = useState("bootcamper");
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
+  const [isClicked, setIsClicked] = useState(false);
   function getPath(option) {
     console.log(option);
     switch (option) {
@@ -16,7 +19,7 @@ function SearchBar() {
         return `bootcampers?name=${searchTerm}`;
 
       case "company":
-        return `companies?companyname${searchTerm}`;
+        return `companies?companyname=${searchTerm}`;
       case "role":
         return `bootcampers?jobtitle=${searchTerm}`;
       case "region":
@@ -47,12 +50,17 @@ function SearchBar() {
       setSearchResults(data.payload);
     }
     setSearchTerm("");
+    setIsClicked(!isClicked);
     getProfileData();
   }
   return (
     <div>
       <div>
-        <select className={css.searchOptions} onChange={optionChange}>
+        <select
+          className={css.searchOptions}
+          onChange={optionChange}
+          onClick={() => setIsClicked(false)}
+        >
           <option>bootcamper</option>
           <option>company</option>
           <option>region</option>
@@ -63,6 +71,7 @@ function SearchBar() {
           className={css.searchBar}
           value={searchTerm}
           onChange={handleChange}
+          onClick={() => setIsClicked(false)}
         />
         <img
           src={searchIcon}
@@ -71,10 +80,53 @@ function SearchBar() {
           onClick={handleClick}
         />
       </div>
-      {searchOption === "bootcamper" && <p>{searchResults[0]?.first_name} </p>}
-      {searchOption === "company" && <p>{searchResults[0]?.company_name}</p>}
-      {searchOption === "role" && <p>{searchResults[0]?.first_name}</p>}
-      {searchOption === "region" && <p>{searchResults[0]?.first_name}</p>}
+      {isClicked && (
+        <div className={css.searchWrapper}>
+          {searchOption === "bootcamper" &&
+            searchResults.map((item) => {
+              return (
+                <Link to={`/profile/${item.first_name}`} className={css.link}>
+                  <BootcamperSearch
+                    name={item.first_name}
+                    surname={item.surname}
+                    pic={item.photourl}
+                  />
+                </Link>
+              );
+            })}
+          {searchOption === "company" &&
+            searchResults.map((item) => {
+              return (
+                <Link to={`/company/${item.company_name}`} className={css.link}>
+                  <CompanySearch name={item.company_name} />
+                </Link>
+              );
+            })}
+          {searchOption === "role" &&
+            searchResults.map((item) => {
+              return (
+                <RoleAndRegionSearch
+                  name={item.first_name}
+                  surname={item.surname}
+                  job={item.job_title}
+                  company={item.company_name}
+                />
+              );
+            })}
+          {searchOption === "region" &&
+            searchResults.map((item) => {
+              return (
+                <RoleAndRegionSearch
+                  name={item.first_name}
+                  surname={item.surname}
+                  job={item.job_title}
+                  company={item.company_name}
+                  company_id={item.company_id}
+                />
+              );
+            })}
+        </div>
+      )}
     </div>
   );
 }
