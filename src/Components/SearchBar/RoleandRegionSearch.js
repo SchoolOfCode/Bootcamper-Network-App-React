@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import css from "../Dashboard/Dashboard.module.css";
 
-function RoleAndRegionSearch({ name, surname, company, job }) {
+function RoleAndRegionSearch({ name, surname, company, job, region }) {
   return (
     <>
       <div>
@@ -14,6 +14,7 @@ function RoleAndRegionSearch({ name, surname, company, job }) {
         <Link to={`/company/${company}`} className={css.link}>
           <p>{company}</p>
           <p>{job}</p>
+          <p> {region} </p>
         </Link>
       </div>
       <hr style={{ width: "80%" }} />

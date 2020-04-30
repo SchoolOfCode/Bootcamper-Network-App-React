@@ -1,8 +1,8 @@
 import React from "react";
 
-function BootcamperSearch({ name, surname, pic }) {
+function BootcamperSearch({ name, surname, pic, region }) {
   return (
-    <>
+    <div>
       <div>
         <img
           src={pic}
@@ -25,9 +25,10 @@ function BootcamperSearch({ name, surname, pic }) {
         >
           {name} {surname}
         </p>
+        <p>{region}</p>
       </div>
       <hr style={{ width: "80%" }} />
-    </>
+    </div>
   );
 }
 

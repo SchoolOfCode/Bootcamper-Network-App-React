@@ -90,6 +90,7 @@ function SearchBar() {
                     name={item.first_name}
                     surname={item.surname}
                     pic={item.photourl}
+                    region={item.region}
                   />
                 </Link>
               );
@@ -119,9 +120,9 @@ function SearchBar() {
                 <RoleAndRegionSearch
                   name={item.first_name}
                   surname={item.surname}
-                  job={item.job_title}
                   company={item.company_name}
                   company_id={item.company_id}
+                  region={item.region}
                 />
               );
             })}
