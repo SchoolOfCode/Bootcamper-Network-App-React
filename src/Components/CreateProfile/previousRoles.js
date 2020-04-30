@@ -9,15 +9,15 @@ const PreviousRoleInputs = ({ onChange }) => {
   }, [jobTitle, company]);
 
   return (
-    <Fragment>
+  
       <label>
-        Previous Roles
+        
         <label>
           Job Title:
           <input
             type="text"
             placeholder="Job Title"
-            name="Job Title"
+            name="jobTitle"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
           />
@@ -27,21 +27,29 @@ const PreviousRoleInputs = ({ onChange }) => {
           <input
             type="text"
             placeholder="Company"
-            name="Company"
+            name="company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
           />
         </label>
       </label>
-    </Fragment>
+ 
   );
 };
 
 const PreviousRoles = () => {
+  const [roleNumber, setRoleNumber] = useState(1)
+
   return (
     <>
-      <PreviousRoleInputs onChange={() => {}} />
-      <button>+</button>
+    
+    {Array.from(Array(roleNumber)).map(() => 
+    {
+      console.log(`hello`)
+      return <PreviousRoleInputs onChange={() => {}} />
+      })}
+
+      <button type="button" onClick={() => setRoleNumber(roleNumber + 1)}>+</button>
     </>
   );
 };
