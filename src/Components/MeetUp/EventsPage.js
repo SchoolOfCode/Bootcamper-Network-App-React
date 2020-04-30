@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./Meetup.module.css";
 
-function EventsPage({ name }) {
+function EventsPage({ name, link, date, time }) {
   const [isClicked, setIsClicked] = useState(false);
   function handleClick() {
     setIsClicked(!isClicked);
@@ -9,7 +9,12 @@ function EventsPage({ name }) {
   return (
     <>
       <div className={css.eachEvent}>
-        <p>{name}</p>
+        <a href={link} className={css.link}>
+          <p>{name}</p>
+        </a>
+        <p>{date}</p>
+        <p>{time}</p>
+
         <button
           style={
             isClicked

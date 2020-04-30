@@ -8,44 +8,28 @@ import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
 import Meetup from "../MeetUp/index";
 import ProfileInputs from "../CreateProfile";
+import CompanyInputs from "../CreateCompanies"
 import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
+import { URL } from "../../config";
 
 function App() {
   const [user, setUser] = useState({ loggedIn: false });
   const [meetupState, setMeetupState] = useState([]);
 
-  var myHeaders = new Headers();
-  myHeaders.append(
-    "Access-Control-Allow-Origin",
-    "https://api.meetup.com/find/topics?query=tech&only=id,name"
-  );
-  var myInit = {
-    method: "GET",
-    headers: myHeaders,
-    mode: "cors",
-    cache: "default",
-  };
-
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await fetch(
-          "https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/topics?zip=&radius=1&query=tech&only=id,name",
-          myInit
-        );
-
-        const data = await response.json();
-        setMeetupState(data);
-      } catch (error) {
-        if (error === "AbortError") {
-          console.log(`error caught`);
-        } else {
-          throw error;
-        }
-      }
-    };
-    loadData();
+    async function getEvents() {
+      const res = await fetch(`${URL}/events`, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      const data = await res.json();
+      console.log(data.events);
+      setMeetupState(data.events);
+    }
+    getEvents();
   }, []);
 
   useEffect(() => {
@@ -87,6 +71,9 @@ function App() {
           </Route>
           <Route path="/profileEdit">
             <ProfileInputs />
+          </Route>
+          <Route path="/companyEdit">
+            <CompanyInputs />
           </Route>
           <Route path="/signin">
             <SignIn />

@@ -57,6 +57,7 @@ export function logout() {
 
 /* 
 
+
 1. a user logs in using firebase for the first time, their firebase UID token is collected (as well as photo url) and a post
 request is made to the db, creating them an empty profile. Their db id = firebase UID.
 2. They're taken to the create profile page, they fill in their details and when submitted, this is a patch request to their profile.
@@ -74,3 +75,12 @@ UID that they're viewing
 
 
 */
+
+1. a user logs in using firebase
+2. firebase has a unique identifier for that user, is this just the email address or something more? 
+3. this unique identifier is used to fetch relevant bootcamper info from the db 
+4. this is then displayed when they click 'my profile'
+5. when a user first logs in using firebase, they need to be able to create a profile 
+6. this profile is what is fetched from the db when they subsequently log in  */
+
+

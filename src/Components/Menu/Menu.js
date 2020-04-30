@@ -26,8 +26,8 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
         <Link to="/events" className={css.link} onClick={handleClick}>
           <li>Events</li>
         </Link>
-        <Link to="/settings" className={css.link} onClick={handleClick}>
-          <li>Settings</li>
+        <Link to="/links" className={css.link} onClick={handleClick}>
+          <li>Useful Links</li>
         </Link>
         <Link to="/signin" className={css.link} onClick={logout}>
           <li>Logout</li>
