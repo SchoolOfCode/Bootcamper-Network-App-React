@@ -11,7 +11,7 @@ const initialState = {
   company_id: 0,
   salary: "",
   start_date: "",
-  previous_roles: "",
+  previous_roles: [""],
   cohort_num: 0,
   region: "",
   job_satisfaction: "",
@@ -66,14 +66,14 @@ function ProfileInputs() {
     function handleClick(e) {
       const {first_name, surname, aboutme, job_title, company_id, salary, start_date, previous_roles, cohort_num, region, job_satisfaction, new_job, twitter, github, portfolio, linkedIn } = state;
       e.preventDefault();
-      fetch(`${URL}/bootcampers`, {
+      fetch(`http://localhost:5000/bootcampers`, {
         method: "POST",
         body: JSON.stringify({ first_name, surname, aboutme, job_title, company_id, salary, start_date, previous_roles, cohort_num, region, job_satisfaction, new_job, twitter, github, portfolio, linkedIn }),
         headers: {
           "Content-Type": "application/json"
         }
     },
-    console.log(aboutme)
+    
     )}
 
   return (
@@ -187,13 +187,13 @@ function ProfileInputs() {
             }}
           />
         </label>
-        <label>
+       <label>
           Previous Roles:
           <input
             type="text"
             placeholder="Previous Roles"
-            name="previous_roles"
-            value={state.previous_roles}
+            name="previous_roles[]"
+            value={[state.previous_roles]}
             onChange={(event) => {
               dispatch({
                 type: "previous_roles",
@@ -201,7 +201,7 @@ function ProfileInputs() {
               });
             }}
           />
-        </label>
+        </label> 
         <label>
           Cohort Number:
           <input
