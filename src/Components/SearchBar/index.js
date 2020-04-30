@@ -17,6 +17,10 @@ function SearchBar() {
 
       case "company":
         return `companies?companyname${searchTerm}`;
+      case "role":
+        return `bootcampers?jobtitle=${searchTerm}`;
+      case "region":
+        return `bootcampers?region=${searchTerm}`;
     }
   }
 
@@ -53,7 +57,6 @@ function SearchBar() {
           <option>company</option>
           <option>region</option>
           <option>role</option>
-          <option>events</option>
         </select>
         <input
           placeholder="search"
@@ -70,6 +73,8 @@ function SearchBar() {
       </div>
       {searchOption === "bootcamper" && <p>{searchResults[0]?.first_name} </p>}
       {searchOption === "company" && <p>{searchResults[0]?.company_name}</p>}
+      {searchOption === "role" && <p>{searchResults[0]?.first_name}</p>}
+      {searchOption === "region" && <p>{searchResults[0]?.first_name}</p>}
     </div>
   );
 }
