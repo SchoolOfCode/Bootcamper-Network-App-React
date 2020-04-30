@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const initialState = {
   first_name: "",
   surname: "",
-  profile: "",
+  aboutme: "",
   job_title: "",
   company_id: 0,
   salary: "",
@@ -19,7 +19,7 @@ const initialState = {
   twitter: "",
   github: "",
   portfolio: "",
-  linkedin: "",
+  linkedIn: "",
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -27,8 +27,8 @@ function reducer(state, action) {
       return { ...state, first_name: action.payload };
     case "surname":
       return { ...state, surname: action.payload };
-    case "profile":
-      return { ...state, profile: action.payload };
+    case "aboutme":
+      return { ...state, aboutme: action.payload };
     case "job_title":
       return { ...state, job_title: action.payload };
     case "company_id":
@@ -53,8 +53,8 @@ function reducer(state, action) {
       return { ...state, github: action.payload };
     case "portfolio":
       return { ...state, portfolio: action.payload };
-    case "linkedin":
-      return { ...state, linkedin: action.payload };
+    case "linkedIn":
+      return { ...state, linkedIn: action.payload };
     default:
       throw new Error();
   }
@@ -63,7 +63,7 @@ function reducer(state, action) {
 function ProfileInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
   
-    function handleClick(e, state) {
+    function handleClick(e) {
       const {first_name, surname, aboutme, job_title, company_id, salary, start_date, previous_roles, cohort_num, region, job_satisfaction, new_job, twitter, github, portfolio, linkedIn } = state;
       e.preventDefault();
       fetch(`${URL}/bootcampers`, {
@@ -73,6 +73,7 @@ function ProfileInputs() {
           "Content-Type": "application/json"
         }
     },
+    console.log(aboutme)
     )}
 
   return (
@@ -310,19 +311,19 @@ function ProfileInputs() {
           Linkedin:
           <input
             type="text"
-            placeholder="Linkedin"
-            name="linkedin"
-            value={state.linkedin}
+            placeholder="LinkedIn"
+            name="linkedIn"
+            value={state.linkedIn}
             onChange={(event) => {
               dispatch({
-                type: "linkedin",
+                type: "linkedIn",
                 payload: event.target.value,
               });
             }}
           />
         </label>
       </form>
-      <button onClick={e=>handleClick(e, state )}>Save</button>
+      <button onClick={handleClick}>Save</button>
     </div>
   );
 }

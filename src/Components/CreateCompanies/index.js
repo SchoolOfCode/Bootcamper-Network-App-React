@@ -38,7 +38,7 @@ function reducer(state, action) {
 function CompanyInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  function handleClick(e, state) {
+  function handleClick(e) {
     const {company_name, description, logo, address, postcode, website, twitter, linkedIn} = state;
     e.preventDefault();
     fetch(`${URL}/companies`, {
@@ -48,9 +48,9 @@ function CompanyInputs() {
         "Content-Type": "application/json"
       }
   },
-  console.log(`checking fetch`, description)
+ 
   )}
-  console.log(`this should be the company name`, state.company_name)
+
   return (
     <div>
       <form
@@ -176,7 +176,7 @@ function CompanyInputs() {
               });
             }}
           />
-           <button onClick={e=>handleClick(e, state )}>Save</button>
+           <button onClick={handleClick}>Save</button>
         </label>
       </form>
     </div>
