@@ -29,7 +29,7 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
         <Link to="/settings" className={css.link} onClick={handleClick}>
           <li>Settings</li>
         </Link>
-        <Link to="/signin" className={css.link} onClick={handleClick}>
+        <Link to="/signin" className={css.link} onClick={logout}>
           <li>Logout</li>
         </Link>
       </ul>
