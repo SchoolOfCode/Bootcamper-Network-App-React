@@ -1,32 +1,32 @@
 import React from "react";
-import "./Dashboard.css";
+import css from "./Dashboard.module.css";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import { Link } from "react-router-dom";
 
-const brumJS = require("../../images/brumJs.png");
-const searchIcon = require("../../images/searchIcon.png");
+// import brumJS from "../../images/brumJs.png";
+import EventsPage from "../MeetUp/EventsPage";
+import SearchBar from "../SearchBar";
 
-function Dashboard() {
+function Dashboard({ state }) {
   return (
-    <div className="dash">
-      <div>
-        {/* make this into a search component later when its not MVP */}
-        <input placeholder="search" className="searchBar" />
-        <img src={searchIcon} className="icon" alt="search icon" />
+    <div className={css.dash}>
+      <SearchBar />
+      <div className={css.container}>
+        <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
+          <h2 className={css.header}> Latest Events </h2>
+        </Link>
+
+        <EventsPage
+          name={state[0]?.name || "Loading..."}
+          link={state[0]?.link}
+        />
       </div>
-      <div className="container">
-        <h2> Latest Events </h2>
-        <img src={brumJS} className="eventImg" alt="brumJS Logo" />
-        <div>
-          Text about the event goes here. This section is scrollable if there is
-          enough text.
-        </div>
-      </div>
-      <div className="container">
+      <div className={css.container}>
         <br />
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="BootcamperBot"
-          options={{ height: 260, width: 320 }}
+          options={{ height: "45vh", width: "90vw" }}
         />
       </div>
     </div>
