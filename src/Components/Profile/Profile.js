@@ -4,9 +4,7 @@ import TeamData from "./TeamData";
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
-import jodiePic from "../../images/jodie.jpg";
-import mellPic from "../../images/mell.jpg";
-import defaultPic from "../../images/default.png";
+
 import webLogo from "../../images/web.svg";
 
 import { useParams } from "react-router-dom";
@@ -24,17 +22,18 @@ function Profile() {
         },
       });
       const data = await res.json();
-      console.log(data.payload[0]);
+      // console.log(data.payload[0]);
       setProfileData(data.payload[0]);
     }
     getProfileData();
   }, []);
+
   const {
     first_name,
     surname,
     region,
     cohort_num,
-    profile,
+    aboutme,
     twitter,
     linkedin,
     github,
@@ -45,6 +44,7 @@ function Profile() {
     previous_roles,
     job_satisfaction,
     new_job,
+    photourl,
   } = profileData;
   const [sliderValue, setSliderValue] = useState(job_satisfaction);
   const [option, setOption] = useState(new_job);
@@ -52,20 +52,7 @@ function Profile() {
   return (
     <>
       <div className={css.info}>
-        <img
-          src={(() => {
-            switch (firstname) {
-              case "jodie":
-                return jodiePic;
-              case "mell":
-                return mellPic;
-              default:
-                return defaultPic;
-            }
-          })()}
-          alt="Profile Pic"
-          className={css.profilePic}
-        />
+        <img src={photourl} alt="Profile Pic" className={css.profilePic} />
         <h2>
           {first_name} {surname}
         </h2>
@@ -106,7 +93,7 @@ function Profile() {
           </li>
           <li>
             <span>About Me: </span>
-            {profile}
+            {aboutme}
           </li>
         </ul>
       </div>

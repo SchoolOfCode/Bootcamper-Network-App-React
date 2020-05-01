@@ -80,6 +80,5 @@ UID that they're viewing
 3. this unique identifier is used to fetch relevant bootcamper info from the db 
 4. this is then displayed when they click 'my profile'
 5. when a user first logs in using firebase, they need to be able to create a profile 
-6. this profile is what is fetched from the db when they subsequently log in  
+6. this profile is what is fetched from the db when they subsequently log in  */
 
-*/

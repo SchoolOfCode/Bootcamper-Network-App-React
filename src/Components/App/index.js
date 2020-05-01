@@ -8,10 +8,11 @@ import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
 import Meetup from "../MeetUp/index";
 import ProfileInputs from "../CreateProfile";
-import CompanyInputs from "../CreateCompanies"
+import CompanyInputs from "../CreateCompanies";
 import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 import { URL } from "../../config";
+import UsefulLinks from "../UsefulLinks/index.js";
 
 function App() {
   const [user, setUser] = useState({ loggedIn: false });
@@ -26,7 +27,6 @@ function App() {
         },
       });
       const data = await res.json();
-      console.log(data.events);
       setMeetupState(data.events);
     }
     getEvents();
@@ -63,7 +63,7 @@ function App() {
           <Route path="/companies">
             <CompaniesPage />
           </Route>
-          <Route path="/company/:companyid">
+          <Route path="/company/:companyname">
             <IndividualCompany />
           </Route>
           <Route path="/events">
@@ -77,6 +77,9 @@ function App() {
           </Route>
           <Route path="/signin">
             <SignIn />
+          </Route>
+          <Route path="/links">
+            <UsefulLinks />
           </Route>
         </Switch>
       </Router>

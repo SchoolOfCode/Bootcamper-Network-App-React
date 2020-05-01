@@ -16,7 +16,10 @@ function Dashboard({ state }) {
           <h2 className={css.header}> Latest Events </h2>
         </Link>
 
-        <EventsPage name={state[0]?.name || "Loading..."} />
+        <EventsPage
+          name={state[0]?.name || "Loading..."}
+          link={state[0]?.link}
+        />
       </div>
       <div className={css.container}>
         <br />
