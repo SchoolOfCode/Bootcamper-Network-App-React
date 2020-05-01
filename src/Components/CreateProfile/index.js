@@ -66,7 +66,6 @@ function reducer(state, action) {
 
 function ProfileInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   function handleClick(e) {
     const {
       first_name,
@@ -86,8 +85,9 @@ function ProfileInputs() {
       portfolio,
       linkedIn,
     } = state;
+    console.log(`from inside fetch`, previous_roles)
     e.preventDefault();
-    fetch(`http://localhost:5000/bootcampers`, {
+    fetch(`${URL}/bootcampers`, {
       method: "POST",
       body: JSON.stringify({
         first_name,
@@ -225,7 +225,7 @@ function ProfileInputs() {
             }}
           />
         </label>
-        {console.log(`hi`)}
+        
         <PreviousRoles onChange={(values) => {
               dispatch({
                 type: "previous_roles",

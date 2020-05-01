@@ -65,7 +65,7 @@ console.log(roleValues)
     
     {Array.from(Array(roleNumber)).map((x,i) => 
     {
-      console.log(`hello`)
+      
       return <PreviousRoleInputs id={i} onChange={handleChange} onCancel={handleCancel}/>
       })}
 
