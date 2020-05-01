@@ -23,9 +23,17 @@ export function signInWithPopup() {
     .then(function (result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
+      var userToken = user.getToken();
       // The signed-in user info.
       var user = result.user;
-      console.log(`Login has worked. Access token`, token, `User info `, user);
+      console.log(
+        `Login has worked. Access token`,
+        token,
+        `User info `,
+        user,
+        `User token: `,
+        userToken
+      );
     })
     .catch(function (error) {
       var errorCode = error.code;
@@ -81,4 +89,3 @@ UID that they're viewing
 4. this is then displayed when they click 'my profile'
 5. when a user first logs in using firebase, they need to be able to create a profile 
 6. this profile is what is fetched from the db when they subsequently log in  */
-
