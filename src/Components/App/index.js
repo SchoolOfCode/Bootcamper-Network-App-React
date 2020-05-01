@@ -18,7 +18,7 @@ function App() {
   const [user, setUser] = useState({ loggedIn: false });
   const [meetupState, setMeetupState] = useState([]);
 
-   useEffect(() => {
+  useEffect(() => {
     async function getEvents() {
       const res = await fetch(`${URL}/events`, {
         mode: "cors",
@@ -31,61 +31,61 @@ function App() {
     }
     getEvents();
   }, []);
-/*
-  useEffect(() => {
-    console.log(`hi again`)
-    onAuthStateChanged((user) => {
-      if (user && user.loggedin) {
-        setUser({ loggedIn: true, user });
-      } else {
-        setUser({ loggedIn: false, user: null });
-      }
-    });
-  }, [user]); */
 
-  /* if (!user.loggedIn) {
-    return (
-      <div>
-        <SignIn />
-      </div>
-    );
-  } */
- /*  if (user.loggedIn) {  */
-    return (
-      <Router>
-        {user.loggedIn && <NavBar />}
-        <Switch>
-          <Route path="/dash">
-            <Dashboard state={meetupState} />
-          </Route>
-          <Route path="/profile/:firstname">
-            <Profile />
-          </Route>
-          <Route path="/companies">
-            <CompaniesPage />
-          </Route>
-          <Route path="/company/:companyname">
-            <IndividualCompany />
-          </Route>
-          <Route path="/events">
-            <Meetup state={meetupState} />
-          </Route>
-          <Route path="/profileEdit">
-            <ProfileInputs />
-          </Route>
-          <Route path="/companyEdit">
-            <CompanyInputs />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/links">
-            <UsefulLinks />
-          </Route>
-        </Switch>
-      </Router>
-    );
-/*   } */
+  // useEffect(() => {
+  //   console.log(`hi again`);
+  //   onAuthStateChanged((user) => {
+  //     if (user && user.loggedin) {
+  //       setUser({ loggedIn: true, user });
+  //     } else {
+  //       setUser({ loggedIn: false, user: null });
+  //     }
+  //   });
+  // }, [user]);
+
+  // if (!user.loggedIn) {
+  //   return (
+  //     <div>
+  //       <SignIn />
+  //     </div>
+  //   );
+  // }
+  // if (user.loggedIn) {
+  return (
+    <Router>
+      <NavBar />
+      <Switch>
+        <Route path="/dash">
+          <Dashboard state={meetupState} />
+        </Route>
+        <Route path="/profile/:firstname">
+          <Profile />
+        </Route>
+        <Route path="/companies">
+          <CompaniesPage />
+        </Route>
+        <Route path="/company/:companyname">
+          <IndividualCompany />
+        </Route>
+        <Route path="/events">
+          <Meetup state={meetupState} />
+        </Route>
+        <Route path="/profileEdit">
+          <ProfileInputs />
+        </Route>
+        <Route path="/companyEdit">
+          <CompanyInputs />
+        </Route>
+        <Route path="/signin">
+          <SignIn />
+        </Route>
+        <Route path="/links">
+          <UsefulLinks />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
+// }
 
 export default App;

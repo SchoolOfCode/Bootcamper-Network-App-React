@@ -40,8 +40,10 @@ function IndividualCompany() {
   return (
     <div className={css.bigContainer}>
       <div className={css.companyContainer}>
-        <img src={logo} alt="company logo" className={css.companyLogo} />
-        <h2> {company_name} </h2>
+        <div className={css.imageWrapper}>
+          <img src={logo} alt="company logo" className={css.companyLogo} />
+        </div>
+        <h2 className={css.companyTitle}> {company_name} </h2>
       </div>
       <div className={css.extraData}>
         <div className={css.iconWrapper}>
