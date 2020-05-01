@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { onAuthStateChanged } from "../firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 import Dashboard from "../Dashboard/Dashboard";
 import css from "./App.module.css";
 import NavBar from "../NavBar/NavBar";
@@ -15,10 +17,11 @@ import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
 
 function App() {
-  const [user, setUser] = useState({ loggedIn: false });
+  // const [user, setUser] = useState({ loggedIn: false });
+  const [user, setUser] = useState(false);
   const [meetupState, setMeetupState] = useState([]);
 
-   useEffect(() => {
+  useEffect(() => {
     async function getEvents() {
       const res = await fetch(`${URL}/events`, {
         mode: "cors",
@@ -31,29 +34,44 @@ function App() {
     }
     getEvents();
   }, []);
-/*
+
   useEffect(() => {
-    console.log(`hi again`)
+    console.log(`hi again`);
     onAuthStateChanged((user) => {
-      if (user && user.loggedin) {
-        setUser({ loggedIn: true, user });
+      if (user) {
+        setUser(true);
+        const displayName = user.displayName;
+        const email = user.email;
+        const photoURL = user.photoURL;
+        const uid = user.uid;
+        console.log(
+          `displayname: `,
+          displayName,
+          `email: `,
+          email,
+          `photourl: `,
+          photoURL,
+          `uid: `,
+          uid
+        );
       } else {
-        setUser({ loggedIn: false, user: null });
+        setUser(false);
       }
     });
-  }, [user]); */
+  }, [user]);
 
-  /* if (!user.loggedIn) {
+  if (!user) {
     return (
       <div>
         <SignIn />
       </div>
     );
-  } */
- /*  if (user.loggedIn) {  */
+  }
+  if (user) {
     return (
       <Router>
-        {user.loggedIn && <NavBar />}
+        {user && <NavBar />}
+        {user && <Dashboard state={meetupState} />}
         <Switch>
           <Route path="/dash">
             <Dashboard state={meetupState} />
@@ -85,7 +103,7 @@ function App() {
         </Switch>
       </Router>
     );
-/*   } */
+  }
 }
 
 export default App;

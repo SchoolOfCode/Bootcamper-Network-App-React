@@ -1,4 +1,7 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+import "firebase/auth";
+import { onAuthStateChanged } from "../firebase";
+import firebase from "firebase/app";
 import { URL } from "../../config";
 import css from "../CreateProfile/createprof.module.css";
 import { Link } from "react-router-dom";
@@ -22,43 +25,123 @@ const initialState = {
   portfolio: "",
   linkedIn: "",
 };
+//finish setting up state to save the values to try and put them into the post
+const [fbDisplayName, setfbDisplayName] = useState("");
+const [fbEmail, setFbEmail] = useState("");
+const [fbUID, setfbUID] = useState("");
+const [fbPhotoUrl, setPhotoUrl] = useState("");
+var user = firebase.auth().currentUser;
+onAuthStateChanged((user) => {
+  if (user) {
+    setfbDisplayName(user.displayName);
+    setFbEmail(user.email);
+    setfbUID(user.uid);
+    setPhotoUrl(user.photoURL);
+    console.log(
+      `FROM CREATE PROFILE -> displayname: `,
+      fbDisplayName,
+      `email: `,
+      fbEmail,
+      `photourl: `,
+      fbPhotoUrl,
+      `uid: `,
+      fbUID
+    );
+  }
+});
 
+// var user = firebase.auth().currentUser;
+// // var firebasename, firebaseemail, firebasephotoUrl, firebaseuid;
+
+// if (user != null) {
+//   user.providerData.forEach(function (profile) {
+//     console.log("Sign-in provider: " + profile.providerId);
+//     console.log("  Provider-specific UID: " + profile.uid);
+//     console.log("  Name: " + profile.displayName);
+//     console.log("  Email: " + profile.email);
+//     console.log("  Photo URL: " + profile.photoURL);
+//   });
+// firebasename = user.displayName;
+// firebaseemail = user.email;
+// firebasephotoUrl = user.photoURL;
+// firebaseuid = user.uid;
+// }
+
+// console.log(
+//   `Details from create profile`,
+//   firebasename,
+//   firebasephotoUrl,
+//   firebaseuid,
+//   firebaseemail
+// );
 
 function reducer(state, action) {
-  console.log(action.type)
+  console.log(action.type);
   switch (action.type) {
     case "first_name":
-      return state.first_name === action.payload ? state : { ...state, first_name: action.payload };
+      return state.first_name === action.payload
+        ? state
+        : { ...state, first_name: action.payload };
     case "surname":
-      return state.surname === action.payload ? state :  { ...state, surname: action.payload };
+      return state.surname === action.payload
+        ? state
+        : { ...state, surname: action.payload };
     case "aboutme":
-      return state.aboutme === action.payload ? state :  { ...state, aboutme: action.payload };
+      return state.aboutme === action.payload
+        ? state
+        : { ...state, aboutme: action.payload };
     case "job_title":
-      return state.job_title === action.payload ? state :  { ...state, job_title: action.payload };
+      return state.job_title === action.payload
+        ? state
+        : { ...state, job_title: action.payload };
     case "company_id":
-      return state.company_id === action.payload ? state :  { ...state, company_id: action.payload };
+      return state.company_id === action.payload
+        ? state
+        : { ...state, company_id: action.payload };
     case "salary":
-      return state.salary === action.payload ? state :  { ...state, salary: action.payload };
+      return state.salary === action.payload
+        ? state
+        : { ...state, salary: action.payload };
     case "start_date":
-      return state.start_date === action.payload ? state :  { ...state, start_date: action.payload };
+      return state.start_date === action.payload
+        ? state
+        : { ...state, start_date: action.payload };
     case "previous_roles":
-      return state.previous_roles === action.payload ? state :  { ...state, previous_roles: action.payload };
+      return state.previous_roles === action.payload
+        ? state
+        : { ...state, previous_roles: action.payload };
     case "cohort_num":
-      return state.cohort_num === action.payload ? state :  { ...state, cohort_num: action.payload };
+      return state.cohort_num === action.payload
+        ? state
+        : { ...state, cohort_num: action.payload };
     case "region":
-      return state.region === action.payload ? state :  { ...state, region: action.payload };
+      return state.region === action.payload
+        ? state
+        : { ...state, region: action.payload };
     case "job_satisfaction":
-      return state.job_satisfaction === action.payload ? state :  { ...state, job_satisfaction: action.payload };
+      return state.job_satisfaction === action.payload
+        ? state
+        : { ...state, job_satisfaction: action.payload };
     case "new_job":
-      return state.new_job === action.payload ? state :  { ...state, new_job: action.payload };
+      return state.new_job === action.payload
+        ? state
+        : { ...state, new_job: action.payload };
     case "twitter":
-      return state.twitter === action.payload ? state :  { ...state, twitter: action.payload };
+      return state.twitter === action.payload
+        ? state
+        : { ...state, twitter: action.payload };
     case "github":
-      return state.github === action.payload ? state :  { ...state, github: action.payload };
+      return state.github === action.payload
+        ? state
+        : { ...state, github: action.payload };
     case "portfolio":
-      return state.portfolio === action.payload ? state :  { ...state, portfolio: action.payload };
+      return state.portfolio === action.payload
+        ? state
+        : { ...state, portfolio: action.payload };
     case "linkedIn":
-      return state.linkedIn === action.payload ? state :  { ...state, linkedIn: action.payload };
+      return state.linkedIn === action.payload
+        ? state
+        : { ...state, linkedIn: action.payload };
     default:
       throw new Error();
   }
@@ -85,7 +168,7 @@ function ProfileInputs() {
       portfolio,
       linkedIn,
     } = state;
-    console.log(`from inside fetch`, previous_roles)
+    console.log(`from inside fetch`, previous_roles);
     e.preventDefault();
     fetch(`${URL}/bootcampers`, {
       method: "POST",
@@ -225,13 +308,15 @@ function ProfileInputs() {
             }}
           />
         </label>
-        
-        <PreviousRoles onChange={(values) => {
-              dispatch({
-                type: "previous_roles",
-                payload: values,
-              });
-            }} />
+
+        <PreviousRoles
+          onChange={(values) => {
+            dispatch({
+              type: "previous_roles",
+              payload: values,
+            });
+          }}
+        />
         <label>
           Cohort Number:
           <input
