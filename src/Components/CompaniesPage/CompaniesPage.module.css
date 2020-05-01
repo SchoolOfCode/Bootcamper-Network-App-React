@@ -7,9 +7,13 @@
   margin-bottom: 10px;
 }
 
-.header > h2 {
+.companyTitle {
   margin-block-start: 0;
   margin-block-end: 0;
+  display: inline-block;
+  margin-left: 20px;
+  position: absolute;
+  top: 140px;
 }
 
 .bigContainer {
@@ -17,7 +21,7 @@
   text-align: center;
   width: 95vw;
   height: auto;
-  max-height: 75vh;
+  max-height: 65vh;
   border-radius: 1em;
   background-color: var(--main-color);
   padding: 3px;
@@ -36,31 +40,24 @@
   color: var(--main-color);
 }
 
-.companyContainer > h3 {
-  margin-block-start: 4px;
-  margin-left: 35%;
+.companyName {
+  margin-block-start: 10px;
+  margin-block-end: 0px;
 }
-.companyContainer > h2 {
-  margin-block-start: 30px;
-  margin-left: 35%;
-  display: inline-block;
-}
+
 .companyContainer > p {
-  display: inline-block;
+  /* display: inline-block; */
+  margin-block-start: 0;
   max-width: 60%;
   margin-left: 35%;
   margin-top: -10px;
 }
 
 .companyLogo {
-  display: inline-block;
-  width: 25%;
+  width: 100%;
   height: 50px;
   object-fit: cover;
-  position: absolute;
   left: 0;
-  margin-left: 8vw;
-  margin-top: 25px;
   border-radius: 5px;
 }
 
@@ -91,4 +88,20 @@ h3 {
   margin-right: 10px;
   margin-bottom: 5px;
   display: inline-block;
+}
+
+.imageWrapper {
+  display: inline-block;
+  width: 30%;
+  margin-top: 25px;
+  margin-left: 3vw;
+}
+.infoWrapper {
+  width: 60%;
+  float: right;
+  padding-right: 10px;
+}
+
+.companyData {
+  margin-left: 10px;
 }
