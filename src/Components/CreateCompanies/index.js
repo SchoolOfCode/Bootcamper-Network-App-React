@@ -1,12 +1,16 @@
 import React, { useState, useReducer } from "react";
 import { URL } from "../../config";
+import twitterLogo from "../../images/twitter-logo.png";
+import linkedinLogo from "../../images/linkedin.png";
+import websiteLogo from "../../images/web.svg";
+import css from "./CreateCompanies.module.css";
 
 const initialState = {
   company_name: "",
   description: "",
   logo: "",
   address: "",
-  postcode: 0,
+  postcode: "",
   website: "",
   twitter: "",
   linkedIn: "",
@@ -39,102 +43,116 @@ function CompanyInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function handleClick(e) {
-    const {company_name, description, logo, address, postcode, website, twitter, linkedIn} = state;
+    const {
+      company_name,
+      description,
+      logo,
+      address,
+      postcode,
+      website,
+      twitter,
+      linkedIn,
+    } = state;
     e.preventDefault();
     fetch(`${URL}/companies`, {
       method: "POST",
-      body: JSON.stringify({ company_name, description, logo, address, postcode, website, twitter, linkedIn}),
+      body: JSON.stringify({
+        company_name,
+        description,
+        logo,
+        address,
+        postcode,
+        website,
+        twitter,
+        linkedIn,
+      }),
       headers: {
-        "Content-Type": "application/json"
-      }
-  },
- 
-  )}
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
   return (
-    <div>
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <label>
-          Company Name:
+    <div className={css.wrapper}>
+      <form style={{ display: "flex", flexDirection: "column" }}>
+        <label>Company Name:</label>
+        <input
+          className={css.inputs}
+          type="text"
+          placeholder="company_name"
+          name="company_name"
+          value={state.company_name}
+          onChange={(event) => {
+            dispatch({
+              type: "company_name",
+              payload: event.target.value,
+            });
+          }}
+        />
+
+        <label>Description:</label>
+        <input
+          className={css.inputs}
+          type="text"
+          placeholder="description"
+          name="description"
+          value={state.description}
+          onChange={(event) => {
+            dispatch({
+              type: "description",
+              payload: event.target.value,
+            });
+          }}
+        />
+
+        <label>Logo URL:</label>
+        <input
+          className={css.inputs}
+          type="text"
+          placeholder="logo"
+          name="logo"
+          value={state.logo}
+          onChange={(event) => {
+            dispatch({
+              type: "logo",
+              payload: event.target.value,
+            });
+          }}
+        />
+
+        <label>Address:</label>
+        <input
+          className={css.inputs}
+          type="text"
+          placeholder="address"
+          name="address"
+          value={state.address}
+          onChange={(event) => {
+            dispatch({
+              type: "address",
+              payload: event.target.value,
+            });
+          }}
+        />
+
+        <label>Postcode:</label>
+        <input
+          className={css.inputs}
+          type="text"
+          placeholder="postcode"
+          name="postcode"
+          value={state.postcode}
+          onChange={(event) => {
+            dispatch({
+              type: "postcode",
+              payload: event.target.value,
+            });
+          }}
+        />
+        <div>
+          <img src={websiteLogo} alt="website logo" className={css.logos} />
           <input
-            type="text"
-            placeholder="company_name"
-            name="company_name"
-            value={state.company_name}
-            onChange={(event) => {
-              dispatch({
-                type: "company_name",
-                payload: event.target.value,
-              });
-            }}
-          />
-          
-        </label>
-        <label>
-          Description:
-          <input
-            type="text"
-            placeholder="description"
-            name="description"
-            value={state.description}
-            onChange={(event) => {
-              dispatch({
-                type: "description",
-                payload: event.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-          Logo URL:
-          <input
-            type="text"
-            placeholder="logo"
-            name="logo"
-            value={state.logo}
-            onChange={(event) => {
-              dispatch({
-                type: "logo",
-                payload: event.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-        Address:
-          <input
-            type="text"
-            placeholder="address"
-            name="address"
-            value={state.address}
-            onChange={(event) => {
-              dispatch({
-                type: "address",
-                payload: event.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-        Postcode:
-          <input
-            type="text"
-            placeholder="postcode"
-            name="postcode"
-            value={state.postcode}
-            onChange={(event) => {
-              dispatch({
-                type: "postcode",
-                payload: event.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-        Website:
-          <input
+            className={css.inputs}
             type="text"
             placeholder="website"
             name="website"
@@ -146,10 +164,11 @@ function CompanyInputs() {
               });
             }}
           />
-        </label>
-        <label>
-        Twitter:
+        </div>
+        <div>
+          <img src={twitterLogo} alt="twitter logo" className={css.logos} />
           <input
+            className={css.inputs}
             type="text"
             placeholder="twitter"
             name="twitter"
@@ -161,10 +180,11 @@ function CompanyInputs() {
               });
             }}
           />
-        </label>
-        <label>
-        LinkedIn:
+        </div>
+        <div>
+          <img src={linkedinLogo} alt="linkedIn logo" className={css.logos} />
           <input
+            className={css.inputs}
             type="text"
             placeholder="linkedIn"
             name="linkedIn"
@@ -176,10 +196,12 @@ function CompanyInputs() {
               });
             }}
           />
-           <button onClick={handleClick}>Save</button>
-        </label>
+        </div>
+        <button onClick={handleClick} className={css.button}>
+          Save
+        </button>
       </form>
     </div>
-  )
+  );
 }
 export default CompanyInputs;
