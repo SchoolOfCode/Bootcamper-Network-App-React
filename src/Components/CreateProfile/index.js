@@ -1,4 +1,7 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+import "firebase/auth";
+import { onAuthStateChanged } from "../firebase";
+import firebase from "firebase/app";
 import { URL } from "../../config";
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import { Link } from "react-router-dom";
@@ -26,6 +29,47 @@ const initialState = {
   portfolio: "",
   linkedIn: "",
 };
+
+
+// function SetUserDetails() {
+//   const [fbDisplayName, setfbDisplayName] = useState("");
+//   const [fbEmail, setFbEmail] = useState("");
+//   const [fbUID, setfbUID] = useState("");
+//   const [fbPhotoUrl, setPhotoUrl] = useState("");
+//   const user = firebase.auth().currentUser;
+//   onAuthStateChanged((user) => {
+//     if (user) {
+//       setfbDisplayName(user.displayName);
+//       setFbEmail(user.email);
+//       setfbUID(user.uid);
+//       setPhotoUrl(user.photoURL);
+//       console.log(`FROM CREATE PROFILE INSIDE`, fbUID);
+//     }
+//   });
+//   return console.log(
+//     `FROM CREATE PROFILE -> displayname: `,
+//     fbDisplayName,
+//     `email: `,
+//     fbEmail,
+//     `photourl: `,
+//     fbPhotoUrl,
+//     `uid: `,
+//     fbUID
+//   );
+// }
+
+// var user = firebase.auth().currentUser;
+// var fbname, fbemail, fbphotoUrl, fbuid;
+// onAuthStateChanged((user) => {
+// if (user != null) {
+//   fbname = user.displayName;
+//   fbemail = user.email;
+//   fbphotoUrl = user.photoURL;
+//   fbuid = user.uid;
+// }}
+
+// console.log(`Details from create profile`, fbname, fbphotoUrl, fbuid, fbemail);
+
 
 function reducer(state, action) {
   console.log(action.type);
@@ -254,6 +298,7 @@ function ProfileInputs() {
               });
             }}
           />
+
           <PreviousRoles
             onChange={(values) => {
               dispatch({
@@ -262,7 +307,8 @@ function ProfileInputs() {
               });
             }}
           />
-          <label>Cohort Numb</label>er:
+          <label>Cohort Number:</label>
+
           <input
             className={css.inputs}
             type="text"

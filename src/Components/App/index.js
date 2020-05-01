@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { onAuthStateChanged } from "../firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 import Dashboard from "../Dashboard/Dashboard";
 import css from "./App.module.css";
 import NavBar from "../NavBar/NavBar";
@@ -15,8 +17,13 @@ import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
 
 function App() {
-  const [user, setUser] = useState({ loggedIn: false });
+  // const [user, setUser] = useState({ loggedIn: false });
+  const [user, setUser] = useState(null);
   const [meetupState, setMeetupState] = useState([]);
+  const [fbDisplayName, setFbDisplayName] = useState("");
+  const [fbEmail, setFbEmail] = useState("");
+  const [fbUID, setFbUID] = useState("");
+  const [fbPhotoUrl, setFbPhotoUrl] = useState("");
 
   useEffect(() => {
     async function getEvents() {
@@ -32,28 +39,52 @@ function App() {
     getEvents();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(`hi again`);
-  //   onAuthStateChanged((user) => {
-  //     if (user && user.loggedin) {
-  //       setUser({ loggedIn: true, user });
-  //     } else {
-  //       setUser({ loggedIn: false, user: null });
-  //     }
-  //   });
-  // }, [user]);
 
-  // if (!user.loggedIn) {
+  useEffect(() => {
+    console.log(`hi again`);
+    onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+        // const displayName = user.displayName;
+        // const email = user.email;
+        // const photoURL = user.photoURL;
+        // const uid = user.uid;
+        setFbDisplayName(user.displayName);
+        setFbEmail(user.email);
+        setFbPhotoUrl(user.photoURL);
+        setFbUID(user.uid);
+        console.log(`TOKEN`, user.getIdToken());
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
+  console.log(
+    `FROM MAIN APP: displayname: `,
+    fbDisplayName,
+    `email: `,
+    fbEmail,
+    `photourl: `,
+    fbPhotoUrl,
+    `uid: `,
+    fbUID
+  );
+
+  // if (!user) {
+
   //   return (
   //     <div>
   //       <SignIn />
   //     </div>
   //   );
   // }
-  // if (user.loggedIn) {
+
+  // if (user) {
   return (
     <Router>
       <NavBar />
+      {/* <Dashboard state={meetupState} /> */}
+
       <Switch>
         <Route path="/dash">
           <Dashboard state={meetupState} />
@@ -77,7 +108,9 @@ function App() {
           <CompanyInputs />
         </Route>
         <Route path="/signin">
-          <SignIn />
+
+          <SignIn user={user} />
+
         </Route>
         <Route path="/links">
           <UsefulLinks />
