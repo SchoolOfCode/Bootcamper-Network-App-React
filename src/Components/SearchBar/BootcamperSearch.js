@@ -1,4 +1,5 @@
 import React from "react";
+import Divider from "../Divider";
 
 function BootcamperSearch({ name, surname, pic, region }) {
   return (
@@ -27,7 +28,7 @@ function BootcamperSearch({ name, surname, pic, region }) {
         </p>
         <p>{region}</p>
       </div>
-      <hr style={{ width: "80%" }} />
+      <Divider />
     </div>
   );
 }

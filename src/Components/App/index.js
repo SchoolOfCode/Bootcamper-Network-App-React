@@ -8,11 +8,11 @@ import Profile from "../Profile/Profile";
 import CompaniesPage from "../CompaniesPage/CompaniesPage";
 import Meetup from "../MeetUp/index";
 import ProfileInputs from "../CreateProfile";
-import CompanyInputs from "../CreateCompanies"
+import CompanyInputs from "../CreateCompanies";
 import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 import { URL } from "../../config";
-import UsefulLinks from "../UsefulLinks/UsefulLinks";
+import UsefulLinks from "../UsefulLinks/index.js";
 
 function App() {
   const [user, setUser] = useState({ loggedIn: false });

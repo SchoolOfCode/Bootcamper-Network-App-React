@@ -1,6 +1,7 @@
 import React from "react";
 import css from "../CompaniesPage/CompaniesPage.module.css";
 import morecss from "../MeetUp/Meetup.module.css";
+import Divider from "../Divider";
 
 function UsefulLinks() {
   return (
@@ -17,19 +18,19 @@ function UsefulLinks() {
           <span>School of Code's Website: </span>
           <a href="https://www.schoolofcode.com/">Go Here</a>
         </p>
-        <hr />
+        <Divider />
         <p>
           <span>School of Code's Stack Overflow: </span>
           <a href="https://stackoverflow.com/c/school-of-code/questions">
             Go Here
           </a>
         </p>
-        <hr />
+        <Divider />
         <p>
           <span>School of Code's Slack: </span>
           <a href="https://schoolofcodebootcamp.slack.com">Go Here</a>
         </p>
-        <hr />
+        <Divider />
         <p>
           <span>School of Code's LinkedIn: </span>
           <a href="https://www.linkedin.com/school/school-of-code/">Go Here</a>

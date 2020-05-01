@@ -26,7 +26,7 @@ function IndividualCompany() {
       setIndividualCompanyData(data.payload[0]);
     }
     getIndividualCompany();
-  }, []);
+  }, [companyname]);
   const {
     company_name,
     description,

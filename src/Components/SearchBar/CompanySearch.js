@@ -1,4 +1,5 @@
 import React from "react";
+import Divider from "../Divider";
 
 function CompanySearch({ name, address }) {
   return (
@@ -6,7 +7,7 @@ function CompanySearch({ name, address }) {
       <p>{name}</p>
       <p>{address}</p>
 
-      <hr style={{ width: "80%" }} />
+      <Divider />
     </div>
   );
 }

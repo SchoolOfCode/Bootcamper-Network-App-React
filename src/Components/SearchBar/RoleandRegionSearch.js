@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import css from "../Dashboard/Dashboard.module.css";
+import Divider from "../Divider";
 
 function RoleAndRegionSearch({ name, surname, company, job, region }) {
   return (
@@ -17,7 +18,7 @@ function RoleAndRegionSearch({ name, surname, company, job, region }) {
           <p> {region} </p>
         </Link>
       </div>
-      <hr style={{ width: "80%" }} />
+      <Divider />
     </>
   );
 }
