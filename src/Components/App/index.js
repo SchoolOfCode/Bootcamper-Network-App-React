@@ -18,7 +18,7 @@ function App() {
   const [user, setUser] = useState({ loggedIn: false });
   const [meetupState, setMeetupState] = useState([]);
 
-  useEffect(() => {
+   useEffect(() => {
     async function getEvents() {
       const res = await fetch(`${URL}/events`, {
         mode: "cors",
@@ -31,25 +31,26 @@ function App() {
     }
     getEvents();
   }, []);
-
+/*
   useEffect(() => {
+    console.log(`hi again`)
     onAuthStateChanged((user) => {
-      if (user) {
+      if (user && user.loggedin) {
         setUser({ loggedIn: true, user });
       } else {
         setUser({ loggedIn: false, user: null });
       }
     });
-  }, [user]);
+  }, [user]); */
 
-  if (!user.loggedIn) {
+  /* if (!user.loggedIn) {
     return (
       <div>
         <SignIn />
       </div>
     );
-  }
-  if (user.loggedIn) {
+  } */
+ /*  if (user.loggedIn) {  */
     return (
       <Router>
         {user.loggedIn && <NavBar />}
@@ -84,7 +85,7 @@ function App() {
         </Switch>
       </Router>
     );
-  }
+/*   } */
 }
 
 export default App;
