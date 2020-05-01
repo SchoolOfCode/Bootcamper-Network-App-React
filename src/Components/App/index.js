@@ -18,8 +18,12 @@ import UsefulLinks from "../UsefulLinks/index.js";
 
 function App() {
   // const [user, setUser] = useState({ loggedIn: false });
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   const [meetupState, setMeetupState] = useState([]);
+  const [fbDisplayName, setFbDisplayName] = useState("");
+  const [fbEmail, setFbEmail] = useState("");
+  const [fbUID, setFbUID] = useState("");
+  const [fbPhotoUrl, setFbPhotoUrl] = useState("");
 
   useEffect(() => {
     async function getEvents() {
@@ -39,71 +43,75 @@ function App() {
     console.log(`hi again`);
     onAuthStateChanged((user) => {
       if (user) {
-        setUser(true);
-        const displayName = user.displayName;
-        const email = user.email;
-        const photoURL = user.photoURL;
-        const uid = user.uid;
-        console.log(
-          `displayname: `,
-          displayName,
-          `email: `,
-          email,
-          `photourl: `,
-          photoURL,
-          `uid: `,
-          uid
-        );
+        setUser(user);
+        // const displayName = user.displayName;
+        // const email = user.email;
+        // const photoURL = user.photoURL;
+        // const uid = user.uid;
+        setFbDisplayName(user.displayName);
+        setFbEmail(user.email);
+        setFbPhotoUrl(user.photoURL);
+        setFbUID(user.uid);
+        console.log(`TOKEN`, user.getIdToken());
       } else {
-        setUser(false);
+        setUser(null);
       }
     });
-  }, [user]);
+  }, []);
+  console.log(
+    `FROM MAIN APP: displayname: `,
+    fbDisplayName,
+    `email: `,
+    fbEmail,
+    `photourl: `,
+    fbPhotoUrl,
+    `uid: `,
+    fbUID
+  );
 
-  if (!user) {
-    return (
-      <div>
-        <SignIn />
-      </div>
-    );
-  }
-  if (user) {
-    return (
-      <Router>
-        {user && <NavBar />}
-        {user && <Dashboard state={meetupState} />}
-        <Switch>
-          <Route path="/dash">
-            <Dashboard state={meetupState} />
-          </Route>
-          <Route path="/profile/:firstname">
-            <Profile />
-          </Route>
-          <Route path="/companies">
-            <CompaniesPage />
-          </Route>
-          <Route path="/company/:companyname">
-            <IndividualCompany />
-          </Route>
-          <Route path="/events">
-            <Meetup state={meetupState} />
-          </Route>
-          <Route path="/profileEdit">
-            <ProfileInputs />
-          </Route>
-          <Route path="/companyEdit">
-            <CompanyInputs />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/links">
-            <UsefulLinks />
-          </Route>
-        </Switch>
-      </Router>
-    );
-  }
+  // if (!user) {
+  //   return (
+  //     <div>
+  //       <SignIn />
+  //     </div>
+  //   );
+  // }
+  // if (user) {
+  return (
+    <Router>
+      <NavBar />
+      {/* <Dashboard state={meetupState} /> */}
+      <Switch>
+        <Route path="/dash">
+          <Dashboard state={meetupState} />
+        </Route>
+        <Route path="/profile/:firstname">
+          <Profile />
+        </Route>
+        <Route path="/companies">
+          <CompaniesPage />
+        </Route>
+        <Route path="/company/:companyname">
+          <IndividualCompany />
+        </Route>
+        <Route path="/events">
+          <Meetup state={meetupState} />
+        </Route>
+        <Route path="/profileEdit">
+          <ProfileInputs />
+        </Route>
+        <Route path="/companyEdit">
+          <CompanyInputs />
+        </Route>
+        <Route path="/signin">
+          <SignIn user={user} />
+        </Route>
+        <Route path="/links">
+          <UsefulLinks />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

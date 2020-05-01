@@ -25,55 +25,45 @@ const initialState = {
   portfolio: "",
   linkedIn: "",
 };
-//finish setting up state to save the values to try and put them into the post
-const [fbDisplayName, setfbDisplayName] = useState("");
-const [fbEmail, setFbEmail] = useState("");
-const [fbUID, setfbUID] = useState("");
-const [fbPhotoUrl, setPhotoUrl] = useState("");
-var user = firebase.auth().currentUser;
-onAuthStateChanged((user) => {
-  if (user) {
-    setfbDisplayName(user.displayName);
-    setFbEmail(user.email);
-    setfbUID(user.uid);
-    setPhotoUrl(user.photoURL);
-    console.log(
-      `FROM CREATE PROFILE -> displayname: `,
-      fbDisplayName,
-      `email: `,
-      fbEmail,
-      `photourl: `,
-      fbPhotoUrl,
-      `uid: `,
-      fbUID
-    );
-  }
-});
 
-// var user = firebase.auth().currentUser;
-// // var firebasename, firebaseemail, firebasephotoUrl, firebaseuid;
-
-// if (user != null) {
-//   user.providerData.forEach(function (profile) {
-//     console.log("Sign-in provider: " + profile.providerId);
-//     console.log("  Provider-specific UID: " + profile.uid);
-//     console.log("  Name: " + profile.displayName);
-//     console.log("  Email: " + profile.email);
-//     console.log("  Photo URL: " + profile.photoURL);
+// function SetUserDetails() {
+//   const [fbDisplayName, setfbDisplayName] = useState("");
+//   const [fbEmail, setFbEmail] = useState("");
+//   const [fbUID, setfbUID] = useState("");
+//   const [fbPhotoUrl, setPhotoUrl] = useState("");
+//   const user = firebase.auth().currentUser;
+//   onAuthStateChanged((user) => {
+//     if (user) {
+//       setfbDisplayName(user.displayName);
+//       setFbEmail(user.email);
+//       setfbUID(user.uid);
+//       setPhotoUrl(user.photoURL);
+//       console.log(`FROM CREATE PROFILE INSIDE`, fbUID);
+//     }
 //   });
-// firebasename = user.displayName;
-// firebaseemail = user.email;
-// firebasephotoUrl = user.photoURL;
-// firebaseuid = user.uid;
+//   return console.log(
+//     `FROM CREATE PROFILE -> displayname: `,
+//     fbDisplayName,
+//     `email: `,
+//     fbEmail,
+//     `photourl: `,
+//     fbPhotoUrl,
+//     `uid: `,
+//     fbUID
+//   );
 // }
 
-// console.log(
-//   `Details from create profile`,
-//   firebasename,
-//   firebasephotoUrl,
-//   firebaseuid,
-//   firebaseemail
-// );
+// var user = firebase.auth().currentUser;
+// var fbname, fbemail, fbphotoUrl, fbuid;
+// onAuthStateChanged((user) => {
+// if (user != null) {
+//   fbname = user.displayName;
+//   fbemail = user.email;
+//   fbphotoUrl = user.photoURL;
+//   fbuid = user.uid;
+// }}
+
+// console.log(`Details from create profile`, fbname, fbphotoUrl, fbuid, fbemail);
 
 function reducer(state, action) {
   console.log(action.type);
