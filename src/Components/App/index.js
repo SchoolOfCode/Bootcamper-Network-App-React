@@ -11,6 +11,7 @@ import ProfileInputs from "../CreateProfile";
 import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 import { URL } from "../../config";
+import UsefulLinks from "../UsefulLinks/UsefulLinks";
 
 function App() {
   const [user, setUser] = useState({ loggedIn: false });
@@ -72,6 +73,9 @@ function App() {
           </Route>
           <Route path="/signin">
             <SignIn />
+          </Route>
+          <Route path="/links">
+            <UsefulLinks />
           </Route>
         </Switch>
       </Router>
