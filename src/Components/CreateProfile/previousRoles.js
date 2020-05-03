@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import css from "../CreateCompanies/CreateCompanies.module.css";
 
 const PreviousRoleInputs = ({ onChange, id, onCancel }) => {
   const [jobTitle, setJobTitle] = useState();
@@ -9,31 +10,34 @@ const PreviousRoleInputs = ({ onChange, id, onCancel }) => {
   }, [jobTitle, company, id]);
 
   return (
-    <label>
-      <label>
-        Job Title:
-        <input
-          type="text"
-          placeholder="Job Title"
-          name="jobTitle"
-          value={jobTitle}
-          onChange={(e) => setJobTitle(e.target.value)}
-        />
-      </label>
-      <label>
-        Company:
-        <input
-          type="text"
-          placeholder="Company"
-          name="company"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-        />
-      </label>
-      <button type="button" onClick={() => onCancel(id)}>
+    <>
+      <label>Job Title:</label>
+      <input
+        className={css.inputs}
+        type="text"
+        placeholder="Job Title"
+        name="jobTitle"
+        value={jobTitle}
+        onChange={(e) => setJobTitle(e.target.value)}
+      />
+      <label>Company:</label>
+      <input
+        className={css.inputs}
+        type="text"
+        placeholder="Company"
+        name="company"
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
+      />
+
+      <button
+        type="button"
+        onClick={() => onCancel(id)}
+        className={css.prevRoleButton}
+      >
         ❌
       </button>
-    </label>
+    </>
   );
 };
 
@@ -62,7 +66,6 @@ const PreviousRoles = ({ onChange }) => {
     setRoleNumber(roleNumber - 1);
   };
 
-  console.log(`ROLE VALUES`, roleValues);
   return (
     <>
       {Array.from(Array(roleNumber)).map((x, i) => {
@@ -75,8 +78,11 @@ const PreviousRoles = ({ onChange }) => {
         );
       })}
 
-      <button type="button" onClick={() => setRoleNumber(roleNumber + 1)}>
-        +
+      <button
+        type="button"
+        onClick={() => setRoleNumber(roleNumber + 1)}
+        className={css.prevRoleButton}
+      >+
       </button>
     </>
   );

@@ -39,6 +39,7 @@ function App() {
     getEvents();
   }, []);
 
+
   useEffect(() => {
     console.log(`hi again`);
     onAuthStateChanged((user) => {
@@ -70,17 +71,20 @@ function App() {
   );
 
   // if (!user) {
+
   //   return (
   //     <div>
   //       <SignIn />
   //     </div>
   //   );
   // }
+
   // if (user) {
   return (
     <Router>
       <NavBar />
       {/* <Dashboard state={meetupState} /> */}
+
       <Switch>
         <Route path="/dash">
           <Dashboard state={meetupState} />
@@ -104,7 +108,9 @@ function App() {
           <CompanyInputs />
         </Route>
         <Route path="/signin">
+
           <SignIn user={user} />
+
         </Route>
         <Route path="/links">
           <UsefulLinks />
@@ -113,5 +119,6 @@ function App() {
     </Router>
   );
 }
+// }
 
 export default App;

@@ -9,9 +9,13 @@ function Company({ logo, company_name, address, company_id }) {
   return (
     <Link to={`/company/${company_name}`}>
       <div className={css.companyContainer}>
-        <img src={logo} alt="company logo" className={css.companyLogo} />
-        <h3> {company_name} </h3>
-        <p> {address}</p>
+        <div className={css.imageWrapper}>
+          <img src={logo} alt="company logo" className={css.companyLogo} />
+        </div>
+        <div className={css.infoWrapper}>
+          <h3 className={css.companyName}> {company_name} </h3>
+          <p className={css.companyData}> {address}</p>
+        </div>
       </div>
     </Link>
   );

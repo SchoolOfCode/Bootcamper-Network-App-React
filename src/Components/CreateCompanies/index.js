@@ -1,12 +1,16 @@
 import React, { useState, useReducer } from "react";
 import { URL } from "../../config";
+import twitterLogo from "../../images/twitter-logo.png";
+import linkedinLogo from "../../images/linkedin.png";
+import websiteLogo from "../../images/web.svg";
+import css from "./CreateCompanies.module.css";
 
 const initialState = {
   company_name: "",
   description: "",
   logo: "",
   address: "",
-  postcode: 0,
+  postcode: "",
   website: "",
   twitter: "",
   linkedIn: "",
@@ -39,26 +43,42 @@ function CompanyInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function handleClick(e) {
-    const {company_name, description, logo, address, postcode, website, twitter, linkedIn} = state;
+    const {
+      company_name,
+      description,
+      logo,
+      address,
+      postcode,
+      website,
+      twitter,
+      linkedIn,
+    } = state;
     e.preventDefault();
     fetch(`${URL}/companies`, {
       method: "POST",
-      body: JSON.stringify({ company_name, description, logo, address, postcode, website, twitter, linkedIn}),
+      body: JSON.stringify({
+        company_name,
+        description,
+        logo,
+        address,
+        postcode,
+        website,
+        twitter,
+        linkedIn,
+      }),
       headers: {
-        "Content-Type": "application/json"
-      }
-  },
- 
-  )}
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
   return (
-    <div>
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <label>
-          Company Name:
+    <>
+      <div className={css.wrapper}>
+        <form style={{ display: "flex", flexDirection: "column" }}>
+          <label>Company Name:</label>
           <input
+            className={css.inputs}
             type="text"
             placeholder="company_name"
             name="company_name"
@@ -70,11 +90,10 @@ function CompanyInputs() {
               });
             }}
           />
-          
-        </label>
-        <label>
-          Description:
+
+          <label>Description:</label>
           <input
+            className={css.inputs}
             type="text"
             placeholder="description"
             name="description"
@@ -86,10 +105,10 @@ function CompanyInputs() {
               });
             }}
           />
-        </label>
-        <label>
-          Logo URL:
+
+          <label>Logo URL:</label>
           <input
+            className={css.inputs}
             type="text"
             placeholder="logo"
             name="logo"
@@ -101,10 +120,10 @@ function CompanyInputs() {
               });
             }}
           />
-        </label>
-        <label>
-        Address:
+
+          <label>Address:</label>
           <input
+            className={css.inputs}
             type="text"
             placeholder="address"
             name="address"
@@ -116,10 +135,10 @@ function CompanyInputs() {
               });
             }}
           />
-        </label>
-        <label>
-        Postcode:
+
+          <label>Postcode:</label>
           <input
+            className={css.inputs}
             type="text"
             placeholder="postcode"
             name="postcode"
@@ -131,55 +150,60 @@ function CompanyInputs() {
               });
             }}
           />
-        </label>
-        <label>
-        Website:
-          <input
-            type="text"
-            placeholder="website"
-            name="website"
-            value={state.website}
-            onChange={(event) => {
-              dispatch({
-                type: "website",
-                payload: event.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-        Twitter:
-          <input
-            type="text"
-            placeholder="twitter"
-            name="twitter"
-            value={state.twitter}
-            onChange={(event) => {
-              dispatch({
-                type: "twitter",
-                payload: event.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-        LinkedIn:
-          <input
-            type="text"
-            placeholder="linkedIn"
-            name="linkedIn"
-            value={state.linkedIn}
-            onChange={(event) => {
-              dispatch({
-                type: "linkedIn",
-                payload: event.target.value,
-              });
-            }}
-          />
-           <button onClick={handleClick}>Save</button>
-        </label>
-      </form>
-    </div>
-  )
+          <div>
+            <img src={websiteLogo} alt="website logo" className={css.logos} />
+            <input
+              className={css.inputs}
+              type="text"
+              placeholder="website"
+              name="website"
+              value={state.website}
+              onChange={(event) => {
+                dispatch({
+                  type: "website",
+                  payload: event.target.value,
+                });
+              }}
+            />
+          </div>
+          <div>
+            <img src={twitterLogo} alt="twitter logo" className={css.logos} />
+            <input
+              className={css.inputs}
+              type="text"
+              placeholder="twitter"
+              name="twitter"
+              value={state.twitter}
+              onChange={(event) => {
+                dispatch({
+                  type: "twitter",
+                  payload: event.target.value,
+                });
+              }}
+            />
+          </div>
+          <div>
+            <img src={linkedinLogo} alt="linkedIn logo" className={css.logos} />
+            <input
+              className={css.inputs}
+              type="text"
+              placeholder="linkedIn"
+              name="linkedIn"
+              value={state.linkedIn}
+              onChange={(event) => {
+                dispatch({
+                  type: "linkedIn",
+                  payload: event.target.value,
+                });
+              }}
+            />
+          </div>
+        </form>
+      </div>
+      <button onClick={handleClick} className={css.button}>
+        Save
+      </button>
+    </>
+  );
 }
 export default CompanyInputs;
