@@ -97,6 +97,7 @@ function reducer(state, action) {
         ? state
         : { ...state, start_date: action.payload };
     case "previous_roles":
+      console.log(`previous roles`, action.payload);
       return state.previous_roles === action.payload
         ? state
         : { ...state, previous_roles: action.payload };
@@ -158,9 +159,9 @@ function ProfileInputs() {
       portfolio,
       linkedIn,
     } = state;
-    console.log(`from inside fetch`, previous_roles);
+    console.log(previous_roles);
     e.preventDefault();
-    fetch(`${URL}/bootcampers`, {
+    fetch(`http://localhost:5000/bootcampers`, {
       method: "POST",
       body: JSON.stringify({
         first_name,
