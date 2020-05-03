@@ -46,7 +46,7 @@ const PreviousRoles = ({ onChange }) => {
   const [roleValues, setRoleValues] = useState([]);
 
   useEffect(() => {
-    onChange({ roleValues });
+    onChange(roleValues);
   }, [roleValues]);
 
   const handleChange = (inputValue) => {
@@ -66,7 +66,6 @@ const PreviousRoles = ({ onChange }) => {
     setRoleNumber(roleNumber - 1);
   };
 
-  console.log(roleValues);
   return (
     <>
       {Array.from(Array(roleNumber)).map((x, i) => {
@@ -83,8 +82,7 @@ const PreviousRoles = ({ onChange }) => {
         type="button"
         onClick={() => setRoleNumber(roleNumber + 1)}
         className={css.prevRoleButton}
-      >
-        +
+      >+
       </button>
     </>
   );
