@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useReducer } from "react";
+import { useHistory } from "react-router-dom";
 import "firebase/auth";
 import { onAuthStateChanged } from "../firebase";
 import firebase from "firebase/app";
 import { URL } from "../../config";
 
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from '@material-ui/pickers';
+} from "@material-ui/pickers";
 
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import { Link } from "react-router-dom";
@@ -110,15 +111,17 @@ function reducer(state, action) {
   }
 }
 
-
 function ProfileInputs({ uid, photourl, email }) {
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2020-05-04T09:00:00'));
+  const history = useHistory();
+  const [selectedDate, setSelectedDate] = React.useState(
+    new Date("2020-05-04T09:00:00")
+  );
   const handleDateChange = (date) => {
     setSelectedDate(date);
-  }; 
+  };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  function handleClick(e) {
+  async function handleClick(e) {
     const {
       first_name,
       surname,
@@ -139,12 +142,12 @@ function ProfileInputs({ uid, photourl, email }) {
     } = state;
     console.log(previous_roles);
     e.preventDefault();
-    fetch(`${URL}/bootcampers`, {
+    const saveResult = await fetch(`${URL}/bootcampers`, {
       mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-        },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
       method: "POST",
       body: JSON.stringify({
         uid,
@@ -167,13 +170,16 @@ function ProfileInputs({ uid, photourl, email }) {
         portfolio,
         linkedIn,
       }),
-      
     });
+    console.log(JSON.stringify(saveResult));
+    if (saveResult.ok) {
+      history.push("/profile");
+    }
   }
 
   return (
     <>
-    <h2 className={css.header}>Edit Profile</h2>
+      <h2 className={css.header}>Edit Profile</h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>First Name:</label>
@@ -234,8 +240,9 @@ function ProfileInputs({ uid, photourl, email }) {
           />
           <label>Company:</label>
           <p className={css.linktext}>
-          <Link to="/companyEdit" className={css.linktext}>If your company doesn't already exist, add it 
-             here</Link>
+            <Link to="/companyEdit" className={css.linktext}>
+              If your company doesn't already exist, add it here
+            </Link>
           </p>
           <input
             className={css.inputs}
@@ -277,7 +284,6 @@ function ProfileInputs({ uid, photourl, email }) {
                 payload: event.target.value,
               });
             }}
-
           />
 
           {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -435,10 +441,9 @@ function ProfileInputs({ uid, photourl, email }) {
           </div>
         </form>
         <button onClick={handleClick} className={css.button}>
-        Save
-      </button>
+          Save
+        </button>
       </div>
-      
     </>
   );
 }
