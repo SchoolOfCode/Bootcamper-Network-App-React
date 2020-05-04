@@ -1,8 +1,8 @@
 import React, { useState, useReducer } from "react";
 import { URL } from "../../config";
-import twitterLogo from "../../images/twitter-logo.png";
-import linkedinLogo from "../../images/linkedin.png";
-import websiteLogo from "../../images/web.svg";
+import twitterLogo from "../../images/twitter2.svg";
+import linkedinLogo from "../../images/linkedin2.svg";
+import websiteLogo from "../../images/web2.svg";
 import css from "./CreateCompanies.module.css";
 
 const initialState = {
@@ -74,6 +74,7 @@ function CompanyInputs() {
 
   return (
     <>
+    <h2 className={css.header}> Add a Company </h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>Company Name:</label>
@@ -92,7 +93,7 @@ function CompanyInputs() {
           />
 
           <label>Description:</label>
-          <input
+          <textarea
             className={css.inputs}
             type="text"
             placeholder="description"
@@ -143,6 +144,8 @@ function CompanyInputs() {
             placeholder="postcode"
             name="postcode"
             value={state.postcode}
+            minLength="5"
+            maxLength="8"
             onChange={(event) => {
               dispatch({
                 type: "postcode",
@@ -199,10 +202,10 @@ function CompanyInputs() {
             />
           </div>
         </form>
-      </div>
       <button onClick={handleClick} className={css.button}>
-        Save
+        Add To Companies
       </button>
+      </div>
     </>
   );
 }

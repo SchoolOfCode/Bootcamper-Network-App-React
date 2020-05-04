@@ -3,20 +3,28 @@ import "firebase/auth";
 import { onAuthStateChanged } from "../firebase";
 import firebase from "firebase/app";
 import { URL } from "../../config";
+
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import { Link } from "react-router-dom";
 import PreviousRoles from "./previousRoles.js";
-import twitterLogo from "../../images/twitter-logo.png";
-import linkedinLogo from "../../images/linkedin.png";
-import githubLogo from "../../images/github.png";
-import websiteLogo from "../../images/web.svg";
+import twitterLogo from "../../images/twitter2.svg";
+import linkedinLogo from "../../images/linkedin2.svg";
+import githubLogo from "../../images/github2.svg";
+import websiteLogo from "../../images/web2.svg";
 
 const initialState = {
   first_name: "",
   surname: "",
   aboutme: "",
   job_title: "",
-  company_id: 0,
+  company_name: "",
   salary: "",
   start_date: "",
   previous_roles: [],
@@ -49,10 +57,10 @@ function reducer(state, action) {
       return state.job_title === action.payload
         ? state
         : { ...state, job_title: action.payload };
-    case "company_id":
-      return state.company_id === action.payload
+    case "company_name":
+      return state.company_name === action.payload
         ? state
-        : { ...state, company_id: action.payload };
+        : { ...state, company_name: action.payload };
     case "salary":
       return state.salary === action.payload
         ? state
@@ -102,7 +110,13 @@ function reducer(state, action) {
   }
 }
 
+
 function ProfileInputs({ uid, photourl, email }) {
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2020-05-04T09:00:00'));
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  }; 
+
   const [state, dispatch] = useReducer(reducer, initialState);
   function handleClick(e) {
     const {
@@ -110,7 +124,7 @@ function ProfileInputs({ uid, photourl, email }) {
       surname,
       aboutme,
       job_title,
-      company_id,
+      company_name,
       salary,
       start_date,
       previous_roles,
@@ -135,7 +149,7 @@ function ProfileInputs({ uid, photourl, email }) {
         surname,
         aboutme,
         job_title,
-        company_id,
+        company_name,
         salary,
         start_date,
         previous_roles,
@@ -156,6 +170,7 @@ function ProfileInputs({ uid, photourl, email }) {
 
   return (
     <>
+    <h2 className={css.header}>Edit Profile</h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>First Name:</label>
@@ -214,20 +229,20 @@ function ProfileInputs({ uid, photourl, email }) {
               });
             }}
           />
-          <label>Companies:</label>
+          <label>Company:</label>
           <p className={css.linktext}>
-            If your company doesn't already exist, add it
-            <Link to="/companyEdit">here</Link>
+          <Link to="/companyEdit" className={css.linktext}>If your company doesn't already exist, add it 
+             here</Link>
           </p>
           <input
             className={css.inputs}
             type="text"
-            placeholder="Companies"
-            name="company_id"
-            value={state.company_id}
+            placeholder="Company"
+            name="company_name"
+            value={state.company_name}
             onChange={(event) => {
               dispatch({
-                type: "company_id",
+                type: "company_name",
                 payload: event.target.value,
               });
             }}
@@ -247,7 +262,7 @@ function ProfileInputs({ uid, photourl, email }) {
             }}
           />
           <label>Start Date:</label>
-          <input
+          {/* <input
             className={css.inputs}
             type="text"
             placeholder="Start Date"
@@ -259,8 +274,29 @@ function ProfileInputs({ uid, photourl, email }) {
                 payload: event.target.value,
               });
             }}
+
+          /> */}
+
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="date-picker-inline"
+          label="Date picker inline"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+     
+    </MuiPickersUtilsProvider>
+
           />
           <label>Previous Roles:</label>
+
           <PreviousRoles
             onChange={(values) => {
               dispatch({
@@ -390,10 +426,11 @@ function ProfileInputs({ uid, photourl, email }) {
             />
           </div>
         </form>
-      </div>
-      <button onClick={handleClick} className={css.button}>
+        <button onClick={handleClick} className={css.button}>
         Save
       </button>
+      </div>
+      
     </>
   );
 }
