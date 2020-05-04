@@ -24,7 +24,7 @@ const initialState = {
   surname: "",
   aboutme: "",
   job_title: "",
-  company_name: "",
+  company_id: "",
   salary: "",
   start_date: "",
   previous_roles: [],
@@ -57,10 +57,10 @@ function reducer(state, action) {
       return state.job_title === action.payload
         ? state
         : { ...state, job_title: action.payload };
-    case "company_name":
-      return state.company_name === action.payload
+    case "company_id":
+      return state.company_id === action.payload
         ? state
-        : { ...state, company_name: action.payload };
+        : { ...state, company_id: action.payload };
     case "salary":
       return state.salary === action.payload
         ? state
@@ -124,7 +124,7 @@ function ProfileInputs({ uid, photourl, email }) {
       surname,
       aboutme,
       job_title,
-      company_name,
+      company_id,
       salary,
       start_date,
       previous_roles,
@@ -140,6 +140,11 @@ function ProfileInputs({ uid, photourl, email }) {
     console.log(previous_roles);
     e.preventDefault();
     fetch(`${URL}/bootcampers`, {
+      mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
       method: "POST",
       body: JSON.stringify({
         uid,
@@ -149,7 +154,7 @@ function ProfileInputs({ uid, photourl, email }) {
         surname,
         aboutme,
         job_title,
-        company_name,
+        company_id,
         salary,
         start_date,
         previous_roles,
@@ -162,9 +167,7 @@ function ProfileInputs({ uid, photourl, email }) {
         portfolio,
         linkedIn,
       }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      
     });
   }
 
@@ -238,11 +241,11 @@ function ProfileInputs({ uid, photourl, email }) {
             className={css.inputs}
             type="text"
             placeholder="Company"
-            name="company_name"
-            value={state.company_name}
+            name="company_id"
+            value={state.company_id}
             onChange={(event) => {
               dispatch({
-                type: "company_name",
+                type: "company_id",
                 payload: event.target.value,
               });
             }}
@@ -262,7 +265,7 @@ function ProfileInputs({ uid, photourl, email }) {
             }}
           />
           <label>Start Date:</label>
-          {/* <input
+          <input
             className={css.inputs}
             type="text"
             placeholder="Start Date"
@@ -275,9 +278,9 @@ function ProfileInputs({ uid, photourl, email }) {
               });
             }}
 
-          /> */}
+          />
 
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
@@ -286,15 +289,20 @@ function ProfileInputs({ uid, photourl, email }) {
           id="date-picker-inline"
           label="Date picker inline"
           value={selectedDate}
-          onChange={handleDateChange}
+          onChange={(event) => {
+              dispatch({
+                type: "start_date",
+                payload: event.target.value,
+              });
+            }}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
         />
      
-    </MuiPickersUtilsProvider>
+    </MuiPickersUtilsProvider> 
 
-          />
+          /> */}
           <label>Previous Roles:</label>
 
           <PreviousRoles
