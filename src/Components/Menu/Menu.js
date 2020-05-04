@@ -11,7 +11,7 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
   return (
     <div className={css.menu}>
       <ul className={css.ul}>
-        <Link to="/profile/mell" className={css.link} onClick={handleClick}>
+        <Link to="/profile" className={css.link} onClick={handleClick}>
           <li>My Profile</li>
         </Link>
         <Link to="/messages" className={css.link} onClick={handleClick}>

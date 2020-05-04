@@ -60,7 +60,7 @@ export function onAuthStateChanged(callback) {
 }
 
 export function logout() {
-  return firebase.auth().signOut().catch(console.error);
+  return firebase.auth().signOut().then().catch(console.error);
 }
 
 /* 
@@ -73,16 +73,16 @@ request is made to the db, creating them an empty profile. Their db id = firebas
 4. When searching for profiles, the job satisfaction section is only displayed if the local storage UID matches the user profile 
 UID that they're viewing
 
-
+PLAN
 1. change bootcampers db to store UID, photoURL and email address ✅
-2. find out how to grab the UID, photoURL and email from google firebase
-3. logic on login: if no user in the db matches the current UID, take them to create profile page. 
-4. On that page, user can fill in all their details.
-5. store the google photoURL in state and display it on the create profile page.
+2. find out how to grab the UID, photoURL and email from google firebase ✅
+3. logic on login: if no user in the db matches the current UID, take them to create profile page. ISH DONE
+4. On that page, user can fill in all their details. ✅
+5. store the google photoURL in state and display it on the create profile page. 
 6. On form submit, do post request to database and include UID, photoURL and email address from firebase.
 
 
-
+HOW IT WORKS
 1. a user logs in using firebase
 2. firebase has a unique identifier for that user, is this just the email address or something more? 
 3. this unique identifier is used to fetch relevant bootcamper info from the db 

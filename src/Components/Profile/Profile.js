@@ -10,12 +10,12 @@ import webLogo from "../../images/web.svg";
 import { useParams } from "react-router-dom";
 import { URL } from "../../config";
 
-function Profile() {
+function Profile({ uid }) {
   const [profileData, setProfileData] = useState([]);
   const { firstname } = useParams();
   useEffect(() => {
     async function getProfileData() {
-      const res = await fetch(`${URL}/bootcampers?name=${firstname}`, {
+      const res = await fetch(`${URL}/bootcampers?uid=${uid}`, {
         mode: "cors",
         headers: {
           "Access-Control-Allow-Origin": "*",
