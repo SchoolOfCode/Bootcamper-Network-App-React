@@ -1,5 +1,6 @@
 :root {
   --main-color: #e5e5e5;
+  --text: #2F64A3
 }
 
 .inputs {
@@ -7,21 +8,23 @@
   border-radius: 8px;
   margin-bottom: 10px;
   width: 60%;
+  margin-top: 5px;
 }
 
 .wrapper {
   width: 90vw;
   height: auto;
-  background: #46728a;
+  background: #E1EAF5;
   border-radius: 15px;
   margin: 0 auto;
   border: 3px solid var(--main-color);
-  color: var(--main-color);
+  color: var(--text);
   padding: 10px;
+  font-size: small;
 }
 
 .logos {
-  width: 20px;
+  width: 30px;
   display: inline-block;
   margin-right: 10px;
 }
@@ -36,7 +39,7 @@
   border: 3px solid #f8eded;
   box-sizing: border-box;
   border-radius: 10px;
-  color: var(--main-color);
+  color: var(--text);
 }
 
 .linktext {
@@ -52,5 +55,10 @@
   border: 3px solid #f8eded;
   box-sizing: border-box;
   border-radius: 10px;
-  color: var(--main-color);
+  color: var(--text);
+}
+
+.header {
+  margin-left: 10px;
+  
 }

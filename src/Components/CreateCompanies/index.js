@@ -1,8 +1,8 @@
 import React, { useState, useReducer } from "react";
 import { URL } from "../../config";
-import twitterLogo from "../../images/twitter-logo.png";
-import linkedinLogo from "../../images/linkedin.png";
-import websiteLogo from "../../images/web.svg";
+import twitterLogo from "../../images/twitter2.svg";
+import linkedinLogo from "../../images/linkedin2.svg";
+import websiteLogo from "../../images/web2.svg";
 import css from "./CreateCompanies.module.css";
 
 const initialState = {
@@ -74,6 +74,7 @@ function CompanyInputs() {
 
   return (
     <>
+    <h2 className={css.header}> Add a Company </h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>Company Name:</label>
