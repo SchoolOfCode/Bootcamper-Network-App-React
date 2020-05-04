@@ -39,36 +39,20 @@ function App() {
     getEvents();
   }, []);
 
-
   useEffect(() => {
-    console.log(`hi again`);
     onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
-        // const displayName = user.displayName;
-        // const email = user.email;
-        // const photoURL = user.photoURL;
-        // const uid = user.uid;
         setFbDisplayName(user.displayName);
         setFbEmail(user.email);
         setFbPhotoUrl(user.photoURL);
         setFbUID(user.uid);
-        console.log(`TOKEN`, user.getIdToken());
+        // console.log(`TOKEN`, user.getIdToken());
       } else {
         setUser(null);
       }
     });
   }, []);
-  console.log(
-    `FROM MAIN APP: displayname: `,
-    fbDisplayName,
-    `email: `,
-    fbEmail,
-    `photourl: `,
-    fbPhotoUrl,
-    `uid: `,
-    fbUID
-  );
 
   // if (!user) {
 
@@ -108,9 +92,7 @@ function App() {
           <CompanyInputs />
         </Route>
         <Route path="/signin">
-
           <SignIn user={user} />
-
         </Route>
         <Route path="/links">
           <UsefulLinks />

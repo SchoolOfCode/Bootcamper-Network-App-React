@@ -30,7 +30,6 @@ const initialState = {
   linkedIn: "",
 };
 
-
 // function SetUserDetails() {
 //   const [fbDisplayName, setfbDisplayName] = useState("");
 //   const [fbEmail, setFbEmail] = useState("");
@@ -69,7 +68,6 @@ const initialState = {
 // }}
 
 // console.log(`Details from create profile`, fbname, fbphotoUrl, fbuid, fbemail);
-
 
 function reducer(state, action) {
   console.log(action.type);
@@ -167,7 +165,7 @@ function ProfileInputs() {
     } = state;
     console.log(previous_roles);
     e.preventDefault();
-    fetch(`http://localhost:5000/bootcampers`, {
+    fetch(`${URL}/bootcampers`, {
       method: "POST",
       body: JSON.stringify({
         first_name,
@@ -299,7 +297,6 @@ function ProfileInputs() {
               });
             }}
           />
-
           <PreviousRoles
             onChange={(values) => {
               dispatch({
@@ -309,7 +306,6 @@ function ProfileInputs() {
             }}
           />
           <label>Cohort Number:</label>
-
           <input
             className={css.inputs}
             type="text"
