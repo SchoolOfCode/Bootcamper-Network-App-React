@@ -93,7 +93,7 @@ function CompanyInputs() {
           />
 
           <label>Description:</label>
-          <input
+          <textarea
             className={css.inputs}
             type="text"
             placeholder="description"
@@ -144,6 +144,8 @@ function CompanyInputs() {
             placeholder="postcode"
             name="postcode"
             value={state.postcode}
+            minLength="5"
+            maxLength="8"
             onChange={(event) => {
               dispatch({
                 type: "postcode",
@@ -200,10 +202,10 @@ function CompanyInputs() {
             />
           </div>
         </form>
-      </div>
       <button onClick={handleClick} className={css.button}>
-        Save
+        Add To Companies
       </button>
+      </div>
     </>
   );
 }

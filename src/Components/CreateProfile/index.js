@@ -6,10 +6,10 @@ import { URL } from "../../config";
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import { Link } from "react-router-dom";
 import PreviousRoles from "./previousRoles.js";
-import twitterLogo from "../../images/twitter-logo.png";
-import linkedinLogo from "../../images/linkedin.png";
-import githubLogo from "../../images/github.png";
-import websiteLogo from "../../images/web.svg";
+import twitterLogo from "../../images/twitter2.svg";
+import linkedinLogo from "../../images/linkedin2.svg";
+import githubLogo from "../../images/github2.svg";
+import websiteLogo from "../../images/web2.svg";
 
 const initialState = {
   first_name: "",
@@ -195,6 +195,7 @@ function ProfileInputs() {
 
   return (
     <>
+    <h2 className={css.header}>Edit Profile</h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>First Name:</label>
@@ -255,8 +256,8 @@ function ProfileInputs() {
           />
           <label>Companies:</label>
           <p className={css.linktext}>
-            If your company doesn't already exist, add it
-            <Link to="/companyEdit">here</Link>
+          <Link to="/companyEdit" className={css.linktext}>If your company doesn't already exist, add it 
+             here</Link>
           </p>
           <input
             className={css.inputs}
@@ -430,10 +431,11 @@ function ProfileInputs() {
             />
           </div>
         </form>
-      </div>
-      <button onClick={handleClick} className={css.button}>
+        <button onClick={handleClick} className={css.button}>
         Save
       </button>
+      </div>
+      
     </>
   );
 }
