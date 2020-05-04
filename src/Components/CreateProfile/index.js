@@ -24,7 +24,7 @@ const initialState = {
   surname: "",
   aboutme: "",
   job_title: "",
-  company_id: 0,
+  company_name: "",
   salary: "",
   start_date: "",
   previous_roles: [],
@@ -98,10 +98,10 @@ function reducer(state, action) {
       return state.job_title === action.payload
         ? state
         : { ...state, job_title: action.payload };
-    case "company_id":
-      return state.company_id === action.payload
+    case "company_name":
+      return state.company_name === action.payload
         ? state
-        : { ...state, company_id: action.payload };
+        : { ...state, company_name: action.payload };
     case "salary":
       return state.salary === action.payload
         ? state
@@ -164,7 +164,7 @@ function ProfileInputs() {
       surname,
       aboutme,
       job_title,
-      company_id,
+      company_name,
       salary,
       start_date,
       previous_roles,
@@ -186,7 +186,7 @@ function ProfileInputs() {
         surname,
         aboutme,
         job_title,
-        company_id,
+        company_name,
         salary,
         start_date,
         previous_roles,
@@ -266,7 +266,7 @@ function ProfileInputs() {
               });
             }}
           />
-          <label>Companies:</label>
+          <label>Company:</label>
           <p className={css.linktext}>
           <Link to="/companyEdit" className={css.linktext}>If your company doesn't already exist, add it 
              here</Link>
@@ -274,12 +274,12 @@ function ProfileInputs() {
           <input
             className={css.inputs}
             type="text"
-            placeholder="Companies"
-            name="company_id"
-            value={state.company_id}
+            placeholder="Company"
+            name="company_name"
+            value={state.company_name}
             onChange={(event) => {
               dispatch({
-                type: "company_id",
+                type: "company_name",
                 payload: event.target.value,
               });
             }}

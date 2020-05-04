@@ -17,7 +17,7 @@
   height: auto;
   background: #E1EAF5;
   border-radius: 15px;
-  margin: 0 auto;
+  margin-left: 17px;
   border: 3px solid var(--main-color);
   color: var(--text);
   padding: 10px;
@@ -61,6 +61,6 @@
 }
 
 .header {
-  margin-left: 10px;
+  margin-left: 15px;
   color: var(--main-color)
 }
