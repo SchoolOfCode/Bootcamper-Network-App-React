@@ -24,6 +24,7 @@ function App() {
   const [fbEmail, setFbEmail] = useState("");
   const [fbUID, setFbUID] = useState("");
   const [fbPhotoUrl, setFbPhotoUrl] = useState("");
+  const [userLoading, setUserLoading] = useState(false);
 
   useEffect(() => {
     async function getEvents() {
@@ -41,6 +42,7 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged((user) => {
+      setUserLoading(true);
       if (user) {
         setUser(user);
         setFbDisplayName(user.displayName);
@@ -51,16 +53,10 @@ function App() {
       } else {
         setUser(null);
       }
+      setUserLoading(false);
     });
   }, []);
 
-  if (!user) {
-    return (
-      <div>
-        <SignIn />
-      </div>
-    );
-  }
   if (user) {
     return (
       <Router>
@@ -97,6 +93,20 @@ function App() {
           </Route>
         </Switch>
       </Router>
+    );
+  }
+  if (userLoading) {
+    return (
+      <div>
+        <p>...loading</p>
+      </div>
+    );
+  }
+  if (!user) {
+    return (
+      <div>
+        <SignIn />
+      </div>
     );
   }
 }
