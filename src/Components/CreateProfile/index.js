@@ -3,6 +3,14 @@ import "firebase/auth";
 import { onAuthStateChanged } from "../firebase";
 import firebase from "firebase/app";
 import { URL } from "../../config";
+
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import { Link } from "react-router-dom";
 import PreviousRoles from "./previousRoles.js";
@@ -145,6 +153,10 @@ function reducer(state, action) {
 }
 
 function ProfileInputs() {
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2020-05-04T09:00:00'));
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  }; 
   const [state, dispatch] = useReducer(reducer, initialState);
   function handleClick(e) {
     const {
@@ -287,7 +299,7 @@ function ProfileInputs() {
             }}
           />
           <label>Start Date:</label>
-          <input
+          {/* <input
             className={css.inputs}
             type="text"
             placeholder="Start Date"
@@ -299,8 +311,24 @@ function ProfileInputs() {
                 payload: event.target.value,
               });
             }}
-          />
+          /> */}
 
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="date-picker-inline"
+          label="Date picker inline"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+     
+    </MuiPickersUtilsProvider>
           <PreviousRoles
             onChange={(values) => {
               dispatch({
