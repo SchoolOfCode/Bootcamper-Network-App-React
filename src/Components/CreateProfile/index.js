@@ -38,49 +38,8 @@ const initialState = {
   linkedIn: "",
 };
 
-
-// function SetUserDetails() {
-//   const [fbDisplayName, setfbDisplayName] = useState("");
-//   const [fbEmail, setFbEmail] = useState("");
-//   const [fbUID, setfbUID] = useState("");
-//   const [fbPhotoUrl, setPhotoUrl] = useState("");
-//   const user = firebase.auth().currentUser;
-//   onAuthStateChanged((user) => {
-//     if (user) {
-//       setfbDisplayName(user.displayName);
-//       setFbEmail(user.email);
-//       setfbUID(user.uid);
-//       setPhotoUrl(user.photoURL);
-//       console.log(`FROM CREATE PROFILE INSIDE`, fbUID);
-//     }
-//   });
-//   return console.log(
-//     `FROM CREATE PROFILE -> displayname: `,
-//     fbDisplayName,
-//     `email: `,
-//     fbEmail,
-//     `photourl: `,
-//     fbPhotoUrl,
-//     `uid: `,
-//     fbUID
-//   );
-// }
-
-// var user = firebase.auth().currentUser;
-// var fbname, fbemail, fbphotoUrl, fbuid;
-// onAuthStateChanged((user) => {
-// if (user != null) {
-//   fbname = user.displayName;
-//   fbemail = user.email;
-//   fbphotoUrl = user.photoURL;
-//   fbuid = user.uid;
-// }}
-
-// console.log(`Details from create profile`, fbname, fbphotoUrl, fbuid, fbemail);
-
-
 function reducer(state, action) {
-  console.log(action.type);
+  // console.log(action.type);
   switch (action.type) {
     case "first_name":
       return state.first_name === action.payload
@@ -111,7 +70,6 @@ function reducer(state, action) {
         ? state
         : { ...state, start_date: action.payload };
     case "previous_roles":
-      console.log(`previous roles`, action.payload);
       return state.previous_roles === action.payload
         ? state
         : { ...state, previous_roles: action.payload };
@@ -152,11 +110,13 @@ function reducer(state, action) {
   }
 }
 
-function ProfileInputs() {
+
+function ProfileInputs({ uid, photourl, email }) {
   const [selectedDate, setSelectedDate] = React.useState(new Date('2020-05-04T09:00:00'));
   const handleDateChange = (date) => {
     setSelectedDate(date);
   }; 
+
   const [state, dispatch] = useReducer(reducer, initialState);
   function handleClick(e) {
     const {
@@ -179,9 +139,12 @@ function ProfileInputs() {
     } = state;
     console.log(previous_roles);
     e.preventDefault();
-    fetch(`http://localhost:5000/bootcampers`, {
+    fetch(`${URL}/bootcampers`, {
       method: "POST",
       body: JSON.stringify({
+        uid,
+        email,
+        photourl,
         first_name,
         surname,
         aboutme,
@@ -311,6 +274,7 @@ function ProfileInputs() {
                 payload: event.target.value,
               });
             }}
+
           /> */}
 
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -329,6 +293,10 @@ function ProfileInputs() {
         />
      
     </MuiPickersUtilsProvider>
+
+          />
+          <label>Previous Roles:</label>
+
           <PreviousRoles
             onChange={(values) => {
               dispatch({
@@ -338,7 +306,6 @@ function ProfileInputs() {
             }}
           />
           <label>Cohort Number:</label>
-
           <input
             className={css.inputs}
             type="text"
@@ -366,7 +333,7 @@ function ProfileInputs() {
               });
             }}
           />
-          <label>Job Satisfa</label>ction:
+          <label>Job Satisfaction:</label>
           <input
             className={css.inputs}
             type="text"
@@ -399,12 +366,12 @@ function ProfileInputs() {
             <input
               className={css.inputs}
               type="text"
-              placeholder="website"
-              name="website"
+              placeholder="Portfolio"
+              name="portfolio"
               value={state.website}
               onChange={(event) => {
                 dispatch({
-                  type: "website",
+                  type: "portfolio",
                   payload: event.target.value,
                 });
               }}
