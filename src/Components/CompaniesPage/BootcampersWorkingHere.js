@@ -22,9 +22,12 @@ function BootcampersWorkingHere({companyname}) {
     }, []);
     console.log(bootcamperWorkingHere)
     const {
+        photourl,
         first_name,
         surname
     } = bootcamperWorkingHere;
+
+
     
     return (
         <div>
@@ -33,7 +36,7 @@ function BootcampersWorkingHere({companyname}) {
 {bootcamperWorkingHere.map((item) => {
     return(
         
-        <li>{item.first_name} {item.surname}</li> 
+        <li> {item.first_name} {item.surname} {<img alt="" src={item.photourl}/>} </li> 
         
     
     )
