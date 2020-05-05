@@ -41,6 +41,7 @@ function Profile({ uid }) {
     linkedin,
     github,
     portfolio,
+    company_id,
     company_name,
     start_date,
     salary,
@@ -111,7 +112,10 @@ function Profile({ uid }) {
           <li>
             <span>Current Role: </span>
           </li>
-          <li>{company_name}</li>
+          <Link to={`/company/${company_name}`}>
+            <li>{company_name}</li>
+          </Link>
+
           <li>{start_date}</li>
           <li>{salary}</li>
         </ul>
