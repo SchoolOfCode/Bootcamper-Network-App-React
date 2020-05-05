@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
+import { Link } from "react-router-dom";
+
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
+import pencil from "../../images/pencil.png";
 
 import webLogo from "../../images/web.svg";
 
@@ -12,6 +15,7 @@ import { URL } from "../../config";
 
 function Profile({ uid }) {
   const [profileData, setProfileData] = useState([]);
+
   useEffect(() => {
     async function getProfileData() {
       const res = await fetch(`${URL}/bootcampers?uid=${uid}`, {
@@ -27,6 +31,8 @@ function Profile({ uid }) {
     getProfileData();
   }, []);
 
+  const ProfileContext = React.createContext(profileData);
+
   const {
     first_name,
     surname,
@@ -37,6 +43,7 @@ function Profile({ uid }) {
     linkedin,
     github,
     portfolio,
+    company_id,
     company_name,
     start_date,
     salary,
@@ -47,10 +54,16 @@ function Profile({ uid }) {
   } = profileData;
   const [sliderValue, setSliderValue] = useState(job_satisfaction);
   const [option, setOption] = useState(new_job);
-
+  // USE WHAT JODIE SHOWED ME ABOUT LINKS TO PUT LINK AROUND THE PENCIL
   return (
     <>
       <div className={css.info}>
+        <div className={css.pencilcontainer}>
+          <Link to="/profileEdit">
+            <img src={pencil} alt="edit pencil" className={css.pencil} />
+          </Link>
+        </div>
+
         <img src={photourl} alt="Profile Pic" className={css.profilePic} />
         <h2>
           {first_name} {surname}
@@ -101,7 +114,10 @@ function Profile({ uid }) {
           <li>
             <span>Current Role: </span>
           </li>
-          <li>{company_name}</li>
+          <Link to={`/company/${company_name}`}>
+            <li>{company_name}</li>
+          </Link>
+
           <li>{start_date}</li>
           <li>{salary}</li>
         </ul>
