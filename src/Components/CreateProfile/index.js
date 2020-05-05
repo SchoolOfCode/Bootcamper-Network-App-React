@@ -4,7 +4,6 @@ import "firebase/auth";
 import { onAuthStateChanged } from "../firebase";
 import firebase from "firebase/app";
 import { URL } from "../../config";
-import {usePersistentState} from "./usePersistentState"
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -215,7 +214,7 @@ function ProfileInputs({ uid, photourl, email }) {
                 type: "first_name",
                 payload: event.target.value,
               });
-              localStorage.getItem('firstname')
+              
             }}
           />
           <label>Surname:</label>
