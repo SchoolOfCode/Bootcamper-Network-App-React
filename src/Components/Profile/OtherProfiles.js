@@ -1,45 +1,31 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
-import { Link } from "react-router-dom";
-
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
-import pencil from "../../images/pencil.png";
-
 import webLogo from "../../images/web.svg";
 
+import { useParams } from "react-router-dom";
 import { URL } from "../../config";
 
-
-const socialLinks = [
-  { name: 'twitter', src: twitterLogo },
-  { name: 'linkedin', src: linkedinLogo },
-  { name: 'github', src: githubLogo },
-  { name: 'web', src: webLogo }
-]
-
-function Profile({ uid }) {
-
-  const [profileData, setProfileData] = useState({});
-  const [sliderValue, setSliderValue] = useState(1);
-  const [option, setOption] = useState();
-
-
+function OtherProfiles() {
+  const [profileData, setProfileData] = useState([]);
+  const { bootcamperid } = useParams();
   useEffect(() => {
     async function getProfileData() {
-      const res = await fetch(`${URL}/bootcampers?uid=${uid}`);
+      const res = await fetch(`${URL}/bootcampers/id/${bootcamperid}`, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
       const data = await res.json();
-      if (data.payload[0]) {
-        setProfileData(data.payload[0]);
-      }
+      console.log(data.payload[0]);
+      setProfileData(data.payload[0]);
     }
     getProfileData();
   }, []);
-
-  const ProfileContext = React.createContext(profileData);
-
   const {
     first_name,
     surname,
@@ -50,7 +36,6 @@ function Profile({ uid }) {
     linkedin,
     github,
     portfolio,
-    company_id,
     company_name,
     start_date,
     salary,
@@ -59,31 +44,41 @@ function Profile({ uid }) {
     new_job,
     photourl,
   } = profileData;
-
-
   const [sliderValue, setSliderValue] = useState(job_satisfaction);
   const [option, setOption] = useState(new_job);
-  
+
   return (
     <>
       <div className={css.info}>
-        <div className={css.pencilcontainer}>
-          <Link to="/profileEdit">
-            <img src={pencil} alt="edit pencil" className={css.pencil} />
-          </Link>
-        </div>
+      <img src={photourl} alt="Profile Pic" className={css.profilePic} />
 
-        <img src={photourl} alt="Profile Pic" className={css.profilePic} />
         <h2>
           {first_name} {surname}
         </h2>
-        {socialLinks.map(link => <img
-          key={link.name}
-          src={link.src}
-          alt={`${link.name} logo`}
+        <img
+          src={twitterLogo}
+          alt="twitter logo"
           className={css.icons}
-          onClick={() => window.location.assign(profileData[link.name])}
-        />)}
+          onClick={() => window.location.assign(twitter)}
+        />
+        <img
+          src={linkedinLogo}
+          alt="linkedin logo"
+          className={css.icons}
+          onClick={() => window.location.assign(linkedin)}
+        />
+        <img
+          src={githubLogo}
+          alt="github logo"
+          className={css.icons}
+          onClick={() => window.location.assign(github)}
+        />
+        <img
+          src={webLogo}
+          alt="web logo"
+          className={css.icons}
+          onClick={() => window.location.assign(portfolio)}
+        />
       </div>
       <div className={css.profileContainer}>
         <ul>
@@ -106,10 +101,7 @@ function Profile({ uid }) {
           <li>
             <span>Current Role: </span>
           </li>
-          <Link to={`/company/${company_name}`}>
-            <li>{company_name}</li>
-          </Link>
-
+          <li>{company_name}</li>
           <li>{start_date}</li>
           <li>{salary}</li>
         </ul>
@@ -119,19 +111,13 @@ function Profile({ uid }) {
           <span>Previous Roles: </span>
           {previous_roles &&
             previous_roles.map((item) => {
-              console.log(item)
               return <li> {item}</li>;
             })}
         </ul>
       </div>
-      <TeamData
-        sliderValue={sliderValue}
-        setSliderValue={setSliderValue}
-        option={option}
-        setOption={setOption}
-      />
+      
     </>
   );
 }
 
-export default Profile;
+export default OtherProfiles;

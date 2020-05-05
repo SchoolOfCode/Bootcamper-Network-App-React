@@ -29,6 +29,16 @@
   display: inline-block;
 }
 
+.pencilcontainer {
+  position: relative;
+}
+
+.pencil {
+  width: 20px;
+  position: absolute;
+  margin-left: 92%;
+}
+
 .profilePic {
   border-radius: 100%;
   border: 3px solid #46728a;

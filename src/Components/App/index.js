@@ -15,7 +15,11 @@ import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
+
 import PrivateRoute from "../PrivateRoute"
+
+import OtherProfiles from "../Profile/OtherProfiles";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,6 +50,7 @@ function App() {
 
 
 
+
   return (
     <Router>
       <NavBar />
@@ -59,6 +64,9 @@ function App() {
         <PrivateRoute user={user} path="/profile">
           <Profile uid={user && user.uid} />
         </PrivateRoute>
+    <PrivateROute user={user} path="/profiles/:bootcamperid">
+            <OtherProfiles />
+    </PrivateRoute>
         <PrivateRoute user={user} path="/companies">
           <CompaniesPage />
         </PrivateRoute>
@@ -86,6 +94,7 @@ function App() {
       </Switch>
     </Router>
   );
+
 }
 
 export default App;

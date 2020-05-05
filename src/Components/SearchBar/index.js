@@ -80,12 +80,13 @@ function SearchBar() {
           {searchOption === "bootcamper" &&
             searchResults.map((item) => {
               return (
-                <Link to={`/profile/${item.first_name}`} className={css.link}>
+                <Link to={`/profiles/${item.bootcamper_id}`} className={css.link}>
                   <BootcamperSearch
                     name={item.first_name}
                     surname={item.surname}
                     pic={item.photourl}
                     region={item.region}
+                    id={item.bootcamper_id}
                   />
                 </Link>
               );
@@ -109,6 +110,7 @@ function SearchBar() {
                   surname={item.surname}
                   job={item.job_title}
                   company={item.company_name}
+                  id={item.bootcamper_id}
                 />
               );
             })}
@@ -121,6 +123,8 @@ function SearchBar() {
                   company={item.company_name}
                   company_id={item.company_id}
                   region={item.region}
+                  id={item.bootcamper_id}
+
                 />
               );
             })}

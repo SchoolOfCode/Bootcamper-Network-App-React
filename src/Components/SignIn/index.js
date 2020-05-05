@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { signInWithRedirect } from "../firebase";
 import { Redirect } from "react-router-dom";
 import { URL } from "../../config";
-
+import logo from "../../images/thisone.png";
+import gsignnormal from "../../images/btn_google_signin_light_normal_web@2x.png";
+import gsignpressed from "../../images/btn_google_signin_light_pressed_web@2x.png";
 import css from "./signin.module.css";
 
 function SignIn({ user }) {
@@ -26,9 +28,16 @@ function SignIn({ user }) {
   }, [user]);
   if (!user) {
     return (
-      <div>
-        <h1>Sign in page</h1>
-        <button onClick={signInWithRedirect}>Sign in with Google</button>
+      <div className={css.container}>
+        <h1>Bootcamper Network</h1>
+        <img src={logo} alt="school of code logo" className={css.logo} />
+        <img
+          src={gsignnormal}
+          alt="sign in with google"
+          onClick={signInWithRedirect}
+          className={css.normalsignin}
+        />
+        {/* <button onClick={signInWithRedirect}>Sign in with Google</button> */}
       </div>
     );
   }

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import css from "../Dashboard/Dashboard.module.css";
 import Divider from "../Divider";
 
-function RoleAndRegionSearch({ name, surname, company, job, region }) {
+function RoleAndRegionSearch({ name, surname, company, job, region, id }) {
   return (
     <>
       <div>
-        <Link to={`/profile/${name}`} className={css.link}>
+        <Link to={`/profiles/${id}`} className={css.link}>
           <p>
             {name} {surname}
           </p>

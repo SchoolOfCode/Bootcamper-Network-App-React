@@ -4,6 +4,7 @@ import twitterLogo from "../../images/twitter2.svg";
 import linkedinLogo from "../../images/linkedin2.svg";
 import websiteLogo from "../../images/web2.svg";
 import css from "./CreateCompanies.module.css";
+import { Link } from "react-router-dom";
 
 const initialState = {
   company_name: "",
@@ -190,6 +191,11 @@ function CompanyInputs() {
                 });
               }}
             />
+             <p className={css.linktext}>
+            <Link to="/profileEdit" className={css.linktext}>
+              Go back to edit your profile
+            </Link>
+          </p>
           </div>
         </form>
         <button onClick={handleClick} className={css.button}>
