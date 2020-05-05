@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { URL } from "../../config";
 import { useParams } from "react-router-dom";
 import css from "./bcmpr.module.css"
+import { Link } from "react-router-dom";
 
 
 function BootcampersWorkingHere({ companyname }) {
@@ -34,7 +35,9 @@ function BootcampersWorkingHere({ companyname }) {
         {bootcamperWorkingHere.map((item) => {
           return (
             <li>
-              {item.first_name} {item.surname} <img className={css.bootcamperPic} alt="" src={item.photourl} />
+            <Link to={`/profiles/${item.bootcamper_id}`} className={css.link}>
+              {item.first_name} {item.surname} 
+              </Link> <img className={css.bootcamperPic} alt="" src={item.photourl} />
             </li>
           )
         })}
