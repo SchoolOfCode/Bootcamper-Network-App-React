@@ -190,6 +190,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="first_name"
             value={state.first_name}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "first_name",
                 payload: event.target.value,
@@ -204,6 +205,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="surname"
             value={state.surname}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "surname",
                 payload: event.target.value,
@@ -218,6 +220,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="aboutme"
             value={state.aboutme}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "aboutme",
                 payload: event.target.value,
@@ -232,6 +235,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="job_title"
             value={state.job_title}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "job_title",
                 payload: event.target.value,
@@ -251,6 +255,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="company_id"
             value={state.company_id}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "company_id",
                 payload: event.target.value,
@@ -265,6 +270,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="salary"
             value={state.salary}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "salary",
                 payload: event.target.value,
@@ -279,6 +285,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="start_date"
             value={state.start_date}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "start_date",
                 payload: event.target.value,
@@ -327,6 +334,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="cohort_num"
             value={state.cohort_num}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "cohort_num",
                 payload: event.target.value,
@@ -341,6 +349,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="region"
             value={state.region}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "region",
                 payload: event.target.value,
@@ -355,6 +364,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="job_satisfaction"
             value={state.job_satisfaction}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "job_satisfaction",
                 payload: event.target.value,
@@ -369,6 +379,7 @@ function ProfileInputs({ uid, photourl, email }) {
             name="new_job"
             value={state.new_job}
             onChange={(event) => {
+              localStorage.setItem('thevalue', event.target.value)
               dispatch({
                 type: "new_job",
                 payload: event.target.value,
@@ -384,6 +395,7 @@ function ProfileInputs({ uid, photourl, email }) {
               name="portfolio"
               value={state.website}
               onChange={(event) => {
+                localStorage.setItem('thevalue', event.target.value)
                 dispatch({
                   type: "portfolio",
                   payload: event.target.value,
@@ -400,6 +412,7 @@ function ProfileInputs({ uid, photourl, email }) {
               name="twitter"
               value={state.twitter}
               onChange={(event) => {
+                localStorage.setItem('thevalue', event.target.value)
                 dispatch({
                   type: "twitter",
                   payload: event.target.value,
@@ -416,6 +429,7 @@ function ProfileInputs({ uid, photourl, email }) {
               name="linkedIn"
               value={state.linkedIn}
               onChange={(event) => {
+                localStorage.setItem('thevalue', event.target.value)
                 dispatch({
                   type: "linkedIn",
                   payload: event.target.value,
@@ -432,6 +446,7 @@ function ProfileInputs({ uid, photourl, email }) {
               name="GitHub"
               value={state.github}
               onChange={(event) => {
+                localStorage.setItem('thevalue', event.target.value)
                 dispatch({
                   type: "github",
                   payload: event.target.value,
