@@ -115,12 +115,7 @@ function OtherProfiles() {
             })}
         </ul>
       </div>
-      <TeamData
-        sliderValue={sliderValue}
-        setSliderValue={setSliderValue}
-        option={option}
-        setOption={setOption}
-      />
+      
     </>
   );
 }
