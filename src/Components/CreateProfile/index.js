@@ -21,13 +21,15 @@ import githubLogo from "../../images/github2.svg";
 import websiteLogo from "../../images/web2.svg";
 
 const initialState = {
+
   first_name: localStorage.getItem('firstname') || "",
   surname: localStorage.getItem('surname') || "",
   aboutme: localStorage.getItem('aboutme') || "",
   job_title: localStorage.getItem('job_title') || "",
   company_id: localStorage.getItem('company_id') || "",
   salary: localStorage.getItem('salary') || "",
-  start_date: localStorage.getItem('start_date') || "",
+  start_date: localStorage.getItem('start_date') || new Date(),
+
   previous_roles: [],
   cohort_num: localStorage.getItem('cohort_num') || 0,
   region: localStorage.getItem('region') || "",
@@ -113,12 +115,22 @@ function reducer(state, action) {
 
 function ProfileInputs({ uid, photourl, email }) {
   const history = useHistory();
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("2020-05-04T09:00:00")
-  );
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  
+  const [companyData, setCompanyData] = useState([]);
+  useEffect(() => {
+    async function getIndividualCompany() {
+      const res = await fetch(`${URL}/companies`, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      const data = await res.json();
+      console.log(data.payload);
+      setCompanyData(data.payload);
+    }
+    getIndividualCompany();
+  }, []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
   async function handleClick(e) {
@@ -140,7 +152,7 @@ function ProfileInputs({ uid, photourl, email }) {
       portfolio,
       linkedIn,
     } = state;
-    console.log(previous_roles);
+    console.log(state);
     e.preventDefault();
     const saveResult = await fetch(`${URL}/bootcampers`, {
       mode: "cors",
@@ -175,6 +187,14 @@ function ProfileInputs({ uid, photourl, email }) {
     if (saveResult.ok) {
       history.push("/profile");
     }
+  }
+
+  function handleChange(date){
+      dispatch({
+        type: "start_date",
+        payload: date,
+      });
+    
   }
 
   return (
@@ -249,10 +269,8 @@ function ProfileInputs({ uid, photourl, email }) {
               If your company doesn't already exist, add it here
             </Link>
           </p>
-          <input
+          <select
             className={css.inputs}
-            type="text"
-            placeholder="Company"
             name="company_id"
             value={state.company_id}
             onChange={(event) => {
@@ -262,7 +280,13 @@ function ProfileInputs({ uid, photourl, email }) {
                 payload: event.target.value,
               });
             }}
-          />
+          > 
+          <option> Select from the list </option>
+          {companyData.map((item) => {
+            return <option value={item.company_id}> {item.company_name}</option>
+          })}
+          
+          </select>
           <label>Salary:</label>
           <input
             className={css.inputs}
@@ -279,7 +303,7 @@ function ProfileInputs({ uid, photourl, email }) {
             }}
           />
           <label>Start Date:</label>
-          <input
+          {/* <input
             className={css.inputs}
             type="text"
             placeholder="Start Date"
@@ -292,23 +316,18 @@ function ProfileInputs({ uid, photourl, email }) {
                 payload: event.target.value,
               });
             }}
-          />
+          /> */}
 
-          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
-          format="MM/dd/yyyy"
+          format="dd/MM/yyyy"
           margin="normal"
           id="date-picker-inline"
           label="Date picker inline"
-          value={selectedDate}
-          onChange={(event) => {
-              dispatch({
-                type: "start_date",
-                payload: event.target.value,
-              });
-            }}
+          value={state.start_date}
+          onChange={handleChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
@@ -316,7 +335,7 @@ function ProfileInputs({ uid, photourl, email }) {
      
     </MuiPickersUtilsProvider> 
 
-          /> */}
+         
           <label>Previous Roles</label>
 
           <PreviousRoles

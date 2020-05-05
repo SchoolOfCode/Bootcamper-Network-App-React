@@ -4,29 +4,28 @@ import TeamData from "./TeamData";
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
-
 import webLogo from "../../images/web.svg";
 
 import { useParams } from "react-router-dom";
 import { URL } from "../../config";
 
-function Profile({ uid }) {
+function OtherProfiles() {
   const [profileData, setProfileData] = useState([]);
+  const { bootcamperid } = useParams();
   useEffect(() => {
     async function getProfileData() {
-      const res = await fetch(`${URL}/bootcampers?uid=${uid}`, {
+      const res = await fetch(`${URL}/bootcampers/id/${bootcamperid}`, {
         mode: "cors",
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
       });
       const data = await res.json();
-      // console.log(data.payload[0]);
+      console.log(data.payload[0]);
       setProfileData(data.payload[0]);
     }
     getProfileData();
   }, []);
-
   const {
     first_name,
     surname,
@@ -51,7 +50,8 @@ function Profile({ uid }) {
   return (
     <>
       <div className={css.info}>
-        <img src={photourl} alt="Profile Pic" className={css.profilePic} />
+      <img src={photourl} alt="Profile Pic" className={css.profilePic} />
+
         <h2>
           {first_name} {surname}
         </h2>
@@ -111,7 +111,6 @@ function Profile({ uid }) {
           <span>Previous Roles: </span>
           {previous_roles &&
             previous_roles.map((item) => {
-              console.log(item)
               return <li> {item}</li>;
             })}
         </ul>
@@ -126,4 +125,4 @@ function Profile({ uid }) {
   );
 }
 
-export default Profile;
+export default OtherProfiles;
