@@ -309,7 +309,7 @@ function ProfileInputs({ uid, photourl, email }) {
     </MuiPickersUtilsProvider> 
 
           /> */}
-          <label>Previous Roles:</label>
+          <label>Previous Roles</label>
 
           <PreviousRoles
             onChange={(values) => {
