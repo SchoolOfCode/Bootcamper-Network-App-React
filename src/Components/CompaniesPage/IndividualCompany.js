@@ -10,7 +10,7 @@ import BootcampersWorkingHere from "./BootcampersWorkingHere"
 import { useParams } from "react-router-dom";
 
 // THIS IS INDIVIDUAL COMPANIES AFTER CLICKING ON THE COMPANY PAGES
-console.log("url ", URL);
+
 function IndividualCompany() {
   const [individualCompanyData, setIndividualCompanyData] = useState([]);
   const { companyname } = useParams();
@@ -78,7 +78,7 @@ function IndividualCompany() {
       </div>
       <div className={css.extraData}>
         <BootcampersWorkingHere companyname={companyname}/>
-        <p> insert some examples here</p>
+        <p> </p>
       </div>
     </div>
   );

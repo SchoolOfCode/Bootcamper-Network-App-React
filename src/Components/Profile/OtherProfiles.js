@@ -1,38 +1,31 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
-import { Link } from "react-router-dom";
-
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
-import pencil from "../../images/pencil.png";
-
 import webLogo from "../../images/web.svg";
 
 import { useParams } from "react-router-dom";
 import { URL } from "../../config";
 
-function Profile({ uid }) {
+function OtherProfiles() {
   const [profileData, setProfileData] = useState([]);
-
+  const { bootcamperid } = useParams();
   useEffect(() => {
     async function getProfileData() {
-      const res = await fetch(`${URL}/bootcampers?uid=${uid}`, {
+      const res = await fetch(`${URL}/bootcampers/id/${bootcamperid}`, {
         mode: "cors",
         headers: {
           "Access-Control-Allow-Origin": "*",
         },
       });
       const data = await res.json();
-      // console.log(data.payload[0]);
+      console.log(data.payload[0]);
       setProfileData(data.payload[0]);
     }
     getProfileData();
   }, []);
-
-  const ProfileContext = React.createContext(profileData);
-
   const {
     first_name,
     surname,
@@ -43,7 +36,6 @@ function Profile({ uid }) {
     linkedin,
     github,
     portfolio,
-    company_id,
     company_name,
     start_date,
     salary,
@@ -54,17 +46,12 @@ function Profile({ uid }) {
   } = profileData;
   const [sliderValue, setSliderValue] = useState(job_satisfaction);
   const [option, setOption] = useState(new_job);
-  // USE WHAT JODIE SHOWED ME ABOUT LINKS TO PUT LINK AROUND THE PENCIL
+
   return (
     <>
       <div className={css.info}>
-        <div className={css.pencilcontainer}>
-          <Link to="/profileEdit">
-            <img src={pencil} alt="edit pencil" className={css.pencil} />
-          </Link>
-        </div>
+      <img src={photourl} alt="Profile Pic" className={css.profilePic} />
 
-        <img src={photourl} alt="Profile Pic" className={css.profilePic} />
         <h2>
           {first_name} {surname}
         </h2>
@@ -114,10 +101,7 @@ function Profile({ uid }) {
           <li>
             <span>Current Role: </span>
           </li>
-          <Link to={`/company/${company_name}`}>
-            <li>{company_name}</li>
-          </Link>
-
+          <li>{company_name}</li>
           <li>{start_date}</li>
           <li>{salary}</li>
         </ul>
@@ -127,7 +111,6 @@ function Profile({ uid }) {
           <span>Previous Roles: </span>
           {previous_roles &&
             previous_roles.map((item) => {
-              console.log(item)
               return <li> {item}</li>;
             })}
         </ul>
@@ -142,4 +125,4 @@ function Profile({ uid }) {
   );
 }
 
-export default Profile;
+export default OtherProfiles;
