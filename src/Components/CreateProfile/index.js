@@ -27,7 +27,7 @@ const initialState = {
   job_title: "",
   company_id: "",
   salary: "",
-  start_date: "",
+  start_date: new Date(),
   previous_roles: [],
   cohort_num: 0,
   region: "",
@@ -113,12 +113,7 @@ function reducer(state, action) {
 
 function ProfileInputs({ uid, photourl, email }) {
   const history = useHistory();
-  const [selectedDate, setSelectedDate] = useState(
-    new Date("2020-05-04T09:00:00")
-  );
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  
   const [companyData, setCompanyData] = useState([]);
   useEffect(() => {
     async function getIndividualCompany() {
@@ -192,15 +187,13 @@ function ProfileInputs({ uid, photourl, email }) {
     }
   }
 
-  // function handleChange(date){
-  //   // let newDate = JSON.stringify(selectedDate)
-  //   setSelectedDate(JSON.stringify(selectedDate))
-  //     dispatch({
-  //       type: "start_date",
-  //       payload: selectedDate,
-  //     });
+  function handleChange(date){
+      dispatch({
+        type: "start_date",
+        payload: date,
+      });
     
-  // }
+  }
 
   return (
     <>
@@ -301,7 +294,7 @@ function ProfileInputs({ uid, photourl, email }) {
             }}
           />
           <label>Start Date:</label>
-          <input
+          {/* <input
             className={css.inputs}
             type="text"
             placeholder="Start Date"
@@ -313,24 +306,24 @@ function ProfileInputs({ uid, photourl, email }) {
                 payload: event.target.value,
               });
             }}
-          />
+          /> */}
 
-          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
-          format="MM/dd/yyyy"
+          format="dd/MM/yyyy"
           margin="normal"
           id="date-picker-inline"
           label="Date picker inline"
-          value={selectedDate}
+          value={state.start_date}
           onChange={handleChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
         />
      
-    </MuiPickersUtilsProvider>  */}
+    </MuiPickersUtilsProvider> 
 
          
           <label>Previous Roles</label>
