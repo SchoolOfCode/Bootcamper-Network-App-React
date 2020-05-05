@@ -25,6 +25,7 @@ function Profile({ uid }) {
   const [profileData, setProfileData] = useState({});
   const [sliderValue, setSliderValue] = useState(1);
   const [option, setOption] = useState();
+ 
 
 
   useEffect(() => {
@@ -61,8 +62,7 @@ function Profile({ uid }) {
   } = profileData;
 
 
-  const [sliderValue, setSliderValue] = useState(job_satisfaction);
-  const [option, setOption] = useState(new_job);
+  
   
   return (
     <>

@@ -64,9 +64,9 @@ function App() {
         <PrivateRoute user={user} path="/profile">
           <Profile uid={user && user.uid} />
         </PrivateRoute>
-    <PrivateROute user={user} path="/profiles/:bootcamperid">
+        <PrivateRoute user={user} path="/profiles/:bootcamperid">
             <OtherProfiles />
-    </PrivateRoute>
+        </PrivateRoute>
         <PrivateRoute user={user} path="/companies">
           <CompaniesPage />
         </PrivateRoute>
