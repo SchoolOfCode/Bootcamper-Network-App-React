@@ -36,7 +36,7 @@ function BootcampersWorkingHere({companyname}) {
 {bootcamperWorkingHere.map((item) => {
     return(
         
-        <li> {item.first_name} {item.surname} {<img alt="" src={item.photourl}/>} </li> 
+        <li> {item.first_name} {item.surname} {<img alt="" src={`${item.photourl}`}/>} </li> 
         
     
     )
