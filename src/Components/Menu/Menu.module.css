@@ -1,0 +1,35 @@
+:root {
+  --main-color: #e5e5e5;
+  --bg: #46728a;
+}
+
+.menu {
+  width: 150px;
+  height: auto;
+  background: var(--bg);
+  border: 3px solid var(--main-color);
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-weight: bold;
+  text-align: center;
+  font-size: large;
+  right: 0;
+  margin-top: -5px;
+  margin-right: 5px;
+  z-index: 10;
+  position: absolute;
+}
+
+.ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+.link > li {
+  padding-bottom: 8px;
+}
