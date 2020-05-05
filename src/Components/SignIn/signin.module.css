@@ -1,13 +1,10 @@
-* {
-  background-color: #4a90e2;
-}
-
 .container {
   margin: 0 auto;
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #4a90e2;
 }
 
 .logo {

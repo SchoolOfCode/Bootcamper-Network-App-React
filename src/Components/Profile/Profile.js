@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
+import { Link } from "react-router-dom";
+
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
+import pencil from "../../images/pencil.png";
 
 import webLogo from "../../images/web.svg";
 
@@ -48,10 +51,16 @@ function Profile({ uid }) {
   } = profileData;
   const [sliderValue, setSliderValue] = useState(job_satisfaction);
   const [option, setOption] = useState(new_job);
-
+  // USE WHAT JODIE SHOWED ME ABOUT LINKS TO PUT LINK AROUND THE PENCIL
   return (
     <>
       <div className={css.info}>
+        <div className={css.pencilcontainer}>
+          <Link to="/profileEdit">
+            <img src={pencil} alt="edit pencil" className={css.pencil} />
+          </Link>
+        </div>
+
         <img src={photourl} alt="Profile Pic" className={css.profilePic} />
         <h2>
           {first_name} {surname}
