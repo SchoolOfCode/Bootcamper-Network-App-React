@@ -16,12 +16,7 @@ function IndividualCompany() {
   const { companyname } = useParams();
   useEffect(() => {
     async function getIndividualCompany() {
-      const res = await fetch(`${URL}/companies?companyname=${companyname}`, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const res = await fetch(`${URL}/companies?companyname=${companyname}`);
       const data = await res.json();
       console.log(data.payload[0]);
       setIndividualCompanyData(data.payload[0]);
@@ -29,7 +24,6 @@ function IndividualCompany() {
     getIndividualCompany();
   }, [companyname]);
   const {
-
     company_name,
     description,
     logo,
@@ -77,12 +71,13 @@ function IndividualCompany() {
         </p>
       </div>
       <div className={css.extraData}>
+
         <BootcampersWorkingHere companyname={companyname}/>
-        <p> </p>
+
       </div>
     </div>
   );
 }
-   
+
 
 export default IndividualCompany;

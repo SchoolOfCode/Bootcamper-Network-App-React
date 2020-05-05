@@ -39,12 +39,7 @@ function SearchBar() {
 
   function handleClick() {
     async function getProfileData() {
-      const res = await fetch(`${URL}/${getPath(searchOption)}`, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const res = await fetch(`${URL}/${getPath(searchOption)}`);
       const data = await res.json();
       console.log(data.payload);
       setSearchResults(data.payload);

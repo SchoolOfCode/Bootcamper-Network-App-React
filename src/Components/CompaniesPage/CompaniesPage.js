@@ -10,12 +10,7 @@ function CompaniesPage() {
   const [companyData, setCompanyData] = useState([]);
   useEffect(() => {
     async function getCompanies() {
-      const res = await fetch(`${URL}/companies`, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const res = await fetch(`${URL}/companies`);
       const data = await res.json();
       console.log(data.payload);
       setCompanyData(data.payload);
@@ -35,6 +30,7 @@ function CompaniesPage() {
         {companyData.map((item) => {
           return (
             <Company
+              key={item.company_id}
               companyData={companyData}
               company_id={item.company_id}
               logo={item.logo}

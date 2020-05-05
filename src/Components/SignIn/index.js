@@ -53,7 +53,7 @@ function SignIn({ user }) {
     return <Redirect to="/profileEdit" />;
   }
   if (userExists === true) {
-    return <Redirect to="/dash" />;
+    return <Redirect to="/" />;
   }
 }
 

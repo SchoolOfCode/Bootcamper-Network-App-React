@@ -10,23 +10,30 @@ import pencil from "../../images/pencil.png";
 
 import webLogo from "../../images/web.svg";
 
-import { useParams } from "react-router-dom";
 import { URL } from "../../config";
 
+
+const socialLinks = [
+  { name: 'twitter', src: twitterLogo },
+  { name: 'linkedin', src: linkedinLogo },
+  { name: 'github', src: githubLogo },
+  { name: 'web', src: webLogo }
+]
+
 function Profile({ uid }) {
-  const [profileData, setProfileData] = useState([]);
+
+  const [profileData, setProfileData] = useState({});
+  const [sliderValue, setSliderValue] = useState(1);
+  const [option, setOption] = useState();
+
 
   useEffect(() => {
     async function getProfileData() {
-      const res = await fetch(`${URL}/bootcampers?uid=${uid}`, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const res = await fetch(`${URL}/bootcampers?uid=${uid}`);
       const data = await res.json();
-      // console.log(data.payload[0]);
-      setProfileData(data.payload[0]);
+      if (data.payload[0]) {
+        setProfileData(data.payload[0]);
+      }
     }
     getProfileData();
   }, []);
@@ -52,9 +59,11 @@ function Profile({ uid }) {
     new_job,
     photourl,
   } = profileData;
+
+
   const [sliderValue, setSliderValue] = useState(job_satisfaction);
   const [option, setOption] = useState(new_job);
-  // USE WHAT JODIE SHOWED ME ABOUT LINKS TO PUT LINK AROUND THE PENCIL
+  
   return (
     <>
       <div className={css.info}>
@@ -68,30 +77,13 @@ function Profile({ uid }) {
         <h2>
           {first_name} {surname}
         </h2>
-        <img
-          src={twitterLogo}
-          alt="twitter logo"
+        {socialLinks.map(link => <img
+          key={link.name}
+          src={link.src}
+          alt={`${link.name} logo`}
           className={css.icons}
-          onClick={() => window.location.assign(twitter)}
-        />
-        <img
-          src={linkedinLogo}
-          alt="linkedin logo"
-          className={css.icons}
-          onClick={() => window.location.assign(linkedin)}
-        />
-        <img
-          src={githubLogo}
-          alt="github logo"
-          className={css.icons}
-          onClick={() => window.location.assign(github)}
-        />
-        <img
-          src={webLogo}
-          alt="web logo"
-          className={css.icons}
-          onClick={() => window.location.assign(portfolio)}
-        />
+          onClick={() => window.location.assign(profileData[link.name])}
+        />)}
       </div>
       <div className={css.profileContainer}>
         <ul>

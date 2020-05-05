@@ -4,6 +4,15 @@ import { logout } from "../firebase";
 
 import { Link } from "react-router-dom";
 
+const links = [
+  { text: "My Profile", path: "/profile" },
+  { text: "Messages", path: "/messages" },
+  { text: "Dashboard", path: "/" },
+  { text: "Companies", path: "/companies" },
+  { text: "Events", path: "/events" },
+  { text: "Useful Links", path: "/links" }
+]
+
 function Menu({ isMenuOpen, setIsMenuOpen }) {
   function handleClick() {
     setIsMenuOpen(!isMenuOpen);
@@ -11,27 +20,13 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
   return (
     <div className={css.menu}>
       <ul className={css.ul}>
-        <Link to="/profile" className={css.link} onClick={handleClick}>
-          <li>My Profile</li>
-        </Link>
-        <Link to="/messages" className={css.link} onClick={handleClick}>
-          <li>Messages</li>
-        </Link>
-        <Link to="/dash" className={css.link} onClick={handleClick}>
-          <li>Dashboard</li>
-        </Link>
-        <Link to="/companies" className={css.link} onClick={handleClick}>
-          <li>Companies</li>
-        </Link>
-        <Link to="/events" className={css.link} onClick={handleClick}>
-          <li>Events</li>
-        </Link>
-        <Link to="/links" className={css.link} onClick={handleClick}>
-          <li>Useful Links</li>
-        </Link>
-        <Link to="/signin" className={css.link} onClick={logout}>
-          <li>Logout</li>
-        </Link>
+        {links.map(
+          ({ text, path }) =>
+            <Link key={path} to={path} className={css.link} onClick={handleClick}>
+              <li>{text}</li>
+            </Link>
+        )}
+        <li className={css.link} onClick={logout}>Logout</li>
       </ul>
     </div>
   );

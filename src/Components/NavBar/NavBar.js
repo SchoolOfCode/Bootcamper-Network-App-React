@@ -9,7 +9,7 @@ function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className={css.navBar}>
-      <Link to="/dash">
+      <Link to="/">
         <img src={logo} className={css.logo} alt="school of code logo" />
       </Link>
       <img
