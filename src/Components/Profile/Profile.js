@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ import { URL } from "../../config";
 function Profile({ uid }) {
   const [profileData, setProfileData] = useState([]);
   const { firstname } = useParams();
+
   useEffect(() => {
     async function getProfileData() {
       const res = await fetch(`${URL}/bootcampers?uid=${uid}`, {
@@ -30,6 +31,8 @@ function Profile({ uid }) {
     }
     getProfileData();
   }, []);
+
+  const ProfileContext = React.createContext(profileData);
 
   const {
     first_name,
