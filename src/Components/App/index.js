@@ -15,6 +15,7 @@ import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
+import OtherProfiles from "../Profile/OtherProfiles";
 
 function App() {
   // const [user, setUser] = useState({ loggedIn: false });
@@ -69,6 +70,9 @@ function App() {
           </Route>
           <Route path="/profile">
             <Profile uid={user.uid} />
+          </Route>
+          <Route path="/profiles/:firstname">
+            <OtherProfiles />
           </Route>
           <Route path="/companies">
             <CompaniesPage />

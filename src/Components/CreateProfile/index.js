@@ -282,7 +282,7 @@ function ProfileInputs({ uid, photourl, email }) {
           > 
           <option> Select from the list </option>
           {companyData.map((item) => {
-            return <option> {item.company_name}</option>
+            return <option value={item.company_id}> {item.company_name}</option>
           })}
           
           </select>
