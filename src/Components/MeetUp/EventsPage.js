@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import css from "./Meetup.module.css";
+import cn from "classnames";
+import css from "./EventsPage.module.css";
 
 function EventsPage({ name, link, date, time }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -16,11 +17,7 @@ function EventsPage({ name, link, date, time }) {
         <p>{time}</p>
 
         <button
-          style={
-            isClicked
-              ? { backgroundColor: "green" }
-              : { backgroundColor: "#64a4c6" }
-          }
+          className={cn({ [css.clicked]: isClicked })}
           onClick={handleClick}
         >
           I'm Attending

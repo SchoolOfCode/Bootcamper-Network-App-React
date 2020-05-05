@@ -18,14 +18,13 @@ export default function Meetup({ state }) {
       <div className={morecss.bigContainer}>
         {state.map((item) => {
           return (
-            <>
-              <EventsPage
-                name={item.name}
-                link={item.link}
-                date={item.local_date}
-                time={item.local_time}
-              />
-            </>
+            <EventsPage
+              key={item.name}
+              name={item.name}
+              link={item.link}
+              date={item.local_date}
+              time={item.local_time}
+            />
           );
         })}
       </div>

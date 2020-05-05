@@ -1,0 +1,29 @@
+.eachEvent {
+  display: inline-block;
+  text-align: left;
+  width: 90vw;
+  height: auto;
+  padding-bottom: 10px;
+  background: #46728a;
+  border-radius: 15px;
+  border: 3px solid var(--main-color);
+  color: var(--main-color);
+  padding-left: 5px;
+}
+
+.eachEvent > button {
+  width: 100px;
+  height: 25px;
+  background: #64a4c6;
+  border-radius: 15px;
+  color: var(--main-color);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+.clicked {
+  background-color: green;
+}

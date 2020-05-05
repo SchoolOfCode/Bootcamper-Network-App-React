@@ -15,25 +15,16 @@ import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
+import PrivateRoute from "../PrivateRoute"
 
 function App() {
-  // const [user, setUser] = useState({ loggedIn: false });
   const [user, setUser] = useState(null);
   const [meetupState, setMeetupState] = useState([]);
-  const [fbDisplayName, setFbDisplayName] = useState("");
-  const [fbEmail, setFbEmail] = useState("");
-  const [fbUID, setFbUID] = useState("");
-  const [fbPhotoUrl, setFbPhotoUrl] = useState("");
   const [userLoading, setUserLoading] = useState(false);
 
   useEffect(() => {
     async function getEvents() {
-      const res = await fetch(`${URL}/events`, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const res = await fetch(`${URL}/events`);
       const data = await res.json();
       setMeetupState(data.events);
     }
@@ -45,10 +36,6 @@ function App() {
       setUserLoading(true);
       if (user) {
         setUser(user);
-        setFbDisplayName(user.displayName);
-        setFbEmail(user.email);
-        setFbPhotoUrl(user.photoURL);
-        setFbUID(user.uid);
         // console.log(`TOKEN`, user.getIdToken());
       } else {
         setUser(null);
@@ -57,58 +44,48 @@ function App() {
     });
   }, []);
 
-  if (user) {
-    return (
-      <Router>
-        <NavBar />
-        {/* <Dashboard state={meetupState} /> */}
 
-        <Switch>
-          <Route path="/dash">
-            <Dashboard state={meetupState} />
-          </Route>
-          <Route path="/profile">
-            <Profile uid={user.uid} />
-          </Route>
-          <Route path="/companies">
-            <CompaniesPage />
-          </Route>
-          <Route path="/company/:companyname">
-            <IndividualCompany />
-          </Route>
-          <Route path="/events">
-            <Meetup state={meetupState} />
-          </Route>
-          <Route path="/profileEdit">
-            <ProfileInputs email={fbEmail} photourl={fbPhotoUrl} uid={fbUID} />
-          </Route>
-          <Route path="/companyEdit">
-            <CompanyInputs />
-          </Route>
-          <Route path="/signin">
-            <SignIn user={user} />
-          </Route>
-          <Route path="/links">
-            <UsefulLinks />
-          </Route>
-        </Switch>
-      </Router>
-    );
-  }
-  if (userLoading) {
-    return (
-      <div>
-        <p>...loading</p>
-      </div>
-    );
-  }
-  if (!user) {
-    return (
-      <div>
-        <SignIn />
-      </div>
-    );
-  }
+
+  return (
+    <Router>
+      <NavBar />
+      {/* <Dashboard state={meetupState} /> */}
+      {userLoading &&
+        <div>
+          <p>...loading</p>
+        </div>
+      }
+      <Switch>
+        <PrivateRoute user={user} path="/profile">
+          <Profile uid={user && user.uid} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/companies">
+          <CompaniesPage />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/company/:companyname">
+          <IndividualCompany />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/events">
+          <Meetup state={meetupState} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profileEdit">
+          <ProfileInputs {...user} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/companyEdit">
+          <CompanyInputs />
+        </PrivateRoute>
+        <Route path="/signin">
+          <SignIn user={user} />
+        </Route>
+        <PrivateRoute user={user} path="/links">
+          <UsefulLinks />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/">
+          <Dashboard state={meetupState} />
+        </PrivateRoute>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

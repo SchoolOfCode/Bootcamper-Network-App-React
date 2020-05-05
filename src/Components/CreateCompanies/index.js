@@ -16,24 +16,14 @@ const initialState = {
   linkedIn: "",
 };
 
+const actionTypes = {
+  FORM_CHANGE: "FORM_CHANGE"
+}
+
 function reducer(state, action) {
   switch (action.type) {
-    case "company_name":
-      return { ...state, company_name: action.payload };
-    case "description":
-      return { ...state, description: action.payload };
-    case "logo":
-      return { ...state, logo: action.payload };
-    case "address":
-      return { ...state, address: action.payload };
-    case "postcode":
-      return { ...state, postcode: action.payload };
-    case "website":
-      return { ...state, website: action.payload };
-    case "twitter":
-      return { ...state, twitter: action.payload };
-    case "linkedIn":
-      return { ...state, linkedIn: action.payload };
+    case actionTypes.FORM_CHANGE:
+      return { ...state, ...action.payload };
     default:
       throw new Error();
   }
@@ -74,7 +64,7 @@ function CompanyInputs() {
 
   return (
     <>
-    <h2 className={css.header}> Add a Company </h2>
+      <h2 className={css.header}> Add a Company </h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>Company Name:</label>
@@ -86,8 +76,8 @@ function CompanyInputs() {
             value={state.company_name}
             onChange={(event) => {
               dispatch({
-                type: "company_name",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: { company_name: event.target.value },
               });
             }}
           />
@@ -101,8 +91,8 @@ function CompanyInputs() {
             value={state.description}
             onChange={(event) => {
               dispatch({
-                type: "description",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: { description: event.target.value },
               });
             }}
           />
@@ -116,8 +106,8 @@ function CompanyInputs() {
             value={state.logo}
             onChange={(event) => {
               dispatch({
-                type: "logo",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: { logo: event.target.value },
               });
             }}
           />
@@ -131,8 +121,8 @@ function CompanyInputs() {
             value={state.address}
             onChange={(event) => {
               dispatch({
-                type: "address",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: { address: event.target.value },
               });
             }}
           />
@@ -148,8 +138,8 @@ function CompanyInputs() {
             maxLength="8"
             onChange={(event) => {
               dispatch({
-                type: "postcode",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: { postcode: event.target.value },
               });
             }}
           />
@@ -163,8 +153,8 @@ function CompanyInputs() {
               value={state.website}
               onChange={(event) => {
                 dispatch({
-                  type: "website",
-                  payload: event.target.value,
+                  type: actionTypes.FORM_CHANGE,
+                  payload: { website: event.target.value },
                 });
               }}
             />
@@ -179,8 +169,8 @@ function CompanyInputs() {
               value={state.twitter}
               onChange={(event) => {
                 dispatch({
-                  type: "twitter",
-                  payload: event.target.value,
+                  type: actionTypes.FORM_CHANGE,
+                  payload: { twitter: event.target.value },
                 });
               }}
             />
@@ -195,15 +185,15 @@ function CompanyInputs() {
               value={state.linkedIn}
               onChange={(event) => {
                 dispatch({
-                  type: "linkedIn",
-                  payload: event.target.value,
+                  type: actionTypes.FORM_CHANGE,
+                  payload: { linkedIn: event.target.value },
                 });
               }}
             />
           </div>
         </form>
-      <button onClick={handleClick} className={css.button}>
-        Add To Companies
+        <button onClick={handleClick} className={css.button}>
+          Add To Companies
       </button>
       </div>
     </>
