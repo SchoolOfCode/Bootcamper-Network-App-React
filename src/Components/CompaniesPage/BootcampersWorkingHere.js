@@ -20,7 +20,6 @@ function BootcampersWorkingHere({companyname}) {
       
       getBootcampersWorkinghere();
     }, []);
-    console.log(bootcamperWorkingHere)
     const {
         photourl,
         first_name,
