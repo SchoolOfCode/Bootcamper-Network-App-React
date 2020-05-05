@@ -53,7 +53,7 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
+      {user && <NavBar />}
       {/* <Dashboard state={meetupState} /> */}
       {userLoading &&
         <div>
