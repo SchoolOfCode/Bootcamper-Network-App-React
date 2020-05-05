@@ -71,7 +71,7 @@ function App() {
           <Route path="/profile">
             <Profile uid={user.uid} />
           </Route>
-          <Route path="/profiles/:firstname">
+          <Route path="/profiles/:bootcamperid">
             <OtherProfiles />
           </Route>
           <Route path="/companies">

@@ -1,7 +1,7 @@
 import React from "react";
 import Divider from "../Divider";
 
-function BootcamperSearch({ name, surname, pic, region }) {
+function BootcamperSearch({ name, surname, pic, region, id }) {
   return (
     <div>
       <div>
@@ -23,6 +23,7 @@ function BootcamperSearch({ name, surname, pic, region }) {
             marginBlockStart: 0,
             marginBlockEnd: 0,
           }}
+          value={id}
         >
           {name} {surname}
         </p>

@@ -11,10 +11,10 @@ import { URL } from "../../config";
 
 function OtherProfiles() {
   const [profileData, setProfileData] = useState([]);
-  const { firstname } = useParams();
+  const { bootcamperid } = useParams();
   useEffect(() => {
     async function getProfileData() {
-      const res = await fetch(`${URL}/bootcampers?name=${firstname}`, {
+      const res = await fetch(`${URL}/bootcampers/id/${bootcamperid}`, {
         mode: "cors",
         headers: {
           "Access-Control-Allow-Origin": "*",
