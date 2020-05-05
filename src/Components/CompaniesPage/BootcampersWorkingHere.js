@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { URL } from "../../config";
 import { useParams } from "react-router-dom";
+import css from "./bcmpr.module.css"
 
 function BootcampersWorkingHere({companyname}) {
     const [bootcamperWorkingHere, setBootcamperWorkingHere] = useState([]);
@@ -35,7 +36,7 @@ function BootcampersWorkingHere({companyname}) {
 {bootcamperWorkingHere.map((item) => {
     return(
         
-        <li> {item.first_name} {item.surname} {<img alt="" src={item.photourl}/>} </li> 
+        <li> {item.first_name} {item.surname} {<img className={css.bootcamperPic} alt="" src={`${item.photourl}`}/>} </li> 
         
     
     )

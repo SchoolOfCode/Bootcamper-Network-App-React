@@ -78,7 +78,7 @@ function IndividualCompany() {
       </div>
       <div className={css.extraData}>
         <BootcampersWorkingHere companyname={companyname}/>
-        <p> insert some examples here</p>
+        <p> </p>
       </div>
     </div>
   );
