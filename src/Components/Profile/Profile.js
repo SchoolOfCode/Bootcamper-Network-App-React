@@ -12,7 +12,6 @@ import { URL } from "../../config";
 
 function Profile({ uid }) {
   const [profileData, setProfileData] = useState([]);
-  const { firstname } = useParams();
   useEffect(() => {
     async function getProfileData() {
       const res = await fetch(`${URL}/bootcampers?uid=${uid}`, {
@@ -112,6 +111,7 @@ function Profile({ uid }) {
           <span>Previous Roles: </span>
           {previous_roles &&
             previous_roles.map((item) => {
+              console.log(item)
               return <li> {item}</li>;
             })}
         </ul>

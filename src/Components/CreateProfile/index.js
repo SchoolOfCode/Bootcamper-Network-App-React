@@ -113,12 +113,27 @@ function reducer(state, action) {
 
 function ProfileInputs({ uid, photourl, email }) {
   const history = useHistory();
-  const [selectedDate, setSelectedDate] = React.useState(
+  const [selectedDate, setSelectedDate] = useState(
     new Date("2020-05-04T09:00:00")
   );
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  const [companyData, setCompanyData] = useState([]);
+  useEffect(() => {
+    async function getIndividualCompany() {
+      const res = await fetch(`${URL}/companies`, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      const data = await res.json();
+      console.log(data.payload);
+      setCompanyData(data.payload);
+    }
+    getIndividualCompany();
+  }, []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
   async function handleClick(e) {
@@ -140,7 +155,7 @@ function ProfileInputs({ uid, photourl, email }) {
       portfolio,
       linkedIn,
     } = state;
-    console.log(previous_roles);
+    console.log(state);
     e.preventDefault();
     const saveResult = await fetch(`${URL}/bootcampers`, {
       mode: "cors",
@@ -176,6 +191,16 @@ function ProfileInputs({ uid, photourl, email }) {
       history.push("/profile");
     }
   }
+
+  // function handleChange(date){
+  //   // let newDate = JSON.stringify(selectedDate)
+  //   setSelectedDate(JSON.stringify(selectedDate))
+  //     dispatch({
+  //       type: "start_date",
+  //       payload: selectedDate,
+  //     });
+    
+  // }
 
   return (
     <>
@@ -244,10 +269,8 @@ function ProfileInputs({ uid, photourl, email }) {
               If your company doesn't already exist, add it here
             </Link>
           </p>
-          <input
+          <select
             className={css.inputs}
-            type="text"
-            placeholder="Company"
             name="company_id"
             value={state.company_id}
             onChange={(event) => {
@@ -256,7 +279,13 @@ function ProfileInputs({ uid, photourl, email }) {
                 payload: event.target.value,
               });
             }}
-          />
+          > 
+          <option> Select from the list </option>
+          {companyData.map((item) => {
+            return <option> {item.company_name}</option>
+          })}
+          
+          </select>
           <label>Salary:</label>
           <input
             className={css.inputs}
@@ -295,20 +324,15 @@ function ProfileInputs({ uid, photourl, email }) {
           id="date-picker-inline"
           label="Date picker inline"
           value={selectedDate}
-          onChange={(event) => {
-              dispatch({
-                type: "start_date",
-                payload: event.target.value,
-              });
-            }}
+          onChange={handleChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
         />
      
-    </MuiPickersUtilsProvider> 
+    </MuiPickersUtilsProvider>  */}
 
-          /> */}
+         
           <label>Previous Roles</label>
 
           <PreviousRoles
