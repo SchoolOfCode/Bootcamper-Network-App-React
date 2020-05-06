@@ -110,8 +110,9 @@ function OtherProfiles() {
         <ul>
           <span>Previous Roles: </span>
           {previous_roles &&
-            previous_roles.map((item) => {
-              return <li> {item}</li>;
+            previous_roles.map(item => {
+              const {jobTitle, company} = JSON.parse(item)
+              return <li> {jobTitle} at {company}</li>;
             })}
         </ul>
       </div>
