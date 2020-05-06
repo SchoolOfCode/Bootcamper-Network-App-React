@@ -15,7 +15,7 @@ import IndividualCompany from "../CompaniesPage/IndividualCompany";
 import SignIn from "../SignIn";
 import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
-
+import Messages from "../Messages/index"
 import PrivateRoute from "../PrivateRoute"
 
 import OtherProfiles from "../Profile/OtherProfiles";
@@ -63,6 +63,9 @@ function App() {
       <Switch>
         <PrivateRoute user={user} path="/profile">
           <Profile uid={user && user.uid} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/messages">
+          <Messages  />
         </PrivateRoute>
         <PrivateRoute user={user} path="/profiles/:bootcamperid">
             <OtherProfiles />
