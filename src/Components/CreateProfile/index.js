@@ -37,7 +37,7 @@ const initialState = {
   twitter: localStorage.getItem("twitter") || "",
   github: localStorage.getItem("github") || "",
   portfolio: localStorage.getItem("portfolio") || "",
-  linkedIn: localStorage.getItem("linkedIn") || "",
+  linkedin: localStorage.getItem("linkedin") || "",
 };
 
 function reducer(state, action) {
@@ -103,10 +103,10 @@ function reducer(state, action) {
       return state.portfolio === action.payload
         ? state
         : { ...state, portfolio: action.payload };
-    case "linkedIn":
-      return state.linkedIn === action.payload
+    case "linkedin":
+      return state.linkedin === action.payload
         ? state
-        : { ...state, linkedIn: action.payload };
+        : { ...state, linkedin: action.payload };
     default:
       throw new Error();
   }
@@ -149,7 +149,7 @@ function ProfileInputs({ uid, photourl, email }) {
       twitter,
       github,
       portfolio,
-      linkedIn,
+      linkedin,
     } = state;
     console.log(state);
     e.preventDefault();
@@ -179,7 +179,7 @@ function ProfileInputs({ uid, photourl, email }) {
         twitter,
         github,
         portfolio,
-        linkedIn,
+        linkedin,
       }),
     });
     console.log(JSON.stringify(saveResult));
@@ -403,6 +403,8 @@ function ProfileInputs({ uid, photourl, email }) {
               });
             }}
           />
+
+          <small> Please enter URL </small>
           <div>
             <img src={websiteLogo} alt="website logo" className={css.logos} />
             <input
@@ -438,17 +440,17 @@ function ProfileInputs({ uid, photourl, email }) {
             />
           </div>
           <div>
-            <img src={linkedinLogo} alt="linkedIn logo" className={css.logos} />
+            <img src={linkedinLogo} alt="linkedin logo" className={css.logos} />
             <input
               className={css.inputs}
               type="text"
-              placeholder="linkedIn"
-              name="linkedIn"
-              value={state.linkedIn}
+              placeholder="linkedin"
+              name="linkedin"
+              value={state.linkedin}
               onChange={(event) => {
-                localStorage.setItem("linkedIn", event.target.value);
+                localStorage.setItem("linkedin", event.target.value);
                 dispatch({
-                  type: "linkedIn",
+                  type: "linkedin",
                   payload: event.target.value,
                 });
               }}

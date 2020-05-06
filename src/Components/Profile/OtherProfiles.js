@@ -8,6 +8,7 @@ import webLogo from "../../images/web.svg";
 
 import { useParams } from "react-router-dom";
 import { URL } from "../../config";
+import { Link } from "react-router-dom";
 
 function OtherProfiles() {
   const [profileData, setProfileData] = useState([]);
@@ -40,17 +41,14 @@ function OtherProfiles() {
     start_date,
     salary,
     previous_roles,
-    job_satisfaction,
-    new_job,
     photourl,
+    job_title,
   } = profileData;
-  const [sliderValue, setSliderValue] = useState(job_satisfaction);
-  const [option, setOption] = useState(new_job);
 
   return (
     <>
       <div className={css.info}>
-      <img src={photourl} alt="Profile Pic" className={css.profilePic} />
+        <img src={photourl} alt="Profile Pic" className={css.profilePic} />
 
         <h2>
           {first_name} {surname}
@@ -99,24 +97,39 @@ function OtherProfiles() {
       <div className={css.profileContainer}>
         <ul>
           <li>
-            <span>Current Role: </span>
+            <span>Current Role </span>
           </li>
-          <li>{company_name}</li>
-          <li>{start_date}</li>
-          <li>{salary}</li>
+          <li>
+            <span>Company Name: </span>
+            <Link to={`/company/${company_name}`}>{company_name}</Link>
+          </li>
+          <li>
+            <span>Job Role: </span>
+            {job_title}
+          </li>
+          <li>
+            <span>Start Date: </span>
+            {start_date?.substring(0, 9).split("-").reverse().join("-")}
+          </li>
+          <li>
+            <span>Salary: </span>£{salary}
+          </li>
         </ul>
       </div>
       <div className={css.profileContainer}>
         <ul>
           <span>Previous Roles: </span>
           {previous_roles &&
-            previous_roles.map(item => {
-              const {jobTitle, company} = JSON.parse(item)
-              return <li> {jobTitle} at {company}</li>;
+            previous_roles.map((item) => {
+              const { jobTitle, company } = JSON.parse(item);
+              return (
+                <li>
+                  - {jobTitle} at {company}
+                </li>
+              );
             })}
         </ul>
       </div>
-      
     </>
   );
 }
