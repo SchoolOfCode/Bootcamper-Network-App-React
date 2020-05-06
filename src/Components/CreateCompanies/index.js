@@ -84,7 +84,7 @@ function CompanyInputs() {
             }}
           />
 
-          <label>Description:</label>
+          <label>Description:</label>npm 
           <textarea
             className={css.inputs}
             type="text"
