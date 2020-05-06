@@ -37,7 +37,6 @@ function SignIn({ user }) {
           onClick={signInWithRedirect}
           className={css.normalsignin}
         />
-        {/* <button onClick={signInWithRedirect}>Sign in with Google</button> */}
       </div>
     );
   }
