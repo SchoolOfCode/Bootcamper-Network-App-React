@@ -110,7 +110,7 @@ function Profile({ uid }) {
           </li>
           <li>
             <span>Start Date: </span>
-            {start_date?.substring(0, 9).split("-").reverse().join("-")}
+            {start_date?.substring(0, 10).split("-").reverse().join("-")}
           </li>
           <li>
             <span>Salary: </span>£{salary}
