@@ -82,7 +82,8 @@ const PreviousRoles = ({ onChange }) => {
         type="button"
         onClick={() => setRoleNumber(roleNumber + 1)}
         className={css.prevRoleButton}
-      >+
+      >
+        +
       </button>
     </>
   );

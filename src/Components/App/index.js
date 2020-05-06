@@ -16,10 +16,9 @@ import SignIn from "../SignIn";
 import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
 
-import PrivateRoute from "../PrivateRoute"
+import PrivateRoute from "../PrivateRoute";
 
 import OtherProfiles from "../Profile/OtherProfiles";
-
 
 function App() {
   const [user, setUser] = useState(null);
@@ -48,24 +47,21 @@ function App() {
     });
   }, []);
 
-
-
-
   return (
     <Router>
       {user && <NavBar />}
       {/* <Dashboard state={meetupState} /> */}
-      {userLoading &&
+      {userLoading && (
         <div>
           <p>...loading</p>
         </div>
-      }
+      )}
       <Switch>
         <PrivateRoute user={user} path="/profile">
           <Profile uid={user && user.uid} />
         </PrivateRoute>
         <PrivateRoute user={user} path="/profiles/:bootcamperid">
-            <OtherProfiles />
+          <OtherProfiles />
         </PrivateRoute>
         <PrivateRoute user={user} path="/companies">
           <CompaniesPage />
@@ -94,7 +90,6 @@ function App() {
       </Switch>
     </Router>
   );
-
 }
 
 export default App;

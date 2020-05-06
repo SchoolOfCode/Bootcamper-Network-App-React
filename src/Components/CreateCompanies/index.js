@@ -18,8 +18,8 @@ const initialState = {
 };
 
 const actionTypes = {
-  FORM_CHANGE: "FORM_CHANGE"
-}
+  FORM_CHANGE: "FORM_CHANGE",
+};
 
 function reducer(state, action) {
   switch (action.type) {
@@ -191,16 +191,16 @@ function CompanyInputs() {
                 });
               }}
             />
-             <p className={css.linktext}>
-            <Link to="/profileEdit" className={css.linktext}>
-              Go back to edit your profile
-            </Link>
-          </p>
+            <p className={css.linktext}>
+              <Link to="/profileEdit" className={css.linktext}>
+                Go back to edit your profile
+              </Link>
+            </p>
           </div>
         </form>
         <button onClick={handleClick} className={css.button}>
           Add To Companies
-      </button>
+        </button>
       </div>
     </>
   );

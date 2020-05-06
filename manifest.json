@@ -1,26 +1,26 @@
 {
-    "name": "Bootcamper Network",
-    "short_name": "Bootcamper Network",
-    "icons": [
-        {
-            "src": "img/logo.png",
-            "sizes": "92x92",
-            "type": "image/png"
-        },
-        {
-            "src": "/img/logo.png",
-            "sizes": "144x144",
-            "type": "image/png"
-        },
-        {
-            "src": "img/logo.png",
-            "sizes": "152x152",
-            "type": "image/png"
-        }        
-    ],
-    "start_url": "/",
-    "display": "standalone",
-    "orientation": "portrait",
-    "background_color": "#f0f2f5",
-    "theme_color": "#96f2d7"
+  "name": "Bootcamper Network",
+  "short_name": "Bootcamper Network",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "sizes": "92x92",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/logo.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logo.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f0f2f5",
+  "theme_color": "#96f2d7"
 }
