@@ -40,14 +40,14 @@ function OtherProfiles() {
     start_date,
     salary,
     previous_roles,
-    photourl,
+    photo_url,
     job_title,
   } = profileData;
 
   return (
     <>
       <div className={css.info}>
-        <img src={photourl} alt="Profile Pic" className={css.profilePic} />
+        <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
 
         <h2>
           {first_name} {surname}

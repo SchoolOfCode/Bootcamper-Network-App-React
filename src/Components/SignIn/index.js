@@ -11,6 +11,7 @@ function SignIn({ user }) {
   const [userExists, setUserExists] = useState(undefined);
 
   useEffect(() => {
+    console.log(`hello blah blah`, user);
     if (user) {
       async function getUserStatus() {
         const res = await fetch(`${URL}/bootcampers/user?uid=${user.uid}`, {
@@ -42,7 +43,7 @@ function SignIn({ user }) {
   if (userExists === undefined) {
     return (
       <div>
-        <p>Loading...</p>
+        <p>Refresh</p>
       </div>
     );
   }

@@ -49,7 +49,7 @@ function Profile({ uid }) {
     start_date,
     salary,
     previous_roles,
-    photourl,
+    photo_url,
     job_title,
   } = profileData;
 
@@ -62,7 +62,7 @@ function Profile({ uid }) {
           </Link>
         </div>
 
-        <img src={photourl} alt="Profile Pic" className={css.profilePic} />
+        <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
         <h2>
           {first_name} {surname}
         </h2>
@@ -122,7 +122,6 @@ function Profile({ uid }) {
           {previous_roles &&
             previous_roles.map((item) => {
               const { jobTitle, company } = {}; //JSON.parse(item);
-              console.log(`item item woo`, item);
               return (
                 <li>
                   - {jobTitle} at {company}

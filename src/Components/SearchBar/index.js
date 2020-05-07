@@ -95,7 +95,7 @@ function SearchBar() {
                   <BootcamperSearch
                     name={item.first_name}
                     surname={item.surname}
-                    pic={item.photourl}
+                    pic={item.photo_url}
                     region={item.region}
                     id={item.bootcamper_id}
                   />

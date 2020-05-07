@@ -1,0 +1,13 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.gmapcanvas {
+  height: 100%;
+  width: 100%;
+}
+
+.seconddiv {
+  overflow: hidden;
+}
