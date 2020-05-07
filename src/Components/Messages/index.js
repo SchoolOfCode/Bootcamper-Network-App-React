@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import css from "./message.module.css";
 import io from "socket.io-client";
 
-const connection = io("http://localhost:5000");
+const connection = io(
+  "http://bootcampcommunityapp-dev.eu-west-1.elasticbeanstalk.com"
+);
 
 const Messages = () => {
   const [input, setInput] = useState("");

@@ -17,7 +17,7 @@ function BootcampersWorkingHere({ companyname }) {
     getBootcampersWorkinghere();
   }, [companyname]);
 
-  const { photourl, first_name, surname } = bootcamperWorkingHere;
+  const { photo_url, first_name, surname } = bootcamperWorkingHere;
 
   return (
     <div>
@@ -29,7 +29,7 @@ function BootcampersWorkingHere({ companyname }) {
               <Link to={`/profiles/${item.bootcamper_id}`} className={css.link}>
                 {item.first_name} {item.surname}
               </Link>{" "}
-              <img className={css.bootcamperPic} alt="" src={item.photourl} />
+              <img className={css.bootcamperPic} alt="" src={item.photo_url} />
             </li>
           );
         })}

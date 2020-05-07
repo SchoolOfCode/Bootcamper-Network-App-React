@@ -20,16 +20,14 @@ import UsefulLinks from "../UsefulLinks/index.js";
 import Messages from "../Messages/index";
 import PrivateRoute from "../PrivateRoute";
 import OtherProfiles from "../Profile/OtherProfiles";
+import GoogleMaps from "../GoogleMaps";
 
 function App() {
   // const [user, setUser] = useState(null);
   const [meetupState, setMeetupState] = useState([]);
   const [user, loading, error] = useAuthState(firebase.apps[0].auth());
-  const [photoURL, setphotoURL] = useState("");
 
-  useEffect(() => {
-    setphotoURL(user?.photoURL);
-  }, []);
+  console.log(`GOOGLE DATA`, user);
 
   useEffect(() => {
     async function getEvents() {
@@ -52,53 +50,6 @@ function App() {
   //   });
   // }, []);
 
-  if (user) {
-    return (
-      <Router>
-        {user && <NavBar />}
-        {/* <Dashboard state={meetupState} /> */}
-
-        <Switch>
-          <PrivateRoute user={user} path="/profile">
-            <Profile uid={user && user.uid} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/messages">
-            <Messages />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/profiles/:bootcamperid">
-            <OtherProfiles />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/companies">
-            <CompaniesPage />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/company/:companyname">
-            <IndividualCompany />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/events">
-            <Meetup state={meetupState} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/profileEdit">
-            <ProfileInputs {...user} photoURL={photoURL} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/companyEdit">
-            <CompanyInputs />
-          </PrivateRoute>
-          <Route path="/signin">
-            <SignIn user={user} />
-          </Route>
-          <PrivateRoute user={user} path="/links">
-            <UsefulLinks />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/">
-            <Dashboard state={meetupState} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/loading">
-            <LoadingPage />
-          </PrivateRoute>
-        </Switch>
-      </Router>
-    );
-  }
   if (loading) {
     return (
       <div>
@@ -113,7 +64,55 @@ function App() {
       </div>
     );
   }
-  return <SignIn user={user} />;
+
+  return (
+    <Router>
+      {user && <NavBar />}
+      {/* <Dashboard state={meetupState} /> */}
+
+      <Switch>
+        <PrivateRoute user={user} path="/profile">
+          <Profile uid={user && user.uid} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/messages">
+          <Messages />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profiles/:bootcamperid">
+          <OtherProfiles />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/companies">
+          <CompaniesPage />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/company/:companyname">
+          <IndividualCompany />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/events">
+          <Meetup state={meetupState} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profileEdit">
+          <ProfileInputs {...user} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/companyEdit">
+          <CompanyInputs />
+        </PrivateRoute>
+        <Route path="/signin">
+          <SignIn user={user} />
+        </Route>
+        <PrivateRoute user={user} path="/links">
+          <UsefulLinks />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/googlemaps">
+          <GoogleMaps />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/">
+          <Dashboard state={meetupState} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/loading">
+          <LoadingPage />
+        </PrivateRoute>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

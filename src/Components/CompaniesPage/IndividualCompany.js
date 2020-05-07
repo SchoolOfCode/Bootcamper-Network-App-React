@@ -6,7 +6,6 @@ import websiteLogo from "../../images/web.svg";
 import { URL } from "../../config";
 import css from "./CompaniesPage.module.css";
 import BootcampersWorkingHere from "./BootcampersWorkingHere";
-
 import { useParams } from "react-router-dom";
 
 // THIS IS INDIVIDUAL COMPANIES AFTER CLICKING ON THE COMPANY PAGES
@@ -70,7 +69,7 @@ function IndividualCompany() {
         </p>
       </div>
       <div className={css.extraData}>
-        <BootcampersWorkingHere companyname={companyname} />
+        {/* <BootcampersWorkingHere companyname={companyname} /> */}
       </div>
     </div>
   );
