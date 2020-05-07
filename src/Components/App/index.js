@@ -25,8 +25,11 @@ function App() {
   // const [user, setUser] = useState(null);
   const [meetupState, setMeetupState] = useState([]);
   const [user, loading, error] = useAuthState(firebase.apps[0].auth());
+  const [photoURL, setphotoURL] = useState("");
 
-  console.log(`APP USER DATA FROM G`, user);
+  useEffect(() => {
+    setphotoURL(user?.photoURL);
+  }, []);
 
   useEffect(() => {
     async function getEvents() {
@@ -75,7 +78,7 @@ function App() {
             <Meetup state={meetupState} />
           </PrivateRoute>
           <PrivateRoute user={user} path="/profileEdit">
-            <ProfileInputs {...user} />
+            <ProfileInputs {...user} photoURL={photoURL} />
           </PrivateRoute>
           <PrivateRoute user={user} path="/companyEdit">
             <CompanyInputs />

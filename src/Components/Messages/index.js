@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import css from "./message.module.css";
 import io from "socket.io-client";
@@ -6,11 +5,8 @@ import io from "socket.io-client";
 const connection = io("http://localhost:5000");
 
 const Messages = () => {
-
   const [input, setInput] = useState("");
   const [allMessages, setAllMessages] = useState([]);
-
-  // var socket = io();
 
   function handleInput(event) {
     setInput(event.target.value);
@@ -42,15 +38,16 @@ const Messages = () => {
   return (
     <div className={css.div}>
       <ul id={css.messages}></ul>
-      <form action="">
+      <form action="" className={css.form}>
         <input
           onChange={handleInput}
           value={input}
-          id={css.m}
+          className={css.forminput}
           autocomplete="off"
         />
-        <button onClick={sendMessage}>Send</button>
-
+        <button className={css.formbutton} onClick={sendMessage}>
+          Send
+        </button>
       </form>
     </div>
   );

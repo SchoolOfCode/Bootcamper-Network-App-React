@@ -24,16 +24,20 @@ function Profile({ uid }) {
   //Get user data - fetch from db
   useEffect(() => {
     async function getProfileData() {
-      const res = await fetch(`${URL}/bootcampers?uid=${uid}`);
-      const data = await res.json();
-      if (data.payload[0]) {
-        setProfileData(data.payload[0]);
+      try {
+        const res = await fetch(`${URL}/bootcampers?uid=${uid}`);
+        const data = await res.json();
+        if (data.payload[0]) {
+          setProfileData(data.payload[0]);
+        }
+      } catch (err) {
+        console.log(`fetch error`, err);
       }
     }
     getProfileData();
   }, []);
 
-  const ProfileContext = React.createContext(profileData);
+  // const ProfileContext = React.createContext(profileData);
 
   const {
     first_name,
@@ -117,7 +121,8 @@ function Profile({ uid }) {
           <span>Previous Roles: </span>
           {previous_roles &&
             previous_roles.map((item) => {
-              const { jobTitle, company } = JSON.parse(item);
+              const { jobTitle, company } = {}; //JSON.parse(item);
+              console.log(`item item woo`, item);
               return (
                 <li>
                   - {jobTitle} at {company}

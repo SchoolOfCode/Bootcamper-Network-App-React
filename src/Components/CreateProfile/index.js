@@ -111,6 +111,7 @@ function reducer(state, action) {
 function ProfileInputs({ uid, photoURL, email }) {
   const history = useHistory();
   const [companyData, setCompanyData] = useState([]);
+  console.log(`IS PHOTO URL IN CREATE`, photoURL);
   useEffect(() => {
     async function getIndividualCompany() {
       const res = await fetch(`${URL}/companies`, {
@@ -127,7 +128,6 @@ function ProfileInputs({ uid, photoURL, email }) {
 
   const [state, dispatch] = useReducer(reducer, initialState);
   async function handleClick(e) {
-    console.log(`CREATE PROFILE PHOTOURL`, photoURL);
     const {
       first_name,
       surname,
@@ -180,6 +180,11 @@ function ProfileInputs({ uid, photoURL, email }) {
       history.push("/profile");
     }
   }
+
+  // useEffect(() => {
+  //   setphotoURL();
+  // }, []);
+  // console.log(`HAS THIS WORK`, photoURL);
 
   function handleChange(date) {
     dispatch({
