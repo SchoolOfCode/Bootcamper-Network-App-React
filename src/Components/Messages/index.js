@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import css from "./message.module.css";
 import io from "socket.io-client";
@@ -5,6 +6,7 @@ import io from "socket.io-client";
 const connection = io("http://localhost:5000");
 
 const Messages = () => {
+
   const [input, setInput] = useState("");
   const [allMessages, setAllMessages] = useState([]);
 
@@ -49,6 +51,7 @@ const Messages = () => {
           autocomplete="off"
         />
         <button onClick={sendMessage}>Send</button>
+
       </form>
     </div>
   );
