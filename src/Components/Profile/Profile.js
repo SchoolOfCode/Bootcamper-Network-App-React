@@ -12,27 +12,24 @@ import webLogo from "../../images/web.svg";
 
 import { URL } from "../../config";
 
-
 const socialLinks = [
-  { name: 'twitter', src: twitterLogo },
-  { name: 'linkedin', src: linkedinLogo },
-  { name: 'github', src: githubLogo },
-  { name: 'web', src: webLogo }
-]
+  { name: "twitter", src: twitterLogo },
+  { name: "linkedin", src: linkedinLogo },
+  { name: "github", src: githubLogo },
+  { name: "web", src: webLogo },
+];
 
 function Profile({ uid }) {
-
   const [profileData, setProfileData] = useState({});
   const [sliderValue, setSliderValue] = useState(1);
   const [option, setOption] = useState();
- 
-
 
   useEffect(() => {
     async function getProfileData() {
       const res = await fetch(`${URL}/bootcampers?uid=${uid}`);
       const data = await res.json();
       if (data.payload[0]) {
+        console.log(data.payload[0]);
         setProfileData(data.payload[0]);
       }
     }
@@ -47,23 +44,14 @@ function Profile({ uid }) {
     region,
     cohort_num,
     aboutme,
-    twitter,
-    linkedin,
-    github,
-    portfolio,
-    company_id,
     company_name,
     start_date,
     salary,
     previous_roles,
-    job_satisfaction,
-    new_job,
     photourl,
+    job_title,
   } = profileData;
 
-
-  
-  
   return (
     <>
       <div className={css.info}>
@@ -77,13 +65,19 @@ function Profile({ uid }) {
         <h2>
           {first_name} {surname}
         </h2>
-        {socialLinks.map(link => <img
-          key={link.name}
-          src={link.src}
-          alt={`${link.name} logo`}
-          className={css.icons}
-          onClick={() => window.location.assign(profileData[link.name])}
-        />)}
+        {socialLinks.map((link) => {
+          console.log(profileData);
+          console.log(profileData[link.name]);
+          return (
+            <img
+              key={link.name}
+              src={link.src}
+              alt={`${link.name} logo`}
+              className={css.icons}
+              onClick={() => window.open(profileData[link.name])}
+            />
+          );
+        })}
       </div>
       <div className={css.profileContainer}>
         <ul>
@@ -104,14 +98,23 @@ function Profile({ uid }) {
       <div className={css.profileContainer}>
         <ul>
           <li>
-            <span>Current Role: </span>
+            <span>Current Role </span>
           </li>
-          <Link to={`/company/${company_name}`}>
-            <li>{company_name}</li>
-          </Link>
-
-          <li>{start_date}</li>
-          <li>{salary}</li>
+          <li>
+            <span>Company Name: </span>
+            <Link to={`/company/${company_name}`}>{company_name}</Link>
+          </li>
+          <li>
+            <span>Job Role: </span>
+            {job_title}
+          </li>
+          <li>
+            <span>Start Date: </span>
+            {start_date?.substring(0, 10).split("-").reverse().join("-")}
+          </li>
+          <li>
+            <span>Salary: </span>£{salary}
+          </li>
         </ul>
       </div>
       <div className={css.profileContainer}>
@@ -119,8 +122,12 @@ function Profile({ uid }) {
           <span>Previous Roles: </span>
           {previous_roles &&
             previous_roles.map((item) => {
-              console.log(item)
-              return <li> {item}</li>;
+              const { jobTitle, company } = JSON.parse(item);
+              return (
+                <li>
+                  - {jobTitle} at {company}
+                </li>
+              );
             })}
         </ul>
       </div>

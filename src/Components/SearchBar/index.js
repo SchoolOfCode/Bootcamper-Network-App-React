@@ -32,11 +32,6 @@ function SearchBar() {
     setSearchOption(e.target.value);
   }
 
-  function handleChange(e) {
-    setSearchTerm(e.target.value);
-    console.log(e.target.value);
-  }
-
   function handleClick() {
     async function getProfileData() {
       const res = await fetch(`${URL}/${getPath(searchOption)}`);
@@ -44,10 +39,26 @@ function SearchBar() {
       console.log(data.payload);
       setSearchResults(data.payload);
     }
-    setSearchTerm("");
-    setIsClicked(!isClicked);
+    // setSearchTerm("");
     getProfileData();
   }
+
+  function handleChange(e) {
+    setSearchTerm(e.target.value);
+    console.log(e.target.value);
+
+    if (searchTerm.length > 0) {
+      handleClick();
+    }
+  }
+
+  function enterPressed(e) {
+    const code = e.keyCode || e.which;
+    if (code === 13) {
+      handleClick();
+    }
+  }
+
   return (
     <div>
       <div>
@@ -66,7 +77,8 @@ function SearchBar() {
           className={css.searchBar}
           value={searchTerm}
           onChange={handleChange}
-          onClick={() => setIsClicked(false)}
+          onClick={() => setIsClicked(!isClicked)}
+          onKeyPress={enterPressed}
         />
         <img
           src={searchIcon}
@@ -80,7 +92,10 @@ function SearchBar() {
           {searchOption === "bootcamper" &&
             searchResults.map((item) => {
               return (
-                <Link to={`/profiles/${item.bootcamper_id}`} className={css.link}>
+                <Link
+                  to={`/profiles/${item.bootcamper_id}`}
+                  className={css.link}
+                >
                   <BootcamperSearch
                     name={item.first_name}
                     surname={item.surname}
@@ -124,7 +139,6 @@ function SearchBar() {
                   company_id={item.company_id}
                   region={item.region}
                   id={item.bootcamper_id}
-
                 />
               );
             })}

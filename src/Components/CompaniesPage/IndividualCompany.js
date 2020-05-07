@@ -5,7 +5,7 @@ import githubLogo from "../../images/github.png";
 import websiteLogo from "../../images/web.svg";
 import { URL } from "../../config";
 import css from "./CompaniesPage.module.css";
-import BootcampersWorkingHere from "./BootcampersWorkingHere"
+import BootcampersWorkingHere from "./BootcampersWorkingHere";
 
 import { useParams } from "react-router-dom";
 
@@ -71,13 +71,10 @@ function IndividualCompany() {
         </p>
       </div>
       <div className={css.extraData}>
-
-        <BootcampersWorkingHere companyname={companyname}/>
-
+        <BootcampersWorkingHere companyname={companyname} />
       </div>
     </div>
   );
 }
-
 
 export default IndividualCompany;
