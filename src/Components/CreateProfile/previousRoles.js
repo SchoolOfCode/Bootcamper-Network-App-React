@@ -66,6 +66,8 @@ const PreviousRoles = ({ onChange }) => {
     setRoleNumber(roleNumber - 1);
   };
 
+  console.log(`role values`, roleValues);
+
   return (
     <>
       {Array.from(Array(roleNumber)).map((x, i) => {
