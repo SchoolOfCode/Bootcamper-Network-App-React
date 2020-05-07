@@ -10,7 +10,6 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import { Link } from "react-router-dom";
 import PreviousRoles from "./previousRoles.js";
@@ -27,8 +26,7 @@ const initialState = {
   company_id: localStorage.getItem("company_id") || "",
   salary: localStorage.getItem("salary") || "",
   start_date: localStorage.getItem("start_date") || new Date(),
-
-  previous_roles: [],
+  previous_roles: localStorage.getItem("previous_roles") || [],
   cohort_num: localStorage.getItem("cohort_num") || 0,
   region: localStorage.getItem("region") || "",
   job_satisfaction: localStorage.getItem("job_satisfaction") || "",
@@ -40,7 +38,6 @@ const initialState = {
 };
 
 function reducer(state, action) {
-  // console.log(action.type);
   switch (action.type) {
     case "first_name":
       return state.first_name === action.payload
@@ -123,7 +120,6 @@ function ProfileInputs({ uid, photoURL, email }) {
         },
       });
       const data = await res.json();
-      console.log(data.payload);
       setCompanyData(data.payload);
     }
     getIndividualCompany();
@@ -131,6 +127,7 @@ function ProfileInputs({ uid, photoURL, email }) {
 
   const [state, dispatch] = useReducer(reducer, initialState);
   async function handleClick(e) {
+    console.log(`CREATE PROFILE PHOTOURL`, photoURL);
     const {
       first_name,
       surname,
@@ -149,7 +146,6 @@ function ProfileInputs({ uid, photoURL, email }) {
       portfolio,
       linkedin,
     } = state;
-    console.log(state);
     e.preventDefault();
     const saveResult = await fetch(`${URL}/bootcampers`, {
       mode: "cors",
@@ -180,7 +176,6 @@ function ProfileInputs({ uid, photoURL, email }) {
         linkedin,
       }),
     });
-    console.log(JSON.stringify(saveResult));
     if (saveResult.ok) {
       history.push("/profile");
     }

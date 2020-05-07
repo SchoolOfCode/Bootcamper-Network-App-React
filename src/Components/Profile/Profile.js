@@ -2,14 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
 import { Link } from "react-router-dom";
-
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import pencil from "../../images/pencil.png";
-
 import webLogo from "../../images/web.svg";
-
 import { URL } from "../../config";
 
 const socialLinks = [
@@ -24,12 +21,12 @@ function Profile({ uid }) {
   const [sliderValue, setSliderValue] = useState(1);
   const [option, setOption] = useState();
 
+  //Get user data - fetch from db
   useEffect(() => {
     async function getProfileData() {
       const res = await fetch(`${URL}/bootcampers?uid=${uid}`);
       const data = await res.json();
       if (data.payload[0]) {
-        console.log(data.payload[0]);
         setProfileData(data.payload[0]);
       }
     }
@@ -66,8 +63,6 @@ function Profile({ uid }) {
           {first_name} {surname}
         </h2>
         {socialLinks.map((link) => {
-          console.log(profileData);
-          console.log(profileData[link.name]);
           return (
             <img
               key={link.name}

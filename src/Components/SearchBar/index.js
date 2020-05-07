@@ -13,7 +13,6 @@ function SearchBar() {
   const [searchResults, setSearchResults] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
   function getPath(option) {
-    console.log(option);
     switch (option) {
       case "bootcamper":
         return `bootcampers?name=${searchTerm}`;
@@ -28,7 +27,6 @@ function SearchBar() {
   }
 
   function optionChange(e) {
-    console.log("option", e.target.value);
     setSearchOption(e.target.value);
   }
 
@@ -36,7 +34,6 @@ function SearchBar() {
     async function getProfileData() {
       const res = await fetch(`${URL}/${getPath(searchOption)}`);
       const data = await res.json();
-      console.log(data.payload);
       setSearchResults(data.payload);
     }
     // setSearchTerm("");
@@ -45,7 +42,6 @@ function SearchBar() {
 
   function handleChange(e) {
     setSearchTerm(e.target.value);
-    console.log(e.target.value);
 
     if (searchTerm.length > 0) {
       handleClick();

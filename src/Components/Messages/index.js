@@ -12,7 +12,6 @@ const Messages = () => {
 
   function handleInput(event) {
     setInput(event.target.value);
-    console.log(`input stuff`, input);
   }
 
   useEffect(() => {
