@@ -11,14 +11,12 @@ function BootcampersWorkingHere({ companyname }) {
     async function getBootcampersWorkinghere() {
       const res = await fetch(`${URL}/bootcampers?companyname=${companyname}`);
       const data = await res.json();
-      console.log(data.payload);
       setBootcamperWorkingHere(data.payload);
     }
 
     getBootcampersWorkinghere();
   }, [companyname]);
 
-  console.log(bootcamperWorkingHere);
   const { photourl, first_name, surname } = bootcamperWorkingHere;
 
   return (

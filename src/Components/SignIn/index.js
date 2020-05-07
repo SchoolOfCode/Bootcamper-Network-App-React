@@ -21,7 +21,6 @@ function SignIn({ user }) {
         });
         const data = await res.json();
         setUserExists(data.payload[0].exists);
-        console.log(`Sign in fetch data`, data.payload[0].exists);
       }
       getUserStatus();
     }

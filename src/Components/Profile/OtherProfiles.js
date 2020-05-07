@@ -22,7 +22,6 @@ function OtherProfiles() {
         },
       });
       const data = await res.json();
-      console.log(data.payload[0]);
       setProfileData(data.payload[0]);
     }
     getProfileData();

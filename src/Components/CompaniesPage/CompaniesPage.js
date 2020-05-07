@@ -12,7 +12,6 @@ function CompaniesPage() {
     async function getCompanies() {
       const res = await fetch(`${URL}/companies`);
       const data = await res.json();
-      console.log(data.payload);
       setCompanyData(data.payload);
     }
     getCompanies();

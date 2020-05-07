@@ -19,14 +19,14 @@ import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
 import Messages from "../Messages/index";
 import PrivateRoute from "../PrivateRoute";
-
 import OtherProfiles from "../Profile/OtherProfiles";
 
 function App() {
   // const [user, setUser] = useState(null);
   const [meetupState, setMeetupState] = useState([]);
-  const [userLoading, setUserLoading] = useState(false);
   const [user, loading, error] = useAuthState(firebase.apps[0].auth());
+
+  console.log(`APP USER DATA FROM G`, user);
 
   useEffect(() => {
     async function getEvents() {

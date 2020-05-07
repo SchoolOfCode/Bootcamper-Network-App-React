@@ -18,7 +18,6 @@ function IndividualCompany() {
     async function getIndividualCompany() {
       const res = await fetch(`${URL}/companies?companyname=${companyname}`);
       const data = await res.json();
-      console.log(data.payload[0]);
       setIndividualCompanyData(data.payload[0]);
     }
     getIndividualCompany();
