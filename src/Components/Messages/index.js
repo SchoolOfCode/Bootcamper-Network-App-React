@@ -1,41 +1,57 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import css from "./message.module.css";
 import io from "socket.io-client";
 
 const connection = io("http://localhost:5000");
 
 const Messages = () => {
-  var socket = io();
-  const button = document.querySelector("button");
-  const ul = document.querySelector("ul");
-  const message = document.querySelector("#m");
 
-  function handleClick(e) {
-    e.preventDefault();
-    socket.emit("chat message", message.value);
-    console.log(message.value);
+  const [input, setInput] = useState("");
+  const [allMessages, setAllMessages] = useState([]);
+
+  // var socket = io();
+
+  function handleInput(event) {
+    setInput(event.target.value);
+    console.log(`input stuff`, input);
   }
 
-  socket.on("chat message", displayMsg);
+  useEffect(() => {
+    connection.on("chatMessage", ({ message }) => {
+      displayMsg(message.input);
+      console.log(`message after sending`, message);
+    });
+  }, []);
+
+  //when receiving a message
   function displayMsg(msg) {
-    const li = document.createElement("li");
-    li.innerText = msg;
-    ul.appendChild(li);
+    console.log(`this is MESSAGE`, msg);
+    setAllMessages([...allMessages, msg]);
   }
+  console.log(`message array`, allMessages);
+
+  //sending message
+  function sendMessage() {
+    connection.emit("chatMessage", { input });
+    setInput("");
+  }
+
+  //store messages in server
+  //on connection, server sends messages that you've had
 
   return (
     <div className={css.div}>
-      <ul className={css.messages}></ul>
-      <form action="" className={css.form}>
-        <input className={css.forminput} autocomplete="off" />
-        <button
-          onSubmit={() => {
-            handleClick();
-          }}
-          className={css.formbutton}
-        >
-          Send
-        </button>
+      <ul id={css.messages}></ul>
+      <form action="">
+        <input
+          onChange={handleInput}
+          value={input}
+          id={css.m}
+          autocomplete="off"
+        />
+        <button onClick={sendMessage}>Send</button>
+
       </form>
     </div>
   );
