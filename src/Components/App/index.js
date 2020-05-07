@@ -17,7 +17,6 @@ import { URL } from "../../config";
 import UsefulLinks from "../UsefulLinks/index.js";
 import Messages from "../Messages/index"
 import PrivateRoute from "../PrivateRoute"
-
 import OtherProfiles from "../Profile/OtherProfiles";
 
 
@@ -47,9 +46,6 @@ function App() {
       setUserLoading(false);
     });
   }, []);
-
-
-
 
   return (
     <Router>
