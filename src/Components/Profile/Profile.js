@@ -7,7 +7,7 @@ import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import pencil from "../../images/pencil.png";
-
+/* import emailLogo from "../../images/email.jpg" */
 import webLogo from "../../images/web.svg";
 
 import { URL } from "../../config";
@@ -17,6 +17,7 @@ const socialLinks = [
   { name: "linkedin", src: linkedinLogo },
   { name: "github", src: githubLogo },
   { name: "web", src: webLogo },
+ /*  { name: "email", src: emailLogo }  */
 ];
 
 function Profile({ uid }) {
@@ -92,6 +93,7 @@ function Profile({ uid }) {
           <li>
             <span>About Me: </span>
             {aboutme}
+           
           </li>
         </ul>
       </div>
