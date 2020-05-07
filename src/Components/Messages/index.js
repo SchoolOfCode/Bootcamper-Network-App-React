@@ -8,7 +8,7 @@ const Messages = () => {
   const [input, setInput] = useState("");
   const [allMessages, setAllMessages] = useState([]);
 
-  var socket = io();
+  // var socket = io();
 
   function handleInput(event) {
     setInput(event.target.value);
