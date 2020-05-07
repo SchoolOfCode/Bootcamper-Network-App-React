@@ -4,7 +4,6 @@ import "firebase/auth";
 import { onAuthStateChanged } from "../firebase";
 import firebase from "firebase/app";
 import { URL } from "../../config";
-import { usePersistentState } from "./usePersistentState";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -37,7 +36,7 @@ const initialState = {
   twitter: localStorage.getItem("twitter") || "",
   github: localStorage.getItem("github") || "",
   portfolio: localStorage.getItem("portfolio") || "",
-  linkedin: localStorage.getItem("linkedin") || "",
+  linkedIn: localStorage.getItem("linkedIn") || "",
 };
 
 function reducer(state, action) {
@@ -112,9 +111,8 @@ function reducer(state, action) {
   }
 }
 
-function ProfileInputs({ uid, photourl, email }) {
+function ProfileInputs({ uid, photoURL, email }) {
   const history = useHistory();
-
   const [companyData, setCompanyData] = useState([]);
   useEffect(() => {
     async function getIndividualCompany() {
@@ -163,7 +161,7 @@ function ProfileInputs({ uid, photourl, email }) {
       body: JSON.stringify({
         uid,
         email,
-        photourl,
+        photoURL,
         first_name,
         surname,
         aboutme,
@@ -213,7 +211,6 @@ function ProfileInputs({ uid, photourl, email }) {
                 type: "first_name",
                 payload: event.target.value,
               });
-              localStorage.getItem("firstname");
             }}
           />
           <label>Surname:</label>
@@ -448,7 +445,7 @@ function ProfileInputs({ uid, photourl, email }) {
               name="linkedin"
               value={state.linkedin}
               onChange={(event) => {
-                localStorage.setItem("linkedin", event.target.value);
+                localStorage.setItem("linkedIn", event.target.value);
                 dispatch({
                   type: "linkedin",
                   payload: event.target.value,

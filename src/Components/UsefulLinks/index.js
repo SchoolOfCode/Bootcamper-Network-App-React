@@ -2,6 +2,10 @@ import React from "react";
 import css from "../CompaniesPage/CompaniesPage.module.css";
 import morecss from "../MeetUp/Meetup.module.css";
 import Divider from "../Divider";
+import webPic from "./web.png"
+import stackPic from "./stack.png"
+import slackPic from "./slack.png"
+import linkedInPic from "./linkedin.png"
 
 function UsefulLinks() {
   return (
@@ -15,25 +19,26 @@ function UsefulLinks() {
       </div>
       <div className={css.bigContainer}>
         <p>
-          <span>School of Code's Website: </span>
-          <a href="https://www.schoolofcode.com/">Go Here</a>
+<img height="25px" marginLeft="10px" alt="" src={webPic}/>
+          <span> <a href="https://www.schoolofcode.com/"> School of Code's Website </a> </span>
+          
         </p>
         <Divider />
         <p>
-          <span>School of Code's Stack Overflow: </span>
-          <a href="https://stackoverflow.com/c/school-of-code/questions">
-            Go Here
-          </a>
+        <img height="25px" alt="" src={stackPic}/>
+          <span> <a href="https://stackoverflow.com/c/school-of-code/questions"> School of Code's Stack Overflow </a></span>
         </p>
         <Divider />
         <p>
-          <span>School of Code's Slack: </span>
-          <a href="https://schoolofcodebootcamp.slack.com">Go Here</a>
+        <img height="25px" alt="" src={slackPic}/>
+          <span> <a href="https://schoolofcodebootcamp.slack.com"> School of Code's Slack </a> </span>
+          
         </p>
         <Divider />
         <p>
-          <span>School of Code's LinkedIn: </span>
-          <a href="https://www.linkedin.com/school/school-of-code/">Go Here</a>
+        <img height="25px" alt="" src={linkedInPic}/>
+          <span> <a href="https://schoolofcodebootcamp.slack.com"> School of Code's LinkedIn </a> </span>
+          
         </p>
       </div>
     </>

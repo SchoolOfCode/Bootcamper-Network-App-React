@@ -19,22 +19,7 @@ export function signInWithRedirect() {
   firebase
     .auth()
     .signInWithRedirect(provider)
-    .getRedirectResult()
-    .then(function (result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      var userToken = user.getIdToken();
-      // The signed-in user info.
-      var user = result.user;
-      console.log(
-        `Login has worked. Access token`,
-        token,
-        `User info `,
-        user,
-        `User token: `,
-        userToken
-      );
-    })
+    // .getRedirectResult()
     .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -42,16 +27,6 @@ export function signInWithRedirect() {
       var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
-      console.log(
-        `The sign in didn't work. Error code`,
-        errorCode,
-        `Error email`,
-        email,
-        `Error message `,
-        errorMessage,
-        `Error credential `,
-        credential
-      );
     });
 }
 
