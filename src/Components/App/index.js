@@ -23,6 +23,7 @@ import Messages from "../Messages/index";
 import PrivateRoute from "../PrivateRoute";
 import OtherProfiles from "../Profile/OtherProfiles";
 import GoogleMaps from "../GoogleMaps";
+import AdminDash from "../AdminDash";
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -78,49 +79,58 @@ function App() {
         {user && <NavBar />}
         {/* <Dashboard state={meetupState} /> */}
 
-        <Switch>
-          <PrivateRoute user={user} path="/profile">
-            <Profile uid={user && user.uid} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/messages">
-            <Messages />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/profiles/:bootcamperid">
-            <OtherProfiles />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/companies">
-            <CompaniesPage />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/company/:companyname">
-            <IndividualCompany />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/events">
-            <Meetup state={meetupState} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/profileEdit">
-            <ProfileInputs {...user} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/companyEdit">
-            <CompanyInputs />
-          </PrivateRoute>
-          <Route path="/signin">
-            <SignIn user={user} />
-          </Route>
-          <PrivateRoute user={user} path="/links">
-            <UsefulLinks />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/googlemaps">
-            <GoogleMaps />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/">
-            <Dashboard state={meetupState} />
-          </PrivateRoute>
-          <PrivateRoute user={user} path="/loading">
-            <LoadingPage />
-          </PrivateRoute>
-        </Switch>
-      </Router>
+
+      <Switch>
+        <PrivateRoute user={user} path="/admin">
+          <AdminDash />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profile">
+          <Profile uid={user && user.uid} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/messages">
+          <Messages />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profiles/:bootcamperid">
+          <OtherProfiles />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/companies">
+          <CompaniesPage />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/company/:companyname">
+          <IndividualCompany />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/events">
+          <Meetup state={meetupState} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profileEdit">
+          <ProfileInputs {...user} header="Edit" />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profileCreate">
+          <ProfileInputs {...user} newUser header="Create" />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/companyEdit">
+          <CompanyInputs />
+        </PrivateRoute>
+        <Route path="/signin">
+          <SignIn user={user} />
+        </Route>
+        <PrivateRoute user={user} path="/links">
+          <UsefulLinks />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/googlemaps">
+          <GoogleMaps />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/">
+          <Dashboard state={meetupState} />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/loading">
+          <LoadingPage />
+        </PrivateRoute>
+      </Switch>
+    </Router>
+
     </ProfileContext.Provider>
+
   );
 }
 

@@ -20,8 +20,10 @@ const socialLinks = [
 function Profile({ uid }) {
   const [profileData, setProfileData] = useState({});
   const [sliderValue, setSliderValue] = useState(1);
-  const [option, setOption] = useState();
+
+  const [option, setOption] = useState("No");
   const [userProfile, setUserProfile] = useContext(ProfileContext);
+
 
   //Get user data - fetch from db
   useEffect(() => {
@@ -43,6 +45,8 @@ function Profile({ uid }) {
   console.log(`CONTEXT TEST`, userProfile);
 
   const {
+    bootcamper_id,
+    company_id,
     first_name,
     surname,
     region,
@@ -54,6 +58,8 @@ function Profile({ uid }) {
     previous_roles,
     photo_url,
     job_title,
+    job_satisfaction,
+    new_job,
   } = profileData;
 
   return (
@@ -138,6 +144,11 @@ function Profile({ uid }) {
         setSliderValue={setSliderValue}
         option={option}
         setOption={setOption}
+        id={bootcamper_id}
+        job_satisfaction={job_satisfaction}
+        new_job={new_job}
+        cohort_num={cohort_num}
+        company_id={company_id}
       />
     </>
   );
