@@ -6,7 +6,9 @@ import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import pencil from "../../images/pencil.png";
+import emailLogo from "../../images/email.png"
 import webLogo from "../../images/web.svg";
+
 import { URL } from "../../config";
 
 const socialLinks = [
@@ -14,6 +16,7 @@ const socialLinks = [
   { name: "linkedin", src: linkedinLogo },
   { name: "github", src: githubLogo },
   { name: "web", src: webLogo },
+ /*  { name: "email", src: emailLogo }  */
 ];
 
 function Profile({ uid }) {
@@ -22,7 +25,6 @@ function Profile({ uid }) {
 
   const [option, setOption] = useState("No");
 
-  //Get user data - fetch from db
   useEffect(() => {
     async function getProfileData() {
       try {
@@ -41,6 +43,7 @@ function Profile({ uid }) {
   const {
     bootcamper_id,
     company_id,
+    email,
     first_name,
     surname,
     region,
@@ -64,7 +67,6 @@ function Profile({ uid }) {
             <img src={pencil} alt="edit pencil" className={css.pencil} />
           </Link>
         </div>
-
         <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
         <h2>
           {first_name} {surname}
@@ -81,6 +83,12 @@ function Profile({ uid }) {
           );
         })}
       </div>
+
+      <a href={`mailto:${email}`}> 
+      <img height="40px" alt="" src={emailLogo}></img>
+        </a>
+
+      
       <div className={css.profileContainer}>
         <ul>
           <li>
