@@ -162,7 +162,8 @@ function ProfileInputs({ newUser, uid, photoURL, email, header }) {
 
   async function handleClick(e) {
     e.preventDefault();
-    const saveResult = await fetch(`${URL}/bootcampers`, {
+    const profileUrl = newUser ? `${URL}/bootcampers` : `${URL}/bootcampers/`;
+    const saveResult = await fetch(profileUrl, {
       mode: "cors",
       headers: {
         "Access-Control-Allow-Origin": "*",

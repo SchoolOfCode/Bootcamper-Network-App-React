@@ -10,8 +10,9 @@ const links = [
   { text: "Dashboard", path: "/" },
   { text: "Companies", path: "/companies" },
   { text: "Events", path: "/events" },
-  { text: "Useful Links", path: "/links" }
-]
+  { text: "Useful Links", path: "/links" },
+  { text: "Admin Dash", path: "/admin" },
+];
 
 function Menu({ isMenuOpen, setIsMenuOpen }) {
   function handleClick() {
@@ -20,13 +21,14 @@ function Menu({ isMenuOpen, setIsMenuOpen }) {
   return (
     <div className={css.menu}>
       <ul className={css.ul}>
-        {links.map(
-          ({ text, path }) =>
-            <Link key={path} to={path} className={css.link} onClick={handleClick}>
-              <li>{text}</li>
-            </Link>
-        )}
-        <li className={css.link} onClick={logout}>Logout</li>
+        {links.map(({ text, path }) => (
+          <Link key={path} to={path} className={css.link} onClick={handleClick}>
+            <li>{text}</li>
+          </Link>
+        ))}
+        <li className={css.link} onClick={logout}>
+          Logout
+        </li>
       </ul>
     </div>
   );

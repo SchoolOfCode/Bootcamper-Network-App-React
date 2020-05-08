@@ -21,6 +21,7 @@ import Messages from "../Messages/index";
 import PrivateRoute from "../PrivateRoute";
 import OtherProfiles from "../Profile/OtherProfiles";
 import GoogleMaps from "../GoogleMaps";
+import AdminDash from "../AdminDash";
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -71,6 +72,9 @@ function App() {
       {/* <Dashboard state={meetupState} /> */}
 
       <Switch>
+        <PrivateRoute user={user} path="/admin">
+          <AdminDash />
+        </PrivateRoute>
         <PrivateRoute user={user} path="/profile">
           <Profile uid={user && user.uid} />
         </PrivateRoute>

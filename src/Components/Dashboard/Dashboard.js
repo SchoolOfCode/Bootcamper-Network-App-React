@@ -3,7 +3,6 @@ import css from "./Dashboard.module.css";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import { Link } from "react-router-dom";
 
-// import brumJS from "../../images/brumJs.png";
 import EventsPage from "../MeetUp/EventsPage";
 import SearchBar from "../SearchBar";
 
