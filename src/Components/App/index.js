@@ -90,7 +90,10 @@ function App() {
           <Meetup state={meetupState} />
         </PrivateRoute>
         <PrivateRoute user={user} path="/profileEdit">
-          <ProfileInputs {...user} />
+          <ProfileInputs {...user} header="Edit" />
+        </PrivateRoute>
+        <PrivateRoute user={user} path="/profileCreate">
+          <ProfileInputs {...user} newUser header="Create" />
         </PrivateRoute>
         <PrivateRoute user={user} path="/companyEdit">
           <CompanyInputs />

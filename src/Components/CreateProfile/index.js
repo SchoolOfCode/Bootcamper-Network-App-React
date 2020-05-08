@@ -1,18 +1,15 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { useHistory } from "react-router-dom";
-import "firebase/auth";
-import { onAuthStateChanged } from "../firebase";
-import firebase from "firebase/app";
-import { URL } from "../../config";
+import { Link, useHistory } from "react-router-dom";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import css from "../CreateCompanies/CreateCompanies.module.css";
-import { Link } from "react-router-dom";
+
 import PreviousRoles from "./previousRoles.js";
+import css from "../CreateCompanies/CreateCompanies.module.css";
+import { URL } from "../../config";
 import twitterLogo from "../../images/twitter2.svg";
 import linkedinLogo from "../../images/linkedin2.svg";
 import githubLogo from "../../images/github2.svg";
@@ -37,80 +34,118 @@ const initialState = {
   linkedIn: localStorage.getItem("linkedIn") || "",
 };
 
+const actionTypes = {
+  FORM_CHANGE: "FORM_CHANGE",
+};
+
+const fields = [
+  "first_name",
+  "surname",
+  "aboutme",
+  "job_title",
+  "company_id",
+  "salary",
+  "start_date",
+  "previous_roles",
+  "cohort_num",
+  "region",
+  "job_satisfaction",
+  "new_job",
+  "twitter",
+  "github",
+  "portfolio",
+  "linkedin",
+];
+
 function reducer(state, action) {
   switch (action.type) {
-    case "first_name":
-      return state.first_name === action.payload
-        ? state
-        : { ...state, first_name: action.payload };
-    case "surname":
-      return state.surname === action.payload
-        ? state
-        : { ...state, surname: action.payload };
-    case "aboutme":
-      return state.aboutme === action.payload
-        ? state
-        : { ...state, aboutme: action.payload };
-    case "job_title":
-      return state.job_title === action.payload
-        ? state
-        : { ...state, job_title: action.payload };
-    case "company_id":
-      return state.company_id === action.payload
-        ? state
-        : { ...state, company_id: action.payload };
-    case "salary":
-      return state.salary === action.payload
-        ? state
-        : { ...state, salary: action.payload };
-    case "start_date":
-      return state.start_date === action.payload
-        ? state
-        : { ...state, start_date: action.payload };
-    case "previous_roles":
-      return state.previous_roles === action.payload
-        ? state
-        : { ...state, previous_roles: action.payload };
-    case "cohort_num":
-      return state.cohort_num === action.payload
-        ? state
-        : { ...state, cohort_num: action.payload };
-    case "region":
-      return state.region === action.payload
-        ? state
-        : { ...state, region: action.payload };
-    case "job_satisfaction":
-      return state.job_satisfaction === action.payload
-        ? state
-        : { ...state, job_satisfaction: action.payload };
-    case "new_job":
-      return state.new_job === action.payload
-        ? state
-        : { ...state, new_job: action.payload };
-    case "twitter":
-      return state.twitter === action.payload
-        ? state
-        : { ...state, twitter: action.payload };
-    case "github":
-      return state.github === action.payload
-        ? state
-        : { ...state, github: action.payload };
-    case "portfolio":
-      return state.portfolio === action.payload
-        ? state
-        : { ...state, portfolio: action.payload };
-    case "linkedin":
-      return state.linkedin === action.payload
-        ? state
-        : { ...state, linkedin: action.payload };
+    case actionTypes.FORM_CHANGE:
+      return { ...state, ...action.payload };
     default:
       throw new Error();
   }
 }
 
-function ProfileInputs({ uid, photoURL, email }) {
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case "FORM_CHANGE":
+//       return state.first_name === action.payload
+//         ? state
+//         : { ...state, first_name: action.payload };
+//     case "first_name":
+//       return state.first_name === action.payload
+//         ? state
+//         : { ...state, first_name: action.payload };
+//     case "surname":
+//       return state.surname === action.payload
+//         ? state
+//         : { ...state, surname: action.payload };
+//     case "aboutme":
+//       return state.aboutme === action.payload
+//         ? state
+//         : { ...state, aboutme: action.payload };
+//     case "job_title":
+//       return state.job_title === action.payload
+//         ? state
+//         : { ...state, job_title: action.payload };
+//     case "company_id":
+//       return state.company_id === action.payload
+//         ? state
+//         : { ...state, company_id: action.payload };
+//     case "salary":
+//       return state.salary === action.payload
+//         ? state
+//         : { ...state, salary: action.payload };
+//     case "start_date":
+//       return state.start_date === action.payload
+//         ? state
+//         : { ...state, start_date: action.payload };
+//     case "previous_roles":
+//       return state.previous_roles === action.payload
+//         ? state
+//         : { ...state, previous_roles: action.payload };
+//     case "cohort_num":
+//       return state.cohort_num === action.payload
+//         ? state
+//         : { ...state, cohort_num: action.payload };
+//     case "region":
+//       return state.region === action.payload
+//         ? state
+//         : { ...state, region: action.payload };
+//     case "job_satisfaction":
+//       return state.job_satisfaction === action.payload
+//         ? state
+//         : { ...state, job_satisfaction: action.payload };
+//     case "new_job":
+//       return state.new_job === action.payload
+//         ? state
+//         : { ...state, new_job: action.payload };
+//     case "twitter":
+//       return state.twitter === action.payload
+//         ? state
+//         : { ...state, twitter: action.payload };
+//     case "github":
+//       return state.github === action.payload
+//         ? state
+//         : { ...state, github: action.payload };
+//     case "portfolio":
+//       return state.portfolio === action.payload
+//         ? state
+//         : { ...state, portfolio: action.payload };
+//     case "linkedin":
+//       return state.linkedin === action.payload
+//         ? state
+//         : { ...state, linkedin: action.payload };
+//     default:
+//       throw new Error();
+//   }
+// }
+
+function ProfileInputs({ newUser, uid, photoURL, email, header }) {
   const history = useHistory();
   const [companyData, setCompanyData] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   useEffect(() => {
     async function getIndividualCompany() {
       const res = await fetch(`${URL}/companies`, {
@@ -125,26 +160,7 @@ function ProfileInputs({ uid, photoURL, email }) {
     getIndividualCompany();
   }, []);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
   async function handleClick(e) {
-    const {
-      first_name,
-      surname,
-      aboutme,
-      job_title,
-      company_id,
-      salary,
-      start_date,
-      previous_roles,
-      cohort_num,
-      region,
-      job_satisfaction,
-      new_job,
-      twitter,
-      github,
-      portfolio,
-      linkedin,
-    } = state;
     e.preventDefault();
     const saveResult = await fetch(`${URL}/bootcampers`, {
       mode: "cors",
@@ -152,27 +168,12 @@ function ProfileInputs({ uid, photoURL, email }) {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
-      method: "POST",
+      method: newUser ? "POST" : "PATCH",
       body: JSON.stringify({
+        ...state,
         uid,
         email,
         photo_url: photoURL,
-        first_name,
-        surname,
-        aboutme,
-        job_title,
-        company_id,
-        salary,
-        start_date,
-        previous_roles,
-        cohort_num,
-        region,
-        job_satisfaction,
-        new_job,
-        twitter,
-        github,
-        portfolio,
-        linkedin,
       }),
     });
     if (saveResult.ok) {
@@ -180,16 +181,18 @@ function ProfileInputs({ uid, photoURL, email }) {
     }
   }
 
-  function handleChange(date) {
+  function handleDateChange(date) {
     dispatch({
-      type: "start_date",
-      payload: date,
+      type: actionTypes.FORM_CHANGE,
+      payload: {
+        start_date: date,
+      },
     });
   }
 
   return (
     <>
-      <h2 className={css.header}>Edit Profile</h2>
+      <h2 className={css.header}>{header} Profile</h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>First Name:</label>
@@ -202,8 +205,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("firstname", event.target.value);
               dispatch({
-                type: "first_name",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  first_name: event.target.value,
+                },
               });
             }}
           />
@@ -217,8 +222,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("surname", event.target.value);
               dispatch({
-                type: "surname",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  surname: event.target.value,
+                },
               });
             }}
           />
@@ -232,8 +239,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("aboutme", event.target.value);
               dispatch({
-                type: "aboutme",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  aboutme: event.target.value,
+                },
               });
             }}
           />
@@ -247,8 +256,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("job_title", event.target.value);
               dispatch({
-                type: "job_title",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  job_title: event.target.value,
+                },
               });
             }}
           />
@@ -265,8 +276,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("company_id", event.target.value);
               dispatch({
-                type: "company_id",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  company_id: event.target.value,
+                },
               });
             }}
           >
@@ -287,8 +300,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("salary", event.target.value);
               dispatch({
-                type: "salary",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  salary: event.target.value,
+                },
               });
             }}
           />
@@ -302,8 +317,12 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem('start_date', event.target.value)
               dispatch({
-                type: "start_date",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+
+                  "start_date":
+         event.target.value,
+                }
               });
             }}
           /> */}
@@ -317,7 +336,7 @@ function ProfileInputs({ uid, photoURL, email }) {
               id="date-picker-inline"
               label="Date picker inline"
               value={state.start_date}
-              onChange={handleChange}
+              onChange={handleDateChange}
               KeyboardButtonProps={{
                 "aria-label": "change date",
               }}
@@ -329,8 +348,10 @@ function ProfileInputs({ uid, photoURL, email }) {
           <PreviousRoles
             onChange={(values) => {
               dispatch({
-                type: "previous_roles",
-                payload: values,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  previous_roles: values,
+                },
               });
             }}
           />
@@ -344,8 +365,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("cohort_num", event.target.value);
               dispatch({
-                type: "cohort_num",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  cohort_num: event.target.value,
+                },
               });
             }}
           />
@@ -359,8 +382,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("region", event.target.value);
               dispatch({
-                type: "region",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  region: event.target.value,
+                },
               });
             }}
           />
@@ -374,8 +399,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("job_satisfaction", event.target.value);
               dispatch({
-                type: "job_satisfaction",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  job_satisfaction: event.target.value,
+                },
               });
             }}
           />
@@ -389,8 +416,10 @@ function ProfileInputs({ uid, photoURL, email }) {
             onChange={(event) => {
               localStorage.setItem("new_job", event.target.value);
               dispatch({
-                type: "new_job",
-                payload: event.target.value,
+                type: actionTypes.FORM_CHANGE,
+                payload: {
+                  new_job: event.target.value,
+                },
               });
             }}
           />
@@ -407,8 +436,10 @@ function ProfileInputs({ uid, photoURL, email }) {
               onChange={(event) => {
                 localStorage.setItem("portfolio", event.target.value);
                 dispatch({
-                  type: "portfolio",
-                  payload: event.target.value,
+                  type: actionTypes.FORM_CHANGE,
+                  payload: {
+                    portfolio: event.target.value,
+                  },
                 });
               }}
             />
@@ -424,8 +455,10 @@ function ProfileInputs({ uid, photoURL, email }) {
               onChange={(event) => {
                 localStorage.setItem("twitter", event.target.value);
                 dispatch({
-                  type: "twitter",
-                  payload: event.target.value,
+                  type: actionTypes.FORM_CHANGE,
+                  payload: {
+                    twitter: event.target.value,
+                  },
                 });
               }}
             />
@@ -439,10 +472,12 @@ function ProfileInputs({ uid, photoURL, email }) {
               name="linkedin"
               value={state.linkedin}
               onChange={(event) => {
-                localStorage.setItem("linkedIn", event.target.value);
+                localStorage.setItem("linkedin", event.target.value);
                 dispatch({
-                  type: "linkedin",
-                  payload: event.target.value,
+                  type: actionTypes.FORM_CHANGE,
+                  payload: {
+                    linkedin: event.target.value,
+                  },
                 });
               }}
             />
@@ -453,13 +488,15 @@ function ProfileInputs({ uid, photoURL, email }) {
               className={css.inputs}
               type="text"
               placeholder="github"
-              name="gitHub"
+              name="github"
               value={state.github}
               onChange={(event) => {
-                localStorage.setItem("gitHub", event.target.value);
+                localStorage.setItem("github", event.target.value);
                 dispatch({
-                  type: "github",
-                  payload: event.target.value,
+                  type: actionTypes.FORM_CHANGE,
+                  payload: {
+                    github: event.target.value,
+                  },
                 });
               }}
             />

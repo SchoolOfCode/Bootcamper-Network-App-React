@@ -49,7 +49,7 @@ function SignIn({ user }) {
   }
 
   if (userExists === false) {
-    return <Redirect to="/profileEdit" />;
+    return <Redirect to="/profileCreate" />;
   }
   if (userExists === true) {
     return <Redirect to="/" />;
