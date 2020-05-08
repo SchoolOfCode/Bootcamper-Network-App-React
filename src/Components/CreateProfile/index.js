@@ -180,11 +180,6 @@ function ProfileInputs({ uid, photoURL, email }) {
     }
   }
 
-  // useEffect(() => {
-  //   setphotoURL();
-  // }, []);
-  // console.log(`HAS THIS WORKed`, photoURL);
-
   function handleChange(date) {
     dispatch({
       type: "start_date",

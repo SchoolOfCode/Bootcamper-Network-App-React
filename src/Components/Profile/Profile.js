@@ -37,8 +37,6 @@ function Profile({ uid }) {
     getProfileData();
   }, []);
 
-  // const ProfileContext = React.createContext(profileData);
-
   const {
     first_name,
     surname,
@@ -121,10 +119,10 @@ function Profile({ uid }) {
           <span>Previous Roles: </span>
           {previous_roles &&
             previous_roles.map((item) => {
-              const { jobTitle, company } = {}; //JSON.parse(item);
+              const { jobTitle, company } = JSON.parse(item); //JSON.parse(item);
               return (
                 <li>
-                  - {jobTitle} at {company}
+                  {jobTitle} at {company}
                 </li>
               );
             })}
