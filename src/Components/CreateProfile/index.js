@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
@@ -14,6 +14,7 @@ import twitterLogo from "../../images/twitter2.svg";
 import linkedinLogo from "../../images/linkedin2.svg";
 import githubLogo from "../../images/github2.svg";
 import websiteLogo from "../../images/web2.svg";
+import { ProfileContext } from "../../config";
 
 const initialState = {
   first_name: localStorage.getItem("firstname") || "",
@@ -66,82 +67,11 @@ function reducer(state, action) {
   }
 }
 
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case "FORM_CHANGE":
-//       return state.first_name === action.payload
-//         ? state
-//         : { ...state, first_name: action.payload };
-//     case "first_name":
-//       return state.first_name === action.payload
-//         ? state
-//         : { ...state, first_name: action.payload };
-//     case "surname":
-//       return state.surname === action.payload
-//         ? state
-//         : { ...state, surname: action.payload };
-//     case "aboutme":
-//       return state.aboutme === action.payload
-//         ? state
-//         : { ...state, aboutme: action.payload };
-//     case "job_title":
-//       return state.job_title === action.payload
-//         ? state
-//         : { ...state, job_title: action.payload };
-//     case "company_id":
-//       return state.company_id === action.payload
-//         ? state
-//         : { ...state, company_id: action.payload };
-//     case "salary":
-//       return state.salary === action.payload
-//         ? state
-//         : { ...state, salary: action.payload };
-//     case "start_date":
-//       return state.start_date === action.payload
-//         ? state
-//         : { ...state, start_date: action.payload };
-//     case "previous_roles":
-//       return state.previous_roles === action.payload
-//         ? state
-//         : { ...state, previous_roles: action.payload };
-//     case "cohort_num":
-//       return state.cohort_num === action.payload
-//         ? state
-//         : { ...state, cohort_num: action.payload };
-//     case "region":
-//       return state.region === action.payload
-//         ? state
-//         : { ...state, region: action.payload };
-//     case "job_satisfaction":
-//       return state.job_satisfaction === action.payload
-//         ? state
-//         : { ...state, job_satisfaction: action.payload };
-//     case "new_job":
-//       return state.new_job === action.payload
-//         ? state
-//         : { ...state, new_job: action.payload };
-//     case "twitter":
-//       return state.twitter === action.payload
-//         ? state
-//         : { ...state, twitter: action.payload };
-//     case "github":
-//       return state.github === action.payload
-//         ? state
-//         : { ...state, github: action.payload };
-//     case "portfolio":
-//       return state.portfolio === action.payload
-//         ? state
-//         : { ...state, portfolio: action.payload };
-//     case "linkedin":
-//       return state.linkedin === action.payload
-//         ? state
-//         : { ...state, linkedin: action.payload };
-//     default:
-//       throw new Error();
-//   }
-// }
-
-function ProfileInputs({ newUser, uid, photoURL, email, header }) {
+function ProfileInputs({ newUser, header }) {
+  const {
+    user: { uid, photoURL, email },
+    userProfile,
+  } = useContext(ProfileContext);
   const history = useHistory();
   const [companyData, setCompanyData] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -162,7 +92,9 @@ function ProfileInputs({ newUser, uid, photoURL, email, header }) {
 
   async function handleClick(e) {
     e.preventDefault();
-    const profileUrl = newUser ? `${URL}/bootcampers` : `${URL}/bootcampers/`;
+    const profileUrl = newUser
+      ? `${URL}/bootcampers`
+      : `${URL}/bootcampers/${userProfile.bootcamper_id}`;
     const saveResult = await fetch(profileUrl, {
       mode: "cors",
       headers: {

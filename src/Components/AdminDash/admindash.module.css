@@ -1,0 +1,29 @@
+:root {
+  --main-bg-color: #e5e5e5;
+}
+
+.profilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.listItem {
+  list-style-type: none;
+  margin-left: 10px;
+}
+.otherContainer {
+  position: relative;
+  width: 95vw;
+  height: auto;
+  border-radius: 15px;
+  background-color: var(--main-bg-color);
+  overflow-y: auto;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-left: 2vw;
+}
