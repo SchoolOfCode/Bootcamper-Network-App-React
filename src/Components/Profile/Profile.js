@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
+import { ProfileContext } from "../../config";
 import { Link } from "react-router-dom";
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
@@ -19,7 +20,10 @@ const socialLinks = [
 function Profile({ uid }) {
   const [profileData, setProfileData] = useState({});
   const [sliderValue, setSliderValue] = useState(1);
+
   const [option, setOption] = useState("No");
+  const [userProfile, setUserProfile] = useContext(ProfileContext);
+
 
   //Get user data - fetch from db
   useEffect(() => {
@@ -29,6 +33,7 @@ function Profile({ uid }) {
         const data = await res.json();
         if (data.payload[0]) {
           setProfileData(data.payload[0]);
+          setUserProfile(data.payload[0]);
         }
       } catch (err) {
         console.log(`fetch error`, err);
@@ -36,6 +41,8 @@ function Profile({ uid }) {
     }
     getProfileData();
   }, []);
+
+  console.log(`CONTEXT TEST`, userProfile);
 
   const {
     bootcamper_id,
