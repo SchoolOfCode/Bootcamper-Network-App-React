@@ -27,7 +27,6 @@ function App() {
   const [meetupState, setMeetupState] = useState([]);
   const [user, loading, error] = useAuthState(firebase.apps[0].auth());
   const [userProfile, setUserProfile] = useState({});
-  console.log(`GOOGLE DATA`, user);
 
   useEffect(() => {
     async function getEvents() {

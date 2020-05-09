@@ -9,7 +9,7 @@ import css from "./signin.module.css";
 
 function SignIn() {
   const [userExists, setUserExists] = useState(undefined);
-  const { user, setProfileData } = useContext(ProfileContext);
+  const { user, profileData, setProfileData } = useContext(ProfileContext);
 
   useEffect(() => {
     console.log(`hello blah blah`, user);
@@ -25,7 +25,9 @@ function SignIn() {
           console.log(`fetch error`, err);
         }
       }
+
       getProfileData();
+
       async function getUserStatus() {
         const res = await fetch(`${URL}/bootcampers/user?uid=${user.uid}`, {
           mode: "cors",
