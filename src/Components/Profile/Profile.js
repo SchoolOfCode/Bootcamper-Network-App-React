@@ -6,7 +6,7 @@ import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import pencil from "../../images/pencil.png";
-import emailLogo from "../../images/email.png"
+import emailLogo from "../../images/email.png";
 import webLogo from "../../images/web.svg";
 
 import { URL } from "../../config";
@@ -16,14 +16,13 @@ const socialLinks = [
   { name: "linkedin", src: linkedinLogo },
   { name: "github", src: githubLogo },
   { name: "web", src: webLogo },
- /*  { name: "email", src: emailLogo }  */
+  /*  { name: "email", src: emailLogo }  */
 ];
 
 function Profile({ uid }) {
   const [profileData, setProfileData] = useState({});
-  const [sliderValue, setSliderValue] = useState(1);
-
-  const [option, setOption] = useState("No");
+  const [sliderValue, setSliderValue] = useState();
+  const [option, setOption] = useState("");
 
   useEffect(() => {
     async function getProfileData() {
@@ -84,11 +83,10 @@ function Profile({ uid }) {
         })}
       </div>
 
-      <a href={`mailto:${email}`}> 
-      <img height="40px" alt="" src={emailLogo}></img>
-        </a>
+      <a href={`mailto:${email}`}>
+        <img height="40px" alt="" src={emailLogo}></img>
+      </a>
 
-      
       <div className={css.profileContainer}>
         <ul>
           <li>

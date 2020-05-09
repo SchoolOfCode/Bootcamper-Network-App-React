@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { URL, ProfileContext } from "../../config";
 import logo from "../../images/thisone.png";
 import gsignnormal from "../../images/btn_google_signin_light_normal_web@2x.png";
-import gsignpressed from "../../images/btn_google_signin_light_pressed_web@2x.png";
+// import gsignpressed from "../../images/btn_google_signin_light_pressed_web@2x.png";
 import css from "./signin.module.css";
 
 function SignIn() {
@@ -12,12 +12,12 @@ function SignIn() {
   const { user, profileData, setProfileData } = useContext(ProfileContext);
 
   useEffect(() => {
-    console.log(`hello blah blah`, user);
     if (user) {
       async function getProfileData() {
         try {
           const res = await fetch(`${URL}/bootcampers?uid=${user.uid}`);
           const data = await res.json();
+          console.log(`sign in fetch data`, data.payload[0]);
           if (data.payload[0]) {
             setProfileData(data.payload[0]);
           }
@@ -41,6 +41,8 @@ function SignIn() {
       getUserStatus();
     }
   }, [user]);
+
+  console.log(`FROM signin is profiledata here?`, profileData);
 
   if (!user) {
     return (

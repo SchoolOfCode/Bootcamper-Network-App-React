@@ -10,9 +10,7 @@ const connection = io("http://localhost:5000");
 const Messages = () => {
   const [input, setInput] = useState("");
   const [allMessages, setAllMessages] = useState([]);
-  const { userProfile } = useContext(ProfileContext);
-
-  console.log(`messages userdata?`, userProfile);
+  const { profileData } = useContext(ProfileContext);
 
   function handleInput(event) {
     setInput(event.target.value);
@@ -20,7 +18,7 @@ const Messages = () => {
 
   useEffect(() => {
     connection.on("chatMessage", (myMessage) => {
-      // displayMsg(message.input);
+      displayMsg(myMessage);
       console.log(`Receiving message from backend`, myMessage);
     });
   }, []);
@@ -30,11 +28,18 @@ const Messages = () => {
     console.log(`Message for display function`, msg);
     setAllMessages([...allMessages, msg]);
   }
-  // console.log(`message array`, allMessages);
+
+  console.log(`All messages state`, allMessages);
 
   //sending message
   function sendMessage() {
-    const myMessage = { Message: input, Name: userProfile.first_name };
+    const myMessage = {
+      Message: input,
+      Name: "username here",
+      Time: "Time",
+      Photo: "photourl",
+      ID: "bootcamper_id",
+    };
     connection.emit("chatMessage", myMessage);
     console.log("sending message: ", myMessage);
     setInput("");
