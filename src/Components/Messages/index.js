@@ -13,6 +13,7 @@ const Messages = () => {
   const [allMessages, setAllMessages] = useState([]);
   const { profileData } = useContext(ProfileContext);
 
+  //dummy messages array
   const pretendMessages = [
     {
       message: "Hello everyone how are you?",
