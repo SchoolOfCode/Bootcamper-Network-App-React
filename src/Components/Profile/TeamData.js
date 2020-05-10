@@ -78,8 +78,8 @@ function TeamData({
         </div>
         <li>Would you like to find a new job?</li>
         <select onChange={handleOption}>
-          <option value="No">No</option>
-          <option value="Yes">Yes</option>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
         </select>
         <button className={css.save} onClick={handleClick}>
           {saved}
