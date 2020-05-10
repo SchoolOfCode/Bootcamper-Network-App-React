@@ -163,7 +163,7 @@ function ProfileInputs({ newUser, header }) {
             }}
           />
           <label>About Me:</label>
-          <input
+          <textarea
             className={css.inputs}
             type="text"
             placeholder="About Me"

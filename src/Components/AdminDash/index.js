@@ -39,8 +39,12 @@ function AdminDash() {
   return (
     <>
       <div className={css.otherContainer}>
+        <h4 className={css.adminHeader}> Broadcast a message: </h4>
+        <textarea className={css.inputs} />
+        <button className={css.button}>Send</button>
+      </div>
+      <div className={css.otherContainer}>
         <h4 className={css.adminHeader}>
-          {" "}
           Bootcampers with a Job Satisfaction rating less than 3:
         </h4>
         {jobSatisfactionData.map((item) => {

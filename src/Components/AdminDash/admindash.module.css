@@ -1,5 +1,6 @@
 :root {
   --main-bg-color: #e5e5e5;
+  --bg: #46728a;
 }
 
 .profilePic {
@@ -18,7 +19,8 @@
 .otherContainer {
   position: relative;
   width: 95vw;
-  height: 40vh;
+  height: auto;
+  max-height: 40vh;
   border-radius: 15px;
   background-color: var(--main-bg-color);
   overflow-y: auto;
@@ -34,5 +36,23 @@
 
 .adminHeader {
   margin-left: 5px;
-  margin-bottom: -3px;
+  margin-bottom: 5px;
+  margin-top: 8px;
+}
+
+.inputs {
+  line-height: 2em;
+  border-radius: 8px;
+  width: 85%;
+  margin-top: 5px;
+  margin-left: 5%;
+}
+
+.button {
+  background: var(--bg);
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  float: right;
+  margin-right: 10px;
 }
