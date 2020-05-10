@@ -55,7 +55,7 @@ function App() {
   return (
     <ProfileContext.Provider value={{ user, userProfile, setUserProfile }}>
       <Router>
-        {user && <NavBar />}
+        {user && <NavBar uid={user.uid} />}
         {/* <Dashboard state={meetupState} /> */}
 
         <Switch>
