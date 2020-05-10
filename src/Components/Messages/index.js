@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import css from "./message.module.css";
 import { ProfileContext } from "../../config";
 import io from "socket.io-client";
+import { Link } from "react-router-dom";
 
 const connection = io("http://localhost:5000");
 
@@ -11,6 +12,30 @@ const Messages = () => {
   const [input, setInput] = useState("");
   const [allMessages, setAllMessages] = useState([]);
   const { profileData } = useContext(ProfileContext);
+
+  const pretendMessages = [
+    {
+      message: "Hello everyone how are you?",
+      first_name: "Laura",
+      photo_url:
+        "https://lh3.googleusercontent.com/a-/AOh14GjrB5R5XShX5tTdqEEm2lFMEyUfylfnQstmhvHzfg",
+      bootcamper_id: "5",
+    },
+    {
+      message: "Good thank you how are you?",
+      first_name: "Jodie",
+      photo_url:
+        "https://lh3.googleusercontent.com/a-/AOh14Gjh8-KlkkzeLqKT1X9ECBbMoSc-6skfixutJdhZlA",
+      bootcamper_id: "15",
+    },
+    {
+      message: "I love pot noodles",
+      first_name: "Mel",
+      photo_url:
+        "https://lh3.googleusercontent.com/a-/AOh14GiaOsqfdKwG6JoX0EfNotkdhbW95CuoAy79Yu7rbQ",
+      bootcamper_id: "26",
+    },
+  ];
 
   function handleInput(event) {
     setInput(event.target.value);
@@ -34,11 +59,10 @@ const Messages = () => {
   //sending message
   function sendMessage() {
     const myMessage = {
-      Message: input,
-      Name: "username here",
-      Time: "Time",
-      Photo: "photourl",
-      ID: "bootcamper_id",
+      message: input,
+      first_name: "username here",
+      photo_url: "photourl",
+      bootcamper_id: "bootcamper_id",
     };
     connection.emit("chatMessage", myMessage);
     console.log("sending message: ", myMessage);
@@ -53,7 +77,19 @@ const Messages = () => {
 
   return (
     <div className={css.div}>
-      <ul id={css.messages}></ul>
+      <ul id={css.messages}>
+        {pretendMessages.map((item) => {
+          return (
+            <li>
+              <Link to={`/profiles/${item.bootcamper_id}`} className={css.link}>
+                <img src={item.photo_url} alt="bootcamper" width="20px" />
+              </Link>
+              <p>{item.first_name}</p>
+              <p>{item.message}</p>
+            </li>
+          );
+        })}
+      </ul>
       <form action="" className={css.form}>
         <input
           onChange={handleInput}

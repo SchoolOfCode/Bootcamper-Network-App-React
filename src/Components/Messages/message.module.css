@@ -1,5 +1,5 @@
 .div {
-  font: 13px Helvetica, Arial;
+  font: 13px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,18 +19,20 @@
 }
 .formbutton {
   width: 9%;
+  min-width: 60px;
   background: rgb(130, 224, 255);
   border: none;
   padding: 10px;
 }
-.messages {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.messagesli {
+
+li {
   padding: 5px 10px;
+  list-style-type: none;
 }
 .messagesli :nth-child(odd) {
   background: #eee;
+}
+
+li .name {
+  font-weight: 900;
 }
