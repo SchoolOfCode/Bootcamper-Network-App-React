@@ -7,6 +7,7 @@ function AdminDash() {
   const [jobSatisfactionData, setjobSatisfactionData] = useState([]);
   const [newJobData, setNewJobData] = useState([]);
   const [message, setMessage] = useState("");
+  const [sent, setSent] = useState("Send");
 
   useEffect(() => {
     async function getJobSatisfactionData() {
@@ -50,6 +51,8 @@ function AdminDash() {
       }),
     });
     console.log(message);
+    setMessage("");
+    setSent("Sent");
   }
 
   return (
@@ -65,7 +68,7 @@ function AdminDash() {
           }}
         />
         <button className={css.button} onClick={handleClick}>
-          Send
+          {sent}
         </button>
       </div>
       <div className={css.otherContainer}>
