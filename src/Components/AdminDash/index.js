@@ -6,6 +6,7 @@ import { Divider } from "@material-ui/core";
 function AdminDash() {
   const [jobSatisfactionData, setjobSatisfactionData] = useState([]);
   const [newJobData, setNewJobData] = useState([]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     async function getJobSatisfactionData() {
@@ -36,12 +37,36 @@ function AdminDash() {
     getNewJobData();
   }, []);
 
+  async function handleClick() {
+    const res = await fetch(`${URL}/dashboard`, {
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        message,
+      }),
+    });
+    console.log(message);
+  }
+
   return (
     <>
       <div className={css.otherContainer}>
         <h4 className={css.adminHeader}> Broadcast a message: </h4>
-        <textarea className={css.inputs} />
-        <button className={css.button}>Send</button>
+        <textarea
+          className={css.inputs}
+          placeholder="Enter a message to show on the dashboard..."
+          value={message}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
+        />
+        <button className={css.button} onClick={handleClick}>
+          Send
+        </button>
       </div>
       <div className={css.otherContainer}>
         <h4 className={css.adminHeader}>
