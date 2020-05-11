@@ -30,18 +30,24 @@ function GoogleMaps({ postcode, google }) {
   console.log(`Latitude`, latitude, `longitude`, longitude);
 
   return (
-    <div className={css.container}>
-      <Map
-        google={google}
-        style={{width: '85%', height: '25%', top:'100px', left:'15px', position: 'relative'}}
-        center={{
-          lat: latitude,
-          lng: longitude,
-        }}
-      >
-        <Marker position={{ lat: latitude, lng: longitude }} />
-      </Map>
-    </div>
+    // <div className={css.container}>
+    <Map
+      google={google}
+      style={{
+        width: "85%",
+        height: "25%",
+        top: "140px",
+        left: "28px",
+        position: "relative",
+      }}
+      center={{
+        lat: latitude,
+        lng: longitude,
+      }}
+    >
+      <Marker position={{ lat: latitude, lng: longitude }} />
+    </Map>
+    // </div>
   );
 }
 
