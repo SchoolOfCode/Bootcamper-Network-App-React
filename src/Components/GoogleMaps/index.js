@@ -9,7 +9,7 @@ function GoogleMaps(postcode) {
 
   const newPostcode = "";
   function changePostcode() {
-    const newPostcode = postcode.replace(/ /g, "");
+    // const newPostcode = postcode.replace(/ /g, "");
     return newPostcode;
   }
   changePostcode();
