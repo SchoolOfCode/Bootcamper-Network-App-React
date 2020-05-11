@@ -33,6 +33,8 @@
 
 .name {
   display: inline-block;
+  position: relative;
+  top: -15px;
 }
 
 .adminHeader {
@@ -62,4 +64,9 @@
 .dash {
   position: relative;
   top: 90px;
+}
+
+.subheaders {
+  color: #acb0cb;
+  font-size: small;
 }
