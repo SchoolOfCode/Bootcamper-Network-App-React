@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import css from "./googlemaps.module.css";
 
+
 function GoogleMaps(postcode) {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
@@ -36,9 +37,12 @@ function GoogleMaps(postcode) {
   return (
     <div className={css.container}>
       <p>Hello</p>
+
     </div>
   );
 }
+
+
 
 export default GoogleMaps;
 
