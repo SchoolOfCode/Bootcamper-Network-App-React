@@ -37,6 +37,25 @@ function App() {
     getEvents();
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      async function getProfileData() {
+        try {
+          const res = await fetch(`${URL}/bootcampers?uid=${user.uid}`);
+          const data = await res.json();
+          console.log(`sign in fetch data`, data.payload[0]);
+          if (data.payload[0]) {
+            setProfileData(data.payload[0]);
+          }
+        } catch (err) {
+          console.log(`fetch error`, err);
+        }
+      }
+
+      getProfileData();
+    }
+  }, [user]);
+
   if (loading) {
     return (
       <div>
@@ -81,10 +100,7 @@ function App() {
             <Meetup state={meetupState} />
           </PrivateRoute>
           <PrivateRoute path="/profileEdit">
-            <ProfileInputs header="Edit" />
-          </PrivateRoute>
-          <PrivateRoute path="/profileCreate">
-            <ProfileInputs newUser header="Create" />
+            <ProfileInputs />
           </PrivateRoute>
           <PrivateRoute path="/companyEdit">
             <CompanyInputs />

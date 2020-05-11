@@ -67,14 +67,15 @@ function reducer(state, action) {
   }
 }
 
-function ProfileInputs({ newUser, header }) {
+function ProfileInputs() {
   const {
-    user: { uid, photoURL, email },
+    user: { uid, photoURL, email, bootcamper_id },
     profileData,
   } = useContext(ProfileContext);
   const history = useHistory();
   const [companyData, setCompanyData] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [isNewUser, setIsNewUser] = useState(true);
 
   useEffect(() => {
     async function getIndividualCompany() {
@@ -90,9 +91,26 @@ function ProfileInputs({ newUser, header }) {
     getIndividualCompany();
   }, []);
 
+  useEffect(() => {
+    async function getUserStatus() {
+      const res = await fetch(`${URL}/bootcampers/user?uid=${uid}`, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      const data = await res.json();
+      console.log(`chris check`, data);
+
+      setIsNewUser(!data.payload[0].exists);
+    }
+    getUserStatus();
+  }, []);
+
   async function handleClick(e) {
     e.preventDefault();
-    const profileUrl = newUser
+    console.log(`PROFILE STUFF`, profileData, isNewUser);
+    const profileUrl = isNewUser
       ? `${URL}/bootcampers`
       : `${URL}/bootcampers/${profileData.bootcamper_id}`;
     const saveResult = await fetch(profileUrl, {
@@ -101,7 +119,7 @@ function ProfileInputs({ newUser, header }) {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
-      method: newUser ? "POST" : "PATCH",
+      method: isNewUser ? "POST" : "PATCH",
       body: JSON.stringify({
         ...state,
         uid,
@@ -125,7 +143,7 @@ function ProfileInputs({ newUser, header }) {
 
   return (
     <>
-      <h2 className={css.header}>{header} Profile</h2>
+      <h2 className={css.header}>{isNewUser ? "Create" : "Edit"} Profile</h2>
       <div className={css.wrapper}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <label>First Name:</label>

@@ -13,21 +13,6 @@ function SignIn() {
 
   useEffect(() => {
     if (user) {
-      async function getProfileData() {
-        try {
-          const res = await fetch(`${URL}/bootcampers?uid=${user.uid}`);
-          const data = await res.json();
-          console.log(`sign in fetch data`, data.payload[0]);
-          if (data.payload[0]) {
-            setProfileData(data.payload[0]);
-          }
-        } catch (err) {
-          console.log(`fetch error`, err);
-        }
-      }
-
-      getProfileData();
-
       async function getUserStatus() {
         const res = await fetch(`${URL}/bootcampers/user?uid=${user.uid}`, {
           mode: "cors",
@@ -67,7 +52,7 @@ function SignIn() {
   }
 
   if (userExists === false) {
-    return <Redirect to="/profileCreate" />;
+    return <Redirect to="/profileEdit" />;
   }
   if (userExists === true) {
     return <Redirect to="/" />;

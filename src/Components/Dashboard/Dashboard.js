@@ -30,8 +30,8 @@ function Dashboard({ state }) {
     <>
       <SearchBar />
       <div className={css.dash}>
-        <h3 className={css.headerOnBlue}>Latest Message From the SoC Team</h3>
-        <div className={css.container}>
+        <h3 className={css.headerOnBlue}>Message From the SoC Team</h3>
+        <div className={css.messagecontainer}>
           <p>{message}</p>
         </div>
         <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
