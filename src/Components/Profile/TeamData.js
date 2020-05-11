@@ -45,7 +45,9 @@ function TeamData({
     <div className={profCss.profileContainer}>
       <ul>
         <li>
-          <span style={{ fontWeight: "bold" }}>Feedback for the team </span>
+          <span style={{ fontWeight: "bold", color: "#5B5E71" }}>
+            Feedback for the team
+          </span>
         </li>
         <li>
           <span style={{ fontSize: "x-small" }}>

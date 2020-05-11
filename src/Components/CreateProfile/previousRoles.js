@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import css from "../CreateCompanies/CreateCompanies.module.css";
-
+import bin from "../../images/bin.png";
 const PreviousRoleInputs = ({ onChange, id, onCancel }) => {
   const [jobTitle, setJobTitle] = useState();
   const [company, setCompany] = useState();
@@ -11,7 +11,9 @@ const PreviousRoleInputs = ({ onChange, id, onCancel }) => {
 
   return (
     <>
+      <br />
       <label>Job Title:</label>
+      <br />
       <input
         className={css.inputs}
         type="text"
@@ -20,7 +22,8 @@ const PreviousRoleInputs = ({ onChange, id, onCancel }) => {
         value={jobTitle}
         onChange={(e) => setJobTitle(e.target.value)}
       />
-      <label>Company:</label>
+      <br />
+      <label>Company:</label> <br />
       <input
         className={css.inputs}
         type="text"
@@ -29,14 +32,13 @@ const PreviousRoleInputs = ({ onChange, id, onCancel }) => {
         value={company}
         onChange={(e) => setCompany(e.target.value)}
       />
-
-      <button
+      <img
+        alt="bin"
+        src={bin}
         type="button"
         onClick={() => onCancel(id)}
-        className={css.prevRoleButton}
-      >
-        ❌
-      </button>
+        className={css.bin}
+      />
     </>
   );
 };
@@ -85,7 +87,7 @@ const PreviousRoles = ({ onChange }) => {
         onClick={() => setRoleNumber(roleNumber + 1)}
         className={css.prevRoleButton}
       >
-        +
+        Add Previous Role
       </button>
     </>
   );

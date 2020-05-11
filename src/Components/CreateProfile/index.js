@@ -275,19 +275,20 @@ function ProfileInputs({ newUser, header }) {
               }}
             />
           </MuiPickersUtilsProvider>
-
           <label>Previous Roles</label>
-
-          <PreviousRoles
-            onChange={(values) => {
-              dispatch({
-                type: actionTypes.FORM_CHANGE,
-                payload: {
-                  previous_roles: values,
-                },
-              });
-            }}
-          />
+          <div className={css.prevRoleWrapper}>
+            <PreviousRoles
+              onChange={(values) => {
+                dispatch({
+                  type: actionTypes.FORM_CHANGE,
+                  payload: {
+                    previous_roles: values,
+                  },
+                });
+              }}
+            />
+          </div>
+          <br />
           <label>Cohort Number:</label>
           <input
             className={css.inputs}
