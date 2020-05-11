@@ -56,7 +56,10 @@ function AdminDash() {
   }
 
   return (
-    <>
+    <div className={css.dash}>
+      <h2 className={css.adminHeader} style={{ color: "#ffffff" }}>
+        Admin Dash
+      </h2>
       <div className={css.otherContainer}>
         <h4 className={css.adminHeader}> Broadcast a message: </h4>
         <textarea
@@ -125,7 +128,7 @@ function AdminDash() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 
