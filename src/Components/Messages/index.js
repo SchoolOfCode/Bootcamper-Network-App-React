@@ -13,8 +13,6 @@ const Messages = () => {
   const [allMessages, setAllMessages] = useState([]);
   const { profileData } = useContext(ProfileContext);
 
-  console.log(`profileData`, { profileData });
-
   //dummy messages array
   const pretendMessages = [
     {
@@ -73,7 +71,10 @@ const Messages = () => {
       console.log(`Receiving message from backend`, myMessage);
       setAllMessages([...allMessages, myMessage]);
     });
-  }, []);
+    return function removeListener() {
+      connection.removeListener("chatMessage");
+    };
+  }, [allMessages]);
 
   //sending message
   function sendMessage() {
@@ -84,7 +85,7 @@ const Messages = () => {
       bootcamper_id: "bootcamper_id",
     };
     connection.emit("chatMessage", myMessage);
-    console.log("sending message: ", myMessage);
+    // console.log("sending message: ", myMessage);
     setInput("");
   }
 
@@ -93,7 +94,7 @@ const Messages = () => {
   //check to see if sent message is also received back to user
   //if they are, add them to an array
   //map over the array to display the messages
-  console.log(`All messages state`, allMessages);
+  // console.log(`All messages state`, allMessages);
   return (
     <div className={css.div}>
       <ul className={css.messages}>

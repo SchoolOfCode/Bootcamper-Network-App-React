@@ -70,7 +70,7 @@ function reducer(state, action) {
 function ProfileInputs({ newUser, header }) {
   const {
     user: { uid, photoURL, email },
-    userProfile,
+    profileData,
   } = useContext(ProfileContext);
   const history = useHistory();
   const [companyData, setCompanyData] = useState([]);
@@ -94,7 +94,7 @@ function ProfileInputs({ newUser, header }) {
     e.preventDefault();
     const profileUrl = newUser
       ? `${URL}/bootcampers`
-      : `${URL}/bootcampers/${userProfile.bootcamper_id}`;
+      : `${URL}/bootcampers/${profileData.bootcamper_id}`;
     const saveResult = await fetch(profileUrl, {
       mode: "cors",
       headers: {

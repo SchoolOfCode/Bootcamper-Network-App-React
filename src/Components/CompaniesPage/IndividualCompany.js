@@ -74,7 +74,8 @@ function IndividualCompany() {
 
       </div>
       <div className={css.extraData}>
-        <GoogleMaps postcode={postcode} />
+
+        {postcode && <GoogleMaps postcode={postcode} />}
 
       </div>
     </div>

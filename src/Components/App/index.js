@@ -26,7 +26,7 @@ function App() {
   // const [user, setUser] = useState(null);
   const [meetupState, setMeetupState] = useState([]);
   const [user, loading, error] = useAuthState(firebase.apps[0].auth());
-  const [userProfile, setUserProfile] = useState({});
+  const [profileData, setProfileData] = useState({});
 
   useEffect(() => {
     async function getEvents() {
@@ -53,7 +53,7 @@ function App() {
   }
 
   return (
-    <ProfileContext.Provider value={{ user, userProfile, setUserProfile }}>
+    <ProfileContext.Provider value={{ user, profileData, setProfileData }}>
       <Router>
         {user && <NavBar uid={user.uid} />}
         {/* <Dashboard state={meetupState} /> */}
