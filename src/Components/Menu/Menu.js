@@ -27,9 +27,7 @@ function Menu({ isMenuOpen, setIsMenuOpen, uid }) {
           <Link to="/admin" className={css.link} onClick={handleClick}>
             <li>Admin Dash</li>
           </Link>
-        ) : (
-          <p>This isnt working</p>
-        )}
+        ) : null}
         {links.map(({ text, path }) => (
           <Link key={path} to={path} className={css.link} onClick={handleClick}>
             <li>{text}</li>

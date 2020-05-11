@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import css from "./googlemaps.module.css";
 
+
 function GoogleMaps({ postcode }) {
+
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
 
   console.log(`postcode`, postcode);
+
 
   useEffect(() => {
     async function getLonLat() {
@@ -33,15 +36,16 @@ function GoogleMaps({ postcode }) {
   return (
     <div className={css.container}>
       <p>Hello</p>
+
     </div>
   );
 }
 
-// export default GoogleMaps;
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyC0ue6GBSdLopelg1kPuN5ygZJvbkoqgGM",
 })(GoogleMaps);
+
 
 // const [newPostcode, setNewPostcode] = useState("");
 // console.log(`postcode from company`, postcode);

@@ -8,12 +8,10 @@
 }
 
 .companyTitle {
-  margin-block-start: 0;
-  margin-block-end: 0;
   display: inline-block;
   margin-left: 20px;
   position: absolute;
-  top: 140px;
+  top: 15px;
 }
 
 .bigContainer {
@@ -38,6 +36,7 @@
   margin: 0 auto;
   border: 3px solid var(--main-color);
   color: var(--main-color);
+  position: relative;
 }
 
 .companyName {
