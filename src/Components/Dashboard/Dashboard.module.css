@@ -13,7 +13,7 @@
   width: 95vw;
   height: auto;
   left: 8px;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: var(--main-bg-color);
   text-align: center;
   overflow-y: auto;
@@ -80,16 +80,21 @@
   position: absolute;
   left: 5%;
   top: 138px;
-  width: 90%;
+  width: 81%;
   height: auto;
   padding-bottom: 5px;
-  background-color: #c0bdbd;
-  border-radius: 15px;
-  z-index: 10;
+  background-color: #f5f6ff;
+  border-radius: 5px;
+  z-index: 8;
   overflow-y: scroll;
+  box-shadow: 0px 2px #0000000f;
 }
 
 .link {
   text-decoration: none;
   color: black;
+}
+
+.searchResult {
+  margin-left: 20px;
 }

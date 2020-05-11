@@ -122,6 +122,7 @@ function SearchBar() {
                   job={item.job_title}
                   company={item.company_name}
                   id={item.bootcamper_id}
+                  pic={item.photo_url}
                 />
               );
             })}
@@ -135,6 +136,7 @@ function SearchBar() {
                   company_id={item.company_id}
                   region={item.region}
                   id={item.bootcamper_id}
+                  pic={item.photo_url}
                 />
               );
             })}
