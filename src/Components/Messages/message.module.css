@@ -34,7 +34,7 @@
   font-size: 1em;
 }
 
-ul {
+.messages {
   margin-bottom: 18%;
 }
 
@@ -54,7 +54,7 @@ ul {
   transform: translateY(-50%); */
 }
 
-li {
+.limessage {
   padding: 0.1em;
   margin: 0.4em;
   list-style-type: none;

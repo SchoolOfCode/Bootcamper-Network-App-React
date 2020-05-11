@@ -94,10 +94,10 @@ const Messages = () => {
   console.log(`All messages state`, allMessages);
   return (
     <div className={css.div}>
-      <ul id={css.messages}>
+      <ul className={css.messages}>
         {pretendMessages.map((item) => {
           return (
-            <li>
+            <li className={css.limessage}>
               <div className={css.imgdiv}>
                 <Link
                   to={`/profiles/${item.bootcamper_id}`}
@@ -113,8 +113,10 @@ const Messages = () => {
               </div>
 
               <div>
-                <p style={{ "font-weight": "bold" }}>{item.first_name}</p>
-                <p>{item.message}</p>
+                <p className={css.text} style={{ "font-weight": "bold" }}>
+                  {item.first_name}
+                </p>
+                <p className={css.text}>{item.message}</p>
               </div>
             </li>
           );
