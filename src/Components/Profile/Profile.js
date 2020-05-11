@@ -60,16 +60,10 @@ function Profile({ uid }) {
 
   return (
     <>
-      <div className={css.info}>
-        <div className={css.pencilcontainer}>
-          <Link to="/profileEdit">
-            <img src={pencil} alt="edit pencil" className={css.pencil} />
-          </Link>
-        </div>
-        <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
-        <h2>
-          {first_name} {surname}
-        </h2>
+      <div>
+        <Link to="/profileEdit">
+          <img src={pencil} alt="edit pencil" className={css.pencil} />
+        </Link>
         {socialLinks.map((link) => {
           return (
             <img
@@ -81,53 +75,56 @@ function Profile({ uid }) {
             />
           );
         })}
-
         <a href={`mailto:${email}`}>
           <img className={css.icons} alt="" src={emailLogo}></img>
         </a>
+        <div className={css.info}>
+          <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
+          <h2 className={css.name}>
+            {first_name} {surname}
+          </h2>
+        </div>
       </div>
 
       <div className={css.profileContainer}>
         <ul>
           <li>
-            <span>Region: </span>
+            <span className={css.subheaders}>Region: </span> <br />
             {region}
           </li>
           <li>
-            <span>Cohort: </span>
+            <span className={css.subheaders}>Cohort: </span> <br />
             {cohort_num}
           </li>
           <li>
-            <span>About Me: </span>
+            <span className={css.subheaders}>About Me: </span> <br />
             {aboutme}
           </li>
         </ul>
       </div>
+
       <div className={css.profileContainer}>
         <ul>
           <li>
-            <span>Current Role </span>
-          </li>
-          <li>
-            <span>Company Name: </span>
+            <span className={css.subheaders}>Company Name: </span> <br />
             <Link to={`/company/${company_name}`}>{company_name}</Link>
           </li>
           <li>
-            <span>Job Role: </span>
+            <span className={css.subheaders}>Job Role: </span> <br />
             {job_title}
           </li>
           <li>
-            <span>Start Date: </span>
+            <span className={css.subheaders}>Start Date: </span> <br />
             {start_date?.substring(0, 10).split("-").reverse().join("-")}
           </li>
           <li>
-            <span>Salary: </span>£{salary}
+            <span className={css.subheaders}>Salary: </span> <br />£{salary}
           </li>
         </ul>
       </div>
       <div className={css.profileContainer}>
         <ul>
-          <span>Previous Roles: </span>
+          <span className={css.subheaders}>Previous Roles: </span> <br />
           {previous_roles &&
             previous_roles.map((item) => {
               const { jobTitle, company } = JSON.parse(item); //JSON.parse(item);
