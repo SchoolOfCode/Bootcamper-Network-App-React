@@ -69,7 +69,7 @@ function IndividualCompany() {
         </p>
       </div>
       <div className={css.extraData}>
-        {/* <BootcampersWorkingHere companyname={companyname} /> */}
+        <BootcampersWorkingHere companyname={companyname} />
       </div>
     </div>
   );
