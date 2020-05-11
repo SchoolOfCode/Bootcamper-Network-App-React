@@ -19,8 +19,8 @@ function CompaniesPage() {
   return (
     <>
       <div className={css.header}>
-        <h2> Companies </h2>
-        <small>
+        <h2 className={css.title}> Companies </h2>
+        <small className={css.subheader}>
           Our bootcampers have gone on to work at these tech companies. Click
           the company to find out more.
         </small>
