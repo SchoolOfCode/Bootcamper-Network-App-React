@@ -2,24 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import css from "./googlemaps.module.css";
 
-
-function GoogleMaps({ postcode }) {
-
+function GoogleMaps({ postcode, google }) {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
 
   console.log(`postcode`, postcode);
-
 
   useEffect(() => {
     async function getLonLat() {
       try {
         const newPostcode = postcode.replace(/\s+/g, "");
         console.log(`updated postocde`, newPostcode);
-        const res = await fetch(
-          `https://api.postcodes.io/postcodes/${newPostcode}`
-        );
+        const res = await fetch(`https://api.postcodes.io/postcodes/b721jl`);
         const data = await res.json();
+        console.log(`DATA`, data);
         if (data) {
           setLatitude(data.result.latitude);
           setLongitude(data.result.longitude);
@@ -35,17 +31,21 @@ function GoogleMaps({ postcode }) {
 
   return (
     <div className={css.container}>
-      <p>Hello</p>
-
+      <Map
+        google={google}
+        center={{
+          lat: latitude,
+          lng: longitude,
+        }}
+      />
+      <Marker />
     </div>
   );
 }
 
-
 export default GoogleApiWrapper({
   apiKey: "AIzaSyC0ue6GBSdLopelg1kPuN5ygZJvbkoqgGM",
 })(GoogleMaps);
-
 
 // const [newPostcode, setNewPostcode] = useState("");
 // console.log(`postcode from company`, postcode);
@@ -69,7 +69,7 @@ export default GoogleApiWrapper({
 //       width="100%"
 //       height="100%"
 //       id="mapcanvas"
-//       src="https://maps.google.com/maps?q=b797ej&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+//       src={"https://maps.google.com/maps?q=b797ej&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
 //       frameborder="0"
 //       scrolling="no"
 //       marginheight="0"
