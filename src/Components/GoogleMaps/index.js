@@ -36,7 +36,7 @@ function GoogleMaps({ postcode, google }) {
       style={{
         width: "85%",
         height: "25%",
-        top: "140px",
+        top: "150px",
         left: "28px",
         position: "relative",
       }}
