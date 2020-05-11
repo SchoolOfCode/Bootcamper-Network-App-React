@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "../../images/thisone.png";
 import burgerMenu from "../../images/burgerMenu.svg";
 
-function NavBar() {
+function NavBar({ uid }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className={css.navBar}>
@@ -19,7 +19,7 @@ function NavBar() {
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       />
       {isMenuOpen && (
-        <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} uid={uid} />
       )}
       <hr />
     </div>

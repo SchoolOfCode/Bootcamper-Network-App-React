@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./Menu.module.css";
 import { logout } from "../firebase";
+import { adminUID } from "../../config";
 
 import { Link } from "react-router-dom";
 
@@ -11,16 +12,24 @@ const links = [
   { text: "Companies", path: "/companies" },
   { text: "Events", path: "/events" },
   { text: "Useful Links", path: "/links" },
-  { text: "Admin Dash", path: "/admin" },
 ];
 
-function Menu({ isMenuOpen, setIsMenuOpen }) {
+function Menu({ isMenuOpen, setIsMenuOpen, uid }) {
   function handleClick() {
     setIsMenuOpen(!isMenuOpen);
   }
+  console.log("ADMIN UID", adminUID, "UID", uid);
+
   return (
     <div className={css.menu}>
       <ul className={css.ul}>
+        {uid === adminUID ? (
+          <Link to="/admin" className={css.link} onClick={handleClick}>
+            <li>Admin Dash</li>
+          </Link>
+        ) : (
+          <p>This isnt working</p>
+        )}
         {links.map(({ text, path }) => (
           <Link key={path} to={path} className={css.link} onClick={handleClick}>
             <li>{text}</li>
