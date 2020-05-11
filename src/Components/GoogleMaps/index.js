@@ -31,19 +31,24 @@ function GoogleMaps({ postcode, google }) {
 
   return (
     <div className={css.container}>
-
-  {longitude && (    
-      <Map
-        google={google}
-        style={{width: '85%', height: '25%', top:'100px', left:'15px', position: 'relative'}}
-        center={{
-          lat: latitude,
-          lng: longitude,
-        }}
-      >
-        <Marker position={{ lat: latitude, lng: longitude }} />
-      </Map>
-
+      {longitude && (
+        <Map
+          google={google}
+          style={{
+            width: "85%",
+            height: "25%",
+            top: "100px",
+            left: "15px",
+            position: "relative",
+          }}
+          center={{
+            lat: latitude,
+            lng: longitude,
+          }}
+        >
+          <Marker position={{ lat: latitude, lng: longitude }} />
+        </Map>
+      )}
     </div>
   );
 }
@@ -51,5 +56,3 @@ function GoogleMaps({ postcode, google }) {
 export default GoogleApiWrapper({
   apiKey: "AIzaSyC0ue6GBSdLopelg1kPuN5ygZJvbkoqgGM",
 })(GoogleMaps);
-
-
