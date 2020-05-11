@@ -6,14 +6,14 @@ function GoogleMaps({ postcode, google }) {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
 
-  console.log(`postcode`, postcode);
-
   useEffect(() => {
     async function getLonLat() {
       try {
         const newPostcode = postcode.replace(/\s+/g, "");
         console.log(`updated postocde`, newPostcode);
-        const res = await fetch(`https://api.postcodes.io/postcodes/b721jl`);
+        const res = await fetch(
+          `https://api.postcodes.io/postcodes/${newPostcode}`
+        );
         const data = await res.json();
         console.log(`DATA`, data);
         if (data) {
@@ -37,8 +37,9 @@ function GoogleMaps({ postcode, google }) {
           lat: latitude,
           lng: longitude,
         }}
-      />
-      <Marker />
+      >
+        <Marker position={{ lat: latitude, lng: longitude }} />
+      </Map>
     </div>
   );
 }
