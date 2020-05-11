@@ -5,10 +5,20 @@ import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
 import webLogo from "../../images/web.svg";
+import pencil from "../../images/pencil.png";
+import emailLogo from "../../images/email.png";
 
 import { useParams } from "react-router-dom";
 import { URL } from "../../config";
 import { Link } from "react-router-dom";
+
+const socialLinks = [
+  { name: "twitter", src: twitterLogo },
+  { name: "linkedin", src: linkedinLogo },
+  { name: "github", src: githubLogo },
+  { name: "web", src: webLogo },
+  /*  { name: "email", src: emailLogo }  */
+];
 
 function OtherProfiles() {
   const [profileData, setProfileData] = useState([]);
@@ -32,10 +42,7 @@ function OtherProfiles() {
     region,
     cohort_num,
     aboutme,
-    twitter,
-    linkedin,
-    github,
-    portfolio,
+    email,
     company_name,
     start_date,
     salary,
@@ -46,84 +53,77 @@ function OtherProfiles() {
 
   return (
     <>
-      <div className={css.info}>
-        <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
-
-        <h2>
-          {first_name} {surname}
-        </h2>
-        <img
-          src={twitterLogo}
-          alt="twitter logo"
-          className={css.icons}
-          onClick={() => window.location.assign(twitter)}
-        />
-        <img
-          src={linkedinLogo}
-          alt="linkedin logo"
-          className={css.icons}
-          onClick={() => window.location.assign(linkedin)}
-        />
-        <img
-          src={githubLogo}
-          alt="github logo"
-          className={css.icons}
-          onClick={() => window.location.assign(github)}
-        />
-        <img
-          src={webLogo}
-          alt="web logo"
-          className={css.icons}
-          onClick={() => window.location.assign(portfolio)}
-        />
+      <div>
+        <Link to="/profileEdit">
+          <img src={pencil} alt="edit pencil" className={css.pencil} />
+        </Link>
+        {socialLinks.map((link) => {
+          return (
+            <img
+              key={link.name}
+              src={link.src}
+              alt={`${link.name} logo`}
+              className={css.icons}
+              onClick={() => window.open(profileData[link.name])}
+            />
+          );
+        })}
+        <a href={`mailto:${email}`}>
+          <img className={css.icons} alt="" src={emailLogo}></img>
+        </a>
+        <div className={css.info}>
+          <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
+          <h2 className={css.name}>
+            {first_name} {surname}
+          </h2>
+        </div>
       </div>
+
       <div className={css.profileContainer}>
         <ul>
           <li>
-            <span>Region: </span>
+            <span className={css.subheaders}>Region: </span> <br />
             {region}
           </li>
           <li>
-            <span>Cohort: </span>
+            <span className={css.subheaders}>Cohort: </span> <br />
             {cohort_num}
           </li>
           <li>
-            <span>About Me: </span>
+            <span className={css.subheaders}>About Me: </span> <br />
             {aboutme}
           </li>
         </ul>
       </div>
+
       <div className={css.profileContainer}>
         <ul>
           <li>
-            <span>Current Role </span>
-          </li>
-          <li>
-            <span>Company Name: </span>
+            <span className={css.subheaders}>Company Name: </span> <br />
             <Link to={`/company/${company_name}`}>{company_name}</Link>
           </li>
           <li>
-            <span>Job Role: </span>
+            <span className={css.subheaders}>Job Role: </span> <br />
             {job_title}
           </li>
           <li>
-            <span>Start Date: </span>
-            {start_date?.substring(0, 9).split("-").reverse().join("-")}
+            <span className={css.subheaders}>Start Date: </span> <br />
+            {start_date?.substring(0, 10).split("-").reverse().join("-")}
           </li>
           <li>
-            <span>Salary: </span>£{salary}
+            <span className={css.subheaders}>Salary: </span> <br />£{salary}
           </li>
         </ul>
       </div>
       <div className={css.profileContainer}>
         <ul>
-          <span>Previous Roles: </span>
+          <span className={css.subheaders}>Previous Roles: </span> <br />
           {previous_roles &&
             previous_roles.map((item) => {
-              const { jobTitle, company } = JSON.parse(item);
+              const { jobTitle, company } = JSON.parse(item); //JSON.parse(item);
               return (
                 <li>
-                  - {jobTitle} at {company}
+                  {jobTitle} at {company}
                 </li>
               );
             })}

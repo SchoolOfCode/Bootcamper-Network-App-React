@@ -17,27 +17,31 @@
   margin-left: 10px;
 }
 .otherContainer {
-  position: relative;
   width: 95vw;
   height: auto;
   max-height: 40vh;
-  border-radius: 15px;
-  background-color: var(--main-bg-color);
+  border-radius: 5px;
+  background-color: #ffffff;
   overflow-y: auto;
   margin-bottom: 10px;
   display: inline-block;
   padding-bottom: 10px;
   margin-left: 2vw;
+  box-shadow: 0px 2px #0000000f;
+  color: #5b5e71;
 }
 
 .name {
   display: inline-block;
+  position: relative;
+  top: -15px;
 }
 
 .adminHeader {
-  margin-left: 5px;
+  margin-block-start: 0px;
+  margin-left: 10px;
   margin-bottom: 5px;
-  margin-top: 8px;
+  padding-top: 10px;
 }
 
 .inputs {
@@ -55,4 +59,14 @@
   padding: 10px;
   float: right;
   margin-right: 10px;
+}
+
+.dash {
+  position: relative;
+  top: 90px;
+}
+
+.subheaders {
+  color: #acb0cb;
+  font-size: small;
 }

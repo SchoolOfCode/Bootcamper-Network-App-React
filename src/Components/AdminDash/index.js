@@ -56,7 +56,10 @@ function AdminDash() {
   }
 
   return (
-    <>
+    <div className={css.dash}>
+      <h2 className={css.adminHeader} style={{ color: "#ffffff" }}>
+        Admin Dash
+      </h2>
       <div className={css.otherContainer}>
         <h4 className={css.adminHeader}> Broadcast a message: </h4>
         <textarea
@@ -73,7 +76,7 @@ function AdminDash() {
       </div>
       <div className={css.otherContainer}>
         <h4 className={css.adminHeader}>
-          Bootcampers with a Job Satisfaction rating less than 3:
+          Bootcampers with a Job Satisfaction rating of 3 or less:
         </h4>
         {jobSatisfactionData.map((item) => {
           return (
@@ -83,16 +86,23 @@ function AdminDash() {
                 {item.first_name} {item.surname}
               </p>
               <li className={css.listItem}>
-                <span>Cohort: </span>
+                <span className={css.subheaders}>Cohort</span> <br />
                 {item.cohort_num}
               </li>
               <li className={css.listItem}>
-                <span>Company Name:</span>
+                <span className={css.subheaders}>Company Name</span>
+                <br />
                 {item.company_name}
               </li>
               <li className={css.listItem}>
-                <span>Job Satisfaction: </span>
+                <span className={css.subheaders}>Job Satisfaction </span>
+                <br />
                 {item.job_satisfaction}
+              </li>
+              <li className={css.listItem}>
+                <span className={css.subheaders}>Salary </span>
+                <br />
+                {item.salary}
               </li>
               <Divider />
             </>
@@ -100,7 +110,7 @@ function AdminDash() {
         })}
       </div>
       <div className={css.otherContainer}>
-        <h4 className={css.adminHeader}> Bootcampers Who Want a new Job: </h4>
+        <h4 className={css.adminHeader}> Bootcampers who want a new job: </h4>
         {newJobData.map((item) => {
           return (
             <>
@@ -109,23 +119,30 @@ function AdminDash() {
                 {item.first_name} {item.surname}
               </p>
               <li className={css.listItem}>
-                <span>Cohort: </span>
+                <span className={css.subheaders}>Cohort</span> <br />
                 {item.cohort_num}
               </li>
               <li className={css.listItem}>
-                <span>Company Name:</span>
+                <span className={css.subheaders}>Company Name</span>
+                <br />
                 {item.company_name}
               </li>
               <li className={css.listItem}>
-                <span>Job Satisfaction: </span>
+                <span className={css.subheaders}>Job Satisfaction </span>
+                <br />
                 {item.job_satisfaction}
+              </li>
+              <li className={css.listItem}>
+                <span className={css.subheaders}>Salary </span>
+                <br />
+                {item.salary}
               </li>
               <Divider />
             </>
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 
