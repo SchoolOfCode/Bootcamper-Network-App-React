@@ -13,6 +13,8 @@ const Messages = () => {
   const [allMessages, setAllMessages] = useState([]);
   const { profileData } = useContext(ProfileContext);
 
+  console.log(`ISPROF DATA HERE`, profileData);
+
   //dummy messages array
   const pretendMessages = [
     {
@@ -116,7 +118,7 @@ const Messages = () => {
               </div>
 
               <div>
-                <p className={css.text} style={{ "font-weight": "bold" }}>
+                <p className={css.text} style={{ fontWeight: "bold" }}>
                   {item.first_name}
                 </p>
                 <p className={css.text}>{item.message}</p>

@@ -31,15 +31,17 @@ function GoogleMaps({ postcode, google }) {
 
   return (
     <div className={css.container}>
-      <Map
-        google={google}
-        center={{
-          lat: latitude,
-          lng: longitude,
-        }}
-      >
-        <Marker position={{ lat: latitude, lng: longitude }} />
-      </Map>
+      {longitude && (
+        <Map
+          google={google}
+          center={{
+            lat: latitude,
+            lng: longitude,
+          }}
+        >
+          <Marker position={{ lat: latitude, lng: longitude }} />
+        </Map>
+      )}
     </div>
   );
 }
