@@ -9,6 +9,8 @@
   margin: 10px;
 }
 .navBar {
-  background-color: #e5e5e5;
+  background-image: linear-gradient(to left, #00a5e3, #394ef5);
   width: 100vw;
+  height: 35vh;
+  position: absolute;
 }

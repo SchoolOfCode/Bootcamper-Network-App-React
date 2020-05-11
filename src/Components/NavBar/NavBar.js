@@ -33,7 +33,6 @@ function NavBar({ uid }) {
       {isMenuOpen && (
         <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} uid={uid} />
       )}
-      <hr />
     </div>
   );
 }
