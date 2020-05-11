@@ -7,6 +7,7 @@
   width: 60px;
   float: right;
   margin: 10px;
+  z-index: 9;
 }
 .navBar {
   background-image: linear-gradient(to left, #00a5e3, #394ef5);

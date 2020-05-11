@@ -17,7 +17,7 @@
   padding: 10px;
   width: 70%;
   margin-right: 2%;
-  border-radius: 15px;
+  border-radius: 5px;
   font-family: "Roboto Mono", monospace;
   font-size: 1em;
 }
@@ -28,7 +28,7 @@
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
-  border-radius: 15px;
+  border-radius: 5px;
   font-family: "Roboto Mono", monospace;
   color: white;
   font-size: 1em;
@@ -61,7 +61,7 @@
   display: flex;
   flex-direction: row;
   background-color: #eee;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 .messagesli :nth-child(odd) {
   background: #eee;
