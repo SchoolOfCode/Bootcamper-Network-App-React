@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import css from "./googlemaps.module.css";
 
-function GoogleMaps(postcode) {
+function GoogleMaps({ postcode }) {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
 
   console.log(`postcode`, postcode);
 
-  const newPostcode = "";
-  function changePostcode() {
-    const newPostcode = postcode.replace(/ /g, "");
-    return newPostcode;
-  }
-  changePostcode();
-  console.log(`updated postocde`, newPostcode);
-
   useEffect(() => {
     async function getLonLat() {
       try {
-        const res = await fetch(`https://api.postcodes.io/postcodes/N15EP`);
+        const newPostcode = postcode.replace(/\s+/g, "");
+        console.log(`updated postocde`, newPostcode);
+        const res = await fetch(
+          `https://api.postcodes.io/postcodes/${newPostcode}`
+        );
         const data = await res.json();
         if (data) {
           setLatitude(data.result.latitude);
@@ -29,7 +26,7 @@ function GoogleMaps(postcode) {
       }
     }
     getLonLat();
-  }, []);
+  }, [postcode]);
 
   console.log(`Latitude`, latitude, `longitude`, longitude);
 
@@ -40,7 +37,11 @@ function GoogleMaps(postcode) {
   );
 }
 
-export default GoogleMaps;
+// export default GoogleMaps;
+
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyC0ue6GBSdLopelg1kPuN5ygZJvbkoqgGM",
+})(GoogleMaps);
 
 // const [newPostcode, setNewPostcode] = useState("");
 // console.log(`postcode from company`, postcode);
