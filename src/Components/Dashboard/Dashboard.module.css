@@ -47,9 +47,10 @@
 
 .searchBar {
   position: relative;
-  width: 65vw;
+  top: 95px;
+  width: 60vw;
   height: 30px;
-  border-radius: 15px;
+  border-radius: 0px 5px 5px 0px;
   background-color: var(--main-bg-color);
   text-align: center;
   margin-bottom: 10px;
@@ -57,19 +58,20 @@
 }
 
 .icon {
-  position: absolute;
+  position: relative;
+  top: 108px;
   width: 30px;
   margin-left: 10px;
-  margin-top: 5px;
 }
 
 .searchOptions {
+  position: relative;
+  top: 95px;
   width: 25vw;
   left: 5%;
-  top: 102px;
   z-index: 10;
-  height: 38px;
-  border-radius: 15px;
+  height: 36px;
+  border-radius: 5px 0px 0px 5px;
   background-color: var(--main-bg-color);
   text-align: center;
 }
