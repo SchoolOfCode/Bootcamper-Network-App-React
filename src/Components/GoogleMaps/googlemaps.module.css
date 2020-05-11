@@ -4,6 +4,7 @@
   height: 15px;
   width: 15px;
   text-align: left;
+  z-index: 10;
 }
 
 .gmapcanvas {
