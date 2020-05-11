@@ -81,11 +81,11 @@ function Profile({ uid }) {
             />
           );
         })}
-      </div>
 
-      <a href={`mailto:${email}`}>
-        <img height="40px" alt="" src={emailLogo}></img>
-      </a>
+        <a href={`mailto:${email}`}>
+          <img className={css.icons} alt="" src={emailLogo}></img>
+        </a>
+      </div>
 
       <div className={css.profileContainer}>
         <ul>

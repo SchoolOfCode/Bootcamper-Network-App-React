@@ -16,12 +16,12 @@ function EventsPage({ name, link, date, time }) {
         <p>{date}</p>
         <p>{time}</p>
 
-        <button
+        {/* <button
           className={cn({ [css.clicked]: isClicked })}
           onClick={handleClick}
         >
           I'm Attending
-        </button>
+        </button> */}
       </div>
     </>
   );

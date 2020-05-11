@@ -5,34 +5,73 @@
   box-sizing: border-box;
 }
 .form {
-  background: #000;
-  padding: 3px;
+  background: #4a90e2;
+  padding: 0.4em 0em 0.6em 0em;
   position: fixed;
   bottom: 0;
   width: 100%;
+  text-align: center;
 }
 .forminput {
   border: 0;
   padding: 10px;
-  width: 90%;
-  margin-right: 0.5%;
+  width: 70%;
+  margin-right: 2%;
+  border-radius: 15px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1em;
 }
 .formbutton {
-  width: 9%;
   min-width: 60px;
-  background: rgb(130, 224, 255);
+  background: #64bdbd;
   border: none;
   padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 15px;
+  font-family: "Roboto Mono", monospace;
+  color: white;
+  font-size: 1em;
 }
 
-li {
-  padding: 5px 10px;
+.messages {
+  margin-bottom: 18%;
+}
+
+.imgdiv {
+  position: relative;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  padding-top: 0.3em;
+}
+
+.profpic {
+  border-radius: 100px;
+  border: solid white 1px;
+  position: absolute;
+  top: 3%;
+  /* -ms-transform: translateY(-50%);
+  transform: translateY(-50%); */
+}
+
+.limessage {
+  padding: 0.1em;
+  margin: 0.4em;
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  background-color: #eee;
+  border-radius: 15px;
 }
 .messagesli :nth-child(odd) {
   background: #eee;
 }
 
-li .name {
+.text {
+  margin: 0.4em;
+  padding-left: 30px;
+}
+
+.name {
   font-weight: 900;
 }
