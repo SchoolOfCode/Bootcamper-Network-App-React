@@ -66,6 +66,11 @@
      margin-bottom:10px
 }
 
+.theMap{
+    border: 5px black;
+    z-index: 10;
+}
+
 .iconWrapper{
     top: 125px;
     left: 235px;
