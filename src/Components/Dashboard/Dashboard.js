@@ -29,21 +29,21 @@ function Dashboard({ state }) {
   return (
     <div className={css.dash}>
       <SearchBar />
+      <h3 className={css.headerOnBlue}>Latest Message From the SoC Team</h3>
       <div className={css.container}>
-        <h3 className={css.header}>Latest Message From the SoC Team:</h3>
-        <Divider />
         <p>{message}</p>
       </div>
+      <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
+        <h3 className={css.header}> Latest Events </h3>
+      </Link>
       <div className={css.container}>
-        <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
-          <h2 className={css.header}> Latest Events </h2>
-        </Link>
-
         <EventsPage
           name={state[0]?.name || "Loading..."}
           link={state[0]?.link}
         />
       </div>
+      <h3 className={css.header}> Latest From The Community </h3>
+
       <div className={css.container}>
         <br />
         <TwitterTimelineEmbed

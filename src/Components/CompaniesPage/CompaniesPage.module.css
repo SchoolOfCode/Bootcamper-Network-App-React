@@ -21,7 +21,7 @@
   height: auto;
   max-height: 65vh;
   border-radius: 1em;
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
   padding: 3px;
   overflow-y: scroll;
 }

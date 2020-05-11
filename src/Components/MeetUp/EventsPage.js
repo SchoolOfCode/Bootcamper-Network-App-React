@@ -11,10 +11,10 @@ function EventsPage({ name, link, date, time }) {
     <>
       <div className={css.eachEvent}>
         <a href={link} className={css.link}>
-          <p>{name}</p>
+          <p className={css.eventName}>{name}</p>
         </a>
-        <p>{date}</p>
-        <p>{time}</p>
+        <p className={css.subheader}>{date}</p>
+        <p className={css.subheader}>{time}</p>
 
         {/* <button
           className={cn({ [css.clicked]: isClicked })}

@@ -6,7 +6,7 @@ import EventsPage from "./EventsPage";
 
 export default function Meetup({ state }) {
   return (
-    <>
+    <div className={css.wrapper}>
       <div className={css.header}>
         <h2 className={css.h2}> Events </h2>
         <small>
@@ -28,6 +28,6 @@ export default function Meetup({ state }) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
