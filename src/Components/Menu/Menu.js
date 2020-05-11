@@ -18,6 +18,7 @@ function Menu({ isMenuOpen, setIsMenuOpen, uid }) {
   function handleClick() {
     setIsMenuOpen(!isMenuOpen);
   }
+  console.log("ADMIN UID", adminUID, "UID", uid);
 
   return (
     <div className={css.menu}>
@@ -26,7 +27,9 @@ function Menu({ isMenuOpen, setIsMenuOpen, uid }) {
           <Link to="/admin" className={css.link} onClick={handleClick}>
             <li>Admin Dash</li>
           </Link>
-        ) : null}
+        ) : (
+          <p>This isnt working</p>
+        )}
         {links.map(({ text, path }) => (
           <Link key={path} to={path} className={css.link} onClick={handleClick}>
             <li>{text}</li>
