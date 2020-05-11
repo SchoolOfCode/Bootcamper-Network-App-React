@@ -98,47 +98,54 @@ const Messages = () => {
   //map over the array to display the messages
   // console.log(`All messages state`, allMessages);
   return (
-    <div className={css.div}>
-      <ul className={css.messages}>
-        {pretendMessages.map((item) => {
-          return (
-            <li className={css.limessage}>
-              <div className={css.imgdiv}>
-                <Link
-                  to={`/profiles/${item.bootcamper_id}`}
-                  className={css.link}
-                >
-                  <img
-                    src={item.photo_url}
-                    className={css.profpic}
-                    alt="bootcamper"
-                    width="30px"
-                  />
-                </Link>
-              </div>
+    <>
+      <h2 className={css.headers}>Messaging</h2>
+      <div className={css.div}>
+        <ul className={css.messages}>
+          {pretendMessages.map((item) => {
+            return (
+              <li className={css.limessage}>
+                <div className={css.imgdiv}>
+                  <Link
+                    to={`/profiles/${item.bootcamper_id}`}
+                    className={css.link}
+                  >
+                    <img
+                      src={item.photo_url}
+                      className={css.profpic}
+                      alt="bootcamper"
+                      width="30px"
+                    />
+                  </Link>
+                </div>
 
-              <div>
-                <p className={css.text} style={{ fontWeight: "bold" }}>
-                  {item.first_name}
-                </p>
-                <p className={css.text}>{item.message}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-      <form action="" className={css.form}>
-        <input
-          onChange={handleInput}
-          value={input}
-          className={css.forminput}
-          // autocomplete="off"
-        />
-        <button className={css.formbutton} type="button" onClick={sendMessage}>
-          Send
-        </button>
-      </form>
-    </div>
+                <div>
+                  <p className={css.text} style={{ fontWeight: "bold" }}>
+                    {item.first_name}
+                  </p>
+                  <p className={css.text}>{item.message}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        <form action="" className={css.form}>
+          <input
+            onChange={handleInput}
+            value={input}
+            className={css.forminput}
+            // autocomplete="off"
+          />
+          <button
+            className={css.formbutton}
+            type="button"
+            onClick={sendMessage}
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
