@@ -27,32 +27,34 @@ function Dashboard({ state }) {
   }, []);
 
   return (
-    <div className={css.dash}>
+    <>
       <SearchBar />
-      <h3 className={css.headerOnBlue}>Latest Message From the SoC Team</h3>
-      <div className={css.container}>
-        <p>{message}</p>
-      </div>
-      <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
-        <h3 className={css.header}> Latest Events </h3>
-      </Link>
-      <div className={css.container}>
-        <EventsPage
-          name={state[0]?.name || "Loading..."}
-          link={state[0]?.link}
-        />
-      </div>
-      <h3 className={css.header}> Latest From The Community </h3>
+      <div className={css.dash}>
+        <h3 className={css.headerOnBlue}>Latest Message From the SoC Team</h3>
+        <div className={css.container}>
+          <p>{message}</p>
+        </div>
+        <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
+          <h3 className={css.header}> Latest Events </h3>
+        </Link>
+        <div className={css.container}>
+          <EventsPage
+            name={state[0]?.name || "Loading..."}
+            link={state[0]?.link}
+          />
+        </div>
+        <h3 className={css.header}> Latest From The Community </h3>
 
-      <div className={css.container}>
-        <br />
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="BootcamperBot"
-          options={{ height: "45vh", width: "90vw" }}
-        />
+        <div className={css.container}>
+          <br />
+          <TwitterTimelineEmbed
+            sourceType="profile"
+            screenName="BootcamperBot"
+            options={{ height: "45vh", width: "90vw" }}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
