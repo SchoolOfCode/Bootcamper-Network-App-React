@@ -33,6 +33,7 @@ function GoogleMaps({ postcode, google }) {
     <div className={css.container}>
       <Map
         google={google}
+        style={{width: '85%', height: '25%', top:'100px', left:'15px', position: 'relative'}}
         center={{
           lat: latitude,
           lng: longitude,
