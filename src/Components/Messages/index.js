@@ -13,6 +13,8 @@ const Messages = () => {
   const [allMessages, setAllMessages] = useState([]);
   const { profileData } = useContext(ProfileContext);
 
+  console.log(`profileData`, { profileData });
+
   //dummy messages array
   const pretendMessages = [
     {

@@ -7,6 +7,14 @@ function GoogleMaps(postcode) {
 
   console.log(`postcode`, postcode);
 
+  const newPostcode = "";
+  function changePostcode() {
+    const newPostcode = postcode.replace(/ /g, "");
+    return newPostcode;
+  }
+  changePostcode();
+  console.log(`updated postocde`, newPostcode);
+
   useEffect(() => {
     async function getLonLat() {
       try {
