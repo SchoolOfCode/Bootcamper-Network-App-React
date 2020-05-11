@@ -30,58 +30,31 @@ function GoogleMaps({ postcode, google }) {
   console.log(`Latitude`, latitude, `longitude`, longitude);
 
   return (
-    // <div className={css.container}>
-    <Map
-      google={google}
-      style={{
-        width: "85%",
+
+    //<div className={css.container}>
+      {longitude && (
+        <Map
+          google={google}
+          style={{
+             width: "85%",
         height: "25%",
         top: "150px",
         left: "28px",
         position: "relative",
-      }}
-      center={{
-        lat: latitude,
-        lng: longitude,
-      }}
-    >
-      <Marker position={{ lat: latitude, lng: longitude }} />
-    </Map>
-    // </div>
+          }}
+          center={{
+            lat: latitude,
+            lng: longitude,
+          }}
+        >
+          <Marker position={{ lat: latitude, lng: longitude }} />
+        </Map>
+      )}
+   // </div>
+
   );
 }
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyC0ue6GBSdLopelg1kPuN5ygZJvbkoqgGM",
 })(GoogleMaps);
-
-// const [newPostcode, setNewPostcode] = useState("");
-// console.log(`postcode from company`, postcode);
-// const postcodefake = "b721jl";
-
-// const newPostcode = postcode.replace(/\s+/g, "");
-// console.log(`new postcode`, newPostcode);
-
-// function changePostcode(postcode) {
-//   const space = /\s+/g;
-//   let revisedPostcode = postcode.replace(space, "");
-//   setNewPostcode(revisedPostcode);
-// }
-// changePostcode();
-
-// console.log(`Did it work?`, newPostcode);
-
-// return (
-//   <div className={css.container}>
-//     <iframe
-//       width="100%"
-//       height="100%"
-//       id="mapcanvas"
-//       src={"https://maps.google.com/maps?q=b797ej&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-//       frameborder="0"
-//       scrolling="no"
-//       marginheight="0"
-//       marginwidth="0"
-//     ></iframe>
-//   </div>
-// );
