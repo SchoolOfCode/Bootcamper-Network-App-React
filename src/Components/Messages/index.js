@@ -13,8 +13,6 @@ const Messages = () => {
   const [allMessages, setAllMessages] = useState([]);
   const { profileData } = useContext(ProfileContext);
 
-  console.log(`ISPROF DATA HERE`, profileData);
-
   //dummy messages array
   const pretendMessages = [
     {
@@ -82,21 +80,21 @@ const Messages = () => {
   function sendMessage() {
     const myMessage = {
       message: input,
-      first_name: "username here",
-      photo_url: "photourl",
-      bootcamper_id: "bootcamper_id",
+      first_name: profileData.first_name,
+      photo_url: profileData.photo_url,
+      bootcamper_id: profileData.bootcamper_id,
     };
     connection.emit("chatMessage", myMessage);
-    // console.log("sending message: ", myMessage);
+    console.log("sending message: ", myMessage);
     setInput("");
   }
 
-  //check format of received input on the backend
-  //add firstname photourl & boocamper_id & time/date sent to messages being sent
-  //check to see if sent message is also received back to user
-  //if they are, add them to an array
-  //map over the array to display the messages
-  // console.log(`All messages state`, allMessages);
+  //figure out time stamp thing for db✅
+  //make create messages table script in db✅
+  //in db, when message received a function is run that sends the message to the messages db
+  //in db, to send the message back, a function is run that selects all messages from the db (maybe last 40 or something)
+  //when receiving these messages, map over them (remove dummy data, put in real data)
+
   return (
     <>
       <h2 className={css.headers}>Messaging</h2>
