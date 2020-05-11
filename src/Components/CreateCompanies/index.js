@@ -7,14 +7,14 @@ import css from "./CreateCompanies.module.css";
 import { Link } from "react-router-dom";
 
 const initialState = {
-  company_name: localStorage.getItem('company_name') || "",
-  description: localStorage.getItem('description') || "",
-  logo: localStorage.getItem('logo') || "",
-  address: localStorage.getItem('address') || "",
-  postcode: localStorage.getItem('postcode') || "",
-  website: localStorage.getItem('website') || "",
-  twitter: localStorage.getItem('twitter') || "",
-  linkedIn: localStorage.getItem('linkedIn') || "",
+  company_name: localStorage.getItem("company_name") || "",
+  description: localStorage.getItem("description") || "",
+  logo: localStorage.getItem("logo") || "",
+  address: localStorage.getItem("address") || "",
+  postcode: localStorage.getItem("postcode") || "",
+  website: localStorage.getItem("website") || "",
+  twitter: localStorage.getItem("twitter") || "",
+  linkedIn: localStorage.getItem("linkedIn") || "",
 };
 
 const actionTypes = {
@@ -76,7 +76,7 @@ function CompanyInputs() {
             name="company_name"
             value={state.company_name}
             onChange={(event) => {
-              localStorage.setItem('company_name', event.target.value)
+              localStorage.setItem("company_name", event.target.value);
               dispatch({
                 type: actionTypes.FORM_CHANGE,
                 payload: { company_name: event.target.value },
@@ -84,7 +84,7 @@ function CompanyInputs() {
             }}
           />
 
-          <label>Description:</label>npm 
+          <label>Description:</label>
           <textarea
             className={css.inputs}
             type="text"
@@ -92,7 +92,7 @@ function CompanyInputs() {
             name="description"
             value={state.description}
             onChange={(event) => {
-              localStorage.setItem('description', event.target.value)
+              localStorage.setItem("description", event.target.value);
               dispatch({
                 type: actionTypes.FORM_CHANGE,
                 payload: { description: event.target.value },
@@ -108,7 +108,7 @@ function CompanyInputs() {
             name="logo"
             value={state.logo}
             onChange={(event) => {
-              localStorage.setItem('logo', event.target.value)
+              localStorage.setItem("logo", event.target.value);
               dispatch({
                 type: actionTypes.FORM_CHANGE,
                 payload: { logo: event.target.value },
@@ -124,7 +124,7 @@ function CompanyInputs() {
             name="address"
             value={state.address}
             onChange={(event) => {
-              localStorage.setItem('address', event.target.value)
+              localStorage.setItem("address", event.target.value);
               dispatch({
                 type: actionTypes.FORM_CHANGE,
                 payload: { address: event.target.value },
@@ -142,7 +142,7 @@ function CompanyInputs() {
             minLength="5"
             maxLength="8"
             onChange={(event) => {
-              localStorage.setItem('postcode', event.target.value)
+              localStorage.setItem("postcode", event.target.value);
               dispatch({
                 type: actionTypes.FORM_CHANGE,
                 payload: { postcode: event.target.value },
@@ -158,7 +158,7 @@ function CompanyInputs() {
               name="website"
               value={state.website}
               onChange={(event) => {
-                localStorage.setItem('website', event.target.value)
+                localStorage.setItem("website", event.target.value);
                 dispatch({
                   type: actionTypes.FORM_CHANGE,
                   payload: { website: event.target.value },
@@ -175,7 +175,7 @@ function CompanyInputs() {
               name="twitter"
               value={state.twitter}
               onChange={(event) => {
-                localStorage.setItem('twitter', event.target.value)
+                localStorage.setItem("twitter", event.target.value);
                 dispatch({
                   type: actionTypes.FORM_CHANGE,
                   payload: { twitter: event.target.value },
@@ -192,7 +192,7 @@ function CompanyInputs() {
               name="linkedIn"
               value={state.linkedIn}
               onChange={(event) => {
-                localStorage.setItem('linkedIn', event.target.value)
+                localStorage.setItem("linkedIn", event.target.value);
                 dispatch({
                   type: actionTypes.FORM_CHANGE,
                   payload: { linkedIn: event.target.value },

@@ -1,26 +1,29 @@
 :root {
-  --main-color: #e5e5e5;
-  --text: #2f64a3;
+  --main-color: #ffffff;
+  --text: #5b5e71;
 }
 
 .inputs {
   line-height: 2em;
-  border-radius: 8px;
   margin-bottom: 10px;
   width: 80%;
   margin-top: 5px;
+  border: 0px;
+  border-bottom: 2px solid #c0c2d3;
 }
 
 .wrapper {
+  position: relative;
+  top: 100px;
+  left: 12px;
   width: 87vw;
   height: auto;
-  background: #e1eaf5;
-  border-radius: 55px;
-  margin-left: 17px;
-  border: 3px solid var(--main-color);
+  background: var(--main-color);
+  border-radius: 5px;
   color: var(--text);
   padding: 10px;
   font-size: small;
+  box-shadow: 0px 2px #0000000f;
 }
 
 .logos {
@@ -34,12 +37,18 @@
   height: 40px;
   margin-top: 5px;
   margin-left: 10%;
-  background: #64bdbd;
-  border: 3px solid #f8eded;
+  background: #00a5e3;
+  border: 0px;
   box-sizing: border-box;
   border-radius: 10px;
-  color: var(--main-color);
+  color: var(--text);
   font-size: large;
+}
+.bin {
+  width: 30px;
+  position: relative;
+  top: -45px;
+  left: 20px;
 }
 
 .linktext {
@@ -48,18 +57,28 @@
 }
 
 .prevRoleButton {
-  width: 40px;
+  width: 90%;
   height: 30px;
-  float: right;
-  margin-right: 10px;
-  background: #64bdbd;
-  border: 3px solid #f8eded;
+  background: #00a5e3;
   box-sizing: border-box;
   border-radius: 10px;
   color: var(--text);
+  border: 0px;
+  position: relative;
+  left: 10px;
 }
 
 .header {
-  margin-left: 15px;
   color: var(--main-color);
+  position: relative;
+  top: 100px;
+  left: 12px;
+  margin-block-start: 0;
+}
+
+.prevRoleWrapper {
+  height: auto;
+  margin-left: 5px;
+  padding-left: 5px;
+  border-left: 2px solid #c0c2d3;
 }

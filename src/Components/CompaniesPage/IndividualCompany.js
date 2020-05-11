@@ -34,55 +34,51 @@ function IndividualCompany() {
   } = individualCompanyData;
   return (
     <>
-     <div className={css.iconWrapper}>
-          <img
-            src={twitterLogo}
-            alt="twitter logo"
-            className={css.icons}
-            onClick={() => window.location.assign(twitter)}
-          />
-          <img
-            src={linkedinLogo}
-            alt="linkedin logo"
-            className={css.icons}
-            onClick={() => window.location.assign(linkedin)}
-          />
-          <img
-            src={websiteLogo}
-            alt="website logo"
-            className={css.icons}
-            onClick={() => window.location.assign(website)}
-          />
+      <div className={css.iconWrapper}>
+        <img
+          src={twitterLogo}
+          alt="twitter logo"
+          className={css.icons}
+          onClick={() => window.location.assign(twitter)}
+        />
+        <img
+          src={linkedinLogo}
+          alt="linkedin logo"
+          className={css.icons}
+          onClick={() => window.location.assign(linkedin)}
+        />
+        <img
+          src={websiteLogo}
+          alt="website logo"
+          className={css.icons}
+          onClick={() => window.location.assign(website)}
+        />
+      </div>
+      <div className={css.bigContainer}>
+        <div className={css.companyContainer}>
+          <div className={css.imageWrapper}>
+            <img src={logo} alt="company logo" className={css.companyLogo} />
+          </div>
+          <h2 className={css.companyTitle}> {company_name} </h2>
         </div>
-        <div className={css.bigContainer}>
-      <div className={css.companyContainer}>
-        <div className={css.imageWrapper}>
-          <img src={logo} alt="company logo" className={css.companyLogo} />
+        <div className={css.extraData}>
+          <p>
+            <span>{description}</span>
+          </p>
         </div>
-        <h2 className={css.companyTitle}> {company_name} </h2>
+        <div className={css.extraData}>
+          <BootcampersWorkingHere companyname={companyname} />
+        </div>
+
+        <div className={css.mapHolder}>
+          Address:
+          <p>
+            {address}, {postcode}
+          </p>
+        </div>
       </div>
-      <div className={css.extraData}>
-       
-        <p>
-          <span>{description}</span>
-        </p>
-       
-      </div>
-      <div className={css.extraData}>
-        <BootcampersWorkingHere companyname={companyname} />
-      </div>
-      
-      <div className={css.extraData}>Address: 
-      <p>
-      {address}, {postcode}
-      </p>
-      <div>{postcode && <GoogleMaps className={css.theMap} postcode={postcode} />}</div>
-      
-      </div>
-          
-       
-      
-    </div>
+
+      {postcode && <GoogleMaps postcode={postcode} />}
     </>
   );
 }

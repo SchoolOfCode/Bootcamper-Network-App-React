@@ -7,8 +7,8 @@
   background: #ffffff;
   box-shadow: 0px 2px #00000014;
   border-radius: 5px;
-  color: var(--main-color);
   padding-left: 5px;
+  margin-bottom: 15px;
 }
 
 /* .eachEvent > button {
