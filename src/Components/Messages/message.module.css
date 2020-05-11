@@ -5,7 +5,7 @@
   top: 100px;
 }
 .form {
-  background: #4a90e2;
+  background-image: linear-gradient(to right, #00a5e3, #394ef5);
   padding: 0.4em 0em 0.6em 0em;
   position: fixed;
   bottom: 0;
@@ -23,7 +23,7 @@
 }
 .formbutton {
   min-width: 60px;
-  background: #64bdbd;
+  background: #00a5e3;
   border: none;
   padding: 10px;
   padding-left: 15px;
