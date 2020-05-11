@@ -1,16 +1,25 @@
 :root {
   --main-color: #e5e5e5;
 }
-.header {
-  color: var(--main-color);
-  margin-left: 5px;
-  margin-bottom: 10px;
+
+.title {
+  margin-block-end: 0px;
+  margin-block-start: 0px;
 }
+
+ .header {
+  color: var(--main-color);
+  margin-left: 5px; 
+  /* margin-bottom: 10px; */
+ position: relative;
+ top:100px;
+
+} 
 
 .companyTitle {
   display: inline-block;
   margin-left: 20px;
-  position: absolute;
+  position: relative;
   top: 15px;
 }
 
@@ -23,25 +32,33 @@
   border-radius: 1em;
   /* background-color: var(--main-color); */
   padding: 3px;
-  overflow-y: scroll;
+ /*  overflow-y: scroll; */
+/*   position: relative; */
 }
 
 .companyContainer {
   display: inline-block;
   text-align: left;
   width: 90vw;
-  height: 100px;
-  background: #46728a;
+  height: auto;
+  padding-bottom: 10px;
+  background: #ffffff;
+  box-shadow: 0px 2px #00000014;
   border-radius: 15px;
-  margin: 0 auto;
-  border: 3px solid var(--main-color);
+  box-shadow: 0px 2px #0000000f;
   color: var(--main-color);
+  padding-left: 5px;
   position: relative;
-}
+   top: 100px;
+   margin-bottom:10px
+  }
+
 
 .companyName {
   margin-block-start: 10px;
   margin-block-end: 0px;
+  color: #5b5e71;
+  position: relative;
 }
 
 .companyContainer > p {
@@ -50,6 +67,7 @@
   max-width: 60%;
   margin-left: 35%;
   margin-top: -10px;
+  position: relative;
 }
 
 .companyLogo {
@@ -70,15 +88,18 @@
   margin: 0 auto;
   border: 3px solid var(--main-color);
   color: var(--main-color);
+  position: relative;
 }
 
 .extraData > p,
 h3 {
   margin-left: 10px;
+  position: relative;
 }
 .iconWrapper {
   text-align: center;
   margin-top: 25px;
+  position: relative;
 }
 
 .icons {
@@ -87,6 +108,7 @@ h3 {
   margin-right: 10px;
   margin-bottom: 5px;
   display: inline-block;
+  
 }
 
 .imageWrapper {
@@ -94,13 +116,19 @@ h3 {
   width: 30%;
   margin-top: 25px;
   margin-left: 3vw;
+  position: relative;
 }
 .infoWrapper {
   width: 60%;
   float: right;
   padding-right: 10px;
+  position: relative;
 }
 
 .companyData {
   margin-left: 10px;
+  color: #acb0cb;
+  font-size: small;
+  position: relative;
 }
+
