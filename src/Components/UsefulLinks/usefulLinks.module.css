@@ -19,11 +19,10 @@
   top: 100px;
 }
 
-
 .extraData {
   display: inline-block;
   text-align: left;
-  width: 90vw;
+  width: 50vw;
   height: auto;
   padding-bottom: 10px;
   background: #ffffff;
@@ -34,7 +33,6 @@
   position: relative;
   top: 150px;
   margin-bottom: 10px;
-
 }
 
 .linkText {
