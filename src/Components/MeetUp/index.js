@@ -9,11 +9,7 @@ export default function Meetup({ state }) {
     <div className={css.wrapper}>
       <div className={css.header}>
         <h2 className={css.h2}> Events </h2>
-        <small>
-          Clicking the 'I'm attending' button will not sign you up for the event
-          on Meetup, it will only notify people on this app that you're
-          attending. Click the titles to go to their Meetup Pages.
-        </small>
+        
       </div>
       <div className={morecss.bigContainer}>
         {state.map((item) => {
