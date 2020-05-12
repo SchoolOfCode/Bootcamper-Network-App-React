@@ -105,7 +105,7 @@ function OtherProfiles() {
           </li>
           <li>
             <span className={css.subheaders}>Start Date: </span> <br />
-            {start_date?.substring(0, 10)("-").reverse().join("-")}
+            {start_date?.substring(0, 10).split("-").reverse().join("-")}
           </li>
           <li>
             <span className={css.subheaders}>Salary: </span> <br />£{salary}
