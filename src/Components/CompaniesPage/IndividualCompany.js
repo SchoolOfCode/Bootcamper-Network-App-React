@@ -73,8 +73,8 @@ function IndividualCompany() {
           <p className={css.addresstext}>
             {address}, {postcode}
           </p>
+          {postcode && <GoogleMaps postcode={postcode} />}
         </div>
-        {postcode && <GoogleMaps postcode={postcode} />}
       </div>
     </>
   );

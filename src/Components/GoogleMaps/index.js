@@ -30,17 +30,14 @@ function GoogleMaps({ postcode, google }) {
   console.log(`Latitude`, latitude, `longitude`, longitude);
 
   return (
-    <div className={css.container}>
+    <>
       {longitude && (
         <Map
           google={google}
           style={{
-            width: "87%",
-            height: "50%",
-            top: "257px",
-            left: "13px",
+            width: "95%",
+            height: "200px",
             position: "relative",
-            border: "solid white 10px",
           }}
           center={{
             lat: latitude,
@@ -50,7 +47,7 @@ function GoogleMaps({ postcode, google }) {
           <Marker position={{ lat: latitude, lng: longitude }} />
         </Map>
       )}
-    </div>
+    </>
   );
 }
 
