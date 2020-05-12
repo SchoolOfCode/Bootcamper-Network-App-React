@@ -72,7 +72,7 @@ function Profile({ uid }) {
           </h2>
         </div>
       </div>
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center" }} className={css.socialdiv}>
         {socialLinks.map((link) => {
           return (
             <img
@@ -91,15 +91,15 @@ function Profile({ uid }) {
 
       <div className={css.profileContainer}>
         <ul>
-          <li>
+          <li className={css.li}>
             <span className={css.subheaders}>Region: </span> <br />
             {region}
           </li>
-          <li>
+          <li className={css.li}>
             <span className={css.subheaders}>Cohort: </span> <br />
             {cohort_num}
           </li>
-          <li>
+          <li className={css.li}>
             <span className={css.subheaders}>About Me: </span> <br />
             {aboutme}
           </li>
@@ -108,19 +108,19 @@ function Profile({ uid }) {
 
       <div className={css.profileContainer}>
         <ul>
-          <li>
+          <li className={css.li}>
             <span className={css.subheaders}>Company Name: </span> <br />
             <Link to={`/company/${company_name}`}>{company_name}</Link>
           </li>
-          <li>
+          <li className={css.li}>
             <span className={css.subheaders}>Job Role: </span> <br />
             {job_title}
           </li>
-          <li>
+          <li className={css.li}>
             <span className={css.subheaders}>Start Date: </span> <br />
             {start_date?.substring(0, 10).split("-").reverse().join("-")}
           </li>
-          <li>
+          <li className={css.li}>
             <span className={css.subheaders}>Salary: </span> <br />£{salary}
           </li>
         </ul>
@@ -132,7 +132,7 @@ function Profile({ uid }) {
             previous_roles.map((item) => {
               const { jobTitle, company } = JSON.parse(item); //JSON.parse(item);
               return (
-                <li>
+                <li className={css.li}>
                   {jobTitle} at {company}
                 </li>
               );

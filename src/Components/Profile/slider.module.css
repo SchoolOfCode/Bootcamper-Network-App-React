@@ -5,6 +5,7 @@
 .slidecontainer {
   width: 90%;
   margin: 0 auto;
+  margin-top: 3px;
 }
 
 .slider {
@@ -29,7 +30,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: var(--bg);
+  background: #394ef5;
   cursor: pointer;
 }
 
@@ -48,8 +49,12 @@ select {
 }
 
 .save {
-  background: var(--bg);
-  border-radius: 10px;
+  background: #394ef5;
+  color: var(--main-color);
+  border-radius: 5px;
   margin-top: 10px;
+  box-sizing: border-box;
   padding: 5px;
+  border: 0px;
+  margin-left: 4px;
 }
