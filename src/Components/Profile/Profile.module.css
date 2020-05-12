@@ -37,7 +37,7 @@
 .pencil {
   width: 20px;
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 85px;
 }
 
@@ -58,6 +58,6 @@
 .name {
   margin-block-start: 0;
   position: relative;
-  top: 105px;
+  top: 110px;
   color: black;
 }
