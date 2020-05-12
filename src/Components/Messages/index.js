@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import css from "./message.module.css";
 import { ProfileContext } from "../../config";
 import io from "socket.io-client";
@@ -10,6 +10,14 @@ const Messages = () => {
   const [input, setInput] = useState("");
   const [allMessages, setAllMessages] = useState([]);
   const { profileData } = useContext(ProfileContext);
+
+  //FOR AUTO SCROLL
+  const divRef = useRef(null);
+
+  //TO AUTO SCROLL TO THE BOTTOM
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behaviour: "smooth" });
+  });
 
   //dummy messages array
   const pretendMessages = [
@@ -64,7 +72,7 @@ const Messages = () => {
     async function getAllPreviousMessages() {
       try {
         const res = await fetch(
-          `http://localhost:5000/bootcampers/allpreviousmessages`
+          `httpS://www.schoolofcode.rocks/bootcampers/allpreviousmessages`
         );
         const data = await res.json(); //changed from res.json
         if (data) {
@@ -81,9 +89,9 @@ const Messages = () => {
     setInput(event.target.value);
   }
 
+  //RECEIVING MESSAGE
   useEffect(() => {
     connection.on("chatMessage", (myMessage) => {
-      console.log(`Receiving message from backend`, myMessage);
       setAllMessages([...allMessages, myMessage]);
     });
     return function removeListener() {
@@ -91,18 +99,15 @@ const Messages = () => {
     };
   }, [allMessages]);
 
-  //sending message
+  //SENDING MESSAGE
   function sendMessage() {
     const myMessage = {
       message: input,
       bootcamper_id: profileData.bootcamper_id,
     };
     connection.emit("chatMessage", myMessage);
-    console.log("sending message: ", myMessage);
     setInput("");
   }
-
-  console.log(`all messages?`, allMessages);
 
   //when messages page loads, do a fetch to get last 30 messages and load them. ✅
   //when msg sent from front end, it goes to back end and that is put in the db. ✅
@@ -149,6 +154,7 @@ const Messages = () => {
             );
           })}
         </ul>
+
         <form action="" className={css.form}>
           <input
             onChange={handleInput}
@@ -165,6 +171,7 @@ const Messages = () => {
           </button>
         </form>
       </div>
+      <div ref={divRef} />
     </>
   );
 };

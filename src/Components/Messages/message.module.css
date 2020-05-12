@@ -33,6 +33,7 @@
   font-family: "Nunito", sans-serif;
   color: white;
   font-size: 1em;
+  outline: none;
 }
 
 .messages {
