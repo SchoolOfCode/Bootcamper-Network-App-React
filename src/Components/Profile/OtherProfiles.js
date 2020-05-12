@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import css from "./Profile.module.css";
 import TeamData from "./TeamData";
-import twitterLogo from "../../images/twitter-logo.png";
-import linkedinLogo from "../../images/linkedin.png";
-import githubLogo from "../../images/github.png";
-import webLogo from "../../images/web.svg";
+import twitterLogo from "../../images/twitter3.png";
+import linkedinLogo from "../../images/linkedin3.png";
+import githubLogo from "../../images/github3.png";
+import webLogo from "../../images/web3.png";
 import pencil from "../../images/pencil.png";
-import emailLogo from "../../images/email.png";
+import emailLogo from "../../images/mail3.png";
 
 import { useParams } from "react-router-dom";
 import { URL } from "../../config";
@@ -54,6 +54,14 @@ function OtherProfiles() {
   return (
     <>
       <div>
+        <div className={css.info}>
+          <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
+          <h2 className={css.name}>
+            {first_name} {surname}
+          </h2>
+        </div>
+      </div>
+      <div style={{ textAlign: "center" }}>
         {socialLinks.map((link) => {
           return (
             <img
@@ -68,14 +76,7 @@ function OtherProfiles() {
         <a href={`mailto:${email}`}>
           <img className={css.icons} alt="" src={emailLogo}></img>
         </a>
-        <div className={css.info}>
-          <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
-          <h2 className={css.name}>
-            {first_name} {surname}
-          </h2>
-        </div>
       </div>
-
       <div className={css.profileContainer}>
         <ul>
           <li>
