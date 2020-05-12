@@ -43,7 +43,6 @@ function App() {
         try {
           const res = await fetch(`${URL}/bootcampers?uid=${user.uid}`);
           const data = await res.json();
-          console.log(`sign in fetch data`, data.payload[0]);
           if (data.payload[0]) {
             setProfileData(data.payload[0]);
           }
