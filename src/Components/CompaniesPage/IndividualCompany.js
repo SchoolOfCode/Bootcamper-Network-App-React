@@ -69,13 +69,11 @@ function IndividualCompany() {
         </div>
 
         <div className={css.mapHolder}>
-          Address:
-          <p>
+          <p className={css.subheading}>Address:</p>
+          <p className={css.addresstext}>
             {address}, {postcode}
           </p>
         </div>
-      </div>
-      <div className={css.map}>
         {postcode && <GoogleMaps postcode={postcode} />}
       </div>
     </>

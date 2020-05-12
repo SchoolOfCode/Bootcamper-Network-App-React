@@ -35,11 +35,12 @@ function GoogleMaps({ postcode, google }) {
         <Map
           google={google}
           style={{
-            width: "85%",
-            height: "25%",
-            top: "150px",
-            left: "28px",
+            width: "87%",
+            height: "50%",
+            top: "257px",
+            left: "13px",
             position: "relative",
+            border: "solid white 10px",
           }}
           center={{
             lat: latitude,

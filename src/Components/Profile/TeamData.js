@@ -73,7 +73,7 @@ function TeamData({
             onChange={handleSliderChange}
           />
           <p>
-            <span style={{ fontSize: "small" }}>
+            <span class={css.selection} style={{ fontSize: "small" }}>
               You've Selected: {sliderValue}
             </span>
           </p>
