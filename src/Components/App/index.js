@@ -55,6 +55,8 @@ function App() {
     }
   }, [user]);
 
+  console.log(`hello wheres the datea`, profileData);
+
   if (loading) {
     return (
       <div>

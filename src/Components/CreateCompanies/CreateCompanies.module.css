@@ -100,3 +100,9 @@
   font-family: "Nunito", sans-serif;
   font-size: medium;
 }
+
+.poundsign {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}

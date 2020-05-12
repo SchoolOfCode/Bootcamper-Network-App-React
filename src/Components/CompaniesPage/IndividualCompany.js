@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
 import githubLogo from "../../images/github.png";
+import leftarrow from "../../images/leftarrow.png";
 import websiteLogo from "../../images/web.svg";
 import { URL } from "../../config";
 import css from "./IndividualCompany.module.css";
@@ -34,6 +36,11 @@ function IndividualCompany() {
   } = individualCompanyData;
   return (
     <>
+      {/* <div>
+        <Link to="/companies">
+          <img src={leftarrow} alt="back arrow" className={css.leftarrow} />
+        </Link>
+      </div> */}
       <div className={css.iconWrapper}>
         <img
           src={twitterLogo}
@@ -54,6 +61,7 @@ function IndividualCompany() {
           onClick={() => window.location.assign(website)}
         />
       </div>
+
       <div className={css.bigContainer}>
         <div className={css.companyContainer}>
           <div className={css.imageWrapper}>
