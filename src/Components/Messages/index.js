@@ -3,6 +3,8 @@ import css from "./message.module.css";
 import { ProfileContext } from "../../config";
 import io from "socket.io-client";
 import { Link } from "react-router-dom";
+import TimeAgo from "timeago-react";
+import * as timeago from "timeago.js";
 
 const connection = io("https://www.schoolofcode.rocks");
 
@@ -141,13 +143,18 @@ const Messages = () => {
                   </Link>
                 </div>
 
-                <div>
+                <div style={{ position: "relative" }}>
                   <p className={css.text} style={{ fontWeight: "bold" }}>
                     {item.first_name}
                   </p>
-                  <p className={css.text}>{item.message}</p>
-                  <p className={css.text} style={{ fontSize: "0.5em" }}>
-                    {item.sent}
+                  <p className={css.textmessage}>{item.message}</p>
+                  <p
+                    className={css.texttime}
+                    style={{
+                      fontSize: "0.7em",
+                    }}
+                  >
+                    <TimeAgo datetime={item.sent} />
                   </p>
                 </div>
               </li>
