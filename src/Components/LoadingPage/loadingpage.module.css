@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  background-color: #4a90e2;
+  background-image: linear-gradient(to left, #00a5e3, #394ef5);
 }
 
 .loadingspinner {
