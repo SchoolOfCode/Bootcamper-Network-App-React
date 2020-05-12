@@ -21,15 +21,15 @@
 .extraData{
     display: inline-block;
     text-align: left;
-    width: 90vw;
+    width: 50vw;
     height: auto;
     padding-bottom: 10px;
-    background: #ffffff;
+    padding-top: 10px;
+ /*    background: #ffffff; */
     box-shadow: 0px 2px #00000014;
     border-radius: 15px;
     box-shadow: 0px 2px #0000000f;
     color: #acb0cb;
-    padding-left: 5px;
     position: relative;
      top: 150px;
      margin-bottom:10px
