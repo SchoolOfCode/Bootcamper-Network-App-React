@@ -215,13 +215,9 @@ function ProfileInputs() {
             }}
           />
           <label>Company:</label>
-          <p className={css.linktext}>
-            <Link to="/companyEdit" className={css.linktext}>
-              If your company doesn't already exist, add it here
-            </Link>
-          </p>
+
           <select
-            className={css.inputs}
+            className={css.dropdown}
             name="company_id"
             value={state.company_id}
             onChange={(event) => {
@@ -234,13 +230,21 @@ function ProfileInputs() {
               });
             }}
           >
-            <option> Select from the list </option>
+            <option className={css.options}> Select from the list </option>
             {companyData.map((item) => {
               return (
-                <option value={item.company_id}> {item.company_name}</option>
+                <option className={css.options} value={item.company_id}>
+                  {" "}
+                  {item.company_name}
+                </option>
               );
             })}
           </select>
+          <p className={css.linktext}>
+            <Link to="/companyEdit" className={css.linktext}>
+              If your company doesn't already exist, add it here
+            </Link>
+          </p>
           <label>Salary:</label>
           <input
             className={css.inputs}
