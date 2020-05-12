@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import searchIcon from "../../images/searchIcon.png";
+import searchIcon from "../../images/searchIcon2.png";
 import css from "../Dashboard/Dashboard.module.css";
 import { Link } from "react-router-dom";
 import { URL } from "../../config";

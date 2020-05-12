@@ -25,9 +25,9 @@
 .icons {
   width: 30px;
   margin-left: 10px;
-  display: inline-block;
   position: relative;
   top: 90px;
+  fill: black;
 }
 
 .pencilcontainer {
@@ -47,7 +47,7 @@
   height: 130px;
   position: relative;
   z-index: 2;
-  top: 100px;
+  top: 90px;
 }
 
 .subheaders {

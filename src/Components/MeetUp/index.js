@@ -20,6 +20,7 @@ export default function Meetup({ state }) {
               link={item.link}
               date={item.local_date}
               time={item.local_time}
+              venue={item?.venue?.name}
             />
           );
         })}

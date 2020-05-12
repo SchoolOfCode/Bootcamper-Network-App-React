@@ -5,11 +5,12 @@
 
 .inputs {
   line-height: 2em;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   width: 80%;
   margin-top: 5px;
   border: 0px;
   border-bottom: 2px solid #c0c2d3;
+  font-family: "Nunito", sans-serif;
 }
 
 .wrapper {
@@ -34,15 +35,15 @@
 
 .button {
   width: 80%;
-  height: 40px;
+  height: 30px;
   margin-top: 5px;
   margin-left: 10%;
-  background: #00a5e3;
+  background: #394ef5;
   border: 0px;
   box-sizing: border-box;
-  border-radius: 10px;
-  color: var(--text);
-  font-size: large;
+  border-radius: 5px;
+  color: var(--main-color);
+  font-size: medium;
 }
 .bin {
   width: 30px;
@@ -54,15 +55,17 @@
 .linktext {
   font-size: 10px;
   color: var(--text);
+  position: relative;
+  left: 1px;
 }
 
 .prevRoleButton {
   width: 90%;
   height: 30px;
-  background: #00a5e3;
+  background: #394ef5;
   box-sizing: border-box;
-  border-radius: 10px;
-  color: var(--text);
+  border-radius: 5px;
+  color: var(--main-color);
   border: 0px;
   position: relative;
   left: 10px;
@@ -81,4 +84,19 @@
   margin-left: 5px;
   padding-left: 5px;
   border-left: 2px solid #c0c2d3;
+}
+
+.dropdown {
+  line-height: 2em;
+  width: 80%;
+  height: 30px;
+  margin-top: 5px;
+  border: 2px solid #c0c2d3;
+  font-family: "Nunito", sans-serif;
+  border-radius: 5px;
+}
+
+.options {
+  font-family: "Nunito", sans-serif;
+  font-size: medium;
 }

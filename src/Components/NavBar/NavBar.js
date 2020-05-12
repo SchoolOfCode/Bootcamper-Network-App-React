@@ -23,7 +23,12 @@ function NavBar({ uid }) {
   return (
     <div className={extraCSS.navBar}>
       <Link to="/">
-        <img src={logo} className={extraCSS.logo} alt="school of code logo" />
+        <img
+          src={logo}
+          className={extraCSS.logo}
+          alt="school of code logo"
+          onClick={isMenuOpen ? toggleBurger : null}
+        />
       </Link>
       <button
         onClick={toggleBurger}

@@ -44,6 +44,7 @@
   margin-left: 10px;
   text-decoration: none;
   color: #5b5e71;
+  padding: 10px;
 }
 .headerOnBlue {
   margin-block-start: 0;
@@ -51,6 +52,7 @@
   margin-left: 10px;
   text-decoration: none;
   color: #ffffff;
+  padding: 10px;
 }
 
 .eventImg {
@@ -70,11 +72,12 @@
   text-align: center;
   margin-bottom: 10px;
   display: inline-block;
+  font-family: "Nunito", sans-serif;
 }
 
 .icon {
   position: relative;
-  top: 108px;
+  top: 106px;
   width: 30px;
   margin-left: 10px;
 }
@@ -89,6 +92,11 @@
   border-radius: 5px 0px 0px 5px;
   background-color: var(--main-bg-color);
   text-align: center;
+  font-family: "Nunito", sans-serif;
+}
+
+.searchOptions option {
+  font-size: medium;
 }
 
 .searchWrapper {

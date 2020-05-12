@@ -34,15 +34,7 @@ function Dashboard({ state }) {
         <div className={css.messagecontainer}>
           <p>{message}</p>
         </div>
-        <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
-          <h3 className={css.header}> Latest Events </h3>
-        </Link>
-        <div className={css.container}>
-          <EventsPage
-            name={state[0]?.name || "Loading..."}
-            link={state[0]?.link}
-          />
-        </div>
+
         <h3 className={css.header}> Latest From The Community </h3>
 
         <div className={css.container}>
@@ -51,6 +43,18 @@ function Dashboard({ state }) {
             sourceType="profile"
             screenName="BootcamperBot"
             options={{ height: "45vh", width: "90vw" }}
+          />
+        </div>
+        <Link to="/events" style={{ textDecoration: "none", color: "black" }}>
+          <h3 className={css.header}> Latest Events </h3>
+        </Link>
+        <div className={css.container}>
+          <EventsPage
+            name={state[0]?.name || "Loading..."}
+            link={state[0]?.link}
+            date={state[0]?.local_date}
+            time={state[0]?.local_time}
+            venue={state[0]?.venue?.name}
           />
         </div>
       </div>

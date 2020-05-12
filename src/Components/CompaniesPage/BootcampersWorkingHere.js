@@ -21,15 +21,15 @@ function BootcampersWorkingHere({ companyname }) {
 
   return (
     <div>
-      <h3> Bootcampers Who Work Here: </h3>
+      <h3 className={css.headers}> Bootcampers Who Work Here: </h3>
       <ul>
         {bootcamperWorkingHere.map((item) => {
           return (
-            <li>
+            <li className={css.people}>
+              <img className={css.bootcamperPic} alt="" src={item.photo_url} />
               <Link to={`/profiles/${item.bootcamper_id}`} className={css.link}>
                 {item.first_name} {item.surname}
-              </Link>{" "}
-              <img className={css.bootcamperPic} alt="" src={item.photo_url} />
+              </Link>
             </li>
           );
         })}
