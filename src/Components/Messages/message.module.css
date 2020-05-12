@@ -3,6 +3,7 @@
   box-sizing: border-box;
   position: relative;
   top: 100px;
+  background-color: #f5f6ff;
 }
 .form {
   background-image: linear-gradient(to right, #00a5e3, #394ef5);
