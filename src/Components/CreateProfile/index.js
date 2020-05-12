@@ -245,9 +245,9 @@ function ProfileInputs() {
             </Link>
           </p>
           <label>Salary:</label>
-          <p className={css.poundsign}>£</p>
+          <span className={css.poundsign}>£</span>
           <input
-            className={css.inputs}
+            className={css.salaryInput}
             type="text"
             placeholder="Salary"
             name="salary"

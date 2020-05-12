@@ -103,6 +103,22 @@
 
 .poundsign {
   display: inline;
-  margin: 0;
-  padding: 0;
+  position: relative;
+  top: 15px;
+  border-bottom: 2px solid #c0c2d3;
+  padding-bottom: 6px;
+  width: 15px;
+}
+
+.salaryInput {
+  line-height: 2em;
+  margin-bottom: 25px;
+  width: 80%;
+  margin-top: 5px;
+  border: 0px;
+  border-bottom: 2px solid #c0c2d3;
+  font-family: "Nunito", sans-serif;
+  position: relative;
+  top: -20px;
+  left: 15px;
 }
