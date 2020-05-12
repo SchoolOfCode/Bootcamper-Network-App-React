@@ -8,6 +8,17 @@
   padding: 3px;
 }
 
+.subheading {
+  font-weight: bold;
+  color: #5b5e71;
+  padding-left: 0.6em;
+}
+
+.addresstext {
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+}
+
 .companyContainer {
   display: inline-block;
   text-align: left;
@@ -97,9 +108,10 @@
   margin-left: 15px;
 }
 
-.map {
+/* .map {
   text-align: center;
   position: relative;
   top: 80px;
   height: 400px;
-}
+  border: 2px red solid;
+} */

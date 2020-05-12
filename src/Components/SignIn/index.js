@@ -27,8 +27,6 @@ function SignIn() {
     }
   }, [user]);
 
-  console.log(`FROM signin is profiledata here?`, profileData);
-
   if (!user) {
     return (
       <div className={css.container}>
