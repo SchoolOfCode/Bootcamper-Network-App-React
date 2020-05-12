@@ -1,7 +1,7 @@
 .eachEvent {
   display: inline-block;
   text-align: left;
-  width: 90vw;
+  width: 85vw;
   height: auto;
   padding-bottom: 10px;
   background: #ffffff;
@@ -10,14 +10,6 @@
   padding-left: 5px;
   margin-bottom: 15px;
 }
-
-/* .eachEvent > button {
-  width: 100px;
-  height: 25px;
-  background: #64a4c6;
-  border-radius: 5px;
-  color: var(--main-color);
-} */
 
 .link {
   text-decoration: none;
@@ -31,8 +23,14 @@
 .subheader {
   color: #acb0cb;
   font-size: small;
+  font-weight:bold;
+  padding-left: 18px;
+  padding-right: 15px
 }
 
 .eventName {
+  padding-left: 15px;
+  padding-right: 15px;
   color: #5b5e71;
+  font-weight:bold;
 }

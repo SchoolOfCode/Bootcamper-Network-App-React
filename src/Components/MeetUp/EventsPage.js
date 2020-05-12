@@ -13,15 +13,7 @@ function EventsPage({ name, link, date, time }) {
         <a href={link} className={css.link}>
           <p className={css.eventName}>{name}</p>
         </a>
-        <p className={css.subheader}>{date}</p>
-        <p className={css.subheader}>{time}</p>
-
-        {/* <button
-          className={cn({ [css.clicked]: isClicked })}
-          onClick={handleClick}
-        >
-          I'm Attending
-        </button> */}
+        <p className={css.subheader}>{date?.substring(0, 10).split("-").reverse().join("-")} at {time}</p>
       </div>
     </>
   );
