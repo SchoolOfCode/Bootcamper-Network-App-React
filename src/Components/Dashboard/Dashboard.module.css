@@ -30,13 +30,14 @@
   left: 8px;
   border-radius: 5px;
   background-color: var(--main-bg-color);
-  text-align: center;
+  text-align: left;
   overflow-y: auto;
   margin-bottom: 10px;
+  padding-left: 10px;
   margin-left: -15px;
   display: inline-block;
   padding-bottom: 10px;
-  box-shadow: 0px 2px #0000000f;
+  box-shadow: 2px 2px grey;
 }
 .header {
   margin-block-start: 0;
@@ -120,4 +121,10 @@
 
 .searchResult {
   margin-left: 20px;
+}
+
+.signed {
+  float: right;
+  font-size: small;
+  padding-right: 10px;
 }

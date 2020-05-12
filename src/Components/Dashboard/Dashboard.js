@@ -33,6 +33,7 @@ function Dashboard({ state }) {
         <h3 className={css.headerOnBlue}>Message From the SoC Team</h3>
         <div className={css.messagecontainer}>
           <p>{message}</p>
+          <small className={css.signed}> - The SoC Team</small>
         </div>
 
         <h3 className={css.header}> Latest From The Community </h3>
