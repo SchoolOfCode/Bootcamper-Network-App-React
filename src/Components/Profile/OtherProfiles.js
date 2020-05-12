@@ -54,9 +54,6 @@ function OtherProfiles() {
   return (
     <>
       <div>
-        <Link to="/profileEdit">
-          <img src={pencil} alt="edit pencil" className={css.pencil} />
-        </Link>
         {socialLinks.map((link) => {
           return (
             <img

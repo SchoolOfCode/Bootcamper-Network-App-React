@@ -8,12 +8,16 @@ import burgerMenu from "../../images/burgerMenu.svg";
 
 function NavBar({ uid }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  let hamburger = document.querySelector(".hamburger");
 
   function toggleBurger() {
-    var hamburger = document.querySelector(".hamburger");
-
-    hamburger.classList.toggle("is-active");
     setIsMenuOpen(!isMenuOpen);
+
+    if (!isMenuOpen) {
+      hamburger.classList.add("is-active");
+    } else {
+      hamburger.classList.remove("is-active");
+    }
   }
 
   return (
@@ -31,7 +35,12 @@ function NavBar({ uid }) {
         </span>
       </button>
       {isMenuOpen && (
-        <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} uid={uid} />
+        <Menu
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          uid={uid}
+          hamburger={hamburger}
+        />
       )}
     </div>
   );

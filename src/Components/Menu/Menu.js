@@ -14,11 +14,11 @@ const links = [
   { text: "Useful Links", path: "/links" },
 ];
 
-function Menu({ isMenuOpen, setIsMenuOpen, uid }) {
+function Menu({ isMenuOpen, setIsMenuOpen, uid, hamburger }) {
   function handleClick() {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(false);
+    hamburger.classList.remove("is-active");
   }
-  console.log("ADMIN UID", adminUID, "UID", uid);
 
   return (
     <div className={css.menu}>
