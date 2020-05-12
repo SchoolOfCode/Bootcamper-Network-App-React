@@ -106,11 +106,15 @@ const Messages = () => {
 
   console.log(`all messages?`, allMessages);
 
-  //figure out time stamp thing for db✅
-  //make create messages table script in db✅
-  //in db, when message received a function is run that sends the message to the messages db
-  //in db, to send the message back, a function is run that selects all messages from the db (maybe last 40 or something)
-  //when receiving these messages, map over them (remove dummy data, put in real data)
+  //when messages page loads, do a fetch to get last 30 messages and load them. ✅
+  //when msg sent from front end, it goes to back end and that is put in the db. ✅
+  //back end collects the last msg from the db and sends it to the front end.
+  //front end receives latest msg and adds it to the message state.
+  //message state should be mapped over.
+
+  //issues
+  //latestmessages aren't at the bottom
+  //only brings last messages when a next one is sent
 
   return (
     <>
@@ -139,6 +143,9 @@ const Messages = () => {
                     {item.first_name}
                   </p>
                   <p className={css.text}>{item.message}</p>
+                  <p className={css.text} style={{ fontSize: "0.5em" }}>
+                    {item.sent}
+                  </p>
                 </div>
               </li>
             );
