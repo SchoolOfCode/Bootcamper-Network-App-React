@@ -4,9 +4,7 @@ import { ProfileContext } from "../../config";
 import io from "socket.io-client";
 import { Link } from "react-router-dom";
 
-const connection = io("http://localhost:5000");
-
-//"http://bootcampcommunityapp-dev.eu-west-1.elasticbeanstalk.com"
+const connection = io("https://www.schoolofcode.rocks");
 
 const Messages = () => {
   const [input, setInput] = useState("");
