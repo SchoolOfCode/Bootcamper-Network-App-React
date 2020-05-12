@@ -3,8 +3,8 @@
 }
 
 .header {
-  margin-block-start: -10px;
-  margin-left: 10px;
+  margin-block-start: 0px;
+  margin-left: 25px;
   margin-bottom: 10px;
   color: #ffffff;
 }
@@ -12,6 +12,7 @@
 .h2 {
   margin-block-end: 0px;
   margin-block-start: 10px;
+  margin-left: 7px;
 }
 
 .wrapper {
