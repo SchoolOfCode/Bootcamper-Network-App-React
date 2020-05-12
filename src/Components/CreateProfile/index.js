@@ -215,7 +215,6 @@ function ProfileInputs() {
             }}
           />
           <label>Company:</label>
-
           <select
             className={css.dropdown}
             name="company_id"
@@ -246,6 +245,7 @@ function ProfileInputs() {
             </Link>
           </p>
           <label>Salary:</label>
+          <p className={css.poundsign}>£</p>
           <input
             className={css.inputs}
             type="text"
@@ -281,7 +281,6 @@ function ProfileInputs() {
               });
             }}
           /> */}
-
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
@@ -379,7 +378,6 @@ function ProfileInputs() {
               });
             }}
           />
-
           <small> Please enter URL </small>
           <div>
             <img src={websiteLogo} alt="website logo" className={css.logos} />

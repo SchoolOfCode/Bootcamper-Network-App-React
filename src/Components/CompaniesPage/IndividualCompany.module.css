@@ -86,6 +86,12 @@
   color: #acb0cb;
 }
 
+.leftarrow {
+  width: 30px;
+  border: 2px solid pink;
+  z-index: 5;
+}
+
 .mapHolder {
   display: inline-block;
   text-align: left;
