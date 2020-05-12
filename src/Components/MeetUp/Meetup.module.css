@@ -3,9 +3,8 @@
 }
 
 .header {
-
-  margin-block-start: 0px;
- margin-left: 15px;
+  margin-block-start: -10px;
+  margin-left: 15px;
 
   margin-bottom: 10px;
   color: #ffffff;

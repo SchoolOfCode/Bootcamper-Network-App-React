@@ -13,11 +13,10 @@ function EventsPage({ name, link, date, time, venue }) {
         <a href={link} className={css.link}>
           <p className={css.eventName}>{name}</p>
         </a>
-
-        <p className={css.subheader}>{date?.split("-").reverse().join("-")} at {time}</p>
+        <p className={css.subheader}>
+          {date?.split("-").reverse().join("-")} at {time}
+        </p>
         <p className={css.subheader}>{venue}</p>
-
-
       </div>
     </>
   );
