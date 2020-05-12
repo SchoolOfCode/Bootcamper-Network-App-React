@@ -21,8 +21,7 @@ function CompaniesPage() {
       <div className={css.header}>
         <h2 className={css.title}> Companies </h2>
         <small className={css.subheader}>
-          Our bootcampers have gone on to work at these tech companies. Click
-          the company to find out more.
+          Our bootcampers have gone on to work at these tech companies.
         </small>
       </div>
       <div className={css.bigContainer}>
