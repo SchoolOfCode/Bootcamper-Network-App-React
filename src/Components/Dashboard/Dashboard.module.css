@@ -44,6 +44,7 @@
   margin-left: 10px;
   text-decoration: none;
   color: #5b5e71;
+  padding: 10px;
 }
 .headerOnBlue {
   margin-block-start: 0;
@@ -51,6 +52,7 @@
   margin-left: 10px;
   text-decoration: none;
   color: #ffffff;
+  padding: 10px;
 }
 
 .eventImg {
@@ -74,7 +76,7 @@
 
 .icon {
   position: relative;
-  top: 108px;
+  top: 106px;
   width: 30px;
   margin-left: 10px;
 }
