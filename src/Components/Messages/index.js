@@ -62,6 +62,23 @@ const Messages = () => {
     },
   ];
 
+  useEffect(() => {
+    async function getAllPreviousMessages() {
+      try {
+        const res = await fetch(
+          `http://localhost:5000/bootcampers/allpreviousmessages`
+        );
+        const data = await res.json(); //changed from res.json
+        if (data) {
+          setAllMessages(data.payload);
+        }
+      } catch (err) {
+        console.log(`fetch error`, err);
+      }
+    }
+    getAllPreviousMessages();
+  }, []);
+
   function handleInput(event) {
     setInput(event.target.value);
   }
@@ -80,14 +97,14 @@ const Messages = () => {
   function sendMessage() {
     const myMessage = {
       message: input,
-      first_name: profileData.first_name,
-      photo_url: profileData.photo_url,
       bootcamper_id: profileData.bootcamper_id,
     };
     connection.emit("chatMessage", myMessage);
     console.log("sending message: ", myMessage);
     setInput("");
   }
+
+  console.log(`all messages?`, allMessages);
 
   //figure out time stamp thing for db✅
   //make create messages table script in db✅
@@ -100,7 +117,7 @@ const Messages = () => {
       <h2 className={css.headers}>Messaging</h2>
       <div className={css.div}>
         <ul className={css.messages}>
-          {pretendMessages.map((item) => {
+          {allMessages.map((item) => {
             return (
               <li className={css.limessage}>
                 <div className={css.imgdiv}>
