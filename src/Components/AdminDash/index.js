@@ -8,6 +8,7 @@ function AdminDash() {
   const [newJobData, setNewJobData] = useState([]);
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState("Send");
+  const [toggleDisplay, setToggleDisplay] = useState(false);
 
   useEffect(() => {
     async function getJobSatisfactionData() {
@@ -55,6 +56,10 @@ function AdminDash() {
     setSent("Sent");
   }
 
+  function showDisplay() {
+    setToggleDisplay(!toggleDisplay);
+  }
+
   return (
     <div className={css.dash}>
       <h2 className={css.adminHeader} style={{ color: "#ffffff" }}>
@@ -70,78 +75,84 @@ function AdminDash() {
             setMessage(e.target.value);
           }}
         />
-        <button className={css.button} onClick={handleClick}>
+        <button className={css.saveButton} onClick={handleClick}>
           {sent}
         </button>
       </div>
-      <div className={css.otherContainer}>
-        <h4 className={css.adminHeader}>
-          Bootcampers with a Job Satisfaction rating of 3 or less:
-        </h4>
-        {jobSatisfactionData.map((item) => {
-          return (
-            <>
-              <img src={item.photo_url} className={css.profilePic} alt="" />
-              <p className={css.name}>
-                {item.first_name} {item.surname}
-              </p>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Cohort</span> <br />
-                {item.cohort_num}
-              </li>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Company Name</span>
-                <br />
-                {item.company_name}
-              </li>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Job Satisfaction </span>
-                <br />
-                {item.job_satisfaction}
-              </li>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Salary </span>
-                <br />
-                {item.salary}
-              </li>
-              <Divider />
-            </>
-          );
-        })}
-      </div>
-      <div className={css.otherContainer}>
-        <h4 className={css.adminHeader}> Bootcampers who want a new job: </h4>
-        {newJobData.map((item) => {
-          return (
-            <>
-              <img src={item.photo_url} className={css.profilePic} alt="" />
-              <p className={css.name}>
-                {item.first_name} {item.surname}
-              </p>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Cohort</span> <br />
-                {item.cohort_num}
-              </li>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Company Name</span>
-                <br />
-                {item.company_name}
-              </li>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Job Satisfaction </span>
-                <br />
-                {item.job_satisfaction}
-              </li>
-              <li className={css.listItem}>
-                <span className={css.subheaders}>Salary </span>
-                <br />
-                {item.salary}
-              </li>
-              <Divider />
-            </>
-          );
-        })}
-      </div>
+      <button className={css.toggleButton} onClick={showDisplay}>
+        Toggle Job Satisfaction/New Jobs
+      </button>
+      {toggleDisplay ? (
+        <div className={css.otherContainer}>
+          <h4 className={css.adminHeader}>
+            Bootcampers with a Job Satisfaction rating of 3 or less:
+          </h4>
+          {jobSatisfactionData.map((item) => {
+            return (
+              <>
+                <img src={item.photo_url} className={css.profilePic} alt="" />
+                <p className={css.name}>
+                  {item.first_name} {item.surname}
+                </p>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Cohort</span> <br />
+                  {item.cohort_num}
+                </li>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Company Name</span>
+                  <br />
+                  {item.company_name}
+                </li>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Job Satisfaction </span>
+                  <br />
+                  {item.job_satisfaction}
+                </li>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Salary </span>
+                  <br />
+                  {item.salary}
+                </li>
+                <Divider />
+              </>
+            );
+          })}
+        </div>
+      ) : (
+        <div className={css.otherContainer}>
+          <h4 className={css.adminHeader}> Bootcampers who want a new job: </h4>
+          {newJobData.map((item) => {
+            return (
+              <>
+                <img src={item.photo_url} className={css.profilePic} alt="" />
+                <p className={css.name}>
+                  {item.first_name} {item.surname}
+                </p>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Cohort</span> <br />
+                  {item.cohort_num}
+                </li>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Company Name</span>
+                  <br />
+                  {item.company_name}
+                </li>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Job Satisfaction </span>
+                  <br />
+                  {item.job_satisfaction}
+                </li>
+                <li className={css.listItem}>
+                  <span className={css.subheaders}>Salary </span>
+                  <br />
+                  {item.salary}
+                </li>
+                <Divider />
+              </>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
