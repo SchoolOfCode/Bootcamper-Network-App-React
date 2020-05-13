@@ -14,7 +14,7 @@ const initialState = {
   postcode: localStorage.getItem("postcode") || "",
   website: localStorage.getItem("website") || "",
   twitter: localStorage.getItem("twitter") || "",
-  linkedIn: localStorage.getItem("linkedIn") || "",
+  linkedin: localStorage.getItem("linkedin") || "",
 };
 
 const actionTypes = {
@@ -42,7 +42,7 @@ function CompanyInputs() {
       postcode,
       website,
       twitter,
-      linkedIn,
+      linkedin,
     } = state;
     e.preventDefault();
     fetch(`${URL}/companies`, {
@@ -55,7 +55,7 @@ function CompanyInputs() {
         postcode,
         website,
         twitter,
-        linkedIn,
+        linkedin,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -184,18 +184,18 @@ function CompanyInputs() {
             />
           </div>
           <div>
-            <img src={linkedinLogo} alt="linkedIn logo" className={css.logos} />
+            <img src={linkedinLogo} alt="linkedin logo" className={css.logos} />
             <input
               className={css.inputs}
               type="text"
-              placeholder="linkedIn"
-              name="linkedIn"
-              value={state.linkedIn}
+              placeholder="linkedin"
+              name="linkedin"
+              value={state.linkedin}
               onChange={(event) => {
-                localStorage.setItem("linkedIn", event.target.value);
+                localStorage.setItem("linkedin", event.target.value);
                 dispatch({
                   type: actionTypes.FORM_CHANGE,
-                  payload: { linkedIn: event.target.value },
+                  payload: { linkedin: event.target.value },
                 });
               }}
             />
