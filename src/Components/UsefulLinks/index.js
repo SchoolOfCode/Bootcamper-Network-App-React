@@ -19,7 +19,7 @@ function UsefulLinks() {
       <div className={css.grid}>
         <p className={css.box}>
           <a className={css.linkText} href="https://www.schoolofcode.com/">
-            <img height="45px" alt="" src={webPic} />
+            <img className={css.img} height="45px" alt="" src={webPic} />
           </a>
         </p>
         <p className={css.box}>
@@ -28,6 +28,7 @@ function UsefulLinks() {
             href="https://stackoverflow.com/c/school-of-code/questions"
           >
             <img
+              className={css.img}
               height="35px"
               alt=""
               src="https://cdn.sstatic.net/Sites/stackoverflow/company/Img/logos/so/so-logo.png?v=9c558ec15d8a"
@@ -40,7 +41,7 @@ function UsefulLinks() {
             className={css.linkText}
             href="https://schoolofcodebootcamp.slack.com"
           >
-            <img height="45px" alt="" src={slackPic} />
+            <img className={css.img} height="45px" alt="" src={slackPic} />
           </a>
         </p>
 
@@ -49,7 +50,7 @@ function UsefulLinks() {
             className={css.linkText}
             href="https://schoolofcodebootcamp.slack.com"
           >
-            <img height="45px" alt="" src={linkedInPic} />
+            <img className={css.img} height="45px" alt="" src={linkedInPic} />
           </a>
         </p>
       </div>

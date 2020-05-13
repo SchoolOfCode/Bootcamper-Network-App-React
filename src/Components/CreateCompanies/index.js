@@ -153,7 +153,7 @@ function CompanyInputs() {
               });
             }}
           />
-          <div>
+          <div className={css.socialsdiv}>
             <img src={websiteLogo} alt="website logo" className={css.logos} />
             <input
               className={css.inputs}
@@ -170,7 +170,7 @@ function CompanyInputs() {
               }}
             />
           </div>
-          <div>
+          <div className={css.socialcont}>
             <img src={twitterLogo} alt="twitter logo" className={css.logos} />
             <input
               className={css.inputs}

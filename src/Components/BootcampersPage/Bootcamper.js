@@ -24,7 +24,7 @@ function Bootcamper({
             {/* {" "} */}
             {first_name} {surname}
           </h3>
-          <p className={css.companyData}> {company_name}</p>
+          <p className={css.companyDataname}> {company_name}</p>
           <p className={css.companyData}> {job_title}</p>
         </div>
       </div>
