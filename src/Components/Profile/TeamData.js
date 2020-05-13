@@ -37,7 +37,6 @@ function TeamData({
         cohort_num,
       }),
     });
-    console.log(option, sliderValue);
     setSaved("Saved");
   }
 

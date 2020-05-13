@@ -19,7 +19,7 @@
   left: 12px;
   width: 87vw;
   height: auto;
-  background: var(--main-color);
+  background: #f0f0f0;
   border-radius: 5px;
   color: var(--text);
   padding: 10px;

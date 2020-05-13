@@ -37,7 +37,8 @@
   margin-left: -15px;
   display: inline-block;
   padding-bottom: 10px;
-  box-shadow: 2px 2px grey;
+  /* box-shadow: 2px 2px grey; */
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
 }
 .header {
   margin-block-start: 0;
@@ -65,11 +66,14 @@
 
 .searchBar {
   position: relative;
+  outline: none;
   top: 95px;
   width: 60vw;
   height: 30px;
   border-radius: 0px 5px 5px 0px;
   background-color: var(--main-bg-color);
+  border: none;
+  height: 34px;
   text-align: center;
   margin-bottom: 10px;
   display: inline-block;
@@ -85,6 +89,7 @@
 
 .searchOptions {
   position: relative;
+  outline: none;
   top: 95px;
   width: 25vw;
   left: 5%;
@@ -92,6 +97,7 @@
   height: 36px;
   border-radius: 5px 0px 0px 5px;
   background-color: var(--main-bg-color);
+
   text-align: center;
   font-family: "Nunito", sans-serif;
 }
