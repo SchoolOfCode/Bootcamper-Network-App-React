@@ -2,8 +2,16 @@ import React, { Fragment, useState, useEffect } from "react";
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import bin from "../../images/bin.png";
 const PreviousRoleInputs = ({ onChange, id, onCancel }) => {
-  const [jobTitle, setJobTitle] = useState();
-  const [company, setCompany] = useState();
+  const [jobTitle, setJobTitle] = useState(localStorage.getItem('jobTitle') || '');
+  const [company, setCompany] = useState(localStorage.getItem('company') || '');
+
+  useEffect(() => {
+    localStorage.setItem("jobTitle", jobTitle);
+  }, [jobTitle])
+
+  useEffect(() => {
+    localStorage.setItem("company", company);
+  }, [company])
 
   useEffect(() => {
     onChange({ jobTitle, company, id });

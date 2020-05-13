@@ -6,7 +6,6 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-
 import PreviousRoles from "./previousRoles.js";
 import css from "../CreateCompanies/CreateCompanies.module.css";
 import { URL } from "../../config";
@@ -32,7 +31,7 @@ const initialState = {
   twitter: localStorage.getItem("twitter") || "",
   github: localStorage.getItem("github") || "",
   portfolio: localStorage.getItem("portfolio") || "",
-  linkedIn: localStorage.getItem("linkedin") || "",
+  linkedin: localStorage.getItem("linkedin") || "",
 };
 
 const actionTypes = {
@@ -296,7 +295,7 @@ function ProfileInputs() {
               }}
             />
           </MuiPickersUtilsProvider>
-          <label>Previous Roles</label>
+          <label className={css.PrevRoles}>Previous Roles</label>
           <div className={css.prevRoleWrapper}>
             <PreviousRoles
               onChange={(values) => {
