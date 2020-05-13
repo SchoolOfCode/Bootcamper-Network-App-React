@@ -36,11 +36,11 @@ function IndividualCompany() {
   } = individualCompanyData;
   return (
     <>
-      {/* <div>
+      <div>
         <Link to="/companies">
           <img src={leftarrow} alt="back arrow" className={css.leftarrow} />
         </Link>
-      </div> */}
+      </div>
       <div className={css.iconWrapper}>
         <img
           src={twitterLogo}

@@ -10,12 +10,10 @@ function GoogleMaps({ postcode, google }) {
     async function getLonLat() {
       try {
         const newPostcode = postcode.replace(/\s+/g, "");
-        console.log(`updated postocde`, newPostcode);
         const res = await fetch(
           `https://api.postcodes.io/postcodes/${newPostcode}`
         );
         const data = await res.json();
-        console.log(`DATA`, data);
         if (data) {
           setLatitude(data.result.latitude);
           setLongitude(data.result.longitude);
@@ -27,21 +25,21 @@ function GoogleMaps({ postcode, google }) {
     getLonLat();
   }, [postcode]);
 
-  console.log(`Latitude`, latitude, `longitude`, longitude);
-
   return (
     <>
-      {longitude && (
+      {postcode && longitude && latitude && (
         <Map
           google={google}
-          style={{
-            width: "95%",
-            height: "200px",
-            position: "relative",
-          }}
-          center={{
+          initialCenter={{
             lat: latitude,
             lng: longitude,
+          }}
+          style={{
+            width: "95%",
+            maxWidth: "600px",
+            maxHeight: "600px",
+            height: "300px",
+            position: "relative",
           }}
         >
           <Marker position={{ lat: latitude, lng: longitude }} />
