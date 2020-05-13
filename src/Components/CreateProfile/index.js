@@ -344,41 +344,8 @@ function ProfileInputs() {
               });
             }}
           />
-          <label>Job Satisfaction:</label>
-          <input
-            className={css.inputs}
-            type="text"
-            placeholder="Job Satisfaction"
-            name="job_satisfaction"
-            value={state.job_satisfaction}
-            onChange={(event) => {
-              localStorage.setItem("job_satisfaction", event.target.value);
-              dispatch({
-                type: actionTypes.FORM_CHANGE,
-                payload: {
-                  job_satisfaction: event.target.value,
-                },
-              });
-            }}
-          />
-          <label>New Job:</label>
-          <input
-            className={css.inputs}
-            type="text"
-            placeholder="New Job"
-            name="new_job"
-            value={state.new_job}
-            onChange={(event) => {
-              localStorage.setItem("new_job", event.target.value);
-              dispatch({
-                type: actionTypes.FORM_CHANGE,
-                payload: {
-                  new_job: event.target.value,
-                },
-              });
-            }}
-          />
-          <small> Please enter URL </small>
+
+          <small> Please enter whole URL </small>
           <div>
             <img src={websiteLogo} alt="website logo" className={css.logos} />
             <input
