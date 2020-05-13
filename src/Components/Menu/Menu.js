@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 
 const links = [
   { text: "My Profile", path: "/profile" },
-  { text: "Messages", path: "/messages" },
   { text: "Dashboard", path: "/" },
+  { text: "Messages", path: "/messages" },
   { text: "Companies", path: "/companies" },
+  { text: "Bootcampers", path: "/Bootcampers" },
   { text: "Events", path: "/events" },
   { text: "Useful Links", path: "/links" },
 ];

@@ -65,3 +65,14 @@
   top: 110px;
   color: black;
 }
+
+.leftarrow {
+  width: 10px;
+  height: 20px;
+  top: 190px;
+  left: 22px;
+  z-index: 5;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
