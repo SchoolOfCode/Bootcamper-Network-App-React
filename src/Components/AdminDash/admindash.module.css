@@ -34,7 +34,9 @@
 .name {
   display: inline-block;
   position: relative;
-  top: -15px;
+  top: -10px;
+  font-size: x-large;
+  margin-block-end: 0;
 }
 
 .adminHeader {
@@ -42,6 +44,7 @@
   margin-left: 15px;
   margin-bottom: 5px;
   padding-top: 10px;
+  color: #5b5e71;
 }
 
 .inputs {
@@ -79,4 +82,23 @@
 .subheaders {
   color: #acb0cb;
   font-size: small;
+}
+
+.companyContainer {
+  display: inline-block;
+  text-align: center;
+  width: 90vw;
+  height: auto;
+  padding-bottom: 1px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 2px #0000000f;
+  color: #5b5e71;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.content {
+  margin-block-start: 0;
 }
