@@ -131,3 +131,11 @@ h3 {
   font-size: small;
   position: relative;
 }
+
+.companyDataname {
+  margin-left: 10px;
+  color: #acb0cb;
+  font-size: small;
+  position: relative;
+  background-color: teal;
+}

@@ -14,6 +14,18 @@
   outline: none;
 }
 
+.inputssocial {
+  line-height: 2em;
+  margin-bottom: 25px;
+  width: 80%;
+  margin-top: 5px;
+  border: 0px;
+  border-bottom: 2px solid #c0c2d3;
+  font-family: "Nunito", sans-serif;
+  outline: none;
+  margin-left: 36px;
+}
+
 .wrapper {
   position: relative;
   top: 100px;
@@ -32,6 +44,31 @@
   width: 30px;
   display: inline-block;
   margin-right: 10px;
+  position: absolute;
+  top: 5px;
+}
+
+.globelogos {
+  width: 35px;
+  display: inline-block;
+  margin-right: 10px;
+  position: absolute;
+  top: 5px;
+}
+.twitterlogo {
+  width: 30px;
+  display: inline-block;
+  margin-right: 10px;
+  position: absolute;
+  top: 1px;
+}
+
+.linkedinlogos {
+  width: 30px;
+  display: inline-block;
+  margin-right: 10px;
+  position: absolute;
+  top: 0px;
 }
 
 .logocontainer {
@@ -43,7 +80,6 @@
   height: 30px;
   margin-top: 5px;
   margin-left: 10%;
-  margin-bottom: 10%;
   background: #394ef5;
   border: 0px;
   box-sizing: border-box;
@@ -51,7 +87,6 @@
   color: var(--main-color);
   font-size: medium;
 }
-
 .bin {
   width: 30px;
   position: relative;
@@ -59,20 +94,11 @@
   left: 20px;
 }
 
-.socialsdiv {
-  margin-top: 10px;
-}
-
-.socialcont {
-  position: relative;
-}
-
 .linktext {
-  font-size: 14px;
+  font-size: 10px;
   color: var(--text);
   position: relative;
   left: 1px;
-  text-align: center;
 }
 
 .prevRoleButton {
@@ -151,5 +177,5 @@
 }
 
 .labelprof {
-  margin-top: 25px;
+  margin-top: 13px;
 }

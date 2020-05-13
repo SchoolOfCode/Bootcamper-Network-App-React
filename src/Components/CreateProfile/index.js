@@ -7,7 +7,7 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import PreviousRoles from "./previousRoles.js";
-import css from "../CreateCompanies/CreateCompanies.module.css";
+import css from "./CreateProfile.module.css";
 import { URL } from "../../config";
 import twitterLogo from "../../images/twitter2.svg";
 import linkedinLogo from "../../images/linkedin2.svg";
@@ -241,7 +241,7 @@ function ProfileInputs() {
               If your company doesn't already exist, add it here
             </Link>
           </p>
-          <label>Salary:</label>
+          <label className={css.salarylabel}>Salary:</label>
           <span className={css.poundsign}>£</span>
           <input
             className={css.salaryInput}
@@ -260,24 +260,6 @@ function ProfileInputs() {
             }}
           />
           <label>Start Date:</label>
-          {/* <input
-            className={css.inputs}
-            type="text"
-            placeholder="Start Date"
-            name="start_date"
-            value={state.start_date}
-            onChange={(event) => {
-              localStorage.setItem('start_date', event.target.value)
-              dispatch({
-                type: actionTypes.FORM_CHANGE,
-                payload: {
-
-                  "start_date":
-         event.target.value,
-                }
-              });
-            }}
-          /> */}
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
@@ -285,7 +267,6 @@ function ProfileInputs() {
               format="dd/MM/yyyy"
               margin="normal"
               id="date-picker-inline"
-              label="Date picker inline"
               value={state.start_date}
               onChange={handleDateChange}
               KeyboardButtonProps={{
@@ -293,7 +274,7 @@ function ProfileInputs() {
               }}
             />
           </MuiPickersUtilsProvider>
-          <label className={css.PrevRoles}>Previous Roles</label>
+          <label className={css.PrevRoles}>Previous Roles:</label>
           <div className={css.prevRoleWrapper}>
             <PreviousRoles
               onChange={(values) => {
@@ -307,7 +288,7 @@ function ProfileInputs() {
             />
           </div>
           <br />
-          <label>Cohort Number:</label>
+          <label className={css.labelprof}>Cohort Number:</label>
           <input
             className={css.inputs}
             type="text"
@@ -342,11 +323,15 @@ function ProfileInputs() {
             }}
           />
 
-          <small> Please enter whole URL </small>
-          <div>
-            <img src={websiteLogo} alt="website logo" className={css.logos} />
+          <small className={css.labelprof}> Please enter whole URL </small>
+          <div className={css.logocontainer}>
+            <img
+              src={websiteLogo}
+              alt="website logo"
+              className={css.globelogos}
+            />
             <input
-              className={css.inputs}
+              className={css.inputssocial}
               type="text"
               placeholder="Portfolio"
               name="portfolio"
@@ -362,10 +347,14 @@ function ProfileInputs() {
               }}
             />
           </div>
-          <div>
-            <img src={twitterLogo} alt="twitter logo" className={css.logos} />
+          <div className={css.logocontainer}>
+            <img
+              src={twitterLogo}
+              alt="twitter logo"
+              className={css.twitterlogo}
+            />
             <input
-              className={css.inputs}
+              className={css.inputssocial}
               type="text"
               placeholder="Enter full URL"
               name="twitter"
@@ -381,10 +370,14 @@ function ProfileInputs() {
               }}
             />
           </div>
-          <div>
-            <img src={linkedinLogo} alt="linkedin logo" className={css.logos} />
+          <div className={css.logocontainer}>
+            <img
+              src={linkedinLogo}
+              alt="linkedin logo"
+              className={css.linkedinlogos}
+            />
             <input
-              className={css.inputs}
+              className={css.inputssocial}
               type="text"
               placeholder="Enter full URL"
               name="linkedin"
@@ -400,10 +393,10 @@ function ProfileInputs() {
               }}
             />
           </div>
-          <div>
+          <div className={css.logocontainer}>
             <img src={githubLogo} alt="github logo" className={css.logos} />
             <input
-              className={css.inputs}
+              className={css.inputssocial}
               type="text"
               placeholder="Enter full URL"
               name="github"
