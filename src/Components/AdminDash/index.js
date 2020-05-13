@@ -51,7 +51,7 @@ function AdminDash() {
         message,
       }),
     });
-    console.log(message);
+
     setMessage("");
     setSent("Sent");
   }

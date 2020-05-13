@@ -24,10 +24,10 @@ const initialState = {
   salary: localStorage.getItem("salary") || "",
   start_date: localStorage.getItem("start_date") || new Date(),
   previous_roles: localStorage.getItem("previous_roles") || [],
-  cohort_num: localStorage.getItem("cohort_num") || 0,
+  cohort_num: localStorage.getItem("cohort_num") || 1,
   region: localStorage.getItem("region") || "",
-  job_satisfaction: localStorage.getItem("job_satisfaction") || "",
-  new_job: localStorage.getItem("new_job") || "",
+  job_satisfaction: localStorage.getItem("job_satisfaction") || 5,
+  new_job: localStorage.getItem("new_job") || "no",
   twitter: localStorage.getItem("twitter") || "",
   github: localStorage.getItem("github") || "",
   portfolio: localStorage.getItem("portfolio") || "",
@@ -99,7 +99,6 @@ function ProfileInputs() {
         },
       });
       const data = await res.json();
-      console.log(`chris check`, data);
 
       setIsNewUser(!data.payload[0].exists);
     }
@@ -108,7 +107,6 @@ function ProfileInputs() {
 
   async function handleClick(e) {
     e.preventDefault();
-    console.log(`PROFILE STUFF`, profileData, isNewUser);
     const profileUrl = isNewUser
       ? `${URL}/bootcampers`
       : `${URL}/bootcampers/${profileData.bootcamper_id}`;

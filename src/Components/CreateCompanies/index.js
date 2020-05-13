@@ -4,7 +4,7 @@ import twitterLogo from "../../images/twitter2.svg";
 import linkedinLogo from "../../images/linkedin2.svg";
 import websiteLogo from "../../images/web2.svg";
 import css from "./CreateCompanies.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const initialState = {
   company_name: localStorage.getItem("company_name") || "",
@@ -32,8 +32,9 @@ function reducer(state, action) {
 
 function CompanyInputs() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const history = useHistory();
 
-  function handleClick(e) {
+  async function handleClick(e) {
     const {
       company_name,
       description,
@@ -45,7 +46,7 @@ function CompanyInputs() {
       linkedin,
     } = state;
     e.preventDefault();
-    fetch(`${URL}/companies`, {
+    const saveResult = await fetch(`${URL}/companies`, {
       method: "POST",
       body: JSON.stringify({
         company_name,
@@ -61,6 +62,9 @@ function CompanyInputs() {
         "Content-Type": "application/json",
       },
     });
+    if (saveResult.ok) {
+      history.push("/profileEdit");
+    }
   }
 
   return (
@@ -72,7 +76,7 @@ function CompanyInputs() {
           <input
             className={css.inputs}
             type="text"
-            placeholder="company_name"
+            placeholder="Company Name"
             name="company_name"
             value={state.company_name}
             onChange={(event) => {
@@ -88,7 +92,7 @@ function CompanyInputs() {
           <textarea
             className={css.inputs}
             type="text"
-            placeholder="description"
+            placeholder="Short description of your company...you might find LinkedIn's 'about' helpful."
             name="description"
             value={state.description}
             onChange={(event) => {
@@ -104,7 +108,7 @@ function CompanyInputs() {
           <input
             className={css.inputs}
             type="text"
-            placeholder="logo"
+            placeholder="Paste your company logo from LinkedIn's page"
             name="logo"
             value={state.logo}
             onChange={(event) => {
@@ -120,7 +124,7 @@ function CompanyInputs() {
           <input
             className={css.inputs}
             type="text"
-            placeholder="address"
+            placeholder="Address"
             name="address"
             value={state.address}
             onChange={(event) => {
@@ -136,7 +140,7 @@ function CompanyInputs() {
           <input
             className={css.inputs}
             type="text"
-            placeholder="postcode"
+            placeholder="Postcode"
             name="postcode"
             value={state.postcode}
             minLength="5"
@@ -154,7 +158,7 @@ function CompanyInputs() {
             <input
               className={css.inputs}
               type="text"
-              placeholder="website"
+              placeholder="Website"
               name="website"
               value={state.website}
               onChange={(event) => {
@@ -171,7 +175,7 @@ function CompanyInputs() {
             <input
               className={css.inputs}
               type="text"
-              placeholder="twitter"
+              placeholder="Full twitter URL"
               name="twitter"
               value={state.twitter}
               onChange={(event) => {
@@ -188,7 +192,7 @@ function CompanyInputs() {
             <input
               className={css.inputs}
               type="text"
-              placeholder="linkedin"
+              placeholder="Full LinkedIn URL"
               name="linkedin"
               value={state.linkedin}
               onChange={(event) => {
