@@ -32,7 +32,7 @@ const initialState = {
   twitter: localStorage.getItem("twitter") || "",
   github: localStorage.getItem("github") || "",
   portfolio: localStorage.getItem("portfolio") || "",
-  linkedIn: localStorage.getItem("linkedIn") || "",
+  linkedIn: localStorage.getItem("linkedin") || "",
 };
 
 const actionTypes = {
