@@ -83,75 +83,73 @@ function AdminDash() {
         Toggle Job Satisfaction/New Jobs
       </button>
       {toggleDisplay ? (
-        <div className={css.otherContainer}>
+        <>
           <h4 className={css.adminHeader}>
             Bootcampers with a Job Satisfaction rating of 3 or less:
           </h4>
           {jobSatisfactionData.map((item) => {
             return (
-              <>
+              <div className={css.companyContainer}>
                 <img src={item.photo_url} className={css.profilePic} alt="" />
                 <p className={css.name}>
                   {item.first_name} {item.surname}
                 </p>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Cohort</span> <br />
-                  {item.cohort_num}
+                  <p className={css.content}> {item.cohort_num}</p>
                 </li>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Company Name</span>
                   <br />
-                  {item.company_name}
+                  <p className={css.content}>{item.company_name}</p>
                 </li>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Job Satisfaction </span>
                   <br />
-                  {item.job_satisfaction}
+                  <p className={css.content}>{item.job_satisfaction}</p>
                 </li>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Salary </span>
                   <br />
-                  {item.salary}
+                  <p className={css.content}>£{item.salary}</p>
                 </li>
-                <Divider />
-              </>
+              </div>
             );
           })}
-        </div>
+        </>
       ) : (
-        <div className={css.otherContainer}>
+        <>
           <h4 className={css.adminHeader}> Bootcampers who want a new job: </h4>
           {newJobData.map((item) => {
             return (
-              <>
+              <div className={css.companyContainer}>
                 <img src={item.photo_url} className={css.profilePic} alt="" />
                 <p className={css.name}>
                   {item.first_name} {item.surname}
                 </p>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Cohort</span> <br />
-                  {item.cohort_num}
+                  <p className={css.content}> {item.cohort_num}</p>
                 </li>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Company Name</span>
                   <br />
-                  {item.company_name}
+                  <p className={css.content}>{item.company_name}</p>
                 </li>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Job Satisfaction </span>
                   <br />
-                  {item.job_satisfaction}
+                  <p className={css.content}>{item.job_satisfaction}</p>
                 </li>
                 <li className={css.listItem}>
                   <span className={css.subheaders}>Salary </span>
                   <br />
-                  {item.salary}
+                  <p className={css.content}>£{item.salary}</p>
                 </li>
-                <Divider />
-              </>
+              </div>
             );
           })}
-        </div>
+        </>
       )}
     </div>
   );
