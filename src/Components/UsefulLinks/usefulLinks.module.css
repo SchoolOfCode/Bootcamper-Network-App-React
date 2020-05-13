@@ -19,23 +19,26 @@
   top: 100px;
 }
 
-.extraData {
-  display: inline-block;
-  text-align: left;
+.grid {
+  margin: 20px auto;
   width: 50vw;
-  height: auto;
-  padding-bottom: 10px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  grid-row: auto auto;
+  position: relative;
+  top: 130px;
+  left: -85px;
+}
+.box {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45vw;
+  height: 50px;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 2px #0000000f;
   color: #acb0cb;
-  padding-left: 5px;
-  position: relative;
-  top: 150px;
-  margin-bottom: 10px;
-}
-
-.linkText {
-  text-align: right;
-  margin-left: 30px;
 }
