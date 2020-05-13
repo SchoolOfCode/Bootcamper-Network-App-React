@@ -7,6 +7,7 @@ import githubLogo from "../../images/github3.png";
 import webLogo from "../../images/web3.png";
 import pencil from "../../images/pencil.png";
 import emailLogo from "../../images/mail3.png";
+import leftarrow from "../../images/leftarrow.png";
 
 import { useParams } from "react-router-dom";
 import { URL } from "../../config";
@@ -53,6 +54,11 @@ function OtherProfiles() {
 
   return (
     <>
+      <div>
+        <Link to="/bootcampers">
+          <img src={leftarrow} alt="back arrow" className={css.leftarrow} />
+        </Link>
+      </div>
       <div>
         <div className={css.info}>
           <img src={photo_url} alt="Profile Pic" className={css.profilePic} />

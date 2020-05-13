@@ -18,6 +18,7 @@ import Messages from "../Messages";
 import PrivateRoute from "../PrivateRoute";
 import OtherProfiles from "../Profile/OtherProfiles";
 import GoogleMaps from "../GoogleMaps";
+import BootcampersPage from "../BootcampersPage/BootcampersPage";
 import AdminDash from "../AdminDash";
 import Dashboard from "../Dashboard/Dashboard";
 import { ProfileContext, URL } from "../../config";
@@ -91,6 +92,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/companies">
             <CompaniesPage />
+          </PrivateRoute>
+          <PrivateRoute path="/bootcampers">
+            <BootcampersPage />
           </PrivateRoute>
           <PrivateRoute path="/company/:companyname">
             <IndividualCompany />

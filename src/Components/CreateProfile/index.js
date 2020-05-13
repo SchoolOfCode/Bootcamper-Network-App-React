@@ -370,7 +370,7 @@ function ProfileInputs() {
             <input
               className={css.inputs}
               type="text"
-              placeholder="twitter"
+              placeholder="Enter full URL"
               name="twitter"
               value={state.twitter}
               onChange={(event) => {
@@ -389,7 +389,7 @@ function ProfileInputs() {
             <input
               className={css.inputs}
               type="text"
-              placeholder="linkedin"
+              placeholder="Enter full URL"
               name="linkedin"
               value={state.linkedin}
               onChange={(event) => {
@@ -408,7 +408,7 @@ function ProfileInputs() {
             <input
               className={css.inputs}
               type="text"
-              placeholder="github"
+              placeholder="Enter full URL"
               name="github"
               value={state.github}
               onChange={(event) => {
