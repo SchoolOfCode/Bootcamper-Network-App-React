@@ -22,18 +22,32 @@ function BootcampersWorkingHere({ companyname }) {
   return (
     <div>
       <h3 className={css.headers}> Bootcampers Who Work Here: </h3>
-      <ul>
-        {bootcamperWorkingHere.map((item) => {
-          return (
-            <li className={css.people}>
-              <img className={css.bootcamperPic} alt="" src={item.photo_url} />
-              <Link to={`/profiles/${item.bootcamper_id}`} className={css.link}>
-                {item.first_name} {item.surname}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+
+      {bootcamperWorkingHere[0] == null ? (
+        <div>
+          <p className={css.nobootcamper}>Currently no bootcampers work here</p>
+        </div>
+      ) : (
+        <ul>
+          {bootcamperWorkingHere.map((item) => {
+            return (
+              <li className={css.people}>
+                <img
+                  className={css.bootcamperPic}
+                  alt=""
+                  src={item.photo_url}
+                />
+                <Link
+                  to={`/profiles/${item.bootcamper_id}`}
+                  className={css.link}
+                >
+                  {item.first_name} {item.surname}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

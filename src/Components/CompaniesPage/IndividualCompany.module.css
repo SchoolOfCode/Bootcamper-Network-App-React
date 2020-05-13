@@ -84,17 +84,22 @@
 }
 
 .leftarrow {
-  width: 30px;
-  border: 2px solid pink;
+  width: 10px;
+  height: 20px;
+  top: 140px;
+  left: 22px;
   z-index: 5;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .mapHolder {
   display: inline-block;
   text-align: left;
   width: 90vw;
-  height: 290px;
-  padding-bottom: 10px;
+  /* height: 290px; */
+  padding-bottom: 312px;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 2px #0000000f;
