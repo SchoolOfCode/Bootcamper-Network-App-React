@@ -66,6 +66,7 @@ function Profile({ uid }) {
         </Link>
 
         <div className={css.info}>
+       
           <img src={photo_url} alt="Profile Pic" className={css.profilePic} />
           <h2 className={css.name}>
             {first_name} {surname}
