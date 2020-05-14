@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import css from "./googlemaps.module.css";
+import { MAPAPIKEY } from "../../config";
 
 function GoogleMaps({ postcode, google }) {
   const [latitude, setLatitude] = useState("");
@@ -50,5 +51,5 @@ function GoogleMaps({ postcode, google }) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyC0ue6GBSdLopelg1kPuN5ygZJvbkoqgGM",
+  apiKey: MAPAPIKEY,
 })(GoogleMaps);
