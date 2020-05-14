@@ -2,18 +2,25 @@
 ## Final project for team Jomellen
 ### Jodie Neville, Mell Kay & Helen Kent
 
-<img src="./src/images/GHlogin.png" width="200px" height="auto" alt="login screenshot">
-<img src="./src/images/GHdash.png" width="200px" height="auto" alt="dashboard screenshot">
-<img src="./src/images/GHcompanies.png" width="200px" height="auto" alt="companies page screenshot">
-
+<table>
+<td><img src="./src/images/GHlogin.png" width="200px" height="auto" alt="login screenshot"></td>
+<td><img src="./src/images/GHdash.png" width="200px" height="auto" alt="dashboard screenshot"></td>
+<td><img src="./src/images/GHcompanies.png" width="200px" height="auto" alt="companies page screenshot"></td>
+</table>
 
 ### Faced with the problem of a distributed network of current bootcampers and alumni, team Jomellen decided to bring everyone together with our Bootcamper Network App. School of Code bootcampers past and present can all now login to the app and share their career progress with each other. This enables other bootcampers to see all SoC affiliated companies easily. Bootcampers can also share (privately, with only the SoC team) their job satisfaction rating, allowing the team to reach out to support the bootcamper with a new job hunt. 
 
 ## **[Click here for the live site hosted on Netlify](https://bootcamper-network.netlify.app/)**
 
-<img src="./src/images/GHdemo1.gif" width="200px" height="auto" alt="demo gif 1">
-<img src="./src/images/GHdemo2.gif" width="200px" height="auto" alt="demo gif 2">
-<img src="./src/images/GHdemo3.gif" width="200px" height="auto" alt="demo gif 3">
+<table>
+<td><img src="./src/images/GHdemo1.gif" width="200px" height="auto" alt="demo gif 1"></td>
+<td><img src="./src/images/GHdemo2.gif" width="200px" height="auto" alt="demo gif 2"></td>
+<td><img src="./src/images/GHdemo3.gif" width="200px" height="auto" alt="demo gif 3"></td>
+</table>
+
+  
+
+ 
 
 
 
