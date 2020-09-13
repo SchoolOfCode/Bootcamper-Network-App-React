@@ -2,7 +2,7 @@ import React from "react";
 import css from "./usefulLinks.module.css";
 /* import Divider from "../Divider"; */
 import webPic from "./web.jpg";
-import stackPic from "./stack.jpg";
+// import stackPic from "./stack.jpg";
 import slackPic from "./slack.png";
 import linkedInPic from "./linkedin.png";
 

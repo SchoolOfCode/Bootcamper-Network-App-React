@@ -38,24 +38,24 @@ const actionTypes = {
   FORM_CHANGE: "FORM_CHANGE",
 };
 
-const fields = [
-  "first_name",
-  "surname",
-  "aboutme",
-  "job_title",
-  "company_id",
-  "salary",
-  "start_date",
-  "previous_roles",
-  "cohort_num",
-  "region",
-  "job_satisfaction",
-  "new_job",
-  "twitter",
-  "github",
-  "portfolio",
-  "linkedin",
-];
+// const fields = [
+//   "first_name",
+//   "surname",
+//   "aboutme",
+//   "job_title",
+//   "company_id",
+//   "salary",
+//   "start_date",
+//   "previous_roles",
+//   "cohort_num",
+//   "region",
+//   "job_satisfaction",
+//   "new_job",
+//   "twitter",
+//   "github",
+//   "portfolio",
+//   "linkedin",
+// ];
 
 function reducer(state, action) {
   switch (action.type) {
@@ -68,7 +68,7 @@ function reducer(state, action) {
 
 function ProfileInputs() {
   const {
-    user: { uid, photoURL, email, bootcamper_id },
+    user: { uid, photoURL, email },
     profileData,
   } = useContext(ProfileContext);
   const history = useHistory();

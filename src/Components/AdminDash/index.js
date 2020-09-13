@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import css from "./admindash.module.css";
 import { URL } from "../../config";
-import { Divider } from "@material-ui/core";
+// import { Divider } from "@material-ui/core";
 
 function AdminDash() {
   const [jobSatisfactionData, setjobSatisfactionData] = useState([]);

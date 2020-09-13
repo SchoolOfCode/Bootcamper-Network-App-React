@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import css from "./Profile.module.css";
-import TeamData from "./TeamData";
+
+//images
 import twitterLogo from "../../images/twitter3.png";
 import linkedinLogo from "../../images/linkedin3.png";
 import githubLogo from "../../images/github3.png";
 import webLogo from "../../images/web3.png";
-import pencil from "../../images/pencil.png";
 import emailLogo from "../../images/mail3.png";
 import leftarrow from "../../images/leftarrow.png";
 

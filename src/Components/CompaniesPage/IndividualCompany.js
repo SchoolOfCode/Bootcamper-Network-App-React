@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import twitterLogo from "../../images/twitter-logo.png";
 import linkedinLogo from "../../images/linkedin.png";
-import githubLogo from "../../images/github.png";
 import leftarrow from "../../images/leftarrow.png";
 import websiteLogo from "../../images/web.svg";
 import { URL } from "../../config";

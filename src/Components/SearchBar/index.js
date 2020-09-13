@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import searchIcon from "../../images/searchIcon2.png";
 import css from "../Dashboard/Dashboard.module.css";
 import { Link } from "react-router-dom";
@@ -23,6 +23,8 @@ function SearchBar() {
         return `bootcampers?jobtitle=${searchTerm}`;
       case "region":
         return `bootcampers?region=${searchTerm}`;
+      default:
+        return `bootcampers?name=${searchTerm}`;
     }
   }
 

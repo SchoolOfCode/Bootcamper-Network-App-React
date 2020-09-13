@@ -22,11 +22,6 @@ export function signInWithRedirect() {
     // .getRedirectResult()
     .catch(function (error) {
       var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
     });
 }
 
@@ -39,22 +34,13 @@ export function logout() {
 }
 
 /* 
-
-
-1. a user logs in using firebase for the first time, their firebase UID token is collected (as well as photo url) and a post
-request is made to the db, creating them an empty profile. Their db id = firebase UID.
-2. They're taken to the create profile page, they fill in their details and when submitted, this is a patch request to their profile.
-3. when they click 'my profile', a get request is done based on their UID which is taken from local storage and put in the request.
-4. When searching for profiles, the job satisfaction section is only displayed if the local storage UID matches the user profile 
-UID that they're viewing
-
 PLAN
 1. change bootcampers db to store UID, photoURL and email address ✅
 2. find out how to grab the UID, photoURL and email from google firebase ✅
 3. logic on login: if no user in the db matches the current UID, take them to create profile page. ISH DONE
 4. On that page, user can fill in all their details. ✅
-5. store the google photoURL in state and display it on the create profile page. 
-6. On form submit, do post request to database and include UID, photoURL and email address from firebase.
+5. store the google photoURL in state and display it on the create profile page. ✅
+6. On form submit, do post request to database and include UID, photoURL and email address from firebase.✅
 
 
 HOW IT WORKS

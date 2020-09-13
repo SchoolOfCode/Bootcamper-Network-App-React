@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import css from "./googlemaps.module.css";
 import { MAPAPIKEY } from "../../config";
 
 function GoogleMaps({ postcode, google }) {
@@ -15,9 +14,9 @@ function GoogleMaps({ postcode, google }) {
           `https://api.postcodes.io/postcodes/${newPostcode}`
         );
         const data = await res.json();
-        if (data) {
-          setLatitude(data.result.latitude);
-          setLongitude(data.result.longitude);
+        if (data && data.result) {
+          setLatitude(data.result?.latitude);
+          setLongitude(data.result?.longitude);
         }
       } catch (err) {
         console.log(`fetch error`, err);

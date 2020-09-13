@@ -9,7 +9,7 @@ import css from "./signin.module.css";
 
 function SignIn() {
   const [userExists, setUserExists] = useState(undefined);
-  const { user, profileData, setProfileData } = useContext(ProfileContext);
+  const { user } = useContext(ProfileContext);
 
   useEffect(() => {
     if (user) {

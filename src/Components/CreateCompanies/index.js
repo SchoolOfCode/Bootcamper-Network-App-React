@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import { URL } from "../../config";
 import twitterLogo from "../../images/twitter2.svg";
 import linkedinLogo from "../../images/linkedin2.svg";

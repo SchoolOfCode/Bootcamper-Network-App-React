@@ -6,7 +6,7 @@ import { URL } from "../../config";
 
 import EventsPage from "../MeetUp/EventsPage";
 import SearchBar from "../SearchBar";
-import Divider from "../Divider";
+// import Divider from "../Divider";
 
 function Dashboard({ state }) {
   const [message, setMessage] = useState("");

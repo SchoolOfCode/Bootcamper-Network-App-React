@@ -18,12 +18,6 @@
 <td><img src="./src/images/GHdemo3.gif" width="200px" height="auto" alt="demo gif 3"></td>
 </table>
 
-  
-
- 
-
-
-
 ## How to use (only if you're from the School of Code!)
 1) Click the link above and login with your Google account.
 2) Create an account.

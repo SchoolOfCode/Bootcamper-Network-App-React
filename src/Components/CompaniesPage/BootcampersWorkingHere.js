@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { URL } from "../../config";
-import { useParams } from "react-router-dom";
 import css from "./bcmpr.module.css";
 import { Link } from "react-router-dom";
 
@@ -16,8 +15,6 @@ function BootcampersWorkingHere({ companyname }) {
 
     getBootcampersWorkinghere();
   }, [companyname]);
-
-  const { photo_url, first_name, surname } = bootcamperWorkingHere;
 
   return (
     <div>
